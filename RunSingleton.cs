@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_BASE_URL = "https://flow.manywho.com";
         public const String MANYWHO_ENGINE_INITIALIZE_URI_PART = "/api/run/1";
         public const String MANYWHO_ENGINE_EXECUTE_URI_PART = "/api/run/1/state/";
-        public const String MANYWHO_ENGINE_LOAD_FLOW_BY_ID_URI_PART = "api/run/1/flow/";
+        public const String MANYWHO_ENGINE_LOAD_FLOW_BY_ID_URI_PART = "/api/run/1/flow/";
 
         private static RunSingleton run = null;
 
@@ -65,7 +65,7 @@ namespace ManyWho.Flow.SDK
 
             // Check to make sure we have a flow id to pass up to the system
             if (flowId == null ||
-                flowId.Trim().Length > 0)
+                flowId.Trim().Length == 0)
             {
                 throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The identifier for the flow is null or blank.");
             }
