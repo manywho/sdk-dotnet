@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure;
+using ManyWho.Flow.SDK.Describe;
+using ManyWho.Flow.SDK.Run;
+using ManyWho.Flow.SDK.Run.Elements.Config;
 
 /*!
 
@@ -40,6 +43,37 @@ namespace ManyWho.Flow.SDK.Utils
             Boolean.TryParse(value, out booleanValue);
 
             return booleanValue;
+        }
+
+        public static String GetConfigurationValue(String developerName, List<EngineValueAPI> configurationValues)
+        {
+            return GetConfigurationValue(developerName, configurationValues, false);
+        }
+
+        public static String GetConfigurationValue(String developerName, List<EngineValueAPI> configurationValues, Boolean required)
+        {
+            String value = null;
+
+            if (configurationValues != null &&
+                configurationValues.Count > 0)
+            {
+                foreach (EngineValueAPI configurationValue in configurationValues)
+                {
+                    if (developerName.Equals(configurationValue.developerName, StringComparison.InvariantCultureIgnoreCase) == true)
+                    {
+                        value = configurationValue.contentValue;
+                        break;
+                    }
+                }
+            }
+
+            if (value == null ||
+                value.Trim().Length == 0)
+            {
+                throw ErrorUtils.GetWebException(System.Net.HttpStatusCode.BadRequest, developerName + " cannot be null or blank.");
+            }
+
+            return value;
         }
     }
 }

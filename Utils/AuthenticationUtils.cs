@@ -46,90 +46,90 @@ namespace ManyWho.Flow.SDK.Utils
             parameters = token.Split('&');
 
             // Grab the parameters for each of the properties from the array
-            manywhoTenantIdParameter = parameters.Single(value => value.StartsWith(Constants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID, StringComparison.OrdinalIgnoreCase));
-            manywhoUserIdParameter = parameters.Single(value => value.StartsWith(Constants.AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID, StringComparison.OrdinalIgnoreCase));
-            manywhoTokenParameter = parameters.Single(value => value.StartsWith(Constants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN, StringComparison.OrdinalIgnoreCase));
-            directoryIdParameter = parameters.Single(value => value.StartsWith(Constants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID, StringComparison.OrdinalIgnoreCase));
-            directoryNameParameter = parameters.Single(value => value.StartsWith(Constants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME, StringComparison.OrdinalIgnoreCase));
-            emailParameter = parameters.Single(value => value.StartsWith(Constants.AUTHENTICATED_WHO_TOKEN_EMAIL, StringComparison.OrdinalIgnoreCase));
-            identityProviderParameter = parameters.Single(value => value.StartsWith(Constants.AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER, StringComparison.OrdinalIgnoreCase));
-            tenantNameParameter = parameters.Single(value => value.StartsWith(Constants.AUTHENTICATED_WHO_TOKEN_TENANT_NAME, StringComparison.OrdinalIgnoreCase));
-            tokenParameter = parameters.Single(value => value.StartsWith(Constants.AUTHENTICATED_WHO_TOKEN_TOKEN, StringComparison.OrdinalIgnoreCase));
-            userIdParameter = parameters.Single(value => value.StartsWith(Constants.AUTHENTICATED_WHO_TOKEN_USER_ID, StringComparison.OrdinalIgnoreCase));
+            manywhoTenantIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID, StringComparison.OrdinalIgnoreCase));
+            manywhoUserIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID, StringComparison.OrdinalIgnoreCase));
+            manywhoTokenParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN, StringComparison.OrdinalIgnoreCase));
+            directoryIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID, StringComparison.OrdinalIgnoreCase));
+            directoryNameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME, StringComparison.OrdinalIgnoreCase));
+            emailParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_EMAIL, StringComparison.OrdinalIgnoreCase));
+            identityProviderParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER, StringComparison.OrdinalIgnoreCase));
+            tenantNameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_TENANT_NAME, StringComparison.OrdinalIgnoreCase));
+            tokenParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_TOKEN, StringComparison.OrdinalIgnoreCase));
+            userIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_USER_ID, StringComparison.OrdinalIgnoreCase));
 
             // Check to make sure we have all of the parameters - they're all required
             if (manywhoTenantIdParameter == null ||
                 manywhoTenantIdParameter.Trim().Length == 0)
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + Constants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID);
+                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID);
             }
 
             if (manywhoUserIdParameter == null ||
                 manywhoUserIdParameter.Trim().Length == 0)
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + Constants.AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID);
+                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID);
             }
 
             if (manywhoTokenParameter == null ||
                 manywhoTokenParameter.Trim().Length == 0)
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + Constants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN);
+                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN);
             }
 
             if (directoryIdParameter == null ||
                 directoryIdParameter.Trim().Length == 0)
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + Constants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID);
+                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID);
             }
 
             if (directoryNameParameter == null ||
                 directoryNameParameter.Trim().Length == 0)
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + Constants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME);
+                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME);
             }
 
             if (emailParameter == null ||
                 emailParameter.Trim().Length == 0)
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + Constants.AUTHENTICATED_WHO_TOKEN_EMAIL);
+                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_EMAIL);
             }
 
             if (identityProviderParameter == null ||
                 identityProviderParameter.Trim().Length == 0)
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + Constants.AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER);
+                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER);
             }
 
             if (tenantNameParameter == null ||
                 tenantNameParameter.Trim().Length == 0)
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + Constants.AUTHENTICATED_WHO_TOKEN_TENANT_NAME);
+                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_TENANT_NAME);
             }
             
             if (tokenParameter == null ||
                 tokenParameter.Trim().Length == 0)
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + Constants.AUTHENTICATED_WHO_TOKEN_TOKEN);
+                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_TOKEN);
             }
 
             if (userIdParameter == null ||
                 userIdParameter.Trim().Length == 0)
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + Constants.AUTHENTICATED_WHO_TOKEN_USER_ID);
+                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_USER_ID);
             }
 
             // Create our new authenticated who object
             authenticatedWho = new AuthenticatedWho();
-            authenticatedWho.ManyWhoTenantId = Guid.Parse(manywhoTenantIdParameter.Split(Constants.AUTHENTICATED_WHO_DELIMITER)[1]);
-            authenticatedWho.ManyWhoUserId = Guid.Parse(manywhoUserIdParameter.Split(Constants.AUTHENTICATED_WHO_DELIMITER)[1]);
-            authenticatedWho.ManyWhoToken = manywhoTokenParameter.Split(Constants.AUTHENTICATED_WHO_DELIMITER)[1];
-            authenticatedWho.DirectoryId = directoryIdParameter.Split(Constants.AUTHENTICATED_WHO_DELIMITER)[1];
-            authenticatedWho.DirectoryName = directoryNameParameter.Split(Constants.AUTHENTICATED_WHO_DELIMITER)[1];
-            authenticatedWho.Email = emailParameter.Split(Constants.AUTHENTICATED_WHO_DELIMITER)[1];
-            authenticatedWho.IdentityProvider = identityProviderParameter.Split(Constants.AUTHENTICATED_WHO_DELIMITER)[1];
-            authenticatedWho.TenantName = tenantNameParameter.Split(Constants.AUTHENTICATED_WHO_DELIMITER)[1];
-            authenticatedWho.Token = tokenParameter.Split(Constants.AUTHENTICATED_WHO_DELIMITER)[1];
-            authenticatedWho.UserId = userIdParameter.Split(Constants.AUTHENTICATED_WHO_DELIMITER)[1];
+            authenticatedWho.ManyWhoTenantId = Guid.Parse(manywhoTenantIdParameter.Split(ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER)[1]);
+            authenticatedWho.ManyWhoUserId = Guid.Parse(manywhoUserIdParameter.Split(ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER)[1]);
+            authenticatedWho.ManyWhoToken = manywhoTokenParameter.Split(ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER)[1];
+            authenticatedWho.DirectoryId = directoryIdParameter.Split(ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER)[1];
+            authenticatedWho.DirectoryName = directoryNameParameter.Split(ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER)[1];
+            authenticatedWho.Email = emailParameter.Split(ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER)[1];
+            authenticatedWho.IdentityProvider = identityProviderParameter.Split(ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER)[1];
+            authenticatedWho.TenantName = tenantNameParameter.Split(ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER)[1];
+            authenticatedWho.Token = tokenParameter.Split(ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER)[1];
+            authenticatedWho.UserId = userIdParameter.Split(ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER)[1];
 
             // Finally, validate the object is OK
             ValidateAuthenticatedWho(authenticatedWho);
@@ -145,16 +145,16 @@ namespace ManyWho.Flow.SDK.Utils
             ValidateAuthenticatedWho(authenticatedWho);
 
             // Construct the token string
-            token += Constants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID + Constants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.ManyWhoTenantId.ToString() + "&";
-            token += Constants.AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID + Constants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.ManyWhoUserId.ToString() + "&";
-            token += Constants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN + Constants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.ManyWhoToken + "&";
-            token += Constants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID + Constants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.DirectoryId + "&";
-            token += Constants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME + Constants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.DirectoryName + "&";
-            token += Constants.AUTHENTICATED_WHO_TOKEN_EMAIL + Constants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.Email + "&";
-            token += Constants.AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER + Constants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.IdentityProvider + "&";
-            token += Constants.AUTHENTICATED_WHO_TOKEN_TENANT_NAME + Constants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.TenantName + "&";
-            token += Constants.AUTHENTICATED_WHO_TOKEN_TOKEN + Constants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.Token + "&";
-            token += Constants.AUTHENTICATED_WHO_TOKEN_USER_ID + Constants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.UserId;
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID + ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.ManyWhoTenantId.ToString() + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID + ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.ManyWhoUserId.ToString() + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN + ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.ManyWhoToken + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID + ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.DirectoryId + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME + ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.DirectoryName + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_EMAIL + ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.Email + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER + ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.IdentityProvider + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_TENANT_NAME + ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.TenantName + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_TOKEN + ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.Token + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_USER_ID + ManyWhoConstants.AUTHENTICATED_WHO_DELIMITER + authenticatedWho.UserId;
 
             // Encode the token ready for http
             return token;

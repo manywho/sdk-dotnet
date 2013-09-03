@@ -58,7 +58,18 @@ namespace ManyWho.Flow.SDK.Utils
             return httpResponseException;
         }
 
+        public static HttpResponseException GetWebException(HttpStatusCode statusCode, Exception exception)
+        {
+            // Aggregate the exception and return as a single reason phrase
+            return GetWebException(statusCode, AggregateAndWriteErrorMessage(exception, false));
+        }
+
         public static void SendAlert(IAuthenticatedWho authenticatedWho, String alertType, String alertEmail, String pluginName, String faultDescription)
+        {
+            SendAlert(authenticatedWho, alertType, alertEmail, pluginName, faultDescription, null);
+        }
+
+        public static void SendAlert(IAuthenticatedWho authenticatedWho, String alertType, String alertEmail, String pluginName, String faultDescription, Exception exception)
         {
             NetworkCredential networkCredentials = null;
             SmtpClient smtpClient = null;
@@ -106,6 +117,9 @@ namespace ManyWho.Flow.SDK.Utils
                             message += "Unknown" + Environment.NewLine + Environment.NewLine;
                         }
 
+                        // Finally, we add the exception details if there is an exception
+                        message += AggregateAndWriteErrorMessage(exception, true);
+
                         // Create the message in our mail system
                         mailMessage.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message, null, MediaTypeNames.Text.Plain));
 
@@ -121,6 +135,99 @@ namespace ManyWho.Flow.SDK.Utils
                     // Hide any faults so we're not piling errors on errors
                 }
             }
+        }
+
+        private static String AggregateAndWriteErrorMessage(Exception exception, Boolean includeTrace)
+        {
+            String message = null;
+
+            if (exception != null)
+            {
+                message = "";
+
+                if (exception is AggregateException)
+                {
+                    message = AggregateAndWriteAggregateErrorMessage((AggregateException)exception, message, includeTrace);
+                }
+                else if (exception is HttpResponseException)
+                {
+                    message = AggregateAndWriteHttpResponseErrorMessage((HttpResponseException)exception, message);
+                }
+                else
+                {
+                    message = AggregateAndWriteErrorMessage(exception, message, includeTrace);
+                }
+            }
+
+            return message;
+        }
+
+        private static String AggregateAndWriteAggregateErrorMessage(Exception exception, String message, Boolean includeTrace)
+        {
+            if (exception is AggregateException)
+            {
+                AggregateException aex = (AggregateException)exception;
+
+                message += "The exception is an aggregate of the following exceptions:" + Environment.NewLine + Environment.NewLine;
+
+                if (aex.InnerExceptions != null &&
+                    aex.InnerExceptions.Any())
+                {
+                    foreach (Exception innerException in aex.InnerExceptions)
+                    {
+                        if (innerException is AggregateException)
+                        {
+                            message = AggregateAndWriteAggregateErrorMessage((AggregateException)innerException, message, includeTrace);
+                        }
+                        else if (innerException is HttpResponseException)
+                        {
+                            message = AggregateAndWriteHttpResponseErrorMessage((HttpResponseException)exception, message);
+                        }
+                        else
+                        {
+                            message = AggregateAndWriteErrorMessage(exception, message, includeTrace);
+                        }
+                    }
+                }
+            }
+
+            return message;
+        }
+
+        private static String AggregateAndWriteHttpResponseErrorMessage(HttpResponseException exception, String message)
+        {
+            if (exception != null &&
+                exception.Response != null)
+            {
+                HttpResponseMessage responseException = exception.Response;
+
+                // Grab the message from the 
+                if (responseException.ReasonPhrase != null &&
+                    responseException.ReasonPhrase.Trim().Length > 0)
+                {
+                    message += "HttpResponseException:" + Environment.NewLine;
+                    message += responseException.ReasonPhrase + Environment.NewLine + Environment.NewLine;
+                }
+            }
+
+            return message;
+        }
+
+        private static String AggregateAndWriteErrorMessage(Exception exception, String message, Boolean includeTrace)
+        {
+            if (exception != null)
+            {
+                message += "Exception:" + Environment.NewLine;
+                message += exception.Message + Environment.NewLine + Environment.NewLine;
+
+                if (includeTrace == true)
+                {
+                    message += "Stack Trace:" + Environment.NewLine;
+                    message += exception.StackTrace + Environment.NewLine + Environment.NewLine;
+                }
+            }
+
+            return message;
         }
     }
 }

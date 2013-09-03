@@ -46,6 +46,16 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         /// <summary>
+        /// Use the list of provided objects as the filter for the lookup.  This allows us to refresh data that can be transient in the remote system.
+        /// </summary>
+        [DataMember]
+        public Boolean filterByProvidedObjects
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The where filter to apply to the list.
         /// </summary>
         [DataMember]
