@@ -35,7 +35,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// and allow us to validate various info around the type.
         /// </summary>
         [DataMember]
-        public String bindingId
+        public String typeElementBindingId
         {
             get;
             set;

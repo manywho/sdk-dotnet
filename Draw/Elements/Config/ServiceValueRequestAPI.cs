@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Shared;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -41,7 +41,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         }
 
         [DataMember]
-        public SharedElementIdAPI sharedElementContentValueToReference
+        public ValueElementIdAPI valueElementToReferenceId
         {
             get;
             set;
@@ -51,7 +51,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         /// This is a temporary property so we have the name of the shared element and type element entry tagged against the value (useful in listings)
         /// </summary>
         [DataMember]
-        public String sharedElementContentValueToReferenceName
+        public String valueElementToReferenceDeveloperName
         {
             get;
             set;

@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Describe
     public class DescribeServiceInstallResponseAPI
     {
         [DataMember]
-        public List<TypeElementRequestAPI> types
+        public List<TypeElementRequestAPI> typeElements
         {
             get;
             set;

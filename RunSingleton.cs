@@ -58,6 +58,7 @@ namespace ManyWho.Flow.SDK
 
         public FlowResponseAPI LoadFlowById(IAuthenticatedWho authenticatedWho, String tenantId, String flowId, String codeReferenceName, String alertEmail)
         {
+            HttpResponseException httpResponseException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
@@ -96,13 +97,23 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        httpResponseException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+
+                        if (httpResponseException != null)
+                        {
+                            throw httpResponseException;
+                        }
                     }
                 }
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    HttpUtils.HandleHttpException(authenticatedWho, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    httpResponseException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+
+                    if (httpResponseException != null)
+                    {
+                        throw httpResponseException;
+                    }
                 }
                 finally
                 {
@@ -116,6 +127,7 @@ namespace ManyWho.Flow.SDK
 
         public EngineInitializationResponseAPI Initialize(IAuthenticatedWho authenticatedWho, String tenantId, EngineInitializationRequestAPI engineInitializationRequest, String codeReferenceName, String alertEmail)
         {
+            HttpResponseException httpResponseException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -155,13 +167,23 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        httpResponseException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+
+                        if (httpResponseException != null)
+                        {
+                            throw httpResponseException;
+                        }
                     }
                 }
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    HttpUtils.HandleHttpException(authenticatedWho, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    httpResponseException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+
+                    if (httpResponseException != null)
+                    {
+                        throw httpResponseException;
+                    }
                 }
                 finally
                 {
@@ -175,6 +197,7 @@ namespace ManyWho.Flow.SDK
 
         public EngineInvokeResponseAPI Execute(IAuthenticatedWho authenticatedWho, String tenantId, EngineInvokeRequestAPI engineInvokeRequest, String codeReferenceName, String alertEmail)
         {
+            HttpResponseException httpResponseException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -227,13 +250,23 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        httpResponseException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+
+                        if (httpResponseException != null)
+                        {
+                            throw httpResponseException;
+                        }
                     }
                 }
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    HttpUtils.HandleHttpException(authenticatedWho, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    httpResponseException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+
+                    if (httpResponseException != null)
+                    {
+                        throw httpResponseException;
+                    }
                 }
                 finally
                 {

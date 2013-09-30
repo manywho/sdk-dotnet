@@ -20,26 +20,41 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.UI
+namespace ManyWho.Flow.SDK.Draw.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class PageOperationAssignmentAPI
+    public class TypeElementPropertyBindingAPI
     {
-        /// <summary>
-        /// The form element to have the assignment applied.
-        /// </summary>
         [DataMember]
-        public PageObjectReferenceAPI assignee
+        public String id
         {
             get;
             set;
         }
 
-        /// <summary>
-        /// The form element of value to use in the assignment.
-        /// </summary>
         [DataMember]
-        public PageObjectReferenceAPI assignor
+        public String databaseFieldName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String typeElementPropertyId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String typeElementPropertyDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String databaseContentType
         {
             get;
             set;

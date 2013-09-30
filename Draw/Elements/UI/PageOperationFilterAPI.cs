@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Elements.Type;
-using ManyWho.Flow.SDK.Draw.Elements.Shared;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -31,7 +31,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// This is the reference field to apply the filter information contained in this action.
         /// </summary>
         [DataMember]
-        public String fieldId
+        public String pageComponentId
         {
             get;
             set;
@@ -41,7 +41,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// A temporary reference to the field on which to apply this filter configuration.
         /// </summary>
         [DataMember]
-        public String tempFieldReference
+        public String pageComponentDeveloperName
         {
             get;
             set;
@@ -51,7 +51,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// This is the type element entry for the column field to do the filtering on.
         /// </summary>
         [DataMember]
-        public String columnTypeElementEntryId
+        public String columnTypeElementPropertyId
         {
             get;
             set;
@@ -61,7 +61,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The criteria for the filter to apply to the column.
         /// </summary>
         [DataMember]
-        public String criteria
+        public String criteriaType
         {
             get;
             set;
@@ -71,7 +71,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The value to reference when performing the filter.
         /// </summary>
         [DataMember]
-        public PageObjectReferenceAPI fieldValue
+        public PageObjectReferenceAPI filterValue
         {
             get;
             set;

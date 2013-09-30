@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 
 /*!
@@ -20,29 +17,44 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.UI
+namespace ManyWho.Flow.SDK.Social
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class PageOperationAssignmentAPI
+    public class MentionedWhoAPI
     {
-        /// <summary>
-        /// The form element to have the assignment applied.
-        /// </summary>
         [DataMember]
-        public PageObjectReferenceAPI assignee
-        {
-            get;
-            set;
+        public String id 
+        { 
+            get; 
+            set; 
         }
 
-        /// <summary>
-        /// The form element of value to use in the assignment.
-        /// </summary>
         [DataMember]
-        public PageObjectReferenceAPI assignor
-        {
-            get;
-            set;
+        public String name 
+        { 
+            get; 
+            set; 
+        }
+
+        [DataMember]
+        public String fullName 
+        { 
+            get; 
+            set; 
+        }
+
+        [DataMember]
+        public String jobTitle 
+        { 
+            get; 
+            set; 
+        }
+
+        [DataMember]
+        public String avatarUrl 
+        { 
+            get; 
+            set; 
         }
     }
 }

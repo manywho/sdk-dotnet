@@ -31,46 +31,60 @@ namespace ManyWho.Flow.SDK.Utils
     {
         public const Int32 MAXIMUM_RETRIES = 3;
         public const Int32 TIMEOUT_SECONDS = 20;
+        public const Int32 SYSTEM_TIMEOUT_SECONDS = 500;
 
         public const String HEADER_AUTHORIZATION = "Authorization";
         public const String HEADER_MANYWHO_STATE = "ManyWhoState";
         public const String HEADER_MANYWHO_TENANT = "ManyWhoTenant";
 
-        public static void HandleUnsuccessfulHttpResponseMessage(IAuthenticatedWho authenticatedWho, Int32 iteration, String alertEmail, String codeReferenceName, HttpResponseMessage httpResponseMessage, String endpointUrl)
+        public static HttpResponseException HandleUnsuccessfulHttpResponseMessage(IAuthenticatedWho authenticatedWho, Int32 iteration, String alertEmail, String codeReferenceName, HttpResponseMessage httpResponseMessage, String endpointUrl)
         {
+            HttpResponseException httpResponseException = null;
+
             if (iteration >= (MAXIMUM_RETRIES - 1))
             {
                 // The the alert email the fault
                 ErrorUtils.SendAlert(authenticatedWho, "Fault", alertEmail, codeReferenceName, "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The status code is: " + httpResponseMessage.StatusCode + ". The reason is: " + httpResponseMessage.ReasonPhrase);
 
                 // Throw the fault up to the caller
-                throw ErrorUtils.GetWebException(httpResponseMessage.StatusCode, httpResponseMessage.ReasonPhrase);
+                httpResponseException = ErrorUtils.GetWebException(httpResponseMessage.StatusCode, httpResponseMessage.ReasonPhrase);
             }
             else
             {
                 // Alert the admin that a retry has happened
                 ErrorUtils.SendAlert(authenticatedWho, "Warning", alertEmail, codeReferenceName, "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The status code is: " + httpResponseMessage.StatusCode + ". The reason is: " + httpResponseMessage.ReasonPhrase);
             }
+
+            return httpResponseException;
         }
 
-        public static void HandleHttpException(IAuthenticatedWho authenticatedWho, Int32 iteration, String alertEmail, String codeReferenceName, Exception exception, String endpointUrl)
+        public static HttpResponseException HandleHttpException(IAuthenticatedWho authenticatedWho, Int32 iteration, String alertEmail, String codeReferenceName, Exception exception, String endpointUrl)
         {
+            HttpResponseException httpResponseException = null;
+
             if (iteration >= (MAXIMUM_RETRIES - 1))
             {
                 // The the alert email the fault
-                ErrorUtils.SendAlert(authenticatedWho, "Fault", alertEmail, codeReferenceName, "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The error message we're getting back is: " + exception.Message);
+                ErrorUtils.SendAlert(authenticatedWho, "Fault", alertEmail, codeReferenceName, "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The error message we're getting back is: " + ErrorUtils.GetExceptionMessage(exception));
 
                 // Throw the fault up to the caller
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, exception.Message);
+                httpResponseException = ErrorUtils.GetWebException(HttpStatusCode.BadRequest, exception);
             }
             else
             {
                 // Alert the admin that a retry has happened
-                ErrorUtils.SendAlert(authenticatedWho, "Warning", alertEmail, codeReferenceName, "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The error message we're getting back is: " + exception.Message);
+                ErrorUtils.SendAlert(authenticatedWho, "Warning", alertEmail, codeReferenceName, "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The error message we're getting back is: " + ErrorUtils.GetExceptionMessage(exception));
             }
+
+            return httpResponseException;
         }
 
         public static HttpClient CreateHttpClient(IAuthenticatedWho authenticatedWho, String tenantId, String stateId)
+        {
+            return CreateHttpClient(authenticatedWho, tenantId, stateId, TIMEOUT_SECONDS);
+        }
+
+        public static HttpClient CreateHttpClient(IAuthenticatedWho authenticatedWho, String tenantId, String stateId, Int32 timeOut)
         {
             HttpClient httpClient = null;
 
@@ -97,7 +111,7 @@ namespace ManyWho.Flow.SDK.Utils
             }
 
             // Set the timeout for the request
-            httpClient.Timeout = TimeSpan.FromSeconds(TIMEOUT_SECONDS);
+            httpClient.Timeout = TimeSpan.FromSeconds(timeOut);
 
             return httpClient;
         }

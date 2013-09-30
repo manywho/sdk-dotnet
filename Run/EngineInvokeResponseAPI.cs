@@ -58,6 +58,13 @@ namespace ManyWho.Flow.SDK.Run
         }
 
         [DataMember]
+        public String notAuthorizedMessage
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String currentMapElementId
         {
             get;

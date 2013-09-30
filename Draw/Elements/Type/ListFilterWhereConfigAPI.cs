@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Shared;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -30,7 +30,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The column to filter by.
         /// </summary>
         [DataMember]
-        public String columnTypeElementEntryId
+        public String columnTypeElementPropertyId
         {
             get;
             set;
@@ -40,7 +40,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The criteria of the filter.
         /// </summary>
         [DataMember]
-        public String criteria
+        public String criteriaType
         {
             get;
             set;
@@ -50,7 +50,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The value to filter by.
         /// </summary>
         [DataMember]
-        public SharedElementIdAPI sharedElementValueToReference
+        public ValueElementIdAPI valueElementToReferenceId
         {
             get;
             set;

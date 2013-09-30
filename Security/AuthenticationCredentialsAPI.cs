@@ -66,5 +66,12 @@ namespace ManyWho.Flow.SDK.Security
             get;
             set;
         }
+
+        [DataMember]
+        public String instanceUrl
+        {
+            get;
+            set;
+        }
     }
 }

@@ -79,7 +79,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The direction of the ordering.
         /// </summary>
         [DataMember]
-        public String orderByDirection
+        public String orderByDirectionType
         {
             get;
             set;

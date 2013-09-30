@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Draw.Elements.Group;
 
 /*!
 
@@ -110,6 +111,18 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// </summary>
         [DataMember]
         public List<EngineValueAPI> inputs
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The authorization context the message is running within. If we're running identity with the same service, this will tell the user
+        /// which users are currently authorized. The purpose of this property is to help with notifications - not to restrict access - that is
+        /// managed by the ManyWho engine.
+        /// </summary>
+        [DataMember]
+        public GroupAuthorizationAPI authorization
         {
             get;
             set;

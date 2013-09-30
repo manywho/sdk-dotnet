@@ -49,7 +49,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// Indicates if the value is required.
         /// </summary>
         [DataMember]
-        public Boolean required
+        public Boolean isRequired
         {
             get;
             set;

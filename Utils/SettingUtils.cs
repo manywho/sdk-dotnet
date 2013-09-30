@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure;
 using ManyWho.Flow.SDK.Describe;
@@ -67,10 +68,11 @@ namespace ManyWho.Flow.SDK.Utils
                 }
             }
 
-            if (value == null ||
-                value.Trim().Length == 0)
+            if (required == true &&
+                (value == null ||
+                 value.Trim().Length == 0))
             {
-                throw ErrorUtils.GetWebException(System.Net.HttpStatusCode.BadRequest, developerName + " cannot be null or blank.");
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, developerName + " cannot be null or blank.");
             }
 
             return value;

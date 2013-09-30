@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Elements.Type;
-using ManyWho.Flow.SDK.Draw.Elements.Shared;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -42,28 +42,28 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
-        public String crudOperation
+        public String crudOperationType
         {
             get;
             set;
         }
 
         [DataMember]
-        public SharedElementIdAPI sharedElementContentValueToReference
+        public ValueElementIdAPI valueElementToReferenceId
         {
             get;
             set;
         }
 
         [DataMember]
-        public SharedElementIdAPI sharedElementToApplyContentValue
+        public ValueElementIdAPI valueElementToApplyId
         {
             get;
             set;
         }
 
         [DataMember]
-        public ObjectDataRequestConfigAPI objectDataRequestProperties
+        public ObjectDataRequestConfigAPI objectDataRequest
         {
             get;
             set;

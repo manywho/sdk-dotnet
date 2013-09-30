@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
     public class UIServiceResponseAPI : ServiceResponseAPI
     {
         [DataMember]
-        public PageResponseAPI formResponse
+        public PageResponseAPI pageResponse
         {
             get;
             set;

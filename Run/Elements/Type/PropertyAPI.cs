@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
     public class PropertyAPI
     {
         [DataMember]
-        public String typeElementEntryId
+        public String typeElementPropertyId
         {
             get;
             set;

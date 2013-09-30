@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         }
 
         [DataMember]
-        public String tableName
+        public String databaseTableName
         {
             get;
             set;
@@ -61,7 +61,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         }
 
         [DataMember]
-        public List<TypeElementFieldBindingAPI> fieldBindings
+        public List<TypeElementPropertyBindingAPI> propertyBindings
         {
             get;
             set;

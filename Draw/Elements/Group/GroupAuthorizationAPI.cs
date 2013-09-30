@@ -40,7 +40,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         }
 
         [DataMember]
-        public String streamBehaviour
+        public String streamBehaviourType
         {
             get;
             set;

@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The rules that must evaluate to "true" for this condition to fire the associated actions.
         /// </summary>
         [DataMember]
-        public String comparison
+        public String comparisonType
         {
             get;
             set;

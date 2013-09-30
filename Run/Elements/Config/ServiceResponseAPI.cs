@@ -110,6 +110,16 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
+        /// The debug mode to run the engine in.  For the service response, we do not pass the mode up into the engine as it would make it impossible to step through
+        /// currently as the user won't have access (though we simply haven't tried it - it might work).
+        /// </summary>
+        public String mode
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Passes back any annotations to the service.
         /// </summary>
         [DataMember]

@@ -34,7 +34,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         }
 
         [DataMember]
-        public List<TypeElementRequestAPI> types
+        public List<TypeElementRequestAPI> typeElements
         {
             get;
             set;

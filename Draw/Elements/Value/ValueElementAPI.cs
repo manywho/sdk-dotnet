@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Web;
 using System.Runtime.Serialization;
 
 /*!
@@ -20,26 +20,13 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.UI
+namespace ManyWho.Flow.SDK.Draw.Elements.Value
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class PageOperationAssignmentAPI
+    public class ValueElementAPI : ElementAPI
     {
-        /// <summary>
-        /// The form element to have the assignment applied.
-        /// </summary>
         [DataMember]
-        public PageObjectReferenceAPI assignee
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// The form element of value to use in the assignment.
-        /// </summary>
-        [DataMember]
-        public PageObjectReferenceAPI assignor
+        public String id
         {
             get;
             set;

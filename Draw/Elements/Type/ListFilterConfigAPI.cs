@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Shared;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -30,7 +30,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The identifier of the actual object to filter by - this basically gives an individual result back.
         /// </summary>
         [DataMember]
-        public SharedElementIdAPI filterId
+        public ValueElementIdAPI filterId
         {
             get;
             set;
@@ -59,7 +59,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The type element entry id of the column to order by.
         /// </summary>
         [DataMember]
-        public String orderByTypeElementEntryId
+        public String orderByTypeElementPropertyId
         {
             get;
             set;
@@ -69,7 +69,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The direction of the ordering.
         /// </summary>
         [DataMember]
-        public String orderByDirection
+        public String orderByDirectionType
         {
             get;
             set;

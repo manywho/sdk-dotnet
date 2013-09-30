@@ -48,21 +48,28 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         }
 
         [DataMember]
-        public Boolean exposesLogic
+        public Boolean providesLogic
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean exposesViews
+        public Boolean providesViews
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean exposesTables
+        public Boolean providesContent
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Boolean providesDatabase
         {
             get;
             set;
@@ -77,6 +84,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
 
         [DataMember]
         public Boolean providesSocial
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Boolean providesLocation
         {
             get;
             set;

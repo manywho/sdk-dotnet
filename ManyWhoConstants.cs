@@ -182,5 +182,103 @@ namespace ManyWho.Flow.SDK
 
         public const String AUTHORIZATION_STATUS_NOT_AUTHORIZED = "401";
         public const String AUTHORIZATION_STATUS_AUTHORIZED = "200";
+
+        // The API name for service elements
+        public const String SERVICE_ELEMENT_TYPE_IMPLEMENTATION_SERVICE = "SERVICE";
+
+        // The API name for shared elements
+        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_VALUE = "VALUE";
+        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_VARIABLE = "VARIABLE";
+        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_CONSTANT = "CONSTANT";
+        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_RESOURCE = "RESOURCE";
+        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_FUNCTION = "FUNCTION";
+        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_TABLE = "TABLE";
+        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_CONNECTION = "CONNECTION";
+
+        // Access values for shared elements
+        public const String ACCESS_PRIVATE = "PRIVATE";
+        public const String ACCESS_INPUT = "INPUT";
+        public const String ACCESS_OUTPUT = "OUTPUT";
+        public const String ACCESS_INPUT_OUTPUT = "INPUT_OUTPUT";
+
+        // Component types for pages
+        public const String COMPONENT_TYPE_CONTENT = "CONTENT";
+        public const String COMPONENT_TYPE_INPUTBOX = "INPUT";
+        public const String COMPONENT_TYPE_TEXTBOX = "TEXTAREA";
+        public const String COMPONENT_TYPE_COMBOBOX = "SELECT";
+        public const String COMPONENT_TYPE_CHECKBOX = "CHECKBOX";
+        public const String COMPONENT_TYPE_TABLE = "TABLE";
+        public const String COMPONENT_TYPE_PRESENTATION = "PRESENTATION";
+        public const String COMPONENT_TYPE_TAG = "TAG";
+        public const String COMPONENT_TYPE_IMAGE = "IMAGE";
+
+        // Container types for pages
+        public const String CONTAINER_TYPE_VERTICAL_FLOW = "VERTICAL_FLOW";
+        public const String CONTAINER_TYPE_HORIZONTAL_FLOW = "HORIZONTAL_FLOW";
+        public const String CONTAINER_TYPE_INLINE_FLOW = "INLINE_FLOW";
+        public const String CONTAINER_TYPE_GROUP = "GROUP";
+
+        // Action bindings for map elements
+        public const String ACTION_BINDING_SAVE = "SAVE";
+        public const String ACTION_BINDING_NO_SAVE = "NO_SAVE";
+
+        // Action types for map elements
+        public const String ACTION_TYPE_NEW = "NEW";
+        public const String ACTION_TYPE_QUERY = "QUERY";
+        public const String ACTION_TYPE_INSERT = "INSERT";
+        public const String ACTION_TYPE_UPDATE = "UPDATE";
+        public const String ACTION_TYPE_UPSERT = "UPSERT";
+        public const String ACTION_TYPE_DELETE = "DELETE";
+        public const String ACTION_TYPE_REMOVE = "REMOVE";
+        public const String ACTION_TYPE_ADD = "ADD";
+        public const String ACTION_TYPE_EDIT = "EDIT";
+        public const String ACTION_TYPE_NEXT = "NEXT";
+        public const String ACTION_TYPE_BACK = "BACK";
+        public const String ACTION_TYPE_SAVE = "SAVE";
+        public const String ACTION_TYPE_CANCEL = "CANCEL";
+        public const String ACTION_TYPE_APPLY = "APPLY";
+        public const String ACTION_TYPE_IMPORT = "IMPORT";
+        public const String ACTION_TYPE_CLOSE = "CLOSE";
+        public const String ACTION_TYPE_OPEN = "OPEN";
+        public const String ACTION_TYPE_SUBMIT = "SUBMIT";
+        public const String ACTION_TYPE_ESCALATE = "ESCALATE";
+        public const String ACTION_TYPE_REJECT = "REJECT";
+        public const String ACTION_TYPE_DELEGATE = "DELEGATE";
+
+        // The API name for page layouts
+        public const String UI_ELEMENT_TYPE_IMPLEMENTATION_PAGE_LAYOUT = "PAGE_LAYOUT";
+
+        // The API name for map elements
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_START = "START";
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_STEP = "STEP";
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_INPUT = "INPUT";
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_DECISION = "DECISION";
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_OPERATOR = "OPERATOR";
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_SUB_FLOW = "SUB_FLOW";
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_DATABASE_LOAD = "DATABASE_LOAD";
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_DATABASE_SAVE = "DATABASE_SAVE";
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_DATABASE_DELETE = "DATABASE_DELETE";
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_MESSAGE = "MESSAGE";
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_PAGE = "PAGE";
+
+        // The API name for group elements
+        public const String GROUP_ELEMENT_TYPE_IMPLEMENTATION_SWIMLANE = "SWIMLANE";
+
+        // The API name for tags
+        public const String UI_ELEMENT_TYPE_IMPLEMENTATION_TAG = "TAG";
+
+        // The API name for types
+        public const String TYPE_ELEMENT_TYPE_IMPLEMENTATION_TYPE = "TYPE";
+
+        // Post update types
+        public const String POST_UPDATE_WHEN_ON_LOAD = "ON_LOAD";
+        public const String POST_UPDATE_WHEN_ON_EXIT = "ON_EXIT";
+
+        // Guids for the reserved outcomes for faults and debug
+        public static readonly Guid DEBUG_GUID = Guid.Parse("EE6C8827-11E2-486D-B5FA-4D1A0CBB77A3");
+        public static readonly Guid FAULT_GUID = Guid.Parse("318B0F3A-A570-4C5D-835C-21C1EEB17787");
+
+        // Outcomes with a fault
+        public const String FAULT_DEVELOPER_NAME = "FAULT";
     }
 }

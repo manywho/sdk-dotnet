@@ -33,21 +33,21 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         [DataMember]
-        public PageObjectReferenceAPI leftPageObjectReference
+        public PageObjectReferenceAPI left
         {
             get;
             set;
         }
 
         [DataMember]
-        public String criteria
+        public String criteriaType
         {
             get;
             set;
         }
 
         [DataMember]
-        public PageObjectReferenceAPI rightPageObjectReference
+        public PageObjectReferenceAPI right
         {
             get;
             set;

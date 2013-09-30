@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     public class TypeElementRequestAPI : TypeElementAPI
     {
         [DataMember]
-        public List<TypeElementEntryAPI> typeElementEntries
+        public List<TypeElementPropertyAPI> properties
         {
             get;
             set;

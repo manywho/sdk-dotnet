@@ -29,7 +29,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The reference id of the value with the fault.
         /// </summary>
         [DataMember]
-        public String referenceId
+        public String valueElementToReferenceId
         {
             get;
             set;
@@ -39,7 +39,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The reference type element entry id of the value with the fault.
         /// </summary>
         [DataMember]
-        public String referenceTypeElementEntryId
+        public String valueElementTypeElementPropertyToReferenceId
         {
             get;
             set;

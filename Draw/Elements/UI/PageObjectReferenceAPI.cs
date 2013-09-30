@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Shared;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -30,7 +30,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The identifier for the field post save - this is used in place of the field reference.
         /// </summary>
         [DataMember]
-        public String id
+        public String pageObjectReferenceId
         {
             get;
             set;
@@ -42,7 +42,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// element binding - but rather the object or list type generically.
         /// </summary>
         [DataMember]
-        public String typeElementEntryId
+        public String typeElementPropertyId
         {
             get;
             set;
@@ -53,7 +53,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// path from the root form: e.g. [Section Name].[Column Name].[Cell Name].[Field Name]
         /// </summary>
         [DataMember]
-        public String pageObjectDeveloperName
+        public String pageObjectReferenceDeveloperName
         {
             get;
             set;
@@ -63,7 +63,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// This is a design time thing - at runtime, we'd use this as the source of the value as opposed to an element on the form.
         /// </summary>
         [DataMember]
-        public SharedElementIdAPI sharedElementValue
+        public ValueElementIdAPI valueElementToReferenceId
         {
             get;
             set;
@@ -79,7 +79,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// MetaData.Validation - dynamically bind a validation rule to the input
         /// </summary>
         [DataMember]
-        public String metaData
+        public String metadataType
         {
             get;
             set;

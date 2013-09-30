@@ -33,7 +33,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         [DataMember]
-        public List<ObjectDataTypeAPI> List
+        public List<ObjectDataTypeAPI> list
         {
             get;
             set;

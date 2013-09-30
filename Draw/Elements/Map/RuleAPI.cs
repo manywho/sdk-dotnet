@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Content;
-using ManyWho.Flow.SDK.Draw.Elements.Shared;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -35,7 +35,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
-        public SharedElementIdAPI leftSharedElementContentValueToReference
+        public ValueElementIdAPI leftValueElementToReferenceId
         {
             get;
             set;
@@ -49,7 +49,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
-        public SharedElementIdAPI rightSharedElementContentValueToReference
+        public ValueElementIdAPI rightValueElementToReferenceId
         {
             get;
             set;

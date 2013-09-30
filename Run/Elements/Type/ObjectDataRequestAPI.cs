@@ -38,11 +38,22 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         /// <summary>
+        /// The unique token for this data job.  The token can be used to help the plugin cache multiple data calls.  If the token is provided, we can match it up
+        /// with a previous data request - if we choose to cache it.
+        /// </summary>
+        [DataMember]
+        public String token
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The Id for the service element associated with this object data.  The service element will give us the connection settings
         /// and allow us to validate various info around the type.
         /// </summary>
         [DataMember]
-        public String bindingId
+        public String typeElementBindingId
         {
             get;
             set;

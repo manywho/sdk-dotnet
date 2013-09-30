@@ -41,7 +41,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         [DataMember]
-        public PageRequestAPI formRequest
+        public PageRequestAPI pageRequest
         {
             get;
             set;

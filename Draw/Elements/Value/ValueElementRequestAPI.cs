@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.UI;
-using ManyWho.Flow.SDK.Draw.Elements.Config;
+using ManyWho.Flow.SDK.Draw.Elements.Map;
+using ManyWho.Flow.SDK.Draw.Elements.Type;
 
 /*!
 
@@ -22,83 +22,48 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Map
+namespace ManyWho.Flow.SDK.Draw.Elements.Value
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class MapElementRequestAPI : MapElementAPI
+    public class ValueElementRequestAPI : ValueElementAPI
     {
         [DataMember]
-        public String pageElementId
+        public Boolean isFixed
         {
             get;
             set;
         }
 
         [DataMember]
-        public List<OperationAPI> operations
+        public String access
         {
             get;
             set;
         }
 
         [DataMember]
-        public MessageActionAPI viewMessageAction
+        public String contentType
         {
             get;
             set;
         }
 
         [DataMember]
-        public List<MessageActionAPI> messageActions
+        public String defaultContentValue
         {
             get;
             set;
         }
 
         [DataMember]
-        public List<DataActionAPI> dataActions
+        public List<OperationAPI> initializationOperations
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean postUpdateToStream
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String userContent
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String statusMessage
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String postUpdateMessage
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String notAuthorizedMessage
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String postUpdateWhenType
+        public String typeElementId
         {
             get;
             set;

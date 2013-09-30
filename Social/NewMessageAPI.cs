@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Social
         public NewMessageAPI()
         {
             this.uploadedFiles = new List<FileAPI>();
-            this.mentionedUsers = new List<MentionedUserAPI>();
+            this.mentionedWhos = new List<MentionedWhoAPI>();
         }
 
         [DataMember]
@@ -58,7 +58,7 @@ namespace ManyWho.Flow.SDK.Social
         }
 
         [DataMember]
-        public List<MentionedUserAPI> mentionedUsers 
+        public List<MentionedWhoAPI> mentionedWhos 
         { 
             get; 
             set; 

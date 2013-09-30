@@ -33,7 +33,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         [DataMember]
-        public String typeElementEntryId
+        public String typeElementPropertyId
         {
             get;
             set;
@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         [DataMember]
-        public String boundTypeElementEntryId
+        public String boundTypeElementPropertyId
         {
             get;
             set;

@@ -40,7 +40,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         }
 
         [DataMember]
-        public String typeElementEntryId
+        public String typeElementPropertyId
         {
             get;
             set;

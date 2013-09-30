@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Run
     public class EngineValueAPI
     {
         [DataMember]
-        public String id
+        public String valueElementId
         {
             get;
             set;
@@ -41,7 +41,7 @@ namespace ManyWho.Flow.SDK.Run
         }
 
         [DataMember]
-        public String typeElementEntryId
+        public String typeElementPropertyId
         {
             get;
             set;
@@ -62,7 +62,7 @@ namespace ManyWho.Flow.SDK.Run
         }
 
         [DataMember]
-        public String typeElementEntryDeveloperName
+        public String typeElementPropertyDeveloperName
         {
             get;
             set;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Shared;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
     public class PageTagAPI
     {
         [DataMember]
-        public SharedElementIdAPI sharedElementContentValueToReference
+        public ValueElementIdAPI valueElementToReferenceId
         {
             get;
             set;

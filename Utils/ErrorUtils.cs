@@ -61,7 +61,23 @@ namespace ManyWho.Flow.SDK.Utils
         public static HttpResponseException GetWebException(HttpStatusCode statusCode, Exception exception)
         {
             // Aggregate the exception and return as a single reason phrase
-            return GetWebException(statusCode, AggregateAndWriteErrorMessage(exception, false));
+            return GetWebException(statusCode, AggregateAndWriteErrorMessage(exception, "", false));
+        }
+
+        public static HttpResponseException GetPluginWebException(IAuthenticatedWho authenticatedWho, Exception exception, String methodName, String pluginName, String shortDescription)
+        {
+            String message = null;
+
+            // Create a fault message that's more friendly and doesn't expose core stack trace information
+            message = "PLUGIN: " + pluginName + " -- We hit a problem while " + shortDescription + ". The method being called on the plugin is: " + methodName + ". ";
+            message = "The error we're getting back is: " + AggregateAndWriteErrorMessage(exception, message, false);
+
+            return GetWebException(GetStatusCode(exception), message);
+        }
+
+        public static String GetExceptionMessage(Exception exception)
+        {
+            return AggregateAndWriteErrorMessage(exception, "", false);
         }
 
         public static void SendAlert(IAuthenticatedWho authenticatedWho, String alertType, String alertEmail, String pluginName, String faultDescription)
@@ -118,7 +134,7 @@ namespace ManyWho.Flow.SDK.Utils
                         }
 
                         // Finally, we add the exception details if there is an exception
-                        message += AggregateAndWriteErrorMessage(exception, true);
+                        message += AggregateAndWriteErrorMessage(exception, "", true);
 
                         // Create the message in our mail system
                         mailMessage.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message, null, MediaTypeNames.Text.Plain));
@@ -137,14 +153,26 @@ namespace ManyWho.Flow.SDK.Utils
             }
         }
 
-        private static String AggregateAndWriteErrorMessage(Exception exception, Boolean includeTrace)
+        private static HttpStatusCode GetStatusCode(Exception exception)
         {
-            String message = null;
+            HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError;
 
             if (exception != null)
             {
-                message = "";
+                if (exception is HttpResponseException &&
+                    ((HttpResponseException)exception).Response != null)
+                {
+                    httpStatusCode = ((HttpResponseException)exception).Response.StatusCode;
+                }
+            }
 
+            return httpStatusCode;
+        }
+
+        private static String AggregateAndWriteErrorMessage(Exception exception, String message, Boolean includeTrace)
+        {
+            if (exception != null)
+            {
                 if (exception is AggregateException)
                 {
                     message = AggregateAndWriteAggregateErrorMessage((AggregateException)exception, message, includeTrace);
@@ -155,7 +183,7 @@ namespace ManyWho.Flow.SDK.Utils
                 }
                 else
                 {
-                    message = AggregateAndWriteErrorMessage(exception, message, includeTrace);
+                    message = AggregateAndWriteExceptionErrorMessage(exception, message, includeTrace);
                 }
             }
 
@@ -213,7 +241,7 @@ namespace ManyWho.Flow.SDK.Utils
             return message;
         }
 
-        private static String AggregateAndWriteErrorMessage(Exception exception, String message, Boolean includeTrace)
+        private static String AggregateAndWriteExceptionErrorMessage(Exception exception, String message, Boolean includeTrace)
         {
             if (exception != null)
             {

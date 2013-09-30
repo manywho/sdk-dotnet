@@ -6,7 +6,7 @@ using ManyWho.Flow.SDK.Draw.Content;
 using ManyWho.Flow.SDK.Draw.Elements.Map;
 using ManyWho.Flow.SDK.Draw.Elements.Type;
 using ManyWho.Flow.SDK.Draw.Elements.Group;
-using ManyWho.Flow.SDK.Draw.Elements.Shared;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 using System.Runtime.Serialization;
 
 /*!
@@ -53,20 +53,6 @@ namespace ManyWho.Flow.SDK.Draw.Flow
 
         [DataMember]
         public String developerSummary
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Boolean isActive
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Boolean isDefault
         {
             get;
             set;

@@ -33,7 +33,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         [DataMember]
-        public String criteria
+        public String criteriaType
         {
             get;
             set;

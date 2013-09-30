@@ -61,7 +61,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// Tells the system whether or not the service exposes logic actions.
         /// </summary>
         [DataMember]
-        public Boolean exposesLogic
+        public Boolean providesLogic
         {
             get;
             set;
@@ -71,7 +71,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// Tells the system whether or not the service exposes views.
         /// </summary>
         [DataMember]
-        public Boolean exposesViews
+        public Boolean providesViews
         {
             get;
             set;
@@ -81,7 +81,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// Indicates if this service provides object data support for the provided types.
         /// </summary>
         [DataMember]
-        public Boolean exposesTables
+        public Boolean providesDatabase
         {
             get;
             set;

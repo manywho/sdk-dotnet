@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.UI;
-using ManyWho.Flow.SDK.Draw.Elements.Config;
 
 /*!
 
@@ -22,90 +20,115 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Map
+namespace ManyWho.Flow.SDK.Draw.Elements.Value
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class MapElementRequestAPI : MapElementAPI
+    public class ValueElementIdAPI
     {
+        public ValueElementIdAPI()
+        {
+
+        }
+
+        public ValueElementIdAPI(Guid id, Guid typeElementPropertyId, String command)
+        {
+            this.id = id.ToString();
+
+            if (typeElementPropertyId != null &&
+                typeElementPropertyId != Guid.Empty)
+            {
+                this.typeElementPropertyId = typeElementPropertyId.ToString();
+            }
+
+            this.command = command;
+        }
+
+        public ValueElementIdAPI(String id, String typeElementPropertyId, String command)
+        {
+            this.id = id;
+            this.typeElementPropertyId = typeElementPropertyId;
+            this.command = command;
+        }
+
         [DataMember]
-        public String pageElementId
+        public String id
         {
             get;
             set;
         }
 
         [DataMember]
-        public List<OperationAPI> operations
+        public String versionId
         {
             get;
             set;
         }
 
         [DataMember]
-        public MessageActionAPI viewMessageAction
+        public String command
         {
             get;
             set;
         }
 
         [DataMember]
-        public List<MessageActionAPI> messageActions
+        public String developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public List<DataActionAPI> dataActions
+        public String typeElementDeveloperName
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean postUpdateToStream
+        public String typeElementPropertyDeveloperName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String userContent
+        public String typeElementPropertyTypeElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String statusMessage
+        public String elementType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String postUpdateMessage
+        public String typeElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String notAuthorizedMessage
+        public String typeElementPropertyId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String postUpdateWhenType
+        public String contentType
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean updateByName
+        public Boolean isFixed
         {
             get;
             set;

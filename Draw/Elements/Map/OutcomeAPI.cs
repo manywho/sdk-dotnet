@@ -61,14 +61,28 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
-        public String pageActionBinding
+        public String pageActionType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String pageElementBindingId
+        public Boolean isBulkAction
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String pageActionBindingType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String pageObjectBindingId
         {
             get;
             set;

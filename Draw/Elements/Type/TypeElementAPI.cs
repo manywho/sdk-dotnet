@@ -38,26 +38,5 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             get;
             set;
         }
-
-        [DataMember]
-        public Boolean selectable
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Boolean updateable
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Boolean deletable
-        {
-            get;
-            set;
-        }
     }
 }

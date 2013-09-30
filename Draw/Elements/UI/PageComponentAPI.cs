@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Elements.Type;
-using ManyWho.Flow.SDK.Draw.Elements.Shared;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -42,7 +42,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         [DataMember]
-        public SharedElementIdAPI dataSharedElement
+        public ValueElementIdAPI valueElementDataBindingReferenceId
         {
             get;
             set;
@@ -113,7 +113,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         [DataMember]
-        public SharedElementIdAPI valueBindingSharedElement
+        public ValueElementIdAPI valueElementValueBindingReferenceId
         {
             get;
             set;
@@ -148,7 +148,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         [DataMember]
-        public Boolean required
+        public Boolean isRequired
         {
             get;
             set;
