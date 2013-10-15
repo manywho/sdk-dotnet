@@ -42,6 +42,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         [DataMember]
+        public ValueElementIdAPI valueElementValueBindingReferenceId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public ValueElementIdAPI valueElementDataBindingReferenceId
         {
             get;
@@ -54,6 +61,17 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// </summary>
         [DataMember]
         public ObjectDataRequestConfigAPI objectDataRequest
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Used to get the file data in real-time from the external data source - using the file data request as the configuration of that
+        /// request.
+        /// </summary>
+        [DataMember]
+        public FileDataRequestConfigAPI fileDataRequest
         {
             get;
             set;
@@ -113,13 +131,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         [DataMember]
-        public ValueElementIdAPI valueElementValueBindingReferenceId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public Int32 size
         {
             get;
@@ -156,6 +167,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
 
         [DataMember]
         public Boolean isMultiSelect
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Boolean isSearchable
         {
             get;
             set;

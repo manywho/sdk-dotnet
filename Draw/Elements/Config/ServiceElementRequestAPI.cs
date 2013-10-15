@@ -62,7 +62,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         }
 
         [DataMember]
-        public Boolean providesContent
+        public Boolean providesFiles
         {
             get;
             set;

@@ -58,16 +58,6 @@ namespace ManyWho.Flow.SDK.Describe
         }
 
         /// <summary>
-        /// The optional form to provide a more compelling UI for the service inputs.
-        /// </summary>
-        [DataMember]
-        public PageResponseAPI pageResponse
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// For UI actions, this property provides the bindable outcomes so the author can wire buttons to steps in the flow.
         /// </summary>
         [DataMember]

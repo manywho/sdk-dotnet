@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Run.Elements.Config;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -21,36 +22,37 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Run.Elements.Type
+namespace ManyWho.Flow.SDK.Draw.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ObjectDataResponseAPI
+    public class FileDataRequestConfigAPI
     {
         /// <summary>
-        /// The culture for the service response.
+        /// The Id for the service element associated with this file data.  The service element will give us the connection settings
+        /// and allow us to validate various bits of info.
         /// </summary>
         [DataMember]
-        public CultureAPI culture
+        public String serviceElementBindingId
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The list of objects post select, insert, update, delete
+        /// The value reference for the folder - this can be an identifier or a path - whatever the service implementation needs.
         /// </summary>
         [DataMember]
-        public List<ObjectAPI> objectData
+        public ValueElementIdAPI resourceFolderValueElementToReferenceId
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Indicates if there are more results available based on the offset and limit provided
+        /// The value reference for the file - this can be an identifier or a file name - whatever the service implementation needs.
         /// </summary>
         [DataMember]
-        public Boolean hasMoreResults
+        public ValueElementIdAPI resourceFileValueElementToReferenceId
         {
             get;
             set;

@@ -139,6 +139,13 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         }
 
         [DataMember]
+        public Boolean isSearchable
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public Boolean hasEvents
         {
             get;

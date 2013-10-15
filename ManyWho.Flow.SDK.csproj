@@ -80,6 +80,8 @@
   <ItemGroup>
     <Compile Include="Controller\GenericController.cs" />
     <Compile Include="DrawSingleton.cs" />
+    <Compile Include="Draw\Elements\Type\FileDataRequestConfigAPI.cs" />
+    <Compile Include="Draw\Flow\FlowImageResponseAPI.cs" />
     <Compile Include="ManyWhoConstants.cs" />
     <Compile Include="Draw\Content\CommandAPI.cs" />
     <Compile Include="Draw\Elements\Config\ServiceActionOutcomeAPI.cs" />

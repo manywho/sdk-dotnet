@@ -108,6 +108,17 @@ namespace ManyWho.Flow.SDK.Describe
         }
 
         /// <summary>
+        /// Indicates if this service provides files for download and upload. This is logically separate from the social networking where it is
+        /// assumed the feed supports basic file attachments.
+        /// </summary>
+        [DataMember]
+        public Boolean providesFiles
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The actions available for this service.  The actions are basically a proxy for methods.
         /// </summary>
         [DataMember]

@@ -94,5 +94,25 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
             get;
             set;
         }
+
+        /// <summary>
+        /// The number of records to skip past to effectively support paging of the data.
+        /// </summary>
+        [DataMember]
+        public Int32 offset
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The search string that should be used in addition to any filter criteria.
+        /// </summary>
+        [DataMember]
+        public String search
+        {
+            get;
+            set;
+        }
     }
 }

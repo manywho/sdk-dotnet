@@ -91,6 +91,15 @@ namespace ManyWho.Flow.SDK
         public const String CONTENT_TYPE_BOOLEAN = "ContentBoolean";
         public const String CONTENT_TYPE_CONTENT = "ContentContent";
 
+        // Content parser strings
+        public const String EMBEDDED_KEY_START_INTERNAL = "flowkey___";
+        public const String EMBEDDED_KEY_FINISH_INTERNAL = "___flowkey";
+        public const String EMBEDDED_KEY_START_EXTERNAL = "{!";
+        public const String EMBEDDED_KEY_FINISH_EXTERNAL = "}";
+        public const String EMBEDDED_KEY_ELEMENT_PART_WITH_SPACE_START_EXTERNAL = "[";
+        public const String EMBEDDED_KEY_ELEMENT_PART_WITH_SPACE_FINISH_EXTERNAL = "]";
+        public const String EMBEDDED_KEY_ELEMENT_PART_SEPARATOR = "].[";
+
         // Authenticated User constants
         public const String AUTHENTICATED_USER_STATUS_ACCESS_DENIED = "ACCESS_DENIED";
         public const String AUTHENTICATED_USER_STATUS_AUTHENTICATED = "AUTHENTICATED";
@@ -180,6 +189,21 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_LOCATION_PROPERTY_HEADING = "Current Heading";
         public const String MANYWHO_LOCATION_PROPERTY_SPEED = "Current Speed";
 
+        public const String MANYWHO_FILE_DEVELOPER_NAME = "ManyWho File";
+
+        public const String MANYWHO_FILE_PROPERTY_KIND = "Kind";
+        public const String MANYWHO_FILE_PROPERTY_ID = "Id";
+        public const String MANYWHO_FILE_PROPERTY_MIME_TYPE = "Mime Type";
+        public const String MANYWHO_FILE_PROPERTY_NAME = "Name";
+        public const String MANYWHO_FILE_PROPERTY_DESCRIPTION = "Description";
+        public const String MANYWHO_FILE_PROPERTY_DATE_CREATED = "Date Created";
+        public const String MANYWHO_FILE_PROPERTY_DATE_MODIFIED = "Date Modified";
+        public const String MANYWHO_FILE_PROPERTY_DOWNLOAD_URI = "Download Uri";
+        public const String MANYWHO_FILE_PROPERTY_EMBED_URI = "Embed Uri";
+        public const String MANYWHO_FILE_PROPERTY_ICON_URI = "Icon Uri";
+        public const String MANYWHO_FILE_PROPERTY_ALLOW_UPLOAD = "Allow Upload";
+        public const String MANYWHO_FILE_PROPERTY_ALLOW_DOWNLOAD = "Allow Download";
+
         public const String AUTHORIZATION_STATUS_NOT_AUTHORIZED = "401";
         public const String AUTHORIZATION_STATUS_AUTHORIZED = "200";
 
@@ -211,6 +235,7 @@ namespace ManyWho.Flow.SDK
         public const String COMPONENT_TYPE_PRESENTATION = "PRESENTATION";
         public const String COMPONENT_TYPE_TAG = "TAG";
         public const String COMPONENT_TYPE_IMAGE = "IMAGE";
+        public const String COMPONENT_TYPE_FILES = "FILES";
 
         // Container types for pages
         public const String CONTAINER_TYPE_VERTICAL_FLOW = "VERTICAL_FLOW";
