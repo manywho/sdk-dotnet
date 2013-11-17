@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 /*!
 
@@ -22,10 +23,12 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Security
 {
+    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class GeoLocation : IGeoLocation
     {
         [DataMember]
+        [JsonProperty("timeStamp")]
         public DateTime TimeStamp
         {
             get;
@@ -33,6 +36,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("latitude")]
         public Decimal Latitude
         {
             get;
@@ -40,6 +44,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("longitude")]
         public Decimal Longitude
         {
             get;
@@ -47,6 +52,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("accuracy")]
         public Decimal Accuracy
         {
             get;
@@ -54,6 +60,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("altitude")]
         public Decimal Altitude
         {
             get;
@@ -61,6 +68,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("altitudeAccuracy")]
         public Decimal AltitudeAccuracy
         {
             get;
@@ -68,6 +76,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("heading")]
         public Decimal Heading
         {
             get;
@@ -75,6 +84,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("speed")]
         public Decimal Speed
         {
             get;

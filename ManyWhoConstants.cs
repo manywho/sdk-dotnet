@@ -43,6 +43,8 @@ namespace ManyWho.Flow.SDK
         // Tells the engine to sync the data, but not to shut down the optimize memory or execute - this brings in the social
         // element to the engine
         public const String INVOKE_TYPE_SYNC = "SYNC";
+        // Tells the engine that the user has clicked on something in the navigation as opposed to an outcome
+        public const String INVOKE_TYPE_NAVIGATE = "NAVIGATE";
 
         // Engine mode constants
         public const String MODE_DEFAULT = null;
@@ -51,6 +53,7 @@ namespace ManyWho.Flow.SDK
         public const String MODE_DEBUG_STEPTHROUGH = "DEBUG_STEPTHROUGH";
 
         // Content Value Implementation constants
+        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_DETACH = "DETACH"; // Removes the external identifier from the root object only
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_EMPTY = "EMPTY"; // blanks out the complex object or table with a null value
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_NEW = "NEW"; // creates a new whole complex object or table
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_UPDATE = "ADD"; // adds a complex object to the table or updates the existing one in the table or adds to a value
@@ -272,6 +275,9 @@ namespace ManyWho.Flow.SDK
 
         // The API name for page layouts
         public const String UI_ELEMENT_TYPE_IMPLEMENTATION_PAGE_LAYOUT = "PAGE_LAYOUT";
+
+        // The API name for navigations
+        public const String UI_ELEMENT_TYPE_IMPLEMENTATION_NAVIGATION = "NAVIGATION";
 
         // The API name for map elements
         public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_START = "START";

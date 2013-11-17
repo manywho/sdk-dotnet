@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Runtime.Serialization;
 
 /*!
@@ -19,6 +22,7 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Social
 {
+    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FilesListAPI
     {

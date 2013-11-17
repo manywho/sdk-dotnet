@@ -22,6 +22,7 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Run.Elements.UI
 {
+    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class PageResponseAPI
     {
@@ -55,6 +56,13 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
 
         [DataMember]
         public List<PageContainerDataResponseAPI> pageContainerDataResponses
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<EngineValueAPI> tags
         {
             get;
             set;

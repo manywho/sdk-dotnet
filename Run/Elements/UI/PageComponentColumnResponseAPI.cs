@@ -26,6 +26,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
     /// This acts as the column descriptor for rendering the table content stored in the content property (as part of the parent
     /// field definition).
     /// </summary>
+    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class PageComponentColumnResponseAPI
     {

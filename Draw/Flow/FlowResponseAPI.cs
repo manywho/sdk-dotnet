@@ -23,6 +23,7 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Draw.Flow
 {
+    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowResponseAPI : FlowRequestAPI
     {

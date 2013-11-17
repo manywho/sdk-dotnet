@@ -22,6 +22,7 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Draw.Elements.Value
 {
+    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class ValueElementIdAPI
     {
@@ -58,62 +59,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         }
 
         [DataMember]
-        public String versionId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String command
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String developerName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String typeElementDeveloperName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String typeElementPropertyDeveloperName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String typeElementPropertyTypeElementId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String elementType
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String typeElementId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public String typeElementPropertyId
         {
             get;
@@ -121,14 +66,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         }
 
         [DataMember]
-        public String contentType
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Boolean isFixed
+        public String command
         {
             get;
             set;

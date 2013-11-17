@@ -81,6 +81,11 @@
     <Compile Include="Controller\GenericController.cs" />
     <Compile Include="DrawSingleton.cs" />
     <Compile Include="Draw\Elements\Type\FileDataRequestConfigAPI.cs" />
+    <Compile Include="Draw\Elements\UI\NavigationElementAPI.cs" />
+    <Compile Include="Draw\Elements\UI\NavigationElementRequestAPI.cs" />
+    <Compile Include="Draw\Elements\UI\NavigationElementResponseAPI.cs" />
+    <Compile Include="Draw\Elements\UI\NavigationItemAPI.cs" />
+    <Compile Include="Draw\Elements\Value\ValueElementIdReferenceAPI.cs" />
     <Compile Include="Draw\Flow\FlowImageResponseAPI.cs" />
     <Compile Include="ManyWhoConstants.cs" />
     <Compile Include="Draw\Content\CommandAPI.cs" />
@@ -174,6 +179,8 @@
     <Compile Include="Run\Elements\Type\ObjectDataTypeAPI.cs" />
     <Compile Include="Run\Elements\Type\ObjectDataTypePropertyAPI.cs" />
     <Compile Include="Run\Elements\Type\PropertyAPI.cs" />
+    <Compile Include="Run\Elements\UI\NavigationItemDataResponseAPI.cs" />
+    <Compile Include="Run\Elements\UI\NavigationItemResponseAPI.cs" />
     <Compile Include="Run\Elements\UI\PageComponentColumnResponseAPI.cs" />
     <Compile Include="Run\Elements\UI\PageComponentDataResponseAPI.cs" />
     <Compile Include="Run\Elements\UI\PageComponentInputResponseRequestAPI.cs" />
@@ -187,6 +194,8 @@
     <Compile Include="Run\EngineInitializationResponseAPI.cs" />
     <Compile Include="Run\EngineInvokeRequestAPI.cs" />
     <Compile Include="Run\EngineInvokeResponseAPI.cs" />
+    <Compile Include="Run\EngineNavigationRequestAPI.cs" />
+    <Compile Include="Run\EngineNavigationResponseAPI.cs" />
     <Compile Include="Run\EngineValueAPI.cs" />
     <Compile Include="Security\AuthenticatedWho.cs" />
     <Compile Include="Security\GeoLocation.cs" />
