@@ -41,6 +41,20 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         }
 
         [DataMember]
+        public Boolean isActive
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Boolean isCurrent
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public Boolean isEnabled
         {
             get;

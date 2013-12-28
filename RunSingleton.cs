@@ -46,12 +46,34 @@ namespace ManyWho.Flow.SDK
 
         }
 
+        private String ServiceUrl
+        {
+            get;
+            set;
+        }
+
+        public static RunSingleton GetInstance(String serviceUrl)
+        {
+            if (run == null)
+            {
+                run = new RunSingleton();
+            }
+
+            // Assign the service url to the provided address
+            run.ServiceUrl = serviceUrl;
+
+            return run;
+        }
+
         public static RunSingleton GetInstance()
         {
             if (run == null)
             {
                 run = new RunSingleton();
             }
+
+            // Assign the service url to the default address
+            run.ServiceUrl = MANYWHO_BASE_URL;
 
             return run;
         }
@@ -80,7 +102,7 @@ namespace ManyWho.Flow.SDK
                     httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null);
 
                     // Construct the URL for the engine execute request
-                    endpointUrl = MANYWHO_BASE_URL + MANYWHO_ENGINE_LOAD_FLOW_BY_ID_URI_PART + flowId;
+                    endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_LOAD_FLOW_BY_ID_URI_PART + flowId;
 
                     // Get the flow response from ManyWho
                     httpResponseMessage = httpClient.GetAsync(endpointUrl).Result;
@@ -150,7 +172,7 @@ namespace ManyWho.Flow.SDK
                     httpContent = new ObjectContent<EngineInitializationRequestAPI>(engineInitializationRequest, jsonMediaTypeFormatter);
 
                     // Construct the URL for the engine initialization request
-                    endpointUrl = MANYWHO_BASE_URL + MANYWHO_ENGINE_INITIALIZE_URI_PART;
+                    endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_INITIALIZE_URI_PART;
 
                     // Post the engine initialization request over to ManyWho
                     httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;
@@ -233,7 +255,7 @@ namespace ManyWho.Flow.SDK
                     httpContent = new ObjectContent<EngineInvokeRequestAPI>(engineInvokeRequest, jsonMediaTypeFormatter);
 
                     // Construct the URL for the engine execute request
-                    endpointUrl = MANYWHO_BASE_URL + MANYWHO_ENGINE_EXECUTE_URI_PART + engineInvokeRequest.stateId;
+                    endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_EXECUTE_URI_PART + engineInvokeRequest.stateId;
 
                     // Post the engine invoke request over to ManyWho
                     httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;

@@ -20,91 +20,49 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Security
+namespace ManyWho.Flow.SDK.Draw.Elements.Map
 {
     [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class AuthenticatedWhoResultAPI
+    public class NavigationOverrideAPI
     {
         [DataMember]
-        public String userId
+        public String id
         {
             get;
             set;
         }
 
         [DataMember]
-        public String email
+        public String navigationElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String username
+        public String navigationItemId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String firstName
+        public Boolean isEnabled
         {
             get;
             set;
         }
 
         [DataMember]
-        public String lastName
+        public Boolean isVisible
         {
             get;
             set;
         }
 
         [DataMember]
-        public String directoryId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String directoryName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String tenantName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String identityProvider
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String token
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String status
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String statusMessage
+        public String locationMapElementId
         {
             get;
             set;

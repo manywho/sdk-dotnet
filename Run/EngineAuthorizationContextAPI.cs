@@ -46,5 +46,12 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         }
+
+        [DataMember]
+        public String authenticationType
+        {
+            get;
+            set;
+        }
     }
 }

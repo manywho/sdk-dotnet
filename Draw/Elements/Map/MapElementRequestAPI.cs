@@ -64,6 +64,20 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
+        public List<NavigationOverrideAPI> navigationOverrides
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Boolean clearNavigationOverrides
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public Boolean postUpdateToStream
         {
             get;

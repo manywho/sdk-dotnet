@@ -182,6 +182,8 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_USER_PROPERTY_DIRECTORY_ID = "Directory Id";
         public const String MANYWHO_USER_PROPERTY_DIRECTORY_NAME = "Directory Name";
         public const String MANYWHO_USER_PROPERTY_STATUS = "Status";
+        public const String MANYWHO_USER_PROPERTY_AUTHENTICATION_TYPE = "AuthenticationType";
+        public const String MANYWHO_USER_PROPERTY_LOGIN_URL = "LoginUrl";
 
         public const String MANYWHO_LOCATION_PROPERTY_TIMESTAMP = "Location Timestamp";
         public const String MANYWHO_LOCATION_PROPERTY_LATITUDE = "Current Latitude";
@@ -262,6 +264,7 @@ namespace ManyWho.Flow.SDK
         public const String ACTION_TYPE_EDIT = "EDIT";
         public const String ACTION_TYPE_NEXT = "NEXT";
         public const String ACTION_TYPE_BACK = "BACK";
+        public const String ACTION_TYPE_DONE = "DONE";
         public const String ACTION_TYPE_SAVE = "SAVE";
         public const String ACTION_TYPE_CANCEL = "CANCEL";
         public const String ACTION_TYPE_APPLY = "APPLY";
@@ -311,5 +314,9 @@ namespace ManyWho.Flow.SDK
 
         // Outcomes with a fault
         public const String FAULT_DEVELOPER_NAME = "FAULT";
+
+        // The authentication types that are currently supported
+        public const String AUTHENTICATION_TYPE_USERNAME_PASSWORD = "USERNAME_PASSWORD";
+        public const String AUTHENTICATION_TYPE_OAUTH2 = "OAUTH2";
     }
 }

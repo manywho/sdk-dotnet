@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Run;
 
 /*!
 
@@ -26,6 +27,23 @@ namespace ManyWho.Flow.SDK.Security
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class AuthenticationCredentialsAPI
     {
+        /// <summary>
+        /// Any additional configuration values that may have been applied by the engine to help with authentication.
+        /// </summary>
+        [DataMember]
+        public List<EngineValueAPI> configurationValues
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String authenticationType
+        {
+            get;
+            set;
+        }
+
         [DataMember]
         public String username
         {
@@ -48,6 +66,13 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        public String code
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String sessionToken
         {
             get;
@@ -63,6 +88,13 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         public String loginUrl
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String redirectUri
         {
             get;
             set;

@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Controller\GenericController.cs" />
     <Compile Include="DrawSingleton.cs" />
+    <Compile Include="Draw\Elements\Map\NavigationOverrideAPI.cs" />
     <Compile Include="Draw\Elements\Type\FileDataRequestConfigAPI.cs" />
     <Compile Include="Draw\Elements\UI\NavigationElementAPI.cs" />
     <Compile Include="Draw\Elements\UI\NavigationElementRequestAPI.cs" />
@@ -229,6 +230,7 @@
     <Compile Include="Utils\HttpUtils.cs" />
     <Compile Include="Utils\RunUtils.cs" />
     <Compile Include="Utils\SettingUtils.cs" />
+    <Compile Include="Utils\SqlUtils.cs" />
     <Compile Include="Utils\ValueUtils.cs" />
   </ItemGroup>
   <ItemGroup>
