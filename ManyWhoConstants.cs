@@ -116,6 +116,7 @@ namespace ManyWho.Flow.SDK
         public const String AUTHENTICATED_USER_PUBLIC_IDENTITY_PROVIDER = "NONE";
         public const String AUTHENTICATED_USER_PUBLIC_STATUS = "UKNOWN";
         public const String AUTHENTICATED_USER_PUBLIC_TOKEN = "NONE";
+
         public const String AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID = "ManyWhoTenantId";
         public const String AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID = "ManyWhoUserId";
         public const String AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN = "ManyWhoToken";
@@ -126,13 +127,77 @@ namespace ManyWho.Flow.SDK
         public const String AUTHENTICATED_WHO_TOKEN_TENANT_NAME = "TenantName";
         public const String AUTHENTICATED_WHO_TOKEN_TOKEN = "Token";
         public const String AUTHENTICATED_WHO_TOKEN_USER_ID = "UserId";
-        public const char AUTHENTICATED_WHO_DELIMITER = '=';
+        public const String AUTHENTICATED_WHO_TOKEN_USERNAME = "Username";
+        public const String AUTHENTICATED_WHO_TOKEN_FIRST_NAME = "FirstName";
+        public const String AUTHENTICATED_WHO_TOKEN_LAST_NAME = "LastName";
+
+        public const char SERIALIZATION_DELIMITER_DELIMITER = '=';
+
+        public const String CULTURE_TOKEN_BRAND = "Brand";
+        public const String CULTURE_TOKEN_COUNTRY = "Country";
+        public const String CULTURE_TOKEN_LANGUAGE = "Language";
+        public const String CULTURE_TOKEN_VARIANT = "Variant";
+
+        public static readonly Guid MANYWHO_USER_VALUE_ID = Guid.Parse("03DC41DD-1C6B-4B33-BF61-CBD1D0778FFF");
+        public const String MANYWHO_USER_VALUE_DEVELOPER_NAME = "$RunningUser";
+
+        public static readonly Guid MANYWHO_USER_TYPE_ELEMENT_ID = Guid.Parse("2674CE95-DD99-42C6-96FC-AD12E1B48A69");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_USER_ID = Guid.Parse("90262141-02B2-4F2C-8107-B14CF859DE4D");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_USERNAME = Guid.Parse("D8839B46-C43B-4435-9395-BD00491DA16E");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_EMAIL = Guid.Parse("601DDC6A-FFF4-478B-ABE4-C4E65BC901C6");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_FIRST_NAME = Guid.Parse("6E1D4D49-AB0D-4475-9488-CF4A71D36BEB");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_LAST_NAME = Guid.Parse("E525AAAE-C900-47FC-9A20-D10C52CFC203");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_LANGUAGE = Guid.Parse("88EC74A3-B75D-4C1C-89E4-D142159FD5E4");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_BRAND = Guid.Parse("641F4870-8BF6-4CD9-9654-2AA04C542F43");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_VARIANT = Guid.Parse("A20A1786-7318-4688-81EC-738337442C56");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_COUNTRY = Guid.Parse("4FB64B42-A370-455E-85ED-D9A0A8723A43");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_LOCATION = Guid.Parse("4FA61B42-A370-455E-85ED-D9A0A8723A43");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_DIRECTORY_ID = Guid.Parse("4FA61B52-A370-455E-85ED-D9A0A8723A43");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_DIRECTORY_NAME = Guid.Parse("4FA61B45-A370-455E-85ED-D9A0A8723A43");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_STATUS = Guid.Parse("4FA61B46-A370-455E-85ED-D9A0A8723A43");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_AUTHENTICATION_TYPE = Guid.Parse("4FA61B47-A370-455E-85ED-D9A0A8723A43");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_LOGIN_URL = Guid.Parse("4FA61B48-A370-455E-85ED-D9A0A8723A43");
+
+        public static readonly Guid MANYWHO_LOCATION_TYPE_ELEMENT_ID = Guid.Parse("7834CE95-DD99-42C6-96FC-AD12E1B48A69");
+        public static readonly Guid MANYWHO_LOCATION_PROPERTY_ID_TIMESTAMP = Guid.Parse("FFC4CBD6-FA28-4141-95A4-DA9BACDB0203");
+        public static readonly Guid MANYWHO_LOCATION_PROPERTY_ID_LATITUDE = Guid.Parse("9270A449-9AD5-4C57-B952-DC4551210ABA");
+        public static readonly Guid MANYWHO_LOCATION_PROPERTY_ID_LONGITUDE = Guid.Parse("0A198B4B-1890-4B3B-B09C-E215C7C1458B");
+        public static readonly Guid MANYWHO_LOCATION_PROPERTY_ID_ACCURACY = Guid.Parse("4DB3CE7A-E758-4202-B2E5-E2A21C2A25FD");
+        public static readonly Guid MANYWHO_LOCATION_PROPERTY_ID_ALTITUDE = Guid.Parse("6242AA3F-2796-42ED-9262-EF77EE7405E2");
+        public static readonly Guid MANYWHO_LOCATION_PROPERTY_ID_ALTITUDE_ACCURACY = Guid.Parse("A68965D6-0461-4EFE-8F63-F05C406E6F2B");
+        public static readonly Guid MANYWHO_LOCATION_PROPERTY_ID_HEADING = Guid.Parse("6F0BEE99-ECFB-4B63-A034-F7807244C2B8");
+        public static readonly Guid MANYWHO_LOCATION_PROPERTY_ID_SPEED = Guid.Parse("22C772BF-7BC2-4EC3-A44A-F8387751D32C");
+
+        public static readonly Guid MANYWHO_FILE_TYPE_ELEMENT_ID = Guid.Parse("AF48E652-7DEC-4739-9C98-586318E0AD7D");
+        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_KIND = Guid.Parse("71D7AAC8-B7E5-4256-9798-103A1E52A12E");
+        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_ID = Guid.Parse("DC10DDB5-2215-45AE-8DED-18C698B01FF3");
+        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_MIME_TYPE = Guid.Parse("F92D410D-7F94-4995-A20E-1A58791D0D65");
+        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_NAME = Guid.Parse("CC134A57-EB16-47C0-A455-22CA0D1581F9");
+        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_DESCRIPTION = Guid.Parse("7E57D810-F4E0-4D54-8066-2C017180E0FF");
+        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_DATE_CREATED = Guid.Parse("82D5584D-0B6B-4D30-85E0-2F4A947324E7");
+        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_DATE_MODIFIED = Guid.Parse("A942BC5C-D59D-4010-86D0-31F23F822855");
+        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_DOWNLOAD_URI = Guid.Parse("6611067A-7C86-4696-8845-3CDC79C73289");
+        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_EMBED_URI = Guid.Parse("C063EC28-9053-4D0B-A93B-4470F6CE4B8C");
+        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_ICON_URI = Guid.Parse("DC906ACB-A270-4E95-9118-463FA8B5726C");
+        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_ALLOW_UPLOAD = Guid.Parse("640B7242-1BB7-488C-BE21-4829426D4E4F");
+        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_ALLOW_DOWNLOAD = Guid.Parse("CF1089F1-152E-432B-BF17-4D931D0F4F9F");
+
+        public static readonly Guid MANYWHO_GROUP_TYPE_ELEMENT_ID = Guid.Parse("82DE6847-03D6-4ACE-91CC-26CD80AEA9FC");
+        public static readonly Guid MANYWHO_GROUP_PROPERTY_ID_GROUP_ID = Guid.Parse("1CADAB68-658C-4F52-972E-FAB83F168D87");
+        public static readonly Guid MANYWHO_GROUP_PROPERTY_ID_GROUP_NAME = Guid.Parse("D04652C0-B87C-400D-BEAC-FBC2420774BC");
+        public static readonly Guid MANYWHO_GROUP_PROPERTY_ID_GROUP_OWNER_USER_ID = Guid.Parse("3B74EB51-74A8-43B3-96EF-FEEB938D35D2");
+
+        public const String MANYWHO_GROUP_DEVELOPER_NAME = "$Group";
+        public const String MANYWHO_GROUP_PROPERTY_GROUP_ID = "Group ID";
+        public const String MANYWHO_GROUP_PROPERTY_GROUP_NAME = "Group Name";
+        public const String MANYWHO_GROUP_PROPERTY_GROUP_OWNER_USER_ID = "Group Owner User ID";
 
         // Service description constants
         public const String SERVICE_DESCRIPTION_VALUE_TABLE_NAME = "TableName";
 
         // Plugin constants
         public const String SERVICE_REQUEST_FORM_POST_KEY = "ServiceRequest";
+        public const String FILE_DATA_REQUEST_FORM_POST_KEY = "FileDataRequest";
 
         // Authentication constants
         //public const String OBJECT_TYPE_GROUP_AUTHORIZATION_GROUP = "GroupAuthorizationGroup";
@@ -169,7 +234,7 @@ namespace ManyWho.Flow.SDK
         public const String PAGE_CONTAINER_CONTAINER_TYPE_GROUP = "GROUP";
 
         // Constants for property names for objects being returned for user context
-        public const String MANYWHO_USER_DEVELOPER_NAME = "ManyWho User";
+        public const String MANYWHO_USER_DEVELOPER_NAME = "$User";
 
         public const String MANYWHO_USER_PROPERTY_USER_ID = "User ID";
         public const String MANYWHO_USER_PROPERTY_USERNAME = "Username";
@@ -178,12 +243,16 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_USER_PROPERTY_LAST_NAME = "Last Name";
         public const String MANYWHO_USER_PROPERTY_LANGUAGE = "Language";
         public const String MANYWHO_USER_PROPERTY_COUNTRY = "Country";
+        public const String MANYWHO_USER_PROPERTY_BRAND = "Brand";
+        public const String MANYWHO_USER_PROPERTY_VARIANT = "Variant";
         public const String MANYWHO_USER_PROPERTY_LOCATION = "Location";
         public const String MANYWHO_USER_PROPERTY_DIRECTORY_ID = "Directory Id";
         public const String MANYWHO_USER_PROPERTY_DIRECTORY_NAME = "Directory Name";
         public const String MANYWHO_USER_PROPERTY_STATUS = "Status";
         public const String MANYWHO_USER_PROPERTY_AUTHENTICATION_TYPE = "AuthenticationType";
         public const String MANYWHO_USER_PROPERTY_LOGIN_URL = "LoginUrl";
+
+        public const String MANYWHO_LOCATION_DEVELOPER_NAME = "$Location";
 
         public const String MANYWHO_LOCATION_PROPERTY_TIMESTAMP = "Location Timestamp";
         public const String MANYWHO_LOCATION_PROPERTY_LATITUDE = "Current Latitude";
@@ -194,7 +263,7 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_LOCATION_PROPERTY_HEADING = "Current Heading";
         public const String MANYWHO_LOCATION_PROPERTY_SPEED = "Current Speed";
 
-        public const String MANYWHO_FILE_DEVELOPER_NAME = "ManyWho File";
+        public const String MANYWHO_FILE_DEVELOPER_NAME = "$File";
 
         public const String MANYWHO_FILE_PROPERTY_KIND = "Kind";
         public const String MANYWHO_FILE_PROPERTY_ID = "Id";

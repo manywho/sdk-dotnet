@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Elements.Group;
+using ManyWho.Flow.SDK.Translate;
 
 /*!
 

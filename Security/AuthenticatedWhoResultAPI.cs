@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Translate;
 
 /*!
 
@@ -105,6 +106,13 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         public String statusMessage
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public CultureAPI culture
         {
             get;
             set;

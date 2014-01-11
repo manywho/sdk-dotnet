@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Flow;
 using ManyWho.Flow.SDK.Run.Elements;
 using ManyWho.Flow.SDK.Run.Elements.UI;
-using ManyWho.Flow.SDK.Run.Elements.Config;
+using ManyWho.Flow.SDK.Translate;
 
 /*!
 
@@ -30,6 +30,13 @@ namespace ManyWho.Flow.SDK.Run
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class EngineNavigationResponseAPI
     {
+        [DataMember]
+        public CultureAPI culture
+        {
+            get;
+            set;
+        }
+
         [DataMember]
         public String developerName
         {

@@ -36,6 +36,7 @@ namespace ManyWho.Flow.SDK.Utils
         public const String HEADER_AUTHORIZATION = "Authorization";
         public const String HEADER_MANYWHO_STATE = "ManyWhoState";
         public const String HEADER_MANYWHO_TENANT = "ManyWhoTenant";
+        public const String HEADER_CULTURE = "Culture";
 
         public static HttpResponseException HandleUnsuccessfulHttpResponseMessage(IAuthenticatedWho authenticatedWho, Int32 iteration, String alertEmail, String codeReferenceName, HttpResponseMessage httpResponseMessage, String endpointUrl)
         {

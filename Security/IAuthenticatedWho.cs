@@ -70,6 +70,15 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         /// <summary>
+        /// The username provided at login with the service.
+        /// </summary>
+        String Username
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The identifier provider as provided post authentication and authorization with the service.
         /// </summary>
         String IdentityProvider
@@ -118,6 +127,24 @@ namespace ManyWho.Flow.SDK.Security
         /// The validated email address for this user.
         /// </summary>
         String Email
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The first name for this user.
+        /// </summary>
+        String FirstName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The last name for this user.
+        /// </summary>
+        String LastName
         {
             get;
             set;

@@ -77,6 +77,13 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         }
 
         [DataMember]
+        public FileDataRequestAPI fileDataRequest
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String contentValue
         {
             get;
@@ -85,6 +92,13 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
 
         [DataMember]
         public String content
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String imageUri
         {
             get;
             set;

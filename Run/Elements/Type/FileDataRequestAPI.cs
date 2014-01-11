@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
 {
     [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ObjectDataRequestAPI
+    public class FileDataRequestAPI
     {
         /// <summary>
         /// The state id that allows us to make the correct version references.
@@ -40,22 +40,21 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         /// <summary>
-        /// The unique token for this data job.  The token can be used to help the plugin cache multiple data calls.  If the token is provided, we can match it up
-        /// with a previous data request - if we choose to cache it.
+        /// The service to grab the files from.
         /// </summary>
         [DataMember]
-        public String token
+        public String serviceElementId
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The Id for the service element associated with this object data.  The service element will give us the connection settings
-        /// and allow us to validate various info around the type.
+        /// The unique token for this data job.  The token can be used to help the plugin cache multiple data calls.  If the token is provided, we can match it up
+        /// with a previous data request - if we choose to cache it.
         /// </summary>
         [DataMember]
-        public String typeElementBindingId
+        public String token
         {
             get;
             set;
@@ -83,16 +82,6 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         /// <summary>
-        /// The command to be executed on the remote service.
-        /// </summary>
-        [DataMember]
-        public CommandRequestAPI command
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// The culture for the service request.
         /// </summary>
         [DataMember]
@@ -106,29 +95,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The filter to apply to the data at runtime.
         /// </summary>
         [DataMember]
-        public ListFilterAPI listFilter
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// This gives the data service the descriptor information needed to pull the information together on the server side.  We use
-        /// a separate object as we may not want to do a full property selection - the contents and tree included in here will give us a
-        /// full query for the data service.
-        /// </summary>
-        [DataMember]
-        public ObjectDataTypeAPI objectDataType
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// The list of objects to insert, update or delete.
-        /// </summary>
-        [DataMember]
-        public List<ObjectAPI> objectData
+        public FileListFilterAPI listFilter
         {
             get;
             set;

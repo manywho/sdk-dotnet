@@ -33,27 +33,38 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// and allow us to validate various bits of info.
         /// </summary>
         [DataMember]
-        public String serviceElementBindingId
+        public String serviceElementId
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The value reference for the folder - this can be an identifier or a path - whatever the service implementation needs.
+        /// The reference for the folder - this can be an identifier or a path - whatever the service implementation needs.
         /// </summary>
         [DataMember]
-        public ValueElementIdAPI resourceFolderValueElementToReferenceId
+        public String resourcePath
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The value reference for the file - this can be an identifier or a file name - whatever the service implementation needs.
+        /// The reference for the file - this can be an identifier or a file name - whatever the service implementation needs.
         /// </summary>
         [DataMember]
-        public ValueElementIdAPI resourceFileValueElementToReferenceId
+        public String resourceFile
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Indicates if the end user can upload files to the file service. When performing a file upload, the player should use the files
+        /// api to perform the upload and then re-execute the file data request to get the latest listing of files available.
+        /// </summary>
+        [DataMember]
+        public Boolean allowUpload
         {
             get;
             set;

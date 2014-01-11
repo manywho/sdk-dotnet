@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ManyWho.Flow.SDK.Run.State;
+using System.Threading.Tasks;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Run.Elements.Config;
-using ManyWho.Flow.SDK.Translate;
 
 /*!
 
@@ -23,56 +21,27 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Run
+namespace ManyWho.Flow.SDK.Run.Elements.Type
 {
     [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class EngineInitializationResponseAPI
+    public class CommandRequestAPI
     {
+        /// <summary>
+        /// The type of command being executed on the remote service. The command type is up to the author and service.
+        /// </summary>
         [DataMember]
-        public CultureAPI culture
+        public String commandType
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The properties to be used to support the command type being executed on the remote service.
+        /// </summary>
         [DataMember]
-        public String stateId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String stateToken
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String currentMapElementId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String currentStreamId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String statusCode
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public EngineAuthorizationContextAPI authorizationContext
+        public Dictionary<String, String> properties
         {
             get;
             set;

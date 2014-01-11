@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using System.Runtime.Serialization;
 
 /*!
@@ -21,105 +20,77 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Security
+namespace ManyWho.Flow.SDK.Translate
 {
     [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class AuthenticatedWho : IAuthenticatedWho
+    public class CultureAPI
     {
+        /// <summary>
+        /// The id for the culture.
+        /// </summary>
         [DataMember]
-        public Guid ManyWhoUserId
+        public String id
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The developer name for the culture.
+        /// </summary>
         [DataMember]
-        public Guid ManyWhoTenantId
+        public String developerName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The developer summary for the culture.
+        /// </summary>
         [DataMember]
-        public String ManyWhoToken
+        public String developerSummary
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The brand for the culture.
+        /// </summary>
         [DataMember]
-        public IGeoLocation GeoLocation
+        public String brand
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The language for the culture.
+        /// </summary>
         [DataMember]
-        public String UserId
+        public String language
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The country for the culture.
+        /// </summary>
         [DataMember]
-        public String Username
+        public String country
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The variant for the culture.
+        /// </summary>
         [DataMember]
-        public String Email
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String IdentityProvider
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String Token
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String TenantName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String DirectoryName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String DirectoryId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String FirstName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String LastName
+        public String variant
         {
             get;
             set;

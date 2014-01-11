@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Draw.Elements.Type;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -21,105 +22,63 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Security
+namespace ManyWho.Flow.SDK.Translate.Elements.UI
 {
     [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class AuthenticatedWho : IAuthenticatedWho
+    public class PageComponentTranslationResponseAPI
     {
         [DataMember]
-        public Guid ManyWhoUserId
+        public String pageContainerDeveloperName
         {
             get;
             set;
         }
 
         [DataMember]
-        public Guid ManyWhoTenantId
+        public String developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String ManyWhoToken
+        public String componentType
         {
             get;
             set;
         }
 
         [DataMember]
-        public IGeoLocation GeoLocation
+        public String contentContentValueId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String UserId
+        public String labelContentValueId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String Username
+        public String hintValueContentValueId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String Email
+        public String helpInfoContentValueId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String IdentityProvider
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String Token
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String TenantName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String DirectoryName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String DirectoryId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String FirstName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String LastName
+        public List<PageComponentColumnTranslationResponseAPI> columns
         {
             get;
             set;

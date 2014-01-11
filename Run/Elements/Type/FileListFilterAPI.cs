@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ManyWho.Flow.SDK.Run.State;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Run.Elements.Config;
-using ManyWho.Flow.SDK.Translate;
 
 /*!
 
@@ -23,56 +20,57 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Run
+namespace ManyWho.Flow.SDK.Run.Elements.Type
 {
     [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class EngineInitializationResponseAPI
+    public class FileListFilterAPI
     {
+        /// <summary>
+        /// The developer name of the column to order by.
+        /// </summary>
         [DataMember]
-        public CultureAPI culture
+        public String orderByPropertyDeveloperName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The direction of the ordering.
+        /// </summary>
         [DataMember]
-        public String stateId
+        public String orderByDirectionType
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The number of objects to retrieve in the list.
+        /// </summary>
         [DataMember]
-        public String stateToken
+        public Int32 limit
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The number of records to skip past to effectively support paging of the data.
+        /// </summary>
         [DataMember]
-        public String currentMapElementId
+        public Int32 offset
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The search string that should be used in addition to any filter criteria.
+        /// </summary>
         [DataMember]
-        public String currentStreamId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String statusCode
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public EngineAuthorizationContextAPI authorizationContext
+        public String search
         {
             get;
             set;

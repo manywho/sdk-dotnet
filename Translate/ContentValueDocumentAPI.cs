@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -21,45 +20,18 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Config
+namespace ManyWho.Flow.SDK.Translate
 {
     [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ServiceValueRequestAPI
+    public class ContentValueDocumentAPI
     {
-        [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String developerName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public ValueElementIdAPI valueElementToReferenceId
-        {
-            get;
-            set;
-        }
-
         /// <summary>
-        /// This is a temporary property so we have the name of the shared element and type element entry tagged against the value (useful in listings)
+        /// The set of content value document translations for a particular element. The key of the document is the identifier for the
+        /// culture.
         /// </summary>
         [DataMember]
-        public String valueElementToReferenceDeveloperName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String contentType
+        public Dictionary<String, ContentValueDocumentTranslationAPI> translations
         {
             get;
             set;

@@ -78,6 +78,16 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The resource location of the image used in image type components.
+        /// </summary>
+        [DataMember]
+        public String imageUri
+        {
+            get;
+            set;
+        }
+
         [DataMember]
         public String pageContainerId
         {

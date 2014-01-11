@@ -88,6 +88,21 @@
     <Compile Include="Draw\Elements\UI\NavigationItemAPI.cs" />
     <Compile Include="Draw\Elements\Value\ValueElementIdReferenceAPI.cs" />
     <Compile Include="Draw\Flow\FlowImageResponseAPI.cs" />
+    <Compile Include="Run\Elements\Type\CommandRequestAPI.cs" />
+    <Compile Include="Run\Elements\Type\FileDataRequestAPI.cs" />
+    <Compile Include="Run\Elements\Type\FileListFilterAPI.cs" />
+    <Compile Include="Translate\ContentValueDocumentAPI.cs" />
+    <Compile Include="Translate\ContentValueDocumentTranslationAPI.cs" />
+    <Compile Include="Translate\Elements\ElementTranslationResponseAPI.cs" />
+    <Compile Include="Translate\Elements\Map\MapElementTranslationResponseAPI.cs" />
+    <Compile Include="Translate\Elements\Map\OutcomeTranslationResponseAPI.cs" />
+    <Compile Include="Translate\Elements\UI\NavigationElementTranslationResponseAPI.cs" />
+    <Compile Include="Translate\Elements\UI\NavigationItemTranslationResponseAPI.cs" />
+    <Compile Include="Translate\Elements\UI\PageComponentTranslationResponseAPI.cs" />
+    <Compile Include="Translate\Elements\UI\PageComponentColumnTranslationResponseAPI.cs" />
+    <Compile Include="Translate\Elements\UI\PageContainerTranslationResponseAPI.cs" />
+    <Compile Include="Translate\Elements\UI\PageElementTranslationResponseAPI.cs" />
+    <Compile Include="Translate\Elements\Value\ValueElementTranslationResponseAPI.cs" />
     <Compile Include="ManyWhoConstants.cs" />
     <Compile Include="Draw\Content\CommandAPI.cs" />
     <Compile Include="Draw\Elements\Config\ServiceActionOutcomeAPI.cs" />
@@ -160,7 +175,7 @@
     <Compile Include="Draw\Util\ModelBuilderQueryWhereAPI.cs" />
     <Compile Include="RunSingleton.cs" />
     <Compile Include="Run\Elements\Config\AuthorizationAPI.cs" />
-    <Compile Include="Run\Elements\Config\CultureAPI.cs" />
+    <Compile Include="Translate\CultureAPI.cs" />
     <Compile Include="Run\Elements\Config\GroupAPI.cs" />
     <Compile Include="Run\Elements\Config\ServiceRequestAPI.cs" />
     <Compile Include="Run\Elements\Config\ServiceResponseAPI.cs" />
@@ -225,9 +240,11 @@
     <Compile Include="Describe\DescribeUIServiceActionOutcomeAPI.cs" />
     <Compile Include="Describe\DescribeValueAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Translate\Flow\FlowImageTranslationResponseAPI.cs" />
     <Compile Include="Utils\AuthenticationUtils.cs" />
     <Compile Include="Utils\ErrorUtils.cs" />
     <Compile Include="Utils\HttpUtils.cs" />
+    <Compile Include="Utils\InternationalizationUtils.cs" />
     <Compile Include="Utils\RunUtils.cs" />
     <Compile Include="Utils\SettingUtils.cs" />
     <Compile Include="Utils\SqlUtils.cs" />
@@ -248,6 +265,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

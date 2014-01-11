@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using ManyWho.Flow.SDK.Run.State;
+using System.Web;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Run.Elements.Config;
-using ManyWho.Flow.SDK.Translate;
+using ManyWho.Flow.SDK.Draw.Util;
 
 /*!
 
@@ -23,56 +21,42 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Run
+namespace ManyWho.Flow.SDK.Translate.Elements
 {
     [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class EngineInitializationResponseAPI
+    public class ElementTranslationResponseAPI
     {
         [DataMember]
-        public CultureAPI culture
+        public String id
         {
             get;
             set;
         }
 
         [DataMember]
-        public String stateId
+        public String elementType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String stateToken
+        public String developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String currentMapElementId
+        public String developerSummary
         {
             get;
             set;
         }
 
         [DataMember]
-        public String currentStreamId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String statusCode
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public EngineAuthorizationContextAPI authorizationContext
+        public ContentValueDocumentAPI contentValueDocument
         {
             get;
             set;
