@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Run.Elements.Config;
 using ManyWho.Flow.SDK.Translate;
@@ -24,7 +23,6 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Run.Elements.Type
 {
-    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class ObjectDataResponseAPI
     {

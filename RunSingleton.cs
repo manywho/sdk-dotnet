@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Web;
-using System.Web.Http;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net.Http.Formatting;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using ManyWho.Flow.SDK.Run;
+using ManyWho.Flow.SDK.Run.Elements.Config;
 using ManyWho.Flow.SDK.Utils;
 using ManyWho.Flow.SDK.Security;
 using ManyWho.Flow.SDK.Draw.Flow;
@@ -80,7 +79,7 @@ namespace ManyWho.Flow.SDK
 
         public FlowResponseAPI LoadFlowById(IAuthenticatedWho authenticatedWho, String tenantId, String flowId, String codeReferenceName, String alertEmail)
         {
-            HttpResponseException httpResponseException = null;
+            WebException webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
@@ -111,7 +110,7 @@ namespace ManyWho.Flow.SDK
                     if (httpResponseMessage.IsSuccessStatusCode)
                     {
                         // Get the flow response object from the response message
-                        flowResponse = httpResponseMessage.Content.ReadAsAsync<FlowResponseAPI>().Result;
+                        flowResponse = JsonConvert.DeserializeObject<FlowResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
 
                         // We successfully executed the request, we can break out of the retry loop
                         break;
@@ -119,22 +118,22 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        httpResponseException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
 
-                        if (httpResponseException != null)
+                        if (webException != null)
                         {
-                            throw httpResponseException;
+                            throw webException;
                         }
                     }
                 }
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    httpResponseException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
 
-                    if (httpResponseException != null)
+                    if (webException != null)
                     {
-                        throw httpResponseException;
+                        throw webException;
                     }
                 }
                 finally
@@ -149,12 +148,11 @@ namespace ManyWho.Flow.SDK
 
         public EngineInitializationResponseAPI Initialize(IAuthenticatedWho authenticatedWho, String tenantId, EngineInitializationRequestAPI engineInitializationRequest, String codeReferenceName, String alertEmail)
         {
-            HttpResponseException httpResponseException = null;
+            WebException webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
-            MediaTypeFormatter jsonMediaTypeFormatter = null;
             EngineInitializationResponseAPI engineInitializationResponse = null;
 
             // We enclose the request in a for loop to handle http errors
@@ -165,11 +163,9 @@ namespace ManyWho.Flow.SDK
                     // Create the http client to handle our request
                     httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null);
 
-                    // Create a new json formatter so the request will be in the right format
-                    jsonMediaTypeFormatter = new JsonMediaTypeFormatter();
-
                     // Use the JSON formatter to create the content of the request body
-                    httpContent = new ObjectContent<EngineInitializationRequestAPI>(engineInitializationRequest, jsonMediaTypeFormatter);
+                    httpContent = new StringContent(JsonConvert.SerializeObject(engineInitializationRequest));
+                    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                     // Construct the URL for the engine initialization request
                     endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_INITIALIZE_URI_PART;
@@ -181,7 +177,7 @@ namespace ManyWho.Flow.SDK
                     if (httpResponseMessage.IsSuccessStatusCode)
                     {
                         // Get the engine initialization response object from the response message
-                        engineInitializationResponse = httpResponseMessage.Content.ReadAsAsync<EngineInitializationResponseAPI>().Result;
+                        engineInitializationResponse = JsonConvert.DeserializeObject<EngineInitializationResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
 
                         // We successfully executed the request, we can break out of the retry loop
                         break;
@@ -189,22 +185,22 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        httpResponseException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
 
-                        if (httpResponseException != null)
+                        if (webException != null)
                         {
-                            throw httpResponseException;
+                            throw webException;
                         }
                     }
                 }
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    httpResponseException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
 
-                    if (httpResponseException != null)
+                    if (webException != null)
                     {
-                        throw httpResponseException;
+                        throw webException;
                     }
                 }
                 finally
@@ -219,12 +215,11 @@ namespace ManyWho.Flow.SDK
 
         public EngineInvokeResponseAPI Execute(IAuthenticatedWho authenticatedWho, String tenantId, EngineInvokeRequestAPI engineInvokeRequest, String codeReferenceName, String alertEmail)
         {
-            HttpResponseException httpResponseException = null;
+            WebException webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
-            MediaTypeFormatter jsonMediaTypeFormatter = null;
             EngineInvokeResponseAPI engineInvokeResponse = null;
 
             // Make sure we have an engine invoke request object
@@ -248,11 +243,9 @@ namespace ManyWho.Flow.SDK
                     // Create the http client to handle our request
                     httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, engineInvokeRequest.stateId);
 
-                    // Create a new json formatter so the request will be in the right format
-                    jsonMediaTypeFormatter = new JsonMediaTypeFormatter();
-
                     // Use the JSON formatter to create the content of the request body
-                    httpContent = new ObjectContent<EngineInvokeRequestAPI>(engineInvokeRequest, jsonMediaTypeFormatter);
+                    httpContent = new StringContent(JsonConvert.SerializeObject(engineInvokeRequest));
+                    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                     // Construct the URL for the engine execute request
                     endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_EXECUTE_URI_PART + engineInvokeRequest.stateId;
@@ -264,7 +257,7 @@ namespace ManyWho.Flow.SDK
                     if (httpResponseMessage.IsSuccessStatusCode)
                     {
                         // Get the engine invoke response object from the response message
-                        engineInvokeResponse = httpResponseMessage.Content.ReadAsAsync<EngineInvokeResponseAPI>().Result;
+                        engineInvokeResponse = JsonConvert.DeserializeObject<EngineInvokeResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
 
                         // We successfully executed the request, we can break out of the retry loop
                         break;
@@ -272,22 +265,22 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        httpResponseException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
 
-                        if (httpResponseException != null)
+                        if (webException != null)
                         {
-                            throw httpResponseException;
+                            throw webException;
                         }
                     }
                 }
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    httpResponseException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
 
-                    if (httpResponseException != null)
+                    if (webException != null)
                     {
-                        throw httpResponseException;
+                        throw webException;
                     }
                 }
                 finally
@@ -298,6 +291,96 @@ namespace ManyWho.Flow.SDK
             }
 
             return engineInvokeResponse;
+        }
+
+        public String Response(IAuthenticatedWho authenticatedWho, String tenantId, String callbackUri, ServiceResponseAPI serviceResponse, String codeReferenceName, String alertEmail)
+        {
+            WebException webException = null;
+            HttpClient httpClient = null;
+            HttpContent httpContent = null;
+            HttpResponseMessage httpResponseMessage = null;
+            String invokeType = null;
+
+            // Make sure we have a tenant to associate this response with
+            if (tenantId == null ||
+                tenantId.Trim().Length == 0)
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The TenantId is null or blank.");
+            }
+
+            // Make sure we know where we're posting to!
+            if (callbackUri == null ||
+                callbackUri.Trim().Length == 0)
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The CallbackUri is null or blank.");
+            }
+
+            // Make sure we have a service response object
+            if (serviceResponse == null)
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The ServiceResponse object is null.");
+            }
+
+            // Make sure the token identifier has been provided as this is needed for the URI
+            if (serviceResponse.token == null ||
+                serviceResponse.token.Trim().Length == 0)
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The ServiceResponse.Token property is null or blank.");
+            }
+
+            // We enclose the execute request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null);
+
+                    // Use the JSON formatter to create the content of the request body
+                    httpContent = new StringContent(JsonConvert.SerializeObject(serviceResponse));
+                    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    // Post the engine invoke request over to ManyWho
+                    httpResponseMessage = httpClient.PostAsync(callbackUri, httpContent).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // Get the invoke type from the response message
+                        invokeType = httpResponseMessage.Content.ReadAsStringAsync().Result;
+
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, callbackUri);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, callbackUri);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, httpContent, httpResponseMessage);
+                }
+            }
+
+            return invokeType;
         }
     }
 }

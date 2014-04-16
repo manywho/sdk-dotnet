@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Runtime.Serialization;
 
 /*!
@@ -22,7 +21,6 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Describe
 {
-    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class DescribeValueAPI
     {
@@ -70,7 +68,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// This allows the describe value to reference supported types.
         /// </summary>
         [DataMember]
-        public String typeExternalId
+        public String typeElementDeveloperName
         {
             get;
             set;

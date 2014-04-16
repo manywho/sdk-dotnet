@@ -27,7 +27,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     /// This object stores the configuration information we need to make object data requests as part of a map element request or
     /// as part of a form field.
     /// </summary>
-    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class ObjectDataRequestConfigAPI
     {

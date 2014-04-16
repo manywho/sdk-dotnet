@@ -13,7 +13,6 @@ using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 namespace ManyWho.Flow.SDK.Draw.Flow
 {
-    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowImageResponseAPI : FlowResponseAPI
     {
@@ -47,6 +46,13 @@ namespace ManyWho.Flow.SDK.Draw.Flow
 
         [DataMember]
         public List<ValueElementResponseAPI> valueElements
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<MacroElementResponseAPI> macroElements
         {
             get;
             set;

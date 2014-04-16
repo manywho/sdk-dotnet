@@ -1,29 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Web;
-using System.Web.Http;
+//using System.Text;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using ManyWho.Flow.SDK.Security;
 
-/*!
+///*!
 
-Copyright 2013 Manywho, Inc.
+//Copyright 2013 Manywho, Inc.
 
-Licensed under the Manywho License, Version 1.0 (the "License"); you may not use this
-file except in compliance with the License.
+//Licensed under the Manywho License, Version 1.0 (the "License"); you may not use this
+//file except in compliance with the License.
 
-You may obtain a copy of the License at: http://manywho.com/sharedsource
+//You may obtain a copy of the License at: http://manywho.com/sharedsource
 
-Unless required by applicable law or agreed to in writing, software distributed under
-the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied. See the License for the specific language governing
-permissions and limitations under the License.
+//Unless required by applicable law or agreed to in writing, software distributed under
+//the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+//KIND, either express or implied. See the License for the specific language governing
+//permissions and limitations under the License.
 
-*/
+//*/
 
 namespace ManyWho.Flow.SDK.Utils
 {
@@ -38,9 +36,27 @@ namespace ManyWho.Flow.SDK.Utils
         public const String HEADER_MANYWHO_TENANT = "ManyWhoTenant";
         public const String HEADER_CULTURE = "Culture";
 
-        public static HttpResponseException HandleUnsuccessfulHttpResponseMessage(IAuthenticatedWho authenticatedWho, Int32 iteration, String alertEmail, String codeReferenceName, HttpResponseMessage httpResponseMessage, String endpointUrl)
+        /// <summary>
+        /// Utility method for getting the authenticated who from the header.
+        /// </summary>
+        public static IAuthenticatedWho GetWho(String authorizationHeader)
         {
-            HttpResponseException httpResponseException = null;
+            IAuthenticatedWho authenticatedWho = null;
+
+            // Check to see if it's null - it can be in some situations
+            if (authorizationHeader != null &&
+                authorizationHeader.Trim().Length > 0)
+            {
+                // Deserialize into an object
+                authenticatedWho = AuthenticationUtils.Deserialize(Uri.EscapeDataString(authorizationHeader));
+            }
+
+            return authenticatedWho;
+        }
+
+        public static WebException HandleUnsuccessfulHttpResponseMessage(IAuthenticatedWho authenticatedWho, Int32 iteration, String alertEmail, String codeReferenceName, HttpResponseMessage httpResponseMessage, String endpointUrl)
+        {
+            WebException webException = null;
 
             if (iteration >= (MAXIMUM_RETRIES - 1))
             {
@@ -48,7 +64,7 @@ namespace ManyWho.Flow.SDK.Utils
                 ErrorUtils.SendAlert(authenticatedWho, "Fault", alertEmail, codeReferenceName, "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The status code is: " + httpResponseMessage.StatusCode + ". The reason is: " + httpResponseMessage.ReasonPhrase);
 
                 // Throw the fault up to the caller
-                httpResponseException = ErrorUtils.GetWebException(httpResponseMessage.StatusCode, httpResponseMessage.ReasonPhrase);
+                webException = ErrorUtils.GetWebException(httpResponseMessage.StatusCode, httpResponseMessage.ReasonPhrase);
             }
             else
             {
@@ -56,12 +72,12 @@ namespace ManyWho.Flow.SDK.Utils
                 ErrorUtils.SendAlert(authenticatedWho, "Warning", alertEmail, codeReferenceName, "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The status code is: " + httpResponseMessage.StatusCode + ". The reason is: " + httpResponseMessage.ReasonPhrase);
             }
 
-            return httpResponseException;
+            return webException;
         }
 
-        public static HttpResponseException HandleHttpException(IAuthenticatedWho authenticatedWho, Int32 iteration, String alertEmail, String codeReferenceName, Exception exception, String endpointUrl)
+        public static WebException HandleHttpException(IAuthenticatedWho authenticatedWho, Int32 iteration, String alertEmail, String codeReferenceName, Exception exception, String endpointUrl)
         {
-            HttpResponseException httpResponseException = null;
+            WebException webException = null;
 
             if (iteration >= (MAXIMUM_RETRIES - 1))
             {
@@ -69,7 +85,7 @@ namespace ManyWho.Flow.SDK.Utils
                 ErrorUtils.SendAlert(authenticatedWho, "Fault", alertEmail, codeReferenceName, "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The error message we're getting back is: " + ErrorUtils.GetExceptionMessage(exception));
 
                 // Throw the fault up to the caller
-                httpResponseException = ErrorUtils.GetWebException(HttpStatusCode.BadRequest, exception);
+                webException = ErrorUtils.GetWebException(HttpStatusCode.BadRequest, exception);
             }
             else
             {
@@ -77,7 +93,7 @@ namespace ManyWho.Flow.SDK.Utils
                 ErrorUtils.SendAlert(authenticatedWho, "Warning", alertEmail, codeReferenceName, "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The error message we're getting back is: " + ErrorUtils.GetExceptionMessage(exception));
             }
 
-            return httpResponseException;
+            return webException;
         }
 
         public static HttpClient CreateHttpClient(IAuthenticatedWho authenticatedWho, String tenantId, String stateId)
@@ -94,7 +110,7 @@ namespace ManyWho.Flow.SDK.Utils
             if (authenticatedWho != null)
             {
                 // Serialize and add the user information to the header
-                httpClient.DefaultRequestHeaders.Add(HEADER_AUTHORIZATION, HttpUtility.UrlEncode(AuthenticationUtils.Serialize(authenticatedWho)));
+                httpClient.DefaultRequestHeaders.Add(HEADER_AUTHORIZATION, Uri.EscapeDataString(AuthenticationUtils.Serialize(authenticatedWho)));
             }
 
             if (tenantId != null &&

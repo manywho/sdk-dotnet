@@ -24,12 +24,25 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Run.State
 {
-    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class StateAPI
     {
         [DataMember]
         public String id
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public DateTime dateCreated
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public DateTime dateModified
         {
             get;
             set;
@@ -43,6 +56,13 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
+        public String currentFlowDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String currentMapElementId
         {
             get;
@@ -50,28 +70,63 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
-        public String runningUserId
+        public String currentMapElementDeveloperName
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean isCommitted
+        public String currentStreamId
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean isCompleted
+        public String currentRunningUserId
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean logState
+        public String manywhoTenantId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Dictionary<String, String> annotations
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<StateEntryAPI> stateEntries
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public StateEntryAPI precommitStateEntry
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<StateValueAPI> values
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String authorizationHeader
         {
             get;
             set;

@@ -25,7 +25,6 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Run
 {
-    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class EngineNavigationRequestAPI
     {

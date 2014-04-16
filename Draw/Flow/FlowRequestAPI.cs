@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using ManyWho.Flow.SDK.Draw.Content;
 using ManyWho.Flow.SDK.Draw.Elements.Map;
 using ManyWho.Flow.SDK.Draw.Elements.Type;
@@ -27,7 +26,6 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Draw.Flow
 {
-    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowRequestAPI
     {

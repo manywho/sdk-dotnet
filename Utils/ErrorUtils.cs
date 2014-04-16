@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Http;
 using System.Net.Http;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
-using Microsoft.WindowsAzure;
+//using System.Configuration;
 using ManyWho.Flow.SDK.Security;
 
 /*!
@@ -41,30 +40,30 @@ namespace ManyWho.Flow.SDK.Utils
         public const String ALERT_TYPE_FAULT = "Fault";
         public const String ALERT_TYPE_WARNING = "Warning";
 
-        public static HttpResponseException GetWebException(HttpStatusCode statusCode, String reasonPhrase)
+        public static WebException GetWebException(HttpStatusCode statusCode, String reasonPhrase)
         {
-            HttpResponseException httpResponseException = null;
-            HttpResponseMessage httpResponseMessage = null;
+            WebException webException = null;
+            //HttpWebResponse httpResponseMessage = null;
 
             // Create the new http response message with the status code
-            httpResponseMessage = new HttpResponseMessage(statusCode);
+            //httpResponseMessage = new HttpWebResponse();
 
             // Reason phrases cannot have carriage returns
-            httpResponseMessage.ReasonPhrase = reasonPhrase.Replace(Environment.NewLine, " ");
+            //httpResponseMessage.ReasonPhrase = reasonPhrase.Replace(Environment.NewLine, " ");
 
             // Add the response message to the exception
-            httpResponseException = new HttpResponseException(httpResponseMessage);
+            webException = new WebException(reasonPhrase.Replace(Environment.NewLine, " "));
 
-            return httpResponseException;
+            return webException;
         }
 
-        public static HttpResponseException GetWebException(HttpStatusCode statusCode, Exception exception)
+        public static WebException GetWebException(HttpStatusCode statusCode, Exception exception)
         {
             // Aggregate the exception and return as a single reason phrase
             return GetWebException(statusCode, AggregateAndWriteErrorMessage(exception, "", false));
         }
 
-        public static HttpResponseException GetPluginWebException(IAuthenticatedWho authenticatedWho, Exception exception, String methodName, String pluginName, String shortDescription)
+        public static WebException GetPluginWebException(IAuthenticatedWho authenticatedWho, Exception exception, String methodName, String pluginName, String shortDescription)
         {
             String message = null;
 
@@ -87,70 +86,70 @@ namespace ManyWho.Flow.SDK.Utils
 
         public static void SendAlert(IAuthenticatedWho authenticatedWho, String alertType, String alertEmail, String pluginName, String faultDescription, Exception exception)
         {
-            NetworkCredential networkCredentials = null;
-            SmtpClient smtpClient = null;
-            MailMessage mailMessage = null;
-            String message = null;
+            //NetworkCredential networkCredentials = null;
+            //SmtpClient smtpClient = null;
+            //MailMessage mailMessage = null;
+            //String message = null;
 
-            if (alertEmail != null &&
-                alertEmail.Trim().Length > 0)
-            {
-                try
-                {
-                    if (Boolean.Parse(CloudConfigurationManager.GetSetting(SETTING_SEND_ALERTS)) == true)
-                    {
-                        mailMessage = new MailMessage();
-                        mailMessage.To.Add(new MailAddress(alertEmail, alertEmail));
-                        mailMessage.From = new MailAddress(CloudConfigurationManager.GetSetting(SETTING_SEND_ALERT_FROM_EMAIL), CloudConfigurationManager.GetSetting(SETTING_SEND_ALERT_FROM_EMAIL));
-                        mailMessage.Subject = pluginName + " - Plugin " + alertType + " Alert";
+            //if (alertEmail != null &&
+            //    alertEmail.Trim().Length > 0)
+            //{
+            //    try
+            //    {
+            //        if (Boolean.Parse(ConfigurationManager.AppSettings.Get(SETTING_SEND_ALERTS)) == true)
+            //        {
+            //            mailMessage = new MailMessage();
+            //            mailMessage.To.Add(new MailAddress(alertEmail, alertEmail));
+            //            mailMessage.From = new MailAddress(ConfigurationManager.AppSettings.Get(SETTING_SEND_ALERT_FROM_EMAIL), ConfigurationManager.AppSettings.Get(SETTING_SEND_ALERT_FROM_EMAIL));
+            //            mailMessage.Subject = pluginName + " - Plugin " + alertType + " Alert";
 
-                        // Create the full message
-                        message = "";
+            //            // Create the full message
+            //            message = "";
 
-                        // Create the fault description block
-                        message += "Fault" + Environment.NewLine;
-                        message += "-----" + Environment.NewLine;
-                        message += faultDescription + Environment.NewLine + Environment.NewLine;
+            //            // Create the fault description block
+            //            message += "Fault" + Environment.NewLine;
+            //            message += "-----" + Environment.NewLine;
+            //            message += faultDescription + Environment.NewLine + Environment.NewLine;
 
-                        // Create the flow summary block
-                        message += "Plugin" + Environment.NewLine;
-                        message += "------" + Environment.NewLine;
-                        message += "Name: " + pluginName + Environment.NewLine + Environment.NewLine;
+            //            // Create the flow summary block
+            //            message += "Plugin" + Environment.NewLine;
+            //            message += "------" + Environment.NewLine;
+            //            message += "Name: " + pluginName + Environment.NewLine + Environment.NewLine;
 
-                        // Create the running user summary block
-                        message += "Affected User" + Environment.NewLine;
-                        message += "-------------" + Environment.NewLine;
+            //            // Create the running user summary block
+            //            message += "Affected User" + Environment.NewLine;
+            //            message += "-------------" + Environment.NewLine;
 
-                        if (authenticatedWho != null)
-                        {
-                            message += "User Id: " + authenticatedWho.UserId + Environment.NewLine;
-                            message += "Directory Id: " + authenticatedWho.DirectoryId + Environment.NewLine;
-                            message += "Directory Name: " + authenticatedWho.DirectoryName + Environment.NewLine;
-                            message += "Email: " + authenticatedWho.Email + Environment.NewLine + Environment.NewLine;
-                        }
-                        else
-                        {
-                            message += "Unknown" + Environment.NewLine + Environment.NewLine;
-                        }
+            //            if (authenticatedWho != null)
+            //            {
+            //                message += "User Id: " + authenticatedWho.UserId + Environment.NewLine;
+            //                message += "Directory Id: " + authenticatedWho.DirectoryId + Environment.NewLine;
+            //                message += "Directory Name: " + authenticatedWho.DirectoryName + Environment.NewLine;
+            //                message += "Email: " + authenticatedWho.Email + Environment.NewLine + Environment.NewLine;
+            //            }
+            //            else
+            //            {
+            //                message += "Unknown" + Environment.NewLine + Environment.NewLine;
+            //            }
 
-                        // Finally, we add the exception details if there is an exception
-                        message += AggregateAndWriteErrorMessage(exception, "", true);
+            //            // Finally, we add the exception details if there is an exception
+            //            message += AggregateAndWriteErrorMessage(exception, "", true);
 
-                        // Create the message in our mail system
-                        mailMessage.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message, null, MediaTypeNames.Text.Plain));
+            //            // Create the message in our mail system
+            //            mailMessage.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message, null, MediaTypeNames.Text.Plain));
 
-                        networkCredentials = new NetworkCredential(CloudConfigurationManager.GetSetting(SETTING_SENDGRID_USERNAME), CloudConfigurationManager.GetSetting(SETTING_SENDGRID_PASSWORD));
+            //            networkCredentials = new NetworkCredential(ConfigurationManager.AppSettings.Get(SETTING_SENDGRID_USERNAME), ConfigurationManager.AppSettings.Get(SETTING_SENDGRID_PASSWORD));
 
-                        smtpClient = new SmtpClient(CloudConfigurationManager.GetSetting(SETTING_SENDGRID_SMTP), Convert.ToInt32(587));
-                        smtpClient.Credentials = networkCredentials;
-                        smtpClient.Send(mailMessage);
-                    }
-                }
-                catch (Exception)
-                {
-                    // Hide any faults so we're not piling errors on errors
-                }
-            }
+            //            smtpClient = new SmtpClient(ConfigurationManager.AppSettings.Get(SETTING_SENDGRID_SMTP), Convert.ToInt32(587));
+            //            smtpClient.Credentials = networkCredentials;
+            //            smtpClient.Send(mailMessage);
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+            //        // Hide any faults so we're not piling errors on errors
+            //    }
+            //}
         }
 
         private static HttpStatusCode GetStatusCode(Exception exception)
@@ -159,10 +158,10 @@ namespace ManyWho.Flow.SDK.Utils
 
             if (exception != null)
             {
-                if (exception is HttpResponseException &&
-                    ((HttpResponseException)exception).Response != null)
+                if (exception is WebException &&
+                    ((WebException)exception).Response != null)
                 {
-                    httpStatusCode = ((HttpResponseException)exception).Response.StatusCode;
+                    httpStatusCode = ((HttpWebResponse)((WebException)exception).Response).StatusCode;
                 }
             }
 
@@ -177,9 +176,9 @@ namespace ManyWho.Flow.SDK.Utils
                 {
                     message = AggregateAndWriteAggregateErrorMessage((AggregateException)exception, message, includeTrace);
                 }
-                else if (exception is HttpResponseException)
+                else if (exception is WebException)
                 {
-                    message = AggregateAndWriteHttpResponseErrorMessage((HttpResponseException)exception, message);
+                    message = AggregateAndWriteHttpResponseErrorMessage((WebException)exception, message);
                 }
                 else
                 {
@@ -207,13 +206,13 @@ namespace ManyWho.Flow.SDK.Utils
                         {
                             message = AggregateAndWriteAggregateErrorMessage((AggregateException)innerException, message, includeTrace);
                         }
-                        else if (innerException is HttpResponseException)
+                        else if (innerException is WebException)
                         {
-                            message = AggregateAndWriteHttpResponseErrorMessage((HttpResponseException)exception, message);
+                            message = AggregateAndWriteHttpResponseErrorMessage((WebException)innerException, message);
                         }
                         else
                         {
-                            message = AggregateAndWriteErrorMessage(exception, message, includeTrace);
+                            message = AggregateAndWriteErrorMessage(innerException, message, includeTrace);
                         }
                     }
                 }
@@ -222,19 +221,33 @@ namespace ManyWho.Flow.SDK.Utils
             return message;
         }
 
-        private static String AggregateAndWriteHttpResponseErrorMessage(HttpResponseException exception, String message)
+        private static String AggregateAndWriteHttpResponseErrorMessage(WebException exception, String message)
         {
-            if (exception != null &&
-                exception.Response != null)
-            {
-                HttpResponseMessage responseException = exception.Response;
+            WebResponse webResponse = null;
+            String statusDescription = null;
 
-                // Grab the message from the 
-                if (responseException.ReasonPhrase != null &&
-                    responseException.ReasonPhrase.Trim().Length > 0)
+            if (exception != null)
+            {
+                if (exception.Response != null)
                 {
-                    message += "HttpResponseException:" + Environment.NewLine;
-                    message += responseException.ReasonPhrase + Environment.NewLine + Environment.NewLine;
+                    webResponse = exception.Response;
+
+                    if (webResponse is HttpWebResponse)
+                    {
+                        statusDescription = ((HttpWebResponse)webResponse).StatusDescription;
+
+                        // Grab the message from the 
+                        if (statusDescription != null &&
+                            statusDescription.Trim().Length > 0)
+                        {
+                            message += "HttpResponseException:" + Environment.NewLine;
+                            message += statusDescription + Environment.NewLine + Environment.NewLine;
+                        }
+                    }
+                }
+                else
+                {
+                    message += exception.Message;
                 }
             }
 

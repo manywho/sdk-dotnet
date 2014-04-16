@@ -16,7 +16,6 @@ using ManyWho.Flow.SDK.Translate.Elements.Value;
 
 namespace ManyWho.Flow.SDK.Translate.Flow
 {
-    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowImageTranslationResponseAPI
     {

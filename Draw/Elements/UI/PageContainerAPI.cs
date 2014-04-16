@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Runtime.Serialization;
 
 /*!
@@ -22,7 +21,6 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Draw.Elements.UI
 {
-    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class PageContainerAPI
     {
@@ -63,6 +61,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
 
         [DataMember]
         public Int32 order
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Dictionary<String, String> attributes
         {
             get;
             set;

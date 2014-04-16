@@ -52,6 +52,12 @@ namespace ManyWho.Flow.SDK
         public const String MODE_DEBUG = "DEBUG";
         public const String MODE_DEBUG_STEPTHROUGH = "DEBUG_STEPTHROUGH";
 
+        // Reporting mode constants
+        public const String REPORT_NONE = null;
+        public const String REPORT_VALUES = "VALUES";
+        public const String REPORT_PATH = "PATH";
+        public const String REPORT_PATH_AND_VALUES = "PATH_AND_VALUES";
+
         // Content Value Implementation constants
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_DETACH = "DETACH"; // Removes the external identifier from the root object only
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_EMPTY = "EMPTY"; // blanks out the complex object or table with a null value
@@ -137,6 +143,9 @@ namespace ManyWho.Flow.SDK
         public const String CULTURE_TOKEN_COUNTRY = "Country";
         public const String CULTURE_TOKEN_LANGUAGE = "Language";
         public const String CULTURE_TOKEN_VARIANT = "Variant";
+
+        public static readonly Guid MANYWHO_JOIN_URI_VALUE_ID = Guid.Parse("E2063196-3C75-4388-8B00-1005B8CD59AD");
+        public const String MANYWHO_JOIN_URI_DEVELOPER_NAME = "$JoinUri";
 
         public static readonly Guid MANYWHO_USER_VALUE_ID = Guid.Parse("03DC41DD-1C6B-4B33-BF61-CBD1D0778FFF");
         public const String MANYWHO_USER_VALUE_DEVELOPER_NAME = "$RunningUser";
@@ -292,6 +301,7 @@ namespace ManyWho.Flow.SDK
         public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_FUNCTION = "FUNCTION";
         public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_TABLE = "TABLE";
         public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_CONNECTION = "CONNECTION";
+        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_MACRO = "MACRO";
 
         // Access values for shared elements
         public const String ACCESS_PRIVATE = "PRIVATE";
@@ -387,5 +397,8 @@ namespace ManyWho.Flow.SDK
         // The authentication types that are currently supported
         public const String AUTHENTICATION_TYPE_USERNAME_PASSWORD = "USERNAME_PASSWORD";
         public const String AUTHENTICATION_TYPE_OAUTH2 = "OAUTH2";
+
+        public const String PROPERTY_SEARCH = "PROPERTY:";
+        public const String EXACT_SEARCH = "EXACT:";
     }
 }

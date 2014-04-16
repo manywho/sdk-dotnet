@@ -24,7 +24,7 @@ namespace ManyWho.Flow.SDK.Utils
                 foreach (EngineValueAPI engineValue in engineValues)
                 {
                     // Check to see if this is the post
-                    if (engineValue.developerName.Equals(developerName, StringComparison.InvariantCultureIgnoreCase) == true)
+                    if (engineValue.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase) == true)
                     {
                         // Grab the message
                         contentValue = engineValue.contentValue;
@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK.Utils
                 foreach (EngineValueAPI engineValue in engineValues)
                 {
                     // Check to see if this is the post
-                    if (engineValue.developerName.Equals(developerName, StringComparison.InvariantCultureIgnoreCase) == true)
+                    if (engineValue.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase) == true)
                     {
                         // Grab the message
                         if (engineValue.objectData != null &&
@@ -93,7 +93,7 @@ namespace ManyWho.Flow.SDK.Utils
                 foreach (EngineValueAPI engineValue in engineValues)
                 {
                     // Check to see if this is the post
-                    if (engineValue.developerName.Equals(developerName, StringComparison.InvariantCultureIgnoreCase) == true)
+                    if (engineValue.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase) == true)
                     {
                         // Grab the message
                         objectData = engineValue.objectData;
@@ -178,7 +178,7 @@ namespace ManyWho.Flow.SDK.Utils
                     {
                         foreach (TypeElementPropertyAPI typeElementEntryAPI in typeElementResponse.properties)
                         {
-                            if (typeElementEntryAPI.developerName.Equals(propertyAPI.developerName, StringComparison.InvariantCultureIgnoreCase) == true)
+                            if (typeElementEntryAPI.developerName.Equals(propertyAPI.developerName, StringComparison.OrdinalIgnoreCase) == true)
                             {
                                 typeElementEntryId = typeElementEntryAPI.id;
                                 contentType = typeElementEntryAPI.contentType;
@@ -196,11 +196,11 @@ namespace ManyWho.Flow.SDK.Utils
 
                     xml += "<complextypeentry typeelemententryid=\"" + typeElementEntryId + "\" contenttype=\"" + contentType + "\">";
 
-                    if (contentType.Equals(ManyWhoConstants.CONTENT_TYPE_OBJECT, StringComparison.InvariantCultureIgnoreCase) == true)
+                    if (contentType.Equals(ManyWhoConstants.CONTENT_TYPE_OBJECT, StringComparison.OrdinalIgnoreCase) == true)
                     {
                         ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "Object properties not supported yet.");
                     }
-                    else if (contentType.Equals(ManyWhoConstants.CONTENT_TYPE_LIST, StringComparison.InvariantCultureIgnoreCase) == true)
+                    else if (contentType.Equals(ManyWhoConstants.CONTENT_TYPE_LIST, StringComparison.OrdinalIgnoreCase) == true)
                     {
                         ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "List properties not supported yet.");
                     }

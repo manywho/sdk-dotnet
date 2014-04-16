@@ -22,7 +22,6 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Run.State
 {
-    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class GeoLocationAPI
     {
@@ -70,6 +69,13 @@ namespace ManyWho.Flow.SDK.Run.State
 
         [DataMember]
         public Decimal speed
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public DateTime time
         {
             get;
             set;

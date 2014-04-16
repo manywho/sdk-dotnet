@@ -25,12 +25,18 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Run
 {
-    [Serializable]
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class EngineInitializationRequestAPI
     {
         [DataMember]
         public FlowIdAPI flowId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String stateId
         {
             get;
             set;
@@ -66,6 +72,13 @@ namespace ManyWho.Flow.SDK.Run
 
         [DataMember]
         public String mode
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String reportingMode
         {
             get;
             set;

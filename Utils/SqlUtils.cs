@@ -19,9 +19,9 @@ namespace ManyWho.Flow.SDK.Utils
                 throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "Criteria type cannot be null or blank.");
             }
 
-            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_STARTS_WITH, StringComparison.InvariantCultureIgnoreCase) == true ||
-                     criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ENDS_WITH, StringComparison.InvariantCultureIgnoreCase) == true ||
-                     criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_CONTAINS, StringComparison.InvariantCultureIgnoreCase) == true)
+            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_STARTS_WITH, StringComparison.OrdinalIgnoreCase) == true ||
+                     criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ENDS_WITH, StringComparison.OrdinalIgnoreCase) == true ||
+                     criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_CONTAINS, StringComparison.OrdinalIgnoreCase) == true)
             {
                 if (likeValue == null ||
                     likeValue.Trim().Length == 0)
@@ -30,33 +30,33 @@ namespace ManyWho.Flow.SDK.Utils
                 }
             }
 
-            if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_EQUAL, StringComparison.InvariantCultureIgnoreCase) == true)
+            if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_EQUAL, StringComparison.OrdinalIgnoreCase) == true)
             {
                 sql += " =";
             }
-            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_GREATER_THAN, StringComparison.InvariantCultureIgnoreCase) == true)
+            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_GREATER_THAN, StringComparison.OrdinalIgnoreCase) == true)
             {
                 sql += " >";
             }
-            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_GREATER_THAN_OR_EQUAL, StringComparison.InvariantCultureIgnoreCase) == true)
+            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_GREATER_THAN_OR_EQUAL, StringComparison.OrdinalIgnoreCase) == true)
             {
                 sql += " >=";
             }
-            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_LESS_THAN, StringComparison.InvariantCultureIgnoreCase) == true)
+            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_LESS_THAN, StringComparison.OrdinalIgnoreCase) == true)
             {
                 sql += " <";
             }
-            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_LESS_THAN_OR_EQUAL, StringComparison.InvariantCultureIgnoreCase) == true)
+            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_LESS_THAN_OR_EQUAL, StringComparison.OrdinalIgnoreCase) == true)
             {
                 sql += " <=";
             }
-            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_NOT_EQUAL, StringComparison.InvariantCultureIgnoreCase) == true)
+            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_NOT_EQUAL, StringComparison.OrdinalIgnoreCase) == true)
             {
                 sql += " !=";
             }
-            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_STARTS_WITH, StringComparison.InvariantCultureIgnoreCase) == true ||
-                     criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ENDS_WITH, StringComparison.InvariantCultureIgnoreCase) == true ||
-                     criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_CONTAINS, StringComparison.InvariantCultureIgnoreCase) == true)
+            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_STARTS_WITH, StringComparison.OrdinalIgnoreCase) == true ||
+                     criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ENDS_WITH, StringComparison.OrdinalIgnoreCase) == true ||
+                     criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_CONTAINS, StringComparison.OrdinalIgnoreCase) == true)
             {
                 sql += " LIKE";
             }
@@ -65,15 +65,15 @@ namespace ManyWho.Flow.SDK.Utils
                 throw new NotImplementedException();
             }
 
-            if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_STARTS_WITH, StringComparison.InvariantCultureIgnoreCase) == true)
+            if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_STARTS_WITH, StringComparison.OrdinalIgnoreCase) == true)
             {
                 sql += " '" + likeValue + "%'";
             }
-            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ENDS_WITH, StringComparison.InvariantCultureIgnoreCase) == true)
+            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ENDS_WITH, StringComparison.OrdinalIgnoreCase) == true)
             {
                 sql += " '%" + likeValue + "'";
             }
-            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_CONTAINS, StringComparison.InvariantCultureIgnoreCase) == true)
+            else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_CONTAINS, StringComparison.OrdinalIgnoreCase) == true)
             {
                 sql += " '%" + likeValue + "%'";
             }
