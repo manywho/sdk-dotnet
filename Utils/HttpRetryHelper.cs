@@ -18,12 +18,12 @@ namespace ManyWho.Flow.SDK.Utils
         {
             Boolean isWorthRetry = true;
 
-            // If we get any of these status codes, there's no point hammering the service again
+            // If we get any of these status codes, there's no point hammering the service again as the request either got there and an error
+            // occurred, or we're referencing something that isn't there (though if we get a "NOT FOUND", we do try again just in case!)
             if (httpStatusCode == HttpStatusCode.Forbidden ||
                 httpStatusCode == HttpStatusCode.MethodNotAllowed ||
                 httpStatusCode == HttpStatusCode.Moved ||
                 httpStatusCode == HttpStatusCode.MovedPermanently ||
-                httpStatusCode == HttpStatusCode.NotFound ||
                 httpStatusCode == HttpStatusCode.NotImplemented ||
                 httpStatusCode == HttpStatusCode.PreconditionFailed ||
                 httpStatusCode == HttpStatusCode.ProxyAuthenticationRequired ||
@@ -35,7 +35,9 @@ namespace ManyWho.Flow.SDK.Utils
                 httpStatusCode == HttpStatusCode.SeeOther ||
                 httpStatusCode == HttpStatusCode.Unauthorized ||
                 httpStatusCode == HttpStatusCode.UnsupportedMediaType ||
-                httpStatusCode == HttpStatusCode.UseProxy)
+                httpStatusCode == HttpStatusCode.UseProxy ||
+                httpStatusCode == HttpStatusCode.BadRequest ||
+                httpStatusCode == HttpStatusCode.InternalServerError)
             {
                 isWorthRetry = false;
             }

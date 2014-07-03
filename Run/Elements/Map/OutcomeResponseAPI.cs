@@ -79,5 +79,12 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
             get;
             set;
         }
+
+        [DataMember]
+        public Boolean isOut
+        {
+            get;
+            set;
+        }
     }
 }

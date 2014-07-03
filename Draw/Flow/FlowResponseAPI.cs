@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Security;
 using ManyWho.Flow.SDK.Draw.Elements.Map;
 
 /*!
@@ -40,21 +41,21 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         [DataMember]
-        public String userCreated
+        public BuilderWhoAPI whoCreated
         {
             get;
             set;
         }
 
         [DataMember]
-        public String userModified
+        public BuilderWhoAPI whoModified
         {
             get;
             set;
         }
 
         [DataMember]
-        public String userOwner
+        public BuilderWhoAPI whoOwner
         {
             get;
             set;

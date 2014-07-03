@@ -43,6 +43,20 @@ namespace ManyWho.Flow.SDK.Run
         }
 
         [DataMember]
+        public String parentStateId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String externalIdentifier
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public Dictionary<String, String> annotations
         {
             get;

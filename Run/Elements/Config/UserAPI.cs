@@ -38,5 +38,12 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
             get;
             set;
         }
+
+        [DataMember]
+        public Boolean runningUser
+        {
+            get;
+            set;
+        }
     }
 }

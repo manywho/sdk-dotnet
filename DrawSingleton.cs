@@ -94,7 +94,7 @@ namespace ManyWho.Flow.SDK
                         authorizationToken = authorizationToken.Substring(1, authorizationToken.Length - 2);
 
                         // Deserialize the token back to an authenticated who object
-                        authenticatedWho = AuthenticationUtils.Deserialize(Uri.EscapeDataString(authorizationToken));
+                        authenticatedWho = AuthenticationUtils.Deserialize(Uri.UnescapeDataString(authorizationToken));
 
                         // We successfully executed the request, we can break out of the retry loop
                         break;

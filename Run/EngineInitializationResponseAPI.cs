@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ManyWho.Flow.SDK.Run.State;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Run.Elements.UI;
 using ManyWho.Flow.SDK.Run.Elements.Config;
 using ManyWho.Flow.SDK.Translate;
 
@@ -72,6 +73,13 @@ namespace ManyWho.Flow.SDK.Run
 
         [DataMember]
         public EngineAuthorizationContextAPI authorizationContext
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<NavigationElementReferenceAPI> navigationElementReferences
         {
             get;
             set;

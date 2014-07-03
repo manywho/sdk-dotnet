@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ManyWho.Flow.SDK.Run;
 using ManyWho.Flow.SDK.Run.State;
+using ManyWho.Flow.SDK.Run.Elements.UI;
 using ManyWho.Flow.SDK.Run.Elements.Map;
 using ManyWho.Flow.SDK.Draw.Elements.Map;
 using ManyWho.Flow.SDK.Translate;
@@ -39,6 +40,13 @@ namespace ManyWho.Flow.SDK.Run
 
         [DataMember]
         public String stateId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String parentStateId
         {
             get;
             set;
@@ -158,6 +166,13 @@ namespace ManyWho.Flow.SDK.Run
 
         [DataMember]
         public EngineAuthorizationContextAPI authorizationContext
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<NavigationElementReferenceAPI> navigationElementReferences
         {
             get;
             set;

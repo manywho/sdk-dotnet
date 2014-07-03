@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Security;
+using ManyWho.Flow.SDK.Draw.Flow;
+using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -20,41 +22,27 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Config
+namespace ManyWho.Flow.SDK.Draw.Elements.Map
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ServiceElementResponseAPI : ServiceElementRequestAPI
+    public class FlowOutAPI
     {
         [DataMember]
-        public DateTime dateCreated
+        public ValueElementIdAPI valueElementStateId
+        {
+            get;
+            set;
+        }
+        
+        [DataMember]
+        public FlowIdAPI flowId
         {
             get;
             set;
         }
 
         [DataMember]
-        public DateTime dateModified
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public BuilderWhoAPI whoCreated
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public BuilderWhoAPI whoModified
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public BuilderWhoAPI whoOwner
+        public ValueElementIdAPI valueElementExternalIdentifierId
         {
             get;
             set;

@@ -35,6 +35,13 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
+        public String parentId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public DateTime dateCreated
         {
             get;
@@ -85,6 +92,13 @@ namespace ManyWho.Flow.SDK.Run.State
 
         [DataMember]
         public String currentRunningUserId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String externalIdentifier
         {
             get;
             set;

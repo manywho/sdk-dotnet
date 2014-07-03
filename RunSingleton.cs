@@ -37,6 +37,11 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_ENGINE_INITIALIZE_URI_PART = "/api/run/1";
         public const String MANYWHO_ENGINE_EXECUTE_URI_PART = "/api/run/1/state/";
         public const String MANYWHO_ENGINE_LOAD_FLOW_BY_ID_URI_PART = "/api/run/1/flow/";
+        public const String MANYWHO_ENGINE_LOAD_FLOWS_URI_PART = "/api/run/1/flow?filter=";
+        public const String MANYWHO_ENGINE_AUTHENTICATION_URI_PART = "/api/run/1/authentication/";
+        public const String MANYWHO_ENGINE_EXPORT_STATE_PACKAGE_URI_PART = "/api/run/1/state/package/";
+        public const String MANYWHO_ENGINE_IMPORT_STATE_PACKAGE_URI_PART = "/api/run/1/state/package";
+        public const String MANYWHO_ENGINE_GET_NAVIGATION_URI_PART = "/api/run/1/navigation/";
 
         private static RunSingleton run = null;
 
@@ -75,6 +80,139 @@ namespace ManyWho.Flow.SDK
             run.ServiceUrl = MANYWHO_BASE_URL;
 
             return run;
+        }
+
+        public IAuthenticatedWho Login(String tenantId, String stateId, AuthenticationCredentialsAPI authenticationCredentials, String codeReferenceName, String alertEmail)
+        {
+            WebException webException = null;
+            String endpointUrl = null;
+            HttpClient httpClient = null;
+            HttpContent httpContent = null;
+            HttpResponseMessage httpResponseMessage = null;
+            IAuthenticatedWho authenticatedWho = null;
+            String authenticationToken = null;
+
+            // We enclose the request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(null, tenantId, stateId);
+
+                    // Use the JSON formatter to create the content of the request body
+                    httpContent = new StringContent(JsonConvert.SerializeObject(authenticationCredentials));
+                    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    // Construct the URL for the engine execute request
+                    endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_AUTHENTICATION_URI_PART + stateId;
+
+                    // Post the authentication request over to ManyWho
+                    httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // Get the authentication token from the response message
+                        authenticationToken = JsonConvert.DeserializeObject<String>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+
+                        // Parse the authentication token into an authentication object
+                        authenticatedWho = AuthenticationUtils.Deserialize(Uri.UnescapeDataString(authenticationToken));
+
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(null, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
+                }
+            }
+
+            return authenticatedWho;
+        }
+
+        public List<FlowResponseAPI> LoadFlows(IAuthenticatedWho authenticatedWho, String tenantId, String filter, String codeReferenceName, String alertEmail)
+        {
+            WebException webException = null;
+            String endpointUrl = null;
+            HttpClient httpClient = null;
+            HttpResponseMessage httpResponseMessage = null;
+            List<FlowResponseAPI> flowResponses = null;
+
+            // We enclose the request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null);
+
+                    // Construct the URL for the engine execute request
+                    endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_LOAD_FLOWS_URI_PART + filter;
+
+                    // Get the flow responses from ManyWho
+                    httpResponseMessage = httpClient.GetAsync(endpointUrl).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // Get the flow responses list from the response message
+                        flowResponses = JsonConvert.DeserializeObject<List<FlowResponseAPI>>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
+                }
+            }
+
+            return flowResponses;
         }
 
         public FlowResponseAPI LoadFlowById(IAuthenticatedWho authenticatedWho, String tenantId, String flowId, String codeReferenceName, String alertEmail)
@@ -381,6 +519,216 @@ namespace ManyWho.Flow.SDK
             }
 
             return invokeType;
+        }
+
+        public EngineNavigationResponseAPI GetNavigation(IAuthenticatedWho authenticatedWho, String tenantId, String stateId, EngineNavigationRequestAPI engineNavigationRequest, String codeReferenceName, String alertEmail)
+        {
+            WebException webException = null;
+            String endpointUrl = null;
+            HttpClient httpClient = null;
+            HttpContent httpContent = null;
+            HttpResponseMessage httpResponseMessage = null;
+            EngineNavigationResponseAPI engineNavigationResponse = null;
+
+            // Make sure we have an engine navigation request object
+            if (engineNavigationRequest == null)
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The EngineNavigationRequest object is null.");
+            }
+
+            // Make sure the state identifier has been provided as this is needed for the URI
+            if (engineNavigationRequest.stateId == null ||
+                engineNavigationRequest.stateId.Trim().Length == 0)
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The EngineNavigationRequest.StateId property is null or blank.");
+            }
+
+            // We enclose the execute request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, engineNavigationRequest.stateId);
+
+                    // Use the JSON formatter to create the content of the request body
+                    httpContent = new StringContent(JsonConvert.SerializeObject(engineNavigationRequest));
+                    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    // Construct the URL for the engine navigation request
+                    endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_GET_NAVIGATION_URI_PART + engineNavigationRequest.stateId;
+
+                    // Post the engine navigation request over to ManyWho
+                    httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // Get the engine navigation response object from the response message
+                        engineNavigationResponse = JsonConvert.DeserializeObject<EngineNavigationResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, httpContent, httpResponseMessage);
+                }
+            }
+
+            return engineNavigationResponse;
+        }
+
+        public String ExportState(IAuthenticatedWho authenticatedWho, String tenantId, String stateId, String codeReferenceName, String alertEmail)
+        {
+            WebException webException = null;
+            String endpointUrl = null;
+            HttpClient httpClient = null;
+            HttpResponseMessage httpResponseMessage = null;
+            String stateJson = null;
+
+            // Check to make sure we have a state id to pass up to the system
+            if (stateId == null ||
+                stateId.Trim().Length == 0)
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The identifier for the state is null or blank.");
+            }
+
+            // We enclose the request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null);
+
+                    // Construct the URL for the engine execute request
+                    endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_EXPORT_STATE_PACKAGE_URI_PART + stateId;
+
+                    // Get the state package from ManyWho
+                    httpResponseMessage = httpClient.GetAsync(endpointUrl).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // Get the state object from the response message
+                        stateJson = JsonConvert.DeserializeObject<String>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
+                }
+            }
+
+            return stateJson;
+        }
+
+        public void ImportState(IAuthenticatedWho authenticatedWho, String tenantId, String stateJson, String codeReferenceName, String alertEmail)
+        {
+            WebException webException = null;
+            String endpointUrl = null;
+            HttpClient httpClient = null;
+            HttpContent httpContent = null;
+            HttpResponseMessage httpResponseMessage = null;
+
+            // We enclose the request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null);
+
+                    // Use the JSON formatter to create the content of the request body
+                    httpContent = new StringContent(stateJson);
+                    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    // Construct the URL for the engine execute request
+                    endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_IMPORT_STATE_PACKAGE_URI_PART;
+
+                    // Post the state package to ManyWho
+                    httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
+                }
+            }
         }
     }
 }
