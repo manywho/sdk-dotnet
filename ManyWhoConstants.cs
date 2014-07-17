@@ -188,8 +188,6 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_FILE_PROPERTY_ID_DOWNLOAD_URI = Guid.Parse("6611067A-7C86-4696-8845-3CDC79C73289");
         public static readonly Guid MANYWHO_FILE_PROPERTY_ID_EMBED_URI = Guid.Parse("C063EC28-9053-4D0B-A93B-4470F6CE4B8C");
         public static readonly Guid MANYWHO_FILE_PROPERTY_ID_ICON_URI = Guid.Parse("DC906ACB-A270-4E95-9118-463FA8B5726C");
-        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_ALLOW_UPLOAD = Guid.Parse("640B7242-1BB7-488C-BE21-4829426D4E4F");
-        public static readonly Guid MANYWHO_FILE_PROPERTY_ID_ALLOW_DOWNLOAD = Guid.Parse("CF1089F1-152E-432B-BF17-4D931D0F4F9F");
 
         public static readonly Guid MANYWHO_GROUP_TYPE_ELEMENT_ID = Guid.Parse("82DE6847-03D6-4ACE-91CC-26CD80AEA9FC");
         public static readonly Guid MANYWHO_GROUP_PROPERTY_ID_GROUP_ID = Guid.Parse("1CADAB68-658C-4F52-972E-FAB83F168D87");
@@ -284,8 +282,6 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_FILE_PROPERTY_DOWNLOAD_URI = "Download Uri";
         public const String MANYWHO_FILE_PROPERTY_EMBED_URI = "Embed Uri";
         public const String MANYWHO_FILE_PROPERTY_ICON_URI = "Icon Uri";
-        public const String MANYWHO_FILE_PROPERTY_ALLOW_UPLOAD = "Allow Upload";
-        public const String MANYWHO_FILE_PROPERTY_ALLOW_DOWNLOAD = "Allow Download";
 
         public const String AUTHORIZATION_STATUS_NOT_AUTHORIZED = "401";
         public const String AUTHORIZATION_STATUS_AUTHORIZED = "200";

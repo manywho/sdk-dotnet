@@ -57,16 +57,5 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             get;
             set;
         }
-
-        /// <summary>
-        /// Indicates if the end user can upload files to the file service. When performing a file upload, the player should use the files
-        /// api to perform the upload and then re-execute the file data request to get the latest listing of files available.
-        /// </summary>
-        [DataMember]
-        public Boolean allowUpload
-        {
-            get;
-            set;
-        }
     }
 }

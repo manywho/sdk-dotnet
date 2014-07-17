@@ -90,6 +90,26 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         /// <summary>
+        /// The resouce path to use when sourcing the files.
+        /// </summary>
+        [DataMember]
+        public String resourcePath
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The resouce path to use when sourcing a specific file.
+        /// </summary>
+        [DataMember]
+        public String resourceFile
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The filter to apply to the data at runtime.
         /// </summary>
         [DataMember]
