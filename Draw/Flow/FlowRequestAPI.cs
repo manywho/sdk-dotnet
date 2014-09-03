@@ -66,6 +66,13 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         [DataMember]
+        public Boolean allowJumping
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public GroupAuthorizationAPI authorization
         {
             get;

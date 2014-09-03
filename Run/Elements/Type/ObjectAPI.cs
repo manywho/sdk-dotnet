@@ -47,6 +47,13 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         [DataMember]
+        public String typeElementId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public Int32 order
         {
             get;
