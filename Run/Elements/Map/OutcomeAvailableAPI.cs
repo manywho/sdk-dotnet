@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -20,54 +20,59 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Config
+namespace ManyWho.Flow.SDK.Run.Elements.Map
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ServiceValueRequestAPI
+    public class OutcomeAvailableAPI : IComparable
     {
         [DataMember]
-        public string id
+        public String id
         {
             get;
             set;
         }
 
         [DataMember]
-        public string developerName
+        public String developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public ValueElementIdAPI valueElementToReferenceId
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// This is a temporary property so we have the name of the shared element and type element entry tagged against the value (useful in listings)
-        /// </summary>
-        [DataMember]
-        public string valueElementToReferenceDeveloperName
+        public String label
         {
             get;
             set;
         }
 
         [DataMember]
-        public string contentType
+        public Int32 order
         {
             get;
             set;
         }
 
-        [DataMember]
-        public int ordinal
+        public int CompareTo(Object obj)
         {
-            get;
-            set;
+            OutcomeAvailableAPI outcome;
+            int result = 0;
+
+            if (obj is OutcomeAvailableAPI)
+            {
+                outcome = (OutcomeAvailableAPI)obj;
+
+                if (outcome.order > this.order)
+                {
+                    result = -1;
+                }
+                else if (outcome.order < this.order)
+                {
+                    result = 1;
+                }
+            }
+
+            return result;
         }
     }
 }

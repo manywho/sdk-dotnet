@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Elements.Group;
 using ManyWho.Flow.SDK.Translate;
+using ManyWho.Flow.SDK.Run.Elements.Map;
 
 /*!
 
@@ -111,6 +112,16 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// </summary>
         [DataMember]
         public List<EngineValueAPI> inputs
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The outcomes that are available for this element. The system can return it's desired selected outcome in addition to sending back outputs.
+        /// </summary>
+        [DataMember]
+        public List<OutcomeAvailableAPI> outcomes
         {
             get;
             set;

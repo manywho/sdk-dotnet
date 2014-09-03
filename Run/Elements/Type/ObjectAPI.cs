@@ -47,6 +47,13 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         [DataMember]
+        public Int32 order
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public List<PropertyAPI> properties
         {
             get;

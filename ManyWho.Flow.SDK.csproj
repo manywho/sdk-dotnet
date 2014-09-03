@@ -13,6 +13,9 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Profile24</TargetFrameworkProfile>
+    <NuGetPackageImportStamp>e89cf87e</NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,6 +81,7 @@
     <Compile Include="Draw\Elements\Value\ValueElementIdReferenceAPI.cs" />
     <Compile Include="Draw\Flow\FlowImageResponseAPI.cs" />
     <Compile Include="PackageSingleton.cs" />
+    <Compile Include="Run\Elements\Map\OutcomeAvailableAPI.cs" />
     <Compile Include="Run\Elements\Type\CommandRequestAPI.cs" />
     <Compile Include="Run\Elements\Type\FileDataRequestAPI.cs" />
     <Compile Include="Run\Elements\Type\FileListFilterAPI.cs" />
@@ -86,6 +90,13 @@
     <Compile Include="Run\State\StateValueAPI.cs" />
     <Compile Include="Run\State\UserInteractionAPI.cs" />
     <Compile Include="Security\BuilderWhoAPI.cs" />
+    <Compile Include="Security\IPRangeAPI.cs" />
+    <Compile Include="Security\RemoteSiteAPI.cs" />
+    <Compile Include="Security\SecuritySettingsAPI.cs" />
+    <Compile Include="TenantSingleton.cs" />
+    <Compile Include="Tenant\ReportSettingsAPI.cs" />
+    <Compile Include="Tenant\TenantRequestAPI.cs" />
+    <Compile Include="Tenant\TenantResponseAPI.cs" />
     <Compile Include="TranslateSingleton.cs" />
     <Compile Include="Translate\ContentValueDocumentAPI.cs" />
     <Compile Include="Translate\ContentValueDocumentTranslationAPI.cs" />
@@ -239,6 +250,7 @@
     <Compile Include="Utils\ErrorUtils.cs" />
     <Compile Include="Utils\HttpRetryHelper.cs" />
     <Compile Include="Utils\HttpUtils.cs" />
+    <Compile Include="Utils\INotifier.cs" />
     <Compile Include="Utils\InternationalizationUtils.cs" />
     <Compile Include="ManyWhoPluginException.cs" />
     <Compile Include="Utils\RunUtils.cs" />
@@ -252,13 +264,21 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
+  <Import Project="..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

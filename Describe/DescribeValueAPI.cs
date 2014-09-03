@@ -73,5 +73,15 @@ namespace ManyWho.Flow.SDK.Describe
             get;
             set;
         }
+
+        /// <summary>
+        /// The position in the UI where the value will be displayed
+        /// </summary>
+        [DataMember]
+        public int ordinal
+        {
+            get;
+            set;
+        }
     }
 }

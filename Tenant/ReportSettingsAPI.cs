@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
 
 /*!
@@ -19,28 +20,13 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Map
+namespace ManyWho.Flow.SDK.Tenant
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class MessageOutputAPI : OutputValueAPI
+    public class ReportSettingsAPI
     {
         [DataMember]
-        public string developerName
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// This is not included as a data member as it's a temp value.
-        /// </summary>
-        public string contentType
-        {
-            get;
-            set;
-        }
-
-        public int ordinal
+        public String reportingServiceUri
         {
             get;
             set;

@@ -82,7 +82,7 @@ namespace ManyWho.Flow.SDK
             return run;
         }
 
-        public IAuthenticatedWho Login(String tenantId, String stateId, AuthenticationCredentialsAPI authenticationCredentials, String codeReferenceName, String alertEmail)
+        public IAuthenticatedWho Login(INotifier notifier, String tenantId, String stateId, AuthenticationCredentialsAPI authenticationCredentials)
         {
             WebException webException = null;
             String endpointUrl = null;
@@ -125,7 +125,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(null, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, null, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -136,7 +136,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -153,7 +153,7 @@ namespace ManyWho.Flow.SDK
             return authenticatedWho;
         }
 
-        public List<FlowResponseAPI> LoadFlows(IAuthenticatedWho authenticatedWho, String tenantId, String filter, String codeReferenceName, String alertEmail)
+        public List<FlowResponseAPI> LoadFlows(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String filter)
         {
             WebException webException = null;
             String endpointUrl = null;
@@ -187,7 +187,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -198,7 +198,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -215,7 +215,7 @@ namespace ManyWho.Flow.SDK
             return flowResponses;
         }
 
-        public FlowResponseAPI LoadFlowById(IAuthenticatedWho authenticatedWho, String tenantId, String flowId, String codeReferenceName, String alertEmail)
+        public FlowResponseAPI LoadFlowById(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String flowId)
         {
             WebException webException = null;
             String endpointUrl = null;
@@ -256,7 +256,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -267,7 +267,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -284,7 +284,7 @@ namespace ManyWho.Flow.SDK
             return flowResponse;
         }
 
-        public EngineInitializationResponseAPI Initialize(IAuthenticatedWho authenticatedWho, String tenantId, EngineInitializationRequestAPI engineInitializationRequest, String codeReferenceName, String alertEmail)
+        public EngineInitializationResponseAPI Initialize(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, EngineInitializationRequestAPI engineInitializationRequest)
         {
             WebException webException = null;
             String endpointUrl = null;
@@ -323,7 +323,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -334,7 +334,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -351,7 +351,7 @@ namespace ManyWho.Flow.SDK
             return engineInitializationResponse;
         }
 
-        public EngineInvokeResponseAPI Execute(IAuthenticatedWho authenticatedWho, String tenantId, EngineInvokeRequestAPI engineInvokeRequest, String codeReferenceName, String alertEmail)
+        public EngineInvokeResponseAPI Execute(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, EngineInvokeRequestAPI engineInvokeRequest)
         {
             WebException webException = null;
             String endpointUrl = null;
@@ -403,7 +403,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -414,7 +414,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -431,7 +431,7 @@ namespace ManyWho.Flow.SDK
             return engineInvokeResponse;
         }
 
-        public String Response(IAuthenticatedWho authenticatedWho, String tenantId, String callbackUri, ServiceResponseAPI serviceResponse, String codeReferenceName, String alertEmail)
+        public String Response(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String callbackUri, ServiceResponseAPI serviceResponse)
         {
             WebException webException = null;
             HttpClient httpClient = null;
@@ -493,7 +493,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, callbackUri);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, callbackUri);
 
                         if (webException != null)
                         {
@@ -504,7 +504,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, callbackUri);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, callbackUri);
 
                     if (webException != null)
                     {
@@ -521,7 +521,7 @@ namespace ManyWho.Flow.SDK
             return invokeType;
         }
 
-        public EngineNavigationResponseAPI GetNavigation(IAuthenticatedWho authenticatedWho, String tenantId, String stateId, EngineNavigationRequestAPI engineNavigationRequest, String codeReferenceName, String alertEmail)
+        public EngineNavigationResponseAPI GetNavigation(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String stateId, EngineNavigationRequestAPI engineNavigationRequest)
         {
             WebException webException = null;
             String endpointUrl = null;
@@ -573,7 +573,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -584,7 +584,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -601,7 +601,7 @@ namespace ManyWho.Flow.SDK
             return engineNavigationResponse;
         }
 
-        public String ExportState(IAuthenticatedWho authenticatedWho, String tenantId, String stateId, String codeReferenceName, String alertEmail)
+        public String ExportState(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String stateId)
         {
             WebException webException = null;
             String endpointUrl = null;
@@ -642,7 +642,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -653,7 +653,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -670,7 +670,7 @@ namespace ManyWho.Flow.SDK
             return stateJson;
         }
 
-        public void ImportState(IAuthenticatedWho authenticatedWho, String tenantId, String stateJson, String codeReferenceName, String alertEmail)
+        public void ImportState(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String stateJson)
         {
             WebException webException = null;
             String endpointUrl = null;
@@ -705,7 +705,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -716,7 +716,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {

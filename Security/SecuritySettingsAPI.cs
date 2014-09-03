@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -20,51 +20,34 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Config
+namespace ManyWho.Flow.SDK.Security
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ServiceValueRequestAPI
+    public class SecuritySettingsAPI
     {
         [DataMember]
-        public string id
+        public Boolean isFlowRestrictedByIPRange
         {
             get;
             set;
         }
 
         [DataMember]
-        public string developerName
+        public Boolean isServiceRestrictedByRemoteSites
         {
             get;
             set;
         }
 
         [DataMember]
-        public ValueElementIdAPI valueElementToReferenceId
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// This is a temporary property so we have the name of the shared element and type element entry tagged against the value (useful in listings)
-        /// </summary>
-        [DataMember]
-        public string valueElementToReferenceDeveloperName
+        public List<IPRangeAPI> authorizedFlowIPRanges
         {
             get;
             set;
         }
 
         [DataMember]
-        public string contentType
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public int ordinal
+        public List<RemoteSiteAPI> authorizedServiceRemoteSites
         {
             get;
             set;
