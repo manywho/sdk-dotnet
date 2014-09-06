@@ -26,13 +26,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     public class TypeElementPropertyBindingAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public String databaseFieldName
         {
             get;

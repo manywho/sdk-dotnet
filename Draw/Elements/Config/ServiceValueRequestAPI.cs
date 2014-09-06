@@ -26,13 +26,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
     public class ServiceValueRequestAPI
     {
         [DataMember]
-        public string id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public string developerName
         {
             get;

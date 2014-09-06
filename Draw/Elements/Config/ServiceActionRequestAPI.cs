@@ -25,13 +25,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
     public class ServiceActionRequestAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public String uriPart
         {
             get;

@@ -26,13 +26,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     public class NavigationOverrideAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public String navigationElementId
         {
             get;

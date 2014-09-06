@@ -25,13 +25,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     public class MessageActionAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public String developerName
         {
             get;

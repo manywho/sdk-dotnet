@@ -26,13 +26,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
     public class PageComponentColumnAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public String typeElementPropertyId
         {
             get;

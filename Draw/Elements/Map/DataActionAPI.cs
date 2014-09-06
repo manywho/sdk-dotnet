@@ -28,13 +28,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     public class DataActionAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public String developerName
         {
             get;
