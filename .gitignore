@@ -3,6 +3,7 @@
 bin/
 Microsoft.WindowsAzure.Caching/
 obj/
+packages/
 
 # OS generated files #
 ######################
