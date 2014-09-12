@@ -33,6 +33,9 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_DRAW_URI_PART_FLOW = "/api/draw/1/flow";
         public const String MANYWHO_DRAW_URI_PART_LOGIN = "/api/draw/1/authentication";
         public const String MANYWHO_DRAW_URI_PART_ADD_ELEMENT_TO_FLOW = "/api/draw/1/element/flow/{0}/{1}/{2}";
+        public const String MANYWHO_DRAW_URI_PART_LOAD_FLOWS = "/api/draw/1/flow?filter=";
+        public const String MANYWHO_DRAW_URI_PART_SNAPSHOT_FLOW = "/api/draw/1/flow/snap/{0}";
+        public const String MANYWHO_DRAW_URI_PART_ACTIVATION = "/api/draw/1/flow/activation/{0}/{1}/{2}/{3}";
 
         public const String MANYWHO_DRAW_URI_PART_ADMIN_PLUGIN_AUTHENTICATION = "/plugins/manywho/api/admin/1/authentication";
 
@@ -229,6 +232,201 @@ namespace ManyWho.Flow.SDK
 
                     // Send the flow to save over to the service
                     httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // Get the flow response back from the save
+                        flowResponse = JsonConvert.DeserializeObject<FlowResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
+                }
+            }
+
+            return flowResponse;
+        }
+
+        /// <summary>
+        /// This method loads all of the flows in the draw service.
+        /// </summary>
+        public List<FlowResponseAPI> LoadFlows(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String tenantId, String filter)
+        {
+            WebException webException = null;
+            String endpointUrl = null;
+            HttpClient httpClient = null;
+            HttpResponseMessage httpResponseMessage = null;
+            List<FlowResponseAPI> flowResponses = null;
+
+            // We enclose the request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null);
+
+                    // Construct the URL for the draw request
+                    endpointUrl = manywhoBaseUrl + MANYWHO_DRAW_URI_PART_LOAD_FLOWS + filter;
+
+                    // Get the flow responses from ManyWho
+                    httpResponseMessage = httpClient.GetAsync(endpointUrl).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // Get the flow responses list from the response message
+                        flowResponses = JsonConvert.DeserializeObject<List<FlowResponseAPI>>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
+                }
+            }
+
+            return flowResponses;
+        }
+
+        /// <summary>
+        /// This method snap shots the latest flow in the modelling environment.
+        /// </summary>
+        public FlowResponseAPI SnapShotFlow(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String flowId)
+        {
+            WebException webException = null;
+            FlowResponseAPI flowResponse = null;
+            HttpClient httpClient = null;
+            HttpResponseMessage httpResponseMessage = null;
+            String endpointUrl = null;
+
+            // We enclose the request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null);
+
+                    // Construct the URL for the snapshot
+                    endpointUrl = manywhoBaseUrl + String.Format(MANYWHO_DRAW_URI_PART_SNAPSHOT_FLOW, flowId);
+
+                    // Send the flow to save over to the service
+                    httpResponseMessage = httpClient.PostAsync(endpointUrl, null).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // Get the flow response back from the save
+                        flowResponse = JsonConvert.DeserializeObject<FlowResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
+                }
+            }
+
+            return flowResponse;
+        }
+
+        /// <summary>
+        /// This method takes a flow snap shot and activates it based on the provided settings.
+        /// </summary>
+        public FlowResponseAPI SetFlowActivation(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, FlowIdAPI flowId, Boolean isDefault, Boolean isActivated)
+        {
+            WebException webException = null;
+            FlowResponseAPI flowResponse = null;
+            HttpClient httpClient = null;
+            HttpResponseMessage httpResponseMessage = null;
+            String endpointUrl = null;
+
+            // We enclose the request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null);
+
+                    // Construct the URL for the activation
+                    endpointUrl = manywhoBaseUrl + String.Format(MANYWHO_DRAW_URI_PART_ACTIVATION, flowId.id, flowId.versionId, isDefault.ToString().ToLower(), isActivated.ToString().ToLower());
+
+                    // Send the flow to save over to the service
+                    httpResponseMessage = httpClient.PostAsync(endpointUrl, null).Result;
 
                     // Check the status of the response and respond appropriately
                     if (httpResponseMessage.IsSuccessStatusCode)
