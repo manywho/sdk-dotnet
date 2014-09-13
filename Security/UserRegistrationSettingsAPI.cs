@@ -23,38 +23,24 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Security
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class SecuritySettingsAPI
+    public class UserRegistrationSettingsAPI
     {
         [DataMember]
-        public Boolean isFlowRestrictedByIPRange
+        public String type
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean isServiceRestrictedByRemoteSites
+        public String notify
         {
             get;
             set;
         }
 
         [DataMember]
-        public List<IPRangeAPI> authorizedFlowIPRanges
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<RemoteSiteAPI> authorizedServiceRemoteSites
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public UserRegistrationSettingsAPI userRegistrationSettings
+        public String whoGetsNotified
         {
             get;
             set;

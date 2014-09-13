@@ -402,5 +402,14 @@ namespace ManyWho.Flow.SDK
 
         public const String PROPERTY_SEARCH = "PROPERTY:";
         public const String EXACT_SEARCH = "EXACT:";
+
+        // The settings for the types of user registration
+        public const String USER_REGISTRATION_TYPE_SELF = "SELF";
+        public const String USER_REGISTRATION_TYPE_REQUEST = "REQUEST";
+        public const String USER_REGISTRATION_TYPE_MANUAL = "MANUAL";
+
+        public const String USER_REGISTRATION_NOTIFY_ALL = "ALL";
+        public const String USER_REGISTRATION_NOTIFY_SPECIFIC = "SPECIFIC";
+        public const String USER_REGISTRATION_NOTIFY_NONE = "NONE";
     }
 }

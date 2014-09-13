@@ -92,6 +92,7 @@
     <Compile Include="Security\IPRangeAPI.cs" />
     <Compile Include="Security\RemoteSiteAPI.cs" />
     <Compile Include="Security\SecuritySettingsAPI.cs" />
+    <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="TenantSingleton.cs" />
     <Compile Include="Tenant\ReportSettingsAPI.cs" />
     <Compile Include="Tenant\TenantRequestAPI.cs" />
