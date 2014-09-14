@@ -253,6 +253,7 @@
     <Compile Include="Utils\INotifier.cs" />
     <Compile Include="Utils\InternationalizationUtils.cs" />
     <Compile Include="ManyWhoPluginException.cs" />
+    <Compile Include="Utils\NotificationUtils.cs" />
     <Compile Include="Utils\RunUtils.cs" />
     <Compile Include="Utils\SettingUtils.cs" />
     <Compile Include="Utils\SqlUtils.cs" />

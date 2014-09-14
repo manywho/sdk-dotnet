@@ -78,12 +78,17 @@ namespace ManyWho.Flow.SDK.Utils
             return AggregateAndWriteErrorMessage(exception, "", false);
         }
 
-        public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String faultDescription)
+        public static String GetExceptionMessage(Exception exception, Boolean includeStackTrace)
         {
-            SendAlert(notifier, authenticatedWho, alertType, faultDescription, null);
+            return AggregateAndWriteErrorMessage(exception, "", includeStackTrace);
         }
 
-        public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String faultDescription, Exception exception)
+        public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String alertMessage)
+        {
+            SendAlert(notifier, authenticatedWho, alertType, alertMessage, null);
+        }
+
+        public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String alertMessage, Exception exception)
         {
             String message = null;
 
@@ -95,38 +100,27 @@ namespace ManyWho.Flow.SDK.Utils
                     // Create the full message
                     message = "";
 
-                    // Create the fault description block
-                    message += "Fault" + Environment.NewLine;
+                    // Create the alert message block
+                    message += "Alert Message" + Environment.NewLine;
                     message += "-----" + Environment.NewLine;
-                    message += faultDescription + Environment.NewLine + Environment.NewLine;
+                    message += alertMessage + Environment.NewLine + Environment.NewLine;
 
-                    // Create the flow summary block
-                    message += "Code Reference" + Environment.NewLine;
-                    message += "--------------" + Environment.NewLine;
-                    message += notifier.CodeReference + Environment.NewLine + Environment.NewLine;
-
-                    // Create the running user summary block
-                    message += "Affected User" + Environment.NewLine;
-                    message += "-------------" + Environment.NewLine;
-
+                    // Only include the authenticated who if we have one
                     if (authenticatedWho != null)
                     {
-                        message += "User Id: " + authenticatedWho.UserId + Environment.NewLine;
-                        message += "Directory Id: " + authenticatedWho.DirectoryId + Environment.NewLine;
-                        message += "Directory Name: " + authenticatedWho.DirectoryName + Environment.NewLine;
-                        message += "Email: " + authenticatedWho.Email + Environment.NewLine + Environment.NewLine;
-                    }
-                    else
-                    {
-                        message += "Unknown" + Environment.NewLine + Environment.NewLine;
+                        // Create the running user summary block
+                        message += "Affected User" + Environment.NewLine;
+                        message += "-------------" + Environment.NewLine;
+
+                        // Serialize the user information
+                        message += NotificationUtils.SerializeAuthenticatedWhoInfo(NotificationUtils.MEDIA_TYPE_PLAIN, authenticatedWho) + Environment.NewLine;
                     }
 
                     // Finally, we add the exception details if there is an exception
                     message += AggregateAndWriteErrorMessage(exception, "", true);
 
                     // Set the notification and send
-                    notifier.Reason = notifier.CodeReference + ": " + alertType + " Alert";
-                    notifier.Description = message;
+                    notifier.AddNotificationMessage(NotificationUtils.MEDIA_TYPE_PLAIN, message);
                     notifier.SendNotification();
                 }
                 catch (Exception)
