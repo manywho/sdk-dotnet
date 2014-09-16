@@ -8,6 +8,18 @@ namespace ManyWho.Flow.SDK.Utils
 {
     public interface INotifier
     {
+        IAuthenticatedWho ReceivingAuthenticatedWho
+        {
+            get;
+            set;
+        }
+
+        List<INotificationMessage> NotificationMessages
+        {
+            get;
+            set;
+        }
+
         String Reason
         {
             get;
@@ -16,10 +28,10 @@ namespace ManyWho.Flow.SDK.Utils
 
         void AddNotificationMessage(String mediaType, String message);
 
-        void SendNotification();
+        Guid SendNotification();
 
-        void SendNotification(IAuthenticatedWho receivingAuthenticatedWho);
+        Guid SendNotification(IAuthenticatedWho receivingAuthenticatedWho);
 
-        void SendNotification(IAuthenticatedWho receivingAuthenticatedWho, String reason, String mediaType, String message);
+        Guid SendNotification(IAuthenticatedWho receivingAuthenticatedWho, String reason, String mediaType, String message);
     }
 }

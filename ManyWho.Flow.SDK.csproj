@@ -90,6 +90,7 @@
     <Compile Include="Run\State\UserInteractionAPI.cs" />
     <Compile Include="Security\BuilderWhoAPI.cs" />
     <Compile Include="Security\IPRangeAPI.cs" />
+    <Compile Include="Security\PasswordResetAPI.cs" />
     <Compile Include="Security\RemoteSiteAPI.cs" />
     <Compile Include="Security\SecuritySettingsAPI.cs" />
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
@@ -250,9 +251,12 @@
     <Compile Include="Utils\ErrorUtils.cs" />
     <Compile Include="Utils\HttpRetryHelper.cs" />
     <Compile Include="Utils\HttpUtils.cs" />
+    <Compile Include="Utils\INotificationMessage.cs" />
     <Compile Include="Utils\INotifier.cs" />
     <Compile Include="Utils\InternationalizationUtils.cs" />
     <Compile Include="ManyWhoPluginException.cs" />
+    <Compile Include="Utils\NotificationAPI.cs" />
+    <Compile Include="Utils\NotificationMessageAPI.cs" />
     <Compile Include="Utils\NotificationUtils.cs" />
     <Compile Include="Utils\RunUtils.cs" />
     <Compile Include="Utils\SettingUtils.cs" />
