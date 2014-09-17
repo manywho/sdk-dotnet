@@ -96,6 +96,7 @@
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="TenantSingleton.cs" />
     <Compile Include="Tenant\ReportSettingsAPI.cs" />
+    <Compile Include="Tenant\TenantRegistrationAPI.cs" />
     <Compile Include="Tenant\TenantRequestAPI.cs" />
     <Compile Include="Tenant\TenantResponseAPI.cs" />
     <Compile Include="TranslateSingleton.cs" />

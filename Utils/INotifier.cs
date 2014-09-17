@@ -28,10 +28,10 @@ namespace ManyWho.Flow.SDK.Utils
 
         void AddNotificationMessage(String mediaType, String message);
 
-        Guid SendNotification();
+        void SendNotification();
 
-        Guid SendNotification(IAuthenticatedWho receivingAuthenticatedWho);
+        void SendNotification(IAuthenticatedWho receivingAuthenticatedWho);
 
-        Guid SendNotification(IAuthenticatedWho receivingAuthenticatedWho, String reason, String mediaType, String message);
+        void SendNotification(IAuthenticatedWho receivingAuthenticatedWho, String reason, String mediaType, String message);
     }
 }
