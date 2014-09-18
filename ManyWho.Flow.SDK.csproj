@@ -256,8 +256,9 @@
     <Compile Include="Utils\INotifier.cs" />
     <Compile Include="Utils\InternationalizationUtils.cs" />
     <Compile Include="ManyWhoPluginException.cs" />
-    <Compile Include="Utils\NotificationAPI.cs" />
+    <Compile Include="Utils\NotificationRequestAPI.cs" />
     <Compile Include="Utils\NotificationMessageAPI.cs" />
+    <Compile Include="Utils\NotificationResponseAPI.cs" />
     <Compile Include="Utils\NotificationUtils.cs" />
     <Compile Include="Utils\RunUtils.cs" />
     <Compile Include="Utils\SettingUtils.cs" />

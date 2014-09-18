@@ -38,7 +38,7 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
-        public NotificationAPI Notification
+        public NotificationRequestAPI notification
         {
             get;
             set;
