@@ -105,6 +105,7 @@
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="TenantSingleton.cs" />
     <Compile Include="Tenant\ReportSettingsAPI.cs" />
+    <Compile Include="Tenant\TenantRegistrationAPI.cs" />
     <Compile Include="Tenant\TenantRequestAPI.cs" />
     <Compile Include="Tenant\TenantResponseAPI.cs" />
     <Compile Include="TranslateSingleton.cs" />
@@ -264,8 +265,9 @@
     <Compile Include="Utils\INotifier.cs" />
     <Compile Include="Utils\InternationalizationUtils.cs" />
     <Compile Include="ManyWhoPluginException.cs" />
-    <Compile Include="Utils\NotificationAPI.cs" />
+    <Compile Include="Utils\NotificationRequestAPI.cs" />
     <Compile Include="Utils\NotificationMessageAPI.cs" />
+    <Compile Include="Utils\NotificationResponseAPI.cs" />
     <Compile Include="Utils\NotificationUtils.cs" />
     <Compile Include="Utils\RunUtils.cs" />
     <Compile Include="Utils\SettingUtils.cs" />
