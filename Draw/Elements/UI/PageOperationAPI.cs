@@ -24,13 +24,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class PageOperationAPI
     {
-        [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
         /// <summary>
         /// This object will not e null if we want to perform an assignment to a form element.  This can be everything from changing
         /// the value to altering the meta-data of the field.  The only thing the assignment does not include is the application of

@@ -18,7 +18,6 @@ namespace ManyWho.Flow.SDK.Utils
             {
                 throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "Criteria type cannot be null or blank.");
             }
-
             else if (criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_STARTS_WITH, StringComparison.OrdinalIgnoreCase) == true ||
                      criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ENDS_WITH, StringComparison.OrdinalIgnoreCase) == true ||
                      criteriaType.Equals(ManyWhoConstants.CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_CONTAINS, StringComparison.OrdinalIgnoreCase) == true)

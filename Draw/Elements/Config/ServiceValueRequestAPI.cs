@@ -26,14 +26,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
     public class ServiceValueRequestAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -50,14 +43,21 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         /// This is a temporary property so we have the name of the shared element and type element entry tagged against the value (useful in listings)
         /// </summary>
         [DataMember]
-        public String valueElementToReferenceDeveloperName
+        public string valueElementToReferenceDeveloperName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentType
+        public string contentType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public int ordinal
         {
             get;
             set;

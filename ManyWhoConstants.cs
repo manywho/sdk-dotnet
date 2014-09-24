@@ -150,6 +150,12 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_USER_VALUE_ID = Guid.Parse("03DC41DD-1C6B-4B33-BF61-CBD1D0778FFF");
         public const String MANYWHO_USER_VALUE_DEVELOPER_NAME = "$RunningUser";
 
+        public static readonly Guid MANYWHO_TRUE_VALUE_ID = Guid.Parse("BE1BC78E-FD57-40EC-9A86-A815DE2A9E28");
+        public const String MANYWHO_TRUE_DEVELOPER_NAME = "$True";
+
+        public static readonly Guid MANYWHO_FALSE_VALUE_ID = Guid.Parse("496FD041-D91F-48FB-AA4F-91C6C9A11CA1");
+        public const String MANYWHO_FALSE_DEVELOPER_NAME = "$False";
+
         public static readonly Guid MANYWHO_USER_TYPE_ELEMENT_ID = Guid.Parse("2674CE95-DD99-42C6-96FC-AD12E1B48A69");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_USER_ID = Guid.Parse("90262141-02B2-4F2C-8107-B14CF859DE4D");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_USERNAME = Guid.Parse("D8839B46-C43B-4435-9395-BD00491DA16E");
@@ -396,5 +402,14 @@ namespace ManyWho.Flow.SDK
 
         public const String PROPERTY_SEARCH = "PROPERTY:";
         public const String EXACT_SEARCH = "EXACT:";
+
+        // The settings for the types of user registration
+        public const String USER_REGISTRATION_TYPE_SELF = "SELF";
+        public const String USER_REGISTRATION_TYPE_REQUEST = "REQUEST";
+        public const String USER_REGISTRATION_TYPE_MANUAL = "MANUAL";
+
+        public const String USER_REGISTRATION_NOTIFY_ALL = "ALL";
+        public const String USER_REGISTRATION_NOTIFY_SPECIFIC = "SPECIFIC";
+        public const String USER_REGISTRATION_NOTIFY_NONE = "NONE";
     }
 }

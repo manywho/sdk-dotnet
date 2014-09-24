@@ -33,6 +33,9 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_DRAW_URI_PART_FLOW = "/api/draw/1/flow";
         public const String MANYWHO_DRAW_URI_PART_LOGIN = "/api/draw/1/authentication";
         public const String MANYWHO_DRAW_URI_PART_ADD_ELEMENT_TO_FLOW = "/api/draw/1/element/flow/{0}/{1}/{2}";
+        public const String MANYWHO_DRAW_URI_PART_LOAD_FLOWS = "/api/draw/1/flow?filter=";
+        public const String MANYWHO_DRAW_URI_PART_SNAPSHOT_FLOW = "/api/draw/1/flow/snap/{0}";
+        public const String MANYWHO_DRAW_URI_PART_ACTIVATION = "/api/draw/1/flow/activation/{0}/{1}/{2}/{3}";
 
         public const String MANYWHO_DRAW_URI_PART_ADMIN_PLUGIN_AUTHENTICATION = "/plugins/manywho/api/admin/1/authentication";
 
@@ -56,7 +59,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to login as an author of flows.
         /// </summary>
-        public IAuthenticatedWho Login(String tenantId, String manywhoBaseUrl, AuthenticationCredentialsAPI authenticationCredentials, String codeReferenceName, String alertEmail)
+        public IAuthenticatedWho Login(INotifier notifier, String tenantId, String manywhoBaseUrl, AuthenticationCredentialsAPI authenticationCredentials)
         {
             WebException webException = null;
             String authorizationToken = null;
@@ -102,7 +105,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(null, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, null, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -113,7 +116,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -133,7 +136,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method should be used to get descriptions of supported plugins.
         /// </summary>
-        public DescribeServiceResponseAPI Describe(IAuthenticatedWho authenticatedWho, DescribeServiceRequestAPI describeServiceRequest, String codeReferenceName, String alertEmail)
+        public DescribeServiceResponseAPI Describe(INotifier notifier, IAuthenticatedWho authenticatedWho, DescribeServiceRequestAPI describeServiceRequest)
         {
             WebException webException = null;
             DescribeServiceResponseAPI responseAPI = null;
@@ -172,7 +175,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -183,7 +186,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -203,7 +206,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save flows back to the service.
         /// </summary>
-        public FlowResponseAPI SaveFlow(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, FlowRequestAPI flowRequest, String codeReferenceName, String alertEmail)
+        public FlowResponseAPI SaveFlow(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, FlowRequestAPI flowRequest)
         {
             WebException webException = null;
             FlowResponseAPI flowResponse = null;
@@ -242,7 +245,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -253,7 +256,202 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
+                }
+            }
+
+            return flowResponse;
+        }
+
+        /// <summary>
+        /// This method loads all of the flows in the draw service.
+        /// </summary>
+        public List<FlowResponseAPI> LoadFlows(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String tenantId, String filter)
+        {
+            WebException webException = null;
+            String endpointUrl = null;
+            HttpClient httpClient = null;
+            HttpResponseMessage httpResponseMessage = null;
+            List<FlowResponseAPI> flowResponses = null;
+
+            // We enclose the request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null);
+
+                    // Construct the URL for the draw request
+                    endpointUrl = manywhoBaseUrl + MANYWHO_DRAW_URI_PART_LOAD_FLOWS + filter;
+
+                    // Get the flow responses from ManyWho
+                    httpResponseMessage = httpClient.GetAsync(endpointUrl).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // Get the flow responses list from the response message
+                        flowResponses = JsonConvert.DeserializeObject<List<FlowResponseAPI>>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
+                }
+            }
+
+            return flowResponses;
+        }
+
+        /// <summary>
+        /// This method snap shots the latest flow in the modelling environment.
+        /// </summary>
+        public FlowResponseAPI SnapShotFlow(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String flowId)
+        {
+            WebException webException = null;
+            FlowResponseAPI flowResponse = null;
+            HttpClient httpClient = null;
+            HttpResponseMessage httpResponseMessage = null;
+            String endpointUrl = null;
+
+            // We enclose the request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null);
+
+                    // Construct the URL for the snapshot
+                    endpointUrl = manywhoBaseUrl + String.Format(MANYWHO_DRAW_URI_PART_SNAPSHOT_FLOW, flowId);
+
+                    // Send the flow to save over to the service
+                    httpResponseMessage = httpClient.PostAsync(endpointUrl, null).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // Get the flow response back from the save
+                        flowResponse = JsonConvert.DeserializeObject<FlowResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
+                }
+            }
+
+            return flowResponse;
+        }
+
+        /// <summary>
+        /// This method takes a flow snap shot and activates it based on the provided settings.
+        /// </summary>
+        public FlowResponseAPI SetFlowActivation(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, FlowIdAPI flowId, Boolean isDefault, Boolean isActivated)
+        {
+            WebException webException = null;
+            FlowResponseAPI flowResponse = null;
+            HttpClient httpClient = null;
+            HttpResponseMessage httpResponseMessage = null;
+            String endpointUrl = null;
+
+            // We enclose the request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null);
+
+                    // Construct the URL for the activation
+                    endpointUrl = manywhoBaseUrl + String.Format(MANYWHO_DRAW_URI_PART_ACTIVATION, flowId.id, flowId.versionId, isDefault.ToString().ToLower(), isActivated.ToString().ToLower());
+
+                    // Send the flow to save over to the service
+                    httpResponseMessage = httpClient.PostAsync(endpointUrl, null).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // Get the flow response back from the save
+                        flowResponse = JsonConvert.DeserializeObject<FlowResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -273,7 +471,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save shared elements back to the service.
         /// </summary>
-        public void AddElementToFlow(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String flowId, String elementType, String elementId, String codeReferenceName, String alertEmail)
+        public void AddElementToFlow(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String flowId, String elementType, String elementId)
         {
             WebException webException = null;
             HttpClient httpClient = null;
@@ -307,7 +505,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -318,7 +516,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -336,7 +534,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save value elements back to the service.
         /// </summary>
-        public ValueElementResponseAPI SaveValueElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, ValueElementRequestAPI valueElementRequest, String codeReferenceName, String alertEmail)
+        public ValueElementResponseAPI SaveValueElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, ValueElementRequestAPI valueElementRequest)
         {
             WebException webException = null;
             ValueElementResponseAPI valueElementResponse = null;
@@ -375,7 +573,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -386,7 +584,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -403,7 +601,7 @@ namespace ManyWho.Flow.SDK
             return valueElementResponse;
         }
 
-        public TypeElementResponseAPI SaveTypeElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, TypeElementRequestAPI typeElementRequest, String codeReferenceName, String alertEmail)
+        public TypeElementResponseAPI SaveTypeElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, TypeElementRequestAPI typeElementRequest)
         {
             WebException webException = null;
             TypeElementResponseAPI typeElementResponse = null;
@@ -442,7 +640,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -453,7 +651,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -473,7 +671,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save service elements back to the service.
         /// </summary>
-        public ServiceElementResponseAPI SaveServiceElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, ServiceElementRequestAPI serviceElementRequest, String codeReferenceName, String alertEmail)
+        public ServiceElementResponseAPI SaveServiceElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, ServiceElementRequestAPI serviceElementRequest)
         {
             WebException webException = null;
             ServiceElementResponseAPI serviceElementResponse = null;
@@ -512,7 +710,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -523,7 +721,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -543,7 +741,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save page elements back to the service.
         /// </summary>
-        public PageElementResponseAPI SavePageElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, PageElementRequestAPI pageElementRequest, String codeReferenceName, String alertEmail)
+        public PageElementResponseAPI SavePageElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, PageElementRequestAPI pageElementRequest)
         {
             WebException webException = null;
             PageElementResponseAPI pageElementResponse = null;
@@ -582,7 +780,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -593,7 +791,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -610,7 +808,7 @@ namespace ManyWho.Flow.SDK
             return pageElementResponse;
         }
 
-        public MapElementResponseAPI LoadMapElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, String mapElementId, String codeReferenceName, String alertEmail)
+        public MapElementResponseAPI LoadMapElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, String mapElementId)
         {
             WebException webException = null;
             MapElementResponseAPI mapElementResponse = null;
@@ -644,7 +842,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -655,7 +853,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -672,7 +870,7 @@ namespace ManyWho.Flow.SDK
             return mapElementResponse;
         }
 
-        public MapElementResponseAPI SaveMapElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, MapElementRequestAPI mapElementRequest, String codeReferenceName, String alertEmail)
+        public MapElementResponseAPI SaveMapElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, MapElementRequestAPI mapElementRequest)
         {
             WebException webException = null;
             MapElementResponseAPI mapElementResponse = null;
@@ -711,7 +909,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -722,7 +920,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -739,7 +937,7 @@ namespace ManyWho.Flow.SDK
             return mapElementResponse;
         }
 
-        public GroupElementResponseAPI LoadGroupElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, String groupElementId, String codeReferenceName, String alertEmail)
+        public GroupElementResponseAPI LoadGroupElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, String groupElementId)
         {
             WebException webException = null;
             GroupElementResponseAPI groupElementResponse = null;
@@ -773,7 +971,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -784,7 +982,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {
@@ -801,7 +999,7 @@ namespace ManyWho.Flow.SDK
             return groupElementResponse;
         }
 
-        public GroupElementResponseAPI SaveGroupElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, GroupElementRequestAPI groupElementRequest, String codeReferenceName, String alertEmail)
+        public GroupElementResponseAPI SaveGroupElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, GroupElementRequestAPI groupElementRequest)
         {
             WebException webException = null;
             GroupElementResponseAPI groupElementResponse = null;
@@ -840,7 +1038,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -851,7 +1049,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {

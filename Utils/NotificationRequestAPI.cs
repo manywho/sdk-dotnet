@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -20,13 +20,27 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Map
+namespace ManyWho.Flow.SDK.Utils
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class OutputValueAPI
+    public class NotificationRequestAPI
     {
         [DataMember]
-        public ValueElementIdAPI valueElementToApplyId
+        public String reason
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String redirectUrl
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<NotificationMessageAPI> notificationMessages
         {
             get;
             set;

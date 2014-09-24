@@ -13,6 +13,8 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Profile24</TargetFrameworkProfile>
+    <NuGetPackageImportStamp>f5a3ecef</NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,31 +35,40 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|AnyCPU'">
+    <OutputPath>bin\Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\portable-net40+sl5+wp80+win8+monotouch+monoandroid\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.6.0.5\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.6\lib\portable-net40+sl5+win8+wp8\System.IO.dll</HintPath>
+      <HintPath>packages\Microsoft.Bcl.1.1.9\lib\portable-net40+sl5+win8+wp8+wpa81\System.IO.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\portable-net40+sl4+win8+wp71\System.Net.Http.dll</HintPath>
+      <HintPath>packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\portable-net40+sl4+win8+wp71\System.Net.Http.Extensions.dll</HintPath>
+      <HintPath>packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.18\lib\portable-net40+sl4+win8+wp71\System.Net.Http.Primitives.dll</HintPath>
+      <HintPath>packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.6\lib\portable-net40+sl5+win8+wp8\System.Runtime.dll</HintPath>
+      <HintPath>packages\Microsoft.Bcl.1.1.9\lib\portable-net40+sl5+win8+wp8+wpa81\System.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Threading.Tasks">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.6\lib\portable-net40+sl5+win8+wp8\System.Threading.Tasks.dll</HintPath>
+      <HintPath>packages\Microsoft.Bcl.1.1.9\lib\portable-net40+sl5+win8+wp8+wpa81\System.Threading.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,6 +89,7 @@
     <Compile Include="Draw\Elements\Value\ValueElementIdReferenceAPI.cs" />
     <Compile Include="Draw\Flow\FlowImageResponseAPI.cs" />
     <Compile Include="PackageSingleton.cs" />
+    <Compile Include="Run\Elements\Map\OutcomeAvailableAPI.cs" />
     <Compile Include="Run\Elements\Type\CommandRequestAPI.cs" />
     <Compile Include="Run\Elements\Type\FileDataRequestAPI.cs" />
     <Compile Include="Run\Elements\Type\FileListFilterAPI.cs" />
@@ -86,6 +98,16 @@
     <Compile Include="Run\State\StateValueAPI.cs" />
     <Compile Include="Run\State\UserInteractionAPI.cs" />
     <Compile Include="Security\BuilderWhoAPI.cs" />
+    <Compile Include="Security\IPRangeAPI.cs" />
+    <Compile Include="Security\PasswordResetAPI.cs" />
+    <Compile Include="Security\RemoteSiteAPI.cs" />
+    <Compile Include="Security\SecuritySettingsAPI.cs" />
+    <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
+    <Compile Include="TenantSingleton.cs" />
+    <Compile Include="Tenant\ReportSettingsAPI.cs" />
+    <Compile Include="Tenant\TenantRegistrationAPI.cs" />
+    <Compile Include="Tenant\TenantRequestAPI.cs" />
+    <Compile Include="Tenant\TenantResponseAPI.cs" />
     <Compile Include="TranslateSingleton.cs" />
     <Compile Include="Translate\ContentValueDocumentAPI.cs" />
     <Compile Include="Translate\ContentValueDocumentTranslationAPI.cs" />
@@ -239,8 +261,14 @@
     <Compile Include="Utils\ErrorUtils.cs" />
     <Compile Include="Utils\HttpRetryHelper.cs" />
     <Compile Include="Utils\HttpUtils.cs" />
+    <Compile Include="Utils\INotificationMessage.cs" />
+    <Compile Include="Utils\INotifier.cs" />
     <Compile Include="Utils\InternationalizationUtils.cs" />
     <Compile Include="ManyWhoPluginException.cs" />
+    <Compile Include="Utils\NotificationRequestAPI.cs" />
+    <Compile Include="Utils\NotificationMessageAPI.cs" />
+    <Compile Include="Utils\NotificationResponseAPI.cs" />
+    <Compile Include="Utils\NotificationUtils.cs" />
     <Compile Include="Utils\RunUtils.cs" />
     <Compile Include="Utils\SettingUtils.cs" />
     <Compile Include="Utils\SqlUtils.cs" />
@@ -248,16 +276,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ManyWho.Flow.SDK.nuspec" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
+  <Import Project="packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+    <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

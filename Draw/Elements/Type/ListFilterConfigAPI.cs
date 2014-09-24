@@ -39,6 +39,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// <summary>
         /// The comparison when evaluating the 'where' entries.  This is either "AND" or "OR" and we do not support nesting (just yet anyway).
         /// </summary>
+        [DataMember]
         public String comparisonType
         {
             get;

@@ -27,13 +27,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     public class PropertyOperationAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public ValueElementIdAPI valueElementToReferenceId
         {
             get;

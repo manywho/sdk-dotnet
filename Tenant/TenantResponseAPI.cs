@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
+using ManyWho.Flow.SDK.Security;
 
 /*!
 
@@ -20,13 +21,27 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Map
+namespace ManyWho.Flow.SDK.Tenant
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class OutputValueAPI
+    public class TenantResponseAPI : TenantRequestAPI
     {
         [DataMember]
-        public ValueElementIdAPI valueElementToApplyId
+        public String id
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String developerName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<TenantResponseAPI> subTenants
         {
             get;
             set;

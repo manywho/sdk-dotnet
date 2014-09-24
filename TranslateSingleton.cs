@@ -74,7 +74,7 @@ namespace ManyWho.Flow.SDK
             return translate;
         }
 
-        public List<CultureAPI> GetCultures(IAuthenticatedWho authenticatedWho, String tenantId, String codeReferenceName, String alertEmail)
+        public List<CultureAPI> GetCultures(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId)
         {
             WebException webException = null;
             String endpointUrl = null;
@@ -108,7 +108,7 @@ namespace ManyWho.Flow.SDK
                     else
                     {
                         // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(authenticatedWho, i, alertEmail, codeReferenceName, httpResponseMessage, endpointUrl);
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
 
                         if (webException != null)
                         {
@@ -119,7 +119,7 @@ namespace ManyWho.Flow.SDK
                 catch (Exception exception)
                 {
                     // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(null, i, alertEmail, codeReferenceName, exception, endpointUrl);
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
 
                     if (webException != null)
                     {

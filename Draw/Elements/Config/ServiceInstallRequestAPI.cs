@@ -27,13 +27,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
     public class ServiceInstallRequestAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public List<TypeElementRequestAPI> typeElements
         {
             get;

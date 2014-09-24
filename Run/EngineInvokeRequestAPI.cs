@@ -72,6 +72,13 @@ namespace ManyWho.Flow.SDK.Run
         }
 
         [DataMember]
+        public String selectedMapElementId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String invokeType
         {
             get;

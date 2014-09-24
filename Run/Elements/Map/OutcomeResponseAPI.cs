@@ -22,29 +22,8 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Run.Elements.Map
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class OutcomeResponseAPI
+    public class OutcomeResponseAPI : OutcomeAvailableAPI
     {
-        [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String developerName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String label
-        {
-            get;
-            set;
-        }
-
         [DataMember]
         public String pageActionBindingType
         {
@@ -68,13 +47,6 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
 
         [DataMember]
         public String pageObjectBindingId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Int32 order
         {
             get;
             set;

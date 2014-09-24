@@ -8,7 +8,6 @@ using System.Net.Http;
 using ManyWho.Flow.SDK.Security;
 
 ///*!
-
 //Copyright 2013 Manywho, Inc.
 
 //Licensed under the Manywho License, Version 1.0 (the "License"); you may not use this
@@ -54,14 +53,14 @@ namespace ManyWho.Flow.SDK.Utils
             return authenticatedWho;
         }
 
-        public static WebException HandleUnsuccessfulHttpResponseMessage(IAuthenticatedWho authenticatedWho, Int32 iteration, String alertEmail, String codeReferenceName, HttpResponseMessage httpResponseMessage, String endpointUrl)
+        public static WebException HandleUnsuccessfulHttpResponseMessage(INotifier notifier, IAuthenticatedWho authenticatedWho, Int32 iteration, HttpResponseMessage httpResponseMessage, String endpointUrl)
         {
             WebException webException = null;
 
             if (iteration >= (MAXIMUM_RETRIES - 1))
             {
                 // The the alert email the fault
-                ErrorUtils.SendAlert(authenticatedWho, "Fault", alertEmail, codeReferenceName, "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The status code is: " + httpResponseMessage.StatusCode + ". The reason is: " + httpResponseMessage.ReasonPhrase);
+                ErrorUtils.SendAlert(notifier, authenticatedWho, "Fault", "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The status code is: " + httpResponseMessage.StatusCode + ". The reason is: " + httpResponseMessage.ReasonPhrase);
 
                 // Throw the fault up to the caller
                 webException = ErrorUtils.GetWebException(httpResponseMessage.StatusCode, httpResponseMessage.ReasonPhrase);
@@ -69,20 +68,20 @@ namespace ManyWho.Flow.SDK.Utils
             else
             {
                 // Alert the admin that a retry has happened
-                ErrorUtils.SendAlert(authenticatedWho, "Warning", alertEmail, codeReferenceName, "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The status code is: " + httpResponseMessage.StatusCode + ". The reason is: " + httpResponseMessage.ReasonPhrase);
+                ErrorUtils.SendAlert(notifier, authenticatedWho, "Warning", "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The status code is: " + httpResponseMessage.StatusCode + ". The reason is: " + httpResponseMessage.ReasonPhrase);
             }
 
             return webException;
         }
 
-        public static WebException HandleHttpException(IAuthenticatedWho authenticatedWho, Int32 iteration, String alertEmail, String codeReferenceName, Exception exception, String endpointUrl)
+        public static WebException HandleHttpException(INotifier notifier, IAuthenticatedWho authenticatedWho, Int32 iteration, Exception exception, String endpointUrl)
         {
             WebException webException = null;
 
             if (iteration >= (MAXIMUM_RETRIES - 1))
             {
                 // The the alert email the fault
-                ErrorUtils.SendAlert(authenticatedWho, "Fault", alertEmail, codeReferenceName, "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The error message we're getting back is: " + ErrorUtils.GetExceptionMessage(exception));
+                ErrorUtils.SendAlert(notifier, authenticatedWho, "Fault", "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The error message we're getting back is: " + ErrorUtils.GetExceptionMessage(exception));
 
                 // Throw the fault up to the caller
                 webException = ErrorUtils.GetWebException(HttpStatusCode.BadRequest, exception);
@@ -90,7 +89,7 @@ namespace ManyWho.Flow.SDK.Utils
             else
             {
                 // Alert the admin that a retry has happened
-                ErrorUtils.SendAlert(authenticatedWho, "Warning", alertEmail, codeReferenceName, "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The error message we're getting back is: " + ErrorUtils.GetExceptionMessage(exception));
+                ErrorUtils.SendAlert(notifier, authenticatedWho, "Warning", "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The error message we're getting back is: " + ErrorUtils.GetExceptionMessage(exception));
             }
 
             return webException;

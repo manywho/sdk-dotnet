@@ -7,7 +7,6 @@ using System.Net.Http;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
-//using System.Configuration;
 using ManyWho.Flow.SDK.Security;
 
 /*!
@@ -79,77 +78,56 @@ namespace ManyWho.Flow.SDK.Utils
             return AggregateAndWriteErrorMessage(exception, "", false);
         }
 
-        public static void SendAlert(IAuthenticatedWho authenticatedWho, String alertType, String alertEmail, String pluginName, String faultDescription)
+        public static String GetExceptionMessage(Exception exception, Boolean includeStackTrace)
         {
-            SendAlert(authenticatedWho, alertType, alertEmail, pluginName, faultDescription, null);
+            return AggregateAndWriteErrorMessage(exception, "", includeStackTrace);
         }
 
-        public static void SendAlert(IAuthenticatedWho authenticatedWho, String alertType, String alertEmail, String pluginName, String faultDescription, Exception exception)
+        public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String alertMessage)
         {
-            //NetworkCredential networkCredentials = null;
-            //SmtpClient smtpClient = null;
-            //MailMessage mailMessage = null;
-            //String message = null;
+            SendAlert(notifier, authenticatedWho, alertType, alertMessage, null);
+        }
 
-            //if (alertEmail != null &&
-            //    alertEmail.Trim().Length > 0)
-            //{
-            //    try
-            //    {
-            //        if (Boolean.Parse(ConfigurationManager.AppSettings.Get(SETTING_SEND_ALERTS)) == true)
-            //        {
-            //            mailMessage = new MailMessage();
-            //            mailMessage.To.Add(new MailAddress(alertEmail, alertEmail));
-            //            mailMessage.From = new MailAddress(ConfigurationManager.AppSettings.Get(SETTING_SEND_ALERT_FROM_EMAIL), ConfigurationManager.AppSettings.Get(SETTING_SEND_ALERT_FROM_EMAIL));
-            //            mailMessage.Subject = pluginName + " - Plugin " + alertType + " Alert";
+        public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String alertMessage, Exception exception)
+        {
+            String message = null;
 
-            //            // Create the full message
-            //            message = "";
+            // Check to see if the caller has in fact provided a notifier - if not, we don't bother to do anything
+            if (notifier != null)
+            {
+                try
+                {
+                    // Create the full message
+                    message = "";
 
-            //            // Create the fault description block
-            //            message += "Fault" + Environment.NewLine;
-            //            message += "-----" + Environment.NewLine;
-            //            message += faultDescription + Environment.NewLine + Environment.NewLine;
+                    // Create the alert message block
+                    message += "Alert Message" + Environment.NewLine;
+                    message += "-----" + Environment.NewLine;
+                    message += alertMessage + Environment.NewLine + Environment.NewLine;
 
-            //            // Create the flow summary block
-            //            message += "Plugin" + Environment.NewLine;
-            //            message += "------" + Environment.NewLine;
-            //            message += "Name: " + pluginName + Environment.NewLine + Environment.NewLine;
+                    // Only include the authenticated who if we have one
+                    if (authenticatedWho != null)
+                    {
+                        // Create the running user summary block
+                        message += "Affected User" + Environment.NewLine;
+                        message += "-------------" + Environment.NewLine;
 
-            //            // Create the running user summary block
-            //            message += "Affected User" + Environment.NewLine;
-            //            message += "-------------" + Environment.NewLine;
+                        // Serialize the user information
+                        message += NotificationUtils.SerializeAuthenticatedWhoInfo(NotificationUtils.MEDIA_TYPE_PLAIN, authenticatedWho) + Environment.NewLine;
+                    }
 
-            //            if (authenticatedWho != null)
-            //            {
-            //                message += "User Id: " + authenticatedWho.UserId + Environment.NewLine;
-            //                message += "Directory Id: " + authenticatedWho.DirectoryId + Environment.NewLine;
-            //                message += "Directory Name: " + authenticatedWho.DirectoryName + Environment.NewLine;
-            //                message += "Email: " + authenticatedWho.Email + Environment.NewLine + Environment.NewLine;
-            //            }
-            //            else
-            //            {
-            //                message += "Unknown" + Environment.NewLine + Environment.NewLine;
-            //            }
+                    // Finally, we add the exception details if there is an exception
+                    message += AggregateAndWriteErrorMessage(exception, "", true);
 
-            //            // Finally, we add the exception details if there is an exception
-            //            message += AggregateAndWriteErrorMessage(exception, "", true);
-
-            //            // Create the message in our mail system
-            //            mailMessage.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(message, null, MediaTypeNames.Text.Plain));
-
-            //            networkCredentials = new NetworkCredential(ConfigurationManager.AppSettings.Get(SETTING_SENDGRID_USERNAME), ConfigurationManager.AppSettings.Get(SETTING_SENDGRID_PASSWORD));
-
-            //            smtpClient = new SmtpClient(ConfigurationManager.AppSettings.Get(SETTING_SENDGRID_SMTP), Convert.ToInt32(587));
-            //            smtpClient.Credentials = networkCredentials;
-            //            smtpClient.Send(mailMessage);
-            //        }
-            //    }
-            //    catch (Exception)
-            //    {
-            //        // Hide any faults so we're not piling errors on errors
-            //    }
-            //}
+                    // Set the notification and send
+                    notifier.AddNotificationMessage(NotificationUtils.MEDIA_TYPE_PLAIN, message);
+                    notifier.SendNotification();
+                }
+                catch (Exception)
+                {
+                    // Hide any faults so we're not piling errors on errors
+                }
+            }
         }
 
         private static HttpStatusCode GetStatusCode(Exception exception)

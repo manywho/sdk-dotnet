@@ -25,7 +25,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     public class MessageOutputAPI : OutputValueAPI
     {
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -34,7 +34,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// <summary>
         /// This is not included as a data member as it's a temp value.
         /// </summary>
-        public String contentType
+        public string contentType
+        {
+            get;
+            set;
+        }
+
+        public int ordinal
         {
             get;
             set;

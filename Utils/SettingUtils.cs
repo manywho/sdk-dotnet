@@ -10,7 +10,6 @@
 //using ManyWho.Flow.SDK.Run.Elements.Config;
 
 ///*!
-
 //Copyright 2013 Manywho, Inc.
 
 //Licensed under the Manywho License, Version 1.0 (the "License"); you may not use this

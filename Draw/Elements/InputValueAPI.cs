@@ -26,13 +26,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements
     public class InputValueAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public ValueElementIdAPI valueElementToReferenceId
         {
             get;

@@ -80,6 +80,16 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
+        /// The outcome the service wishes to select to progress the engine. This may or may not succeed based on business rules.
+        /// </summary>
+        [DataMember]
+        public String selectedOutcomeId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The culture for the response.
         /// </summary>
         [DataMember]
@@ -113,6 +123,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The debug mode to run the engine in.  For the service response, we do not pass the mode up into the engine as it would make it impossible to step through
         /// currently as the user won't have access (though we simply haven't tried it - it might work).
         /// </summary>
+        [DataMember]
         public String mode
         {
             get;

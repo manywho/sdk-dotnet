@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -20,13 +20,41 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Map
+namespace ManyWho.Flow.SDK.Security
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class OutputValueAPI
+    public class SecuritySettingsAPI
     {
         [DataMember]
-        public ValueElementIdAPI valueElementToApplyId
+        public Boolean isFlowRestrictedByIPRange
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Boolean isServiceRestrictedByRemoteSites
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<IPRangeAPI> authorizedFlowIPRanges
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<RemoteSiteAPI> authorizedServiceRemoteSites
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public UserRegistrationSettingsAPI userRegistrationSettings
         {
             get;
             set;
