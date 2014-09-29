@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Util;
+using System.Reflection;
+using ManyWho.Flow.SDK.Draw.Elements;
 using ManyWho.Flow.SDK.Attributes;
-
+using ManyWho.Flow.SDK.Utils;
+using ManyWho.Flow.SDK.Run.Elements.Type;
 /*!
 
-Copyright 2013 Manywho, Inc.
+Copyright 2014 Manywho, Inc.
 
 Licensed under the Manywho License, Version 1.0 (the "License"); you may not use this
 file except in compliance with the License.
@@ -20,31 +22,39 @@ KIND, either express or implied. See the License for the specific language gover
 permissions and limitations under the License.
 
 */
-
-namespace ManyWho.Flow.SDK.Draw.Elements
+namespace ManyWho.Flow.SDK.Draw.Log
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ElementAPI
+    [ObjectAPI("Log")]
+    public class LogAPI : ElementAPI
     {
         [DataMember]
-        [PropertyAPI("ElementType")]
-        public String elementType
+        [PropertyAPI("StateId")]
+        public string StateId
         {
             get;
             set;
         }
 
         [DataMember]
-        [PropertyAPI("DeveloperName")]
-        public String developerName
+        [PropertyAPI("FlowId")]
+        public string FlowId
         {
             get;
             set;
         }
 
         [DataMember]
-        [PropertyAPI("DeveloperSummary")]
-        public String developerSummary
+        [PropertyAPI("FlowDeveloperName")]
+        public string FlowDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        [PropertyAPI("Entries")]
+        public Dictionary<string, LogEntryAPI> Entries
         {
             get;
             set;
