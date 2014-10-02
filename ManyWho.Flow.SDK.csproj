@@ -75,6 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+      <Compile Include="Draw\Log\LogAPI.cs" />
+    <Compile Include="Draw\Log\LogEntryAPI.cs" />
+    <Compile Include="Run\Elements\Type\IObjectAPIConvert.cs" />
+    <Compile Include="Utils\ObjectAPIConversion.cs" />
+    <Compile Include="Attributes\ObjectAPIAttribute.cs" />
+    <Compile Include="Attributes\PropertyAPIAttribute.cs" />
     <Compile Include="DrawSingleton.cs" />
     <Compile Include="Draw\Elements\Map\FlowOutAPI.cs" />
     <Compile Include="Draw\Elements\Map\NavigationOverrideAPI.cs" />
