@@ -89,6 +89,7 @@
     <Compile Include="Draw\Elements\Value\ValueElementIdReferenceAPI.cs" />
     <Compile Include="Draw\Flow\FlowImageResponseAPI.cs" />
     <Compile Include="PackageSingleton.cs" />
+    <Compile Include="ReportSingleton.cs" />
     <Compile Include="Run\Elements\Map\OutcomeAvailableAPI.cs" />
     <Compile Include="Run\Elements\Type\CommandRequestAPI.cs" />
     <Compile Include="Run\Elements\Type\FileDataRequestAPI.cs" />
