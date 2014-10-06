@@ -52,5 +52,12 @@ namespace ManyWho.Flow.SDK.Security
             get;
             set;
         }
+
+        [DataMember]
+        public String username
+        {
+            get;
+            set;
+        }
     }
 }
