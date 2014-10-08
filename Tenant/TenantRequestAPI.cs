@@ -46,12 +46,5 @@ namespace ManyWho.Flow.SDK.Tenant
             get;
             set;
         }
-
-        [DataMember]
-        public UserRegistrationSettingsAPI userRegistrationSettings
-        {
-            get;
-            set;
-        }
     }
 }
