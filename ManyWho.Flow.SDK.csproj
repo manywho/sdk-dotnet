@@ -79,6 +79,8 @@
     <Compile Include="Draw\Log\LogAPI.cs" />
     <Compile Include="Draw\Log\LogEntryAPI.cs" />
     <Compile Include="Run\Elements\Type\IObjectAPIConvert.cs" />
+    <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
+    <Compile Include="Utils\NotificationMessage.cs" />
     <Compile Include="Utils\ObjectAPIConversion.cs" />
     <Compile Include="Attributes\ObjectAPIAttribute.cs" />
     <Compile Include="Attributes\PropertyAPIAttribute.cs" />
@@ -110,7 +112,6 @@
     <Compile Include="Security\PasswordResetAPI.cs" />
     <Compile Include="Security\RemoteSiteAPI.cs" />
     <Compile Include="Security\SecuritySettingsAPI.cs" />
-    <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="TenantSingleton.cs" />
     <Compile Include="Tenant\ReportSettingsAPI.cs" />
     <Compile Include="Tenant\TenantRegistrationAPI.cs" />

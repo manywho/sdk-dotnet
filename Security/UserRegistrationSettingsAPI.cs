@@ -40,7 +40,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
-        public String whoGetsNotified
+        public String notificationWhoId
         {
             get;
             set;
