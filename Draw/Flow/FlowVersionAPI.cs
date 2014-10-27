@@ -63,7 +63,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
 
         
         [DataMember]
-        [PropertyAPI("Modified")]
+        [PropertyAPI("DateModified")]
         public DateTime dateModified
         {
             get;
