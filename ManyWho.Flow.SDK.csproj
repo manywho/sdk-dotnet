@@ -78,7 +78,9 @@
     <Compile Include="Draw\Flow\FlowVersionAPI.cs" />
     <Compile Include="Draw\Log\LogAPI.cs" />
     <Compile Include="Draw\Log\LogEntryAPI.cs" />
+    <Compile Include="Run\Logging\LogAPI.cs" />
     <Compile Include="Run\Elements\Type\IObjectAPIConvert.cs" />
+    <Compile Include="Run\Logging\LogEntryAPI.cs" />
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="Utils\NotificationMessage.cs" />
     <Compile Include="Utils\ObjectAPIConversion.cs" />
