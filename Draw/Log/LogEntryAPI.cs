@@ -60,5 +60,13 @@ namespace ManyWho.Flow.SDK.Draw.Log
             get;
             set;
         }
+
+        [DataMember(Name = "level")]
+        [PropertyAPI("Level")]
+        public LoggingLevel Level
+        {
+            get;
+            set;
+        }
     }
 }
