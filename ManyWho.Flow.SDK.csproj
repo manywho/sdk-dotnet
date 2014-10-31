@@ -75,6 +75,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Draw\Flow\FlowVersionAPI.cs" />
+    <Compile Include="Draw\Log\LogAPI.cs" />
+    <Compile Include="Draw\Log\LogEntryAPI.cs" />
+    <Compile Include="Run\Elements\Type\IObjectAPIConvert.cs" />
+    <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
+    <Compile Include="Utils\NotificationMessage.cs" />
+    <Compile Include="Utils\ObjectAPIConversion.cs" />
+    <Compile Include="Attributes\ObjectAPIAttribute.cs" />
+    <Compile Include="Attributes\PropertyAPIAttribute.cs" />
     <Compile Include="DrawSingleton.cs" />
     <Compile Include="Draw\Elements\Map\FlowOutAPI.cs" />
     <Compile Include="Draw\Elements\Map\NavigationOverrideAPI.cs" />
@@ -89,6 +98,7 @@
     <Compile Include="Draw\Elements\Value\ValueElementIdReferenceAPI.cs" />
     <Compile Include="Draw\Flow\FlowImageResponseAPI.cs" />
     <Compile Include="PackageSingleton.cs" />
+    <Compile Include="ReportSingleton.cs" />
     <Compile Include="Run\Elements\Map\OutcomeAvailableAPI.cs" />
     <Compile Include="Run\Elements\Type\CommandRequestAPI.cs" />
     <Compile Include="Run\Elements\Type\FileDataRequestAPI.cs" />
@@ -102,7 +112,6 @@
     <Compile Include="Security\PasswordResetAPI.cs" />
     <Compile Include="Security\RemoteSiteAPI.cs" />
     <Compile Include="Security\SecuritySettingsAPI.cs" />
-    <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="TenantSingleton.cs" />
     <Compile Include="Tenant\ReportSettingsAPI.cs" />
     <Compile Include="Tenant\TenantRegistrationAPI.cs" />
