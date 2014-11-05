@@ -69,6 +69,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
+        public VoteAPI vote
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public Boolean clearNavigationOverrides
         {
             get;

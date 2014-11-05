@@ -117,6 +117,13 @@ namespace ManyWho.Flow.SDK.Run
         }
 
         [DataMember]
+        public VoteResponseAPI voteResponse
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public StateLogAPI stateLog
         {
             get;

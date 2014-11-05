@@ -75,10 +75,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Draw\Elements\Map\VoteAPI.cs" />
     <Compile Include="Draw\Flow\FlowVersionAPI.cs" />
     <Compile Include="Draw\Log\LogAPI.cs" />
     <Compile Include="Draw\Log\LogEntryAPI.cs" />
+    <Compile Include="Run\Elements\Map\VoteRequestAPI.cs" />
+    <Compile Include="Run\Elements\Map\VoteResponseAPI.cs" />
     <Compile Include="Run\Elements\Type\IObjectAPIConvert.cs" />
+    <Compile Include="Run\State\UserVoteAPI.cs" />
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="Utils\NotificationMessage.cs" />
     <Compile Include="Utils\ObjectAPIConversion.cs" />

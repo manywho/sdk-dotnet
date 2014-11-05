@@ -45,6 +45,8 @@ namespace ManyWho.Flow.SDK
         public const String INVOKE_TYPE_SYNC = "SYNC";
         // Tells the engine that the user has clicked on something in the navigation as opposed to an outcome
         public const String INVOKE_TYPE_NAVIGATE = "NAVIGATE";
+        // Tells the engine that the state is waiting on votes to come in
+        public const String INVOKE_TYPE_WAITING_ON_VOTES = "WAITING_ON_VOTES";
 
         // Engine mode constants
         public const String MODE_DEFAULT = null;
