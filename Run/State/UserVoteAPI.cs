@@ -17,6 +17,13 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
+        public String directoryUserId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String manywhoUserId
         {
             get;
