@@ -41,6 +41,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
+        public List<ListenerAPI> listeners
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public MessageActionAPI viewMessageAction
         {
             get;

@@ -411,5 +411,8 @@ namespace ManyWho.Flow.SDK
         public const String USER_REGISTRATION_NOTIFY_ALL = "ALL";
         public const String USER_REGISTRATION_NOTIFY_SPECIFIC = "SPECIFIC";
         public const String USER_REGISTRATION_NOTIFY_NONE = "NONE";
+
+        public const String LISTENER_TYPE_EDIT = "EDIT";
+        public const String LISTENER_TYPE_DELETE = "DELETE";
     }
 }
