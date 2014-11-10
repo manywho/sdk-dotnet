@@ -196,7 +196,7 @@ namespace ManyWho.Flow.SDK.Utils
                 throw new ArgumentNullException("TenantId", "The TenantId cannot be null or blank.");
             }
 
-            if (Guid.TryParse(tenantId, out tenantGuid))
+            if (Guid.TryParse(tenantId, out tenantGuid) == false)
             {
                 throw new ArgumentNullException("TenantId", "The TenantId is not a valid identifier.");
             }
