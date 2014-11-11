@@ -33,14 +33,14 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
-        public Int32 minimumVoters
+        public Int32 minimumCount
         {
             get;
             set;
         }
 
         [DataMember]
-        public Int32 minimumPercentage
+        public Int32 minimumPercent
         {
             get;
             set;

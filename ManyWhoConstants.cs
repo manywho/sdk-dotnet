@@ -413,5 +413,8 @@ namespace ManyWho.Flow.SDK
         public const String USER_REGISTRATION_NOTIFY_ALL = "ALL";
         public const String USER_REGISTRATION_NOTIFY_SPECIFIC = "SPECIFIC";
         public const String USER_REGISTRATION_NOTIFY_NONE = "NONE";
+
+        public const String VOTE_TYPE_COUNT = "COUNT";
+        public const String VOTE_TYPE_PERCENT = "PERCENT";
     }
 }
