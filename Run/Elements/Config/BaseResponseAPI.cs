@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
+using ManyWho.Flow.SDK.Translate;
 
 /*!
 
@@ -20,48 +21,46 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Map
+namespace ManyWho.Flow.SDK.Run.Elements.Config
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class MessageActionAPI
+    public class BaseResponseAPI
     {
+        /// <summary>
+        /// The token for this service request.  The token is needed for the service execution manager to identify the correct state.
+        /// </summary>
         [DataMember]
-        public String developerName
+        public String token
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The tenant for which the response applies.
+        /// </summary>
         [DataMember]
-        public String serviceElementId
+        public String tenantId
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The culture for the response.
+        /// </summary>
         [DataMember]
-        public String uriPart
+        public CultureAPI culture
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Passes back any annotations to the service.
+        /// </summary>
         [DataMember]
-        public List<MessageInputAPI> inputs
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<MessageOutputAPI> outputs
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Dictionary<String, String> attributes
+        public Dictionary<String, String> annotations
         {
             get;
             set;

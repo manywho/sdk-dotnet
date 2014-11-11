@@ -124,6 +124,7 @@ namespace ManyWho.Flow.SDK
         public const String AUTHENTICATED_USER_PUBLIC_IDENTITY_PROVIDER = "NONE";
         public const String AUTHENTICATED_USER_PUBLIC_STATUS = "UKNOWN";
         public const String AUTHENTICATED_USER_PUBLIC_TOKEN = "NONE";
+        public static readonly Guid AUTHENTICATED_USER_PUBLIC_MANYWHO_USER_ID = Guid.Parse("52DF1A90-3826-4508-B7C2-CDE8AA5B72CF");
 
         public const String AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID = "ManyWhoTenantId";
         public const String AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID = "ManyWhoUserId";
@@ -416,5 +417,8 @@ namespace ManyWho.Flow.SDK
 
         public const String VOTE_TYPE_COUNT = "COUNT";
         public const String VOTE_TYPE_PERCENT = "PERCENT";
+
+        public const String LISTENER_TYPE_EDIT = "EDIT";
+        public const String LISTENER_TYPE_DELETE = "DELETE";
     }
 }

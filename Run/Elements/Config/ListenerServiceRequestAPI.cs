@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -20,48 +20,27 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Map
+namespace ManyWho.Flow.SDK.Run.Elements.Config
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class MessageActionAPI
+    public class ListenerServiceRequestAPI : BaseRequestAPI
     {
+        /// <summary>
+        /// If this service request is to listen to events, then the listen type will be provided so the service can register this request
+        /// for the right events.
+        /// </summary>
         [DataMember]
-        public String developerName
+        public String listenType
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The value that the remote service should refer to to associate the listening request.
+        /// </summary>
         [DataMember]
-        public String serviceElementId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String uriPart
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<MessageInputAPI> inputs
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<MessageOutputAPI> outputs
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Dictionary<String, String> attributes
+        public EngineValueAPI valueForListening
         {
             get;
             set;
