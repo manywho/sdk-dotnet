@@ -26,6 +26,8 @@ namespace ManyWho.Flow.SDK.Utils
             set;
         }
 
+        void AddLogEntry(String entry);
+
         void AddNotificationMessage(String mediaType, String message);
 
         void SendNotification();
