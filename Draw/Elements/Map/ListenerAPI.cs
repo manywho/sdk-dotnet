@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 
@@ -23,7 +24,7 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Draw.Elements.Map
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class MessageActionAPI
+    public class ListenerAPI
     {
         [DataMember]
         public String developerName
@@ -40,21 +41,14 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
-        public String uriPart
+        public String listenerType
         {
             get;
             set;
         }
 
         [DataMember]
-        public List<MessageInputAPI> inputs
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<MessageOutputAPI> outputs
+        public ValueElementIdAPI valueElementToReferenceForListeningId
         {
             get;
             set;

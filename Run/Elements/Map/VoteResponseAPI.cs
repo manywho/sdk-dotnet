@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
+using ManyWho.Flow.SDK.Run.State;
+using ManyWho.Flow.SDK.Draw.Elements.Group;
 
 /*!
 
@@ -20,48 +22,13 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Map
+namespace ManyWho.Flow.SDK.Run.Elements.Map
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class MessageActionAPI
+    public class VoteResponseAPI : VoteRequestAPI
     {
         [DataMember]
-        public String developerName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String serviceElementId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String uriPart
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<MessageInputAPI> inputs
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<MessageOutputAPI> outputs
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Dictionary<String, String> attributes
+        public Boolean isComplete
         {
             get;
             set;

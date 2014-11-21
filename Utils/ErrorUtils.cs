@@ -39,6 +39,21 @@ namespace ManyWho.Flow.SDK.Utils
         public const String ALERT_TYPE_FAULT = "Fault";
         public const String ALERT_TYPE_WARNING = "Warning";
 
+        public static Boolean IsDebugging(String mode)
+        {
+            Boolean isDebugging = false;
+
+            // Check the mode to see if the user is debugging
+            if (String.IsNullOrWhiteSpace(mode) == false &&
+                (mode.Equals(ManyWhoConstants.MODE_DEBUG, StringComparison.OrdinalIgnoreCase) == true) ||
+                (mode.Equals(ManyWhoConstants.MODE_DEBUG_STEPTHROUGH, StringComparison.OrdinalIgnoreCase) == true))
+            {
+                isDebugging = true;
+            }
+
+            return isDebugging;
+        }
+
         public static WebException GetWebException(HttpStatusCode statusCode, String reasonPhrase)
         {
             WebException webException = null;

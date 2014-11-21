@@ -521,6 +521,96 @@ namespace ManyWho.Flow.SDK
             return invokeType;
         }
 
+        public String Event(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String callbackUri, ListenerServiceResponseAPI listenerServiceResponse)
+        {
+            WebException webException = null;
+            HttpClient httpClient = null;
+            HttpContent httpContent = null;
+            HttpResponseMessage httpResponseMessage = null;
+            String invokeType = null;
+
+            // Make sure we have a tenant to associate this response with
+            if (tenantId == null ||
+                tenantId.Trim().Length == 0)
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The TenantId is null or blank.");
+            }
+
+            // Make sure we know where we're posting to!
+            if (callbackUri == null ||
+                callbackUri.Trim().Length == 0)
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The CallbackUri is null or blank.");
+            }
+
+            // Make sure we have a listener service response object
+            if (listenerServiceResponse == null)
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The ListenerServiceResponse object is null.");
+            }
+
+            // Make sure the token identifier has been provided as this is needed for the URI
+            if (listenerServiceResponse.token == null ||
+                listenerServiceResponse.token.Trim().Length == 0)
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The ListenerServiceResponse.Token property is null or blank.");
+            }
+
+            // We enclose the execute request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null);
+
+                    // Use the JSON formatter to create the content of the request body
+                    httpContent = new StringContent(JsonConvert.SerializeObject(listenerServiceResponse));
+                    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    // Post the engine invoke request over to ManyWho
+                    httpResponseMessage = httpClient.PostAsync(callbackUri, httpContent).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // Get the invoke type from the response message
+                        invokeType = httpResponseMessage.Content.ReadAsStringAsync().Result;
+
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, callbackUri);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, callbackUri);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, httpContent, httpResponseMessage);
+                }
+            }
+
+            return invokeType;
+        }
+
         public EngineNavigationResponseAPI GetNavigation(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String stateId, EngineNavigationRequestAPI engineNavigationRequest)
         {
             WebException webException = null;
