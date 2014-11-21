@@ -45,6 +45,8 @@ namespace ManyWho.Flow.SDK
         public const String INVOKE_TYPE_SYNC = "SYNC";
         // Tells the engine that the user has clicked on something in the navigation as opposed to an outcome
         public const String INVOKE_TYPE_NAVIGATE = "NAVIGATE";
+        // Tells the engine that the state is waiting on votes to come in
+        public const String INVOKE_TYPE_WAITING_ON_VOTES = "WAITING_ON_VOTES";
 
         // Engine mode constants
         public const String MODE_DEFAULT = null;
@@ -122,6 +124,7 @@ namespace ManyWho.Flow.SDK
         public const String AUTHENTICATED_USER_PUBLIC_IDENTITY_PROVIDER = "NONE";
         public const String AUTHENTICATED_USER_PUBLIC_STATUS = "UKNOWN";
         public const String AUTHENTICATED_USER_PUBLIC_TOKEN = "NONE";
+        public static readonly Guid AUTHENTICATED_USER_PUBLIC_MANYWHO_USER_ID = Guid.Parse("52DF1A90-3826-4508-B7C2-CDE8AA5B72CF");
 
         public const String AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID = "ManyWhoTenantId";
         public const String AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID = "ManyWhoUserId";
@@ -410,5 +413,11 @@ namespace ManyWho.Flow.SDK
         public const String USER_REGISTRATION_NOTIFY_ALL = "ALL";
         public const String USER_REGISTRATION_NOTIFY_SPECIFIC = "SPECIFIC";
         public const String USER_REGISTRATION_NOTIFY_NONE = "NONE";
+
+        public const String VOTE_TYPE_COUNT = "COUNT";
+        public const String VOTE_TYPE_PERCENT = "PERCENT";
+
+        public const String LISTENER_TYPE_EDIT = "EDIT";
+        public const String LISTENER_TYPE_DELETE = "DELETE";
     }
 }

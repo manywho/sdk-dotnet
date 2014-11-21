@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -20,48 +20,17 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Map
+namespace ManyWho.Flow.SDK.Run.Elements.Config
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class MessageActionAPI
+    public class ListenerServiceResponseAPI : BaseResponseAPI
     {
+        /// <summary>
+        /// This is the other side of the value for listening that will have been passed in. The listening event value should be the same
+        /// value with any updates to the data.
+        /// </summary>
         [DataMember]
-        public String developerName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String serviceElementId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String uriPart
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<MessageInputAPI> inputs
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<MessageOutputAPI> outputs
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Dictionary<String, String> attributes
+        public EngineValueAPI listeningEventValue
         {
             get;
             set;

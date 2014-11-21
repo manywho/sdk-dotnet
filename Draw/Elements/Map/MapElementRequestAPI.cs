@@ -41,6 +41,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
+        public List<ListenerAPI> listeners
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public MessageActionAPI viewMessageAction
         {
             get;
@@ -63,6 +70,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
 
         [DataMember]
         public List<NavigationOverrideAPI> navigationOverrides
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public VoteAPI vote
         {
             get;
             set;

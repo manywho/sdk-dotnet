@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
+using ManyWho.Flow.SDK.Run.State;
+using ManyWho.Flow.SDK.Draw.Elements.Group;
 
 /*!
 
@@ -20,41 +22,59 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Map
+namespace ManyWho.Flow.SDK.Run.Elements.Map
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class MessageActionAPI
+    public class VoteRequestAPI
     {
+        /// <summary>
+        /// The configuration information needed for the service to function.
+        /// </summary>
         [DataMember]
-        public String developerName
+        public List<EngineValueAPI> configurationValues
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The authorization context the message is running within. If we're running identity with the same service, this will tell the user
+        /// which users are currently authorized. The purpose of this property is to help with notifications - not to restrict access - that is
+        /// managed by the ManyWho engine.
+        /// </summary>
+        [DataMember]
+        public GroupAuthorizationAPI authorization
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The current list of votes that have been cast by end users.
+        /// </summary>
+        [DataMember]
+        public List<UserVoteAPI> userVotes
         {
             get;
             set;
         }
 
         [DataMember]
-        public String serviceElementId
+        public String voteType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String uriPart
+        public Int32 minimumCount
         {
             get;
             set;
         }
 
         [DataMember]
-        public List<MessageInputAPI> inputs
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<MessageOutputAPI> outputs
+        public Int32 minimumPercent
         {
             get;
             set;
