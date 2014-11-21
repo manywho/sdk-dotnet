@@ -151,7 +151,6 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_JOIN_URI_DEVELOPER_NAME = "$JoinUri";
 
         public static readonly Guid MANYWHO_USER_VALUE_ID = Guid.Parse("03DC41DD-1C6B-4B33-BF61-CBD1D0778FFF");
-        public const String MANYWHO_USER_VALUE_DEVELOPER_NAME = "$RunningUser";
 
         public static readonly Guid MANYWHO_TRUE_VALUE_ID = Guid.Parse("BE1BC78E-FD57-40EC-9A86-A815DE2A9E28");
         public const String MANYWHO_TRUE_DEVELOPER_NAME = "$True";
