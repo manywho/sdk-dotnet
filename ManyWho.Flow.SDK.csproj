@@ -87,6 +87,8 @@
     <Compile Include="Run\Elements\Config\ListenerServiceRequestAPI.cs" />
     <Compile Include="Run\Elements\Config\ListenerServiceResponseAPI.cs" />
     <Compile Include="Run\Elements\Type\IObjectAPIConvert.cs" />
+    <Compile Include="Run\State\StateListenerRequestAPI.cs" />
+    <Compile Include="Run\State\StateListenerResponseAPI.cs" />
     <Compile Include="Run\State\UserVoteAPI.cs" />
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="Utils\NotificationMessage.cs" />

@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ManyWho.Flow.SDK.Run;
+using ManyWho.Flow.SDK.Run.State;
 using ManyWho.Flow.SDK.Run.Elements.Config;
 using ManyWho.Flow.SDK.Utils;
 using ManyWho.Flow.SDK.Security;
@@ -80,6 +81,63 @@ namespace ManyWho.Flow.SDK
             run.ServiceUrl = MANYWHO_BASE_URL;
 
             return run;
+        }
+
+        public void DispatchStateListenerResponse(INotifier notifier, IAuthenticatedWho authenticatedWho, String callbackUri, ListenerServiceResponseAPI listenerServiceResponse)
+        {
+            WebException webException = null;
+            HttpClient httpClient = null;
+            HttpContent httpContent = null;
+            HttpResponseMessage httpResponseMessage = null;
+
+            // We enclose the request in a for loop to handle http errors
+            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            {
+                try
+                {
+                    // Create the http client to handle our request
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, null, null);
+
+                    // Use the JSON formatter to create the content of the request body
+                    httpContent = new StringContent(JsonConvert.SerializeObject(listenerServiceResponse));
+                    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    // Post the authentication request over to ManyWho
+                    httpResponseMessage = httpClient.PostAsync(callbackUri, httpContent).Result;
+
+                    // Check the status of the response and respond appropriately
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        // We successfully executed the request, we can break out of the retry loop
+                        break;
+                    }
+                    else
+                    {
+                        // Make sure we handle the lack of success properly
+                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, null, i, httpResponseMessage, callbackUri);
+
+                        if (webException != null)
+                        {
+                            throw webException;
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    // Make sure we handle the exception properly
+                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, callbackUri);
+
+                    if (webException != null)
+                    {
+                        throw webException;
+                    }
+                }
+                finally
+                {
+                    // Clean up the objects from the request
+                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
+                }
+            }
         }
 
         public IAuthenticatedWho Login(INotifier notifier, String tenantId, String stateId, AuthenticationCredentialsAPI authenticationCredentials)
