@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         }
 
         [DataMember]
-        public int ordinal
+        public int order
         {
             get;
             set;
