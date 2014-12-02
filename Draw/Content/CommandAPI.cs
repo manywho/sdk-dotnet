@@ -26,13 +26,6 @@ namespace ManyWho.Flow.SDK.Draw.Content
     public class CommandAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public String commandType
         {
             get;

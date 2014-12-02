@@ -171,7 +171,6 @@
     <Compile Include="Draw\Elements\Map\OutcomeAPI.cs" />
     <Compile Include="Draw\Elements\Map\OutcomeRequestAPI.cs" />
     <Compile Include="Draw\Elements\Map\OutputValueAPI.cs" />
-    <Compile Include="Draw\Elements\Map\PropertyOperationAPI.cs" />
     <Compile Include="Draw\Elements\Map\RuleAPI.cs" />
     <Compile Include="Draw\Elements\Value\ValueElementAPI.cs" />
     <Compile Include="Draw\Elements\Value\ValueElementIdAPI.cs" />
@@ -192,7 +191,6 @@
     <Compile Include="Draw\Elements\UI\PageConditionAPI.cs" />
     <Compile Include="Draw\Elements\UI\PageContainerAPI.cs" />
     <Compile Include="Draw\Elements\UI\PageElementAPI.cs" />
-    <Compile Include="Draw\Elements\UI\PageElementIdAPI.cs" />
     <Compile Include="Draw\Elements\UI\PageElementRequestAPI.cs" />
     <Compile Include="Draw\Elements\UI\PageElementResponseAPI.cs" />
     <Compile Include="Draw\Elements\UI\PageObjectReferenceAPI.cs" />
