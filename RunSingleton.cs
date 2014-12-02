@@ -96,7 +96,7 @@ namespace ManyWho.Flow.SDK
                 try
                 {
                     // Create the http client to handle our request
-                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, null, null);
+                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null);
 
                     // Use the JSON formatter to create the content of the request body
                     httpContent = new StringContent(JsonConvert.SerializeObject(listenerServiceResponse));
