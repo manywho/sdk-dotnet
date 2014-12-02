@@ -79,6 +79,7 @@
     <Compile Include="Draw\Flow\FlowVersionAPI.cs" />
     <Compile Include="Draw\Log\LogAPI.cs" />
     <Compile Include="Draw\Log\LogEntryAPI.cs" />
+    <Compile Include="Draw\Log\LogLevel.cs" />
     <Compile Include="Run\Elements\Map\VoteRequestAPI.cs" />
     <Compile Include="Run\Elements\Map\VoteResponseAPI.cs" />
     <Compile Include="Draw\Elements\Map\ListenerAPI.cs" />
