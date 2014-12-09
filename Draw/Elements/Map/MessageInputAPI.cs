@@ -40,7 +40,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
-        public int ordinal
+        public int order
         {
             get;
             set;

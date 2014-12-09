@@ -49,6 +49,16 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
+        /// The state for which this service request is associated.
+        /// </summary>
+        [DataMember]
+        public String stateId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The Uri for any callbacks from the remote service.
         /// </summary>
         [DataMember]

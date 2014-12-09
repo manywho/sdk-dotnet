@@ -27,13 +27,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
     public class ValueElementIdReferenceAPI : ValueElementIdAPI
     {
         [DataMember]
-        public String versionId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public String developerName
         {
             get;

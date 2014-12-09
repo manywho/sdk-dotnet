@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Runtime.Serialization;
 
 /*!
@@ -19,20 +20,34 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.UI
+namespace ManyWho.Flow.SDK.Run.State
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class PageElementIdAPI
+    public class StateListenerRequestAPI
     {
         [DataMember]
-        public String id
+        public String listenType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String versionId
+        public String stateId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String callbackUri
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Dictionary<String, String> annotations
         {
             get;
             set;

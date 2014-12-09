@@ -419,5 +419,8 @@ namespace ManyWho.Flow.SDK
 
         public const String LISTENER_TYPE_EDIT = "EDIT";
         public const String LISTENER_TYPE_DELETE = "DELETE";
+
+        public const String STATE_LISTEN_TYPE_DONE = "DONE";
+        public const String STATE_LISTEN_TYPE_UPDATE = "UPDATE";
     }
 }

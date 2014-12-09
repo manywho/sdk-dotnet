@@ -8,6 +8,7 @@ using ManyWho.Flow.SDK.Draw.Elements;
 using ManyWho.Flow.SDK.Attributes;
 using ManyWho.Flow.SDK.Utils;
 using ManyWho.Flow.SDK.Run.Elements.Type;
+
 /*!
 
 Copyright 2014 Manywho, Inc.
@@ -29,7 +30,7 @@ namespace ManyWho.Flow.SDK.Draw.Log
     [ObjectAPI("LogEntry")]
     public class LogEntryAPI : ElementAPI
     {
-        [DataMember]
+        [DataMember(Name = "id")]
         [PropertyAPI("Id")]
         public string Id
         {
@@ -37,7 +38,7 @@ namespace ManyWho.Flow.SDK.Draw.Log
             set;
         }
 
-        [DataMember]
+        [DataMember(Name = "timestamp")]
         [PropertyAPI("Timestamp")]
         public DateTime Timestamp
         {
@@ -45,7 +46,7 @@ namespace ManyWho.Flow.SDK.Draw.Log
             set;
         }
 
-        [DataMember]
+        [DataMember(Name = "message")]
         [PropertyAPI("Message")]
         public string Message
         {
@@ -53,9 +54,17 @@ namespace ManyWho.Flow.SDK.Draw.Log
             set;
         }
 
-        [DataMember]
+        [DataMember(Name = "data")]
         [PropertyAPI("Data")]
         public string Data
+        {
+            get;
+            set;
+        }
+
+        [DataMember(Name = "level")]
+        [PropertyAPI("Level")]
+        public LoggingLevel Level
         {
             get;
             set;

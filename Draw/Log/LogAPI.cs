@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Draw.Log
     [ObjectAPI("Log")]
     public class LogAPI : ElementAPI
     {
-        [DataMember]
+        [DataMember(Name = "stateId")]
         [PropertyAPI("StateId")]
         public string StateId
         {
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Draw.Log
             set;
         }
 
-        [DataMember]
+        [DataMember(Name = "flowId")]
         [PropertyAPI("FlowId")]
         public string FlowId
         {
@@ -44,7 +44,7 @@ namespace ManyWho.Flow.SDK.Draw.Log
             set;
         }
 
-        [DataMember]
+        [DataMember(Name = "flowDeveloperName")]
         [PropertyAPI("FlowDeveloperName")]
         public string FlowDeveloperName
         {
@@ -52,7 +52,7 @@ namespace ManyWho.Flow.SDK.Draw.Log
             set;
         }
 
-        [DataMember]
+        [DataMember(Name = "entries")]
         [PropertyAPI("Entries")]
         public Dictionary<string, LogEntryAPI> Entries
         {

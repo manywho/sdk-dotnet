@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -21,20 +20,13 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.Map
+namespace ManyWho.Flow.SDK.Run.State
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class PropertyOperationAPI
+    public class StateListenerResponseAPI : StateListenerRequestAPI
     {
         [DataMember]
-        public ValueElementIdAPI valueElementToReferenceId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String typeElementPropertyId
+        public String id
         {
             get;
             set;
