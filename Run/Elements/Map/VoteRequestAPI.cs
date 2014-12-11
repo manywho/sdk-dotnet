@@ -86,5 +86,16 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
             get;
             set;
         }
+
+        /// <summary>
+        /// The outcome the user has selected when then submitted the vote.
+        /// </summary>
+        [DataMember]
+        public String selectedOutcomeId
+        {
+            get;
+            set;
+        }
+
     }
 }
