@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Run.State;
-using ManyWho.Flow.SDK.Draw.Elements.Group;
+using ManyWho.Flow.SDK.Run.Elements.Config;
 
 /*!
 
@@ -43,7 +43,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// managed by the ManyWho engine.
         /// </summary>
         [DataMember]
-        public GroupAuthorizationAPI authorization
+        public AuthorizationAPI authorization
         {
             get;
             set;

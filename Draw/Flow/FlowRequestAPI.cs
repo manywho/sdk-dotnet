@@ -66,7 +66,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         [DataMember]
-        public bool? allowJumping
+        public Boolean allowJumping
         {
             get;
             set;
