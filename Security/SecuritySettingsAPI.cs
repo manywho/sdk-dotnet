@@ -26,7 +26,28 @@ namespace ManyWho.Flow.SDK.Security
     public class SecuritySettingsAPI
     {
         [DataMember]
-        public Boolean isFlowRestrictedByIPRange
+        public Boolean isAdminRestrictedByIPRange
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Boolean isPackagingRestrictedByIPRange
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Boolean isDrawRestrictedByIPRange
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Boolean isRunRestrictedByIPRange
         {
             get;
             set;
@@ -40,7 +61,28 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
-        public List<IPRangeAPI> authorizedFlowIPRanges
+        public List<IPRangeAPI> authorizedAdminIPRanges
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<IPRangeAPI> authorizedPackagingIPRanges
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<IPRangeAPI> authorizedDrawIPRanges
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<IPRangeAPI> authorizedRunIPRanges
         {
             get;
             set;
