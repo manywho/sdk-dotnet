@@ -47,12 +47,5 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
             get;
             set;
         }
-
-        [DataMember]
-        public String selectedOutcomeId
-        {
-            get;
-            set;
-        }
     }
 }

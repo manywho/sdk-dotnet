@@ -61,7 +61,7 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public IAuthenticatedWho Login(INotifier notifier, String tenantId, String manywhoBaseUrl, AuthenticationCredentialsAPI authenticationCredentials)
         {
-            WebException webException = null;
+            Exception webException = null;
             String authorizationToken = null;
             IAuthenticatedWho authenticatedWho = null;
             HttpClient httpClient = null;
@@ -138,7 +138,7 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public DescribeServiceResponseAPI Describe(INotifier notifier, IAuthenticatedWho authenticatedWho, DescribeServiceRequestAPI describeServiceRequest)
         {
-            WebException webException = null;
+            Exception webException = null;
             DescribeServiceResponseAPI responseAPI = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -208,7 +208,7 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public FlowResponseAPI SaveFlow(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, FlowRequestAPI flowRequest)
         {
-            WebException webException = null;
+            Exception webException = null;
             FlowResponseAPI flowResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -278,7 +278,7 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public List<FlowResponseAPI> LoadFlows(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String tenantId, String filter)
         {
-            WebException webException = null;
+            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
@@ -343,7 +343,7 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public FlowResponseAPI SnapShotFlow(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String flowId)
         {
-            WebException webException = null;
+            Exception webException = null;
             FlowResponseAPI flowResponse = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
@@ -408,7 +408,7 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public FlowResponseAPI SetFlowActivation(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, FlowIdAPI flowId, Boolean isDefault, Boolean isActivated)
         {
-            WebException webException = null;
+            Exception webException = null;
             FlowResponseAPI flowResponse = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
@@ -473,7 +473,7 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public void AddElementToFlow(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String flowId, String elementType, String elementId)
         {
-            WebException webException = null;
+            Exception webException = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
@@ -536,7 +536,7 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public ValueElementResponseAPI SaveValueElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, ValueElementRequestAPI valueElementRequest)
         {
-            WebException webException = null;
+            Exception webException = null;
             ValueElementResponseAPI valueElementResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -603,7 +603,7 @@ namespace ManyWho.Flow.SDK
 
         public TypeElementResponseAPI SaveTypeElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, TypeElementRequestAPI typeElementRequest)
         {
-            WebException webException = null;
+            Exception webException = null;
             TypeElementResponseAPI typeElementResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -673,7 +673,7 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public ServiceElementResponseAPI SaveServiceElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, ServiceElementRequestAPI serviceElementRequest)
         {
-            WebException webException = null;
+            Exception webException = null;
             ServiceElementResponseAPI serviceElementResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -743,7 +743,7 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public PageElementResponseAPI SavePageElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, PageElementRequestAPI pageElementRequest)
         {
-            WebException webException = null;
+            Exception webException = null;
             PageElementResponseAPI pageElementResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -810,7 +810,7 @@ namespace ManyWho.Flow.SDK
 
         public MapElementResponseAPI LoadMapElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, String mapElementId)
         {
-            WebException webException = null;
+            Exception webException = null;
             MapElementResponseAPI mapElementResponse = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
@@ -872,7 +872,7 @@ namespace ManyWho.Flow.SDK
 
         public MapElementResponseAPI SaveMapElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, MapElementRequestAPI mapElementRequest)
         {
-            WebException webException = null;
+            Exception webException = null;
             MapElementResponseAPI mapElementResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -939,7 +939,7 @@ namespace ManyWho.Flow.SDK
 
         public GroupElementResponseAPI LoadGroupElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, String groupElementId)
         {
-            WebException webException = null;
+            Exception webException = null;
             GroupElementResponseAPI groupElementResponse = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
@@ -1001,7 +1001,7 @@ namespace ManyWho.Flow.SDK
 
         public GroupElementResponseAPI SaveGroupElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, GroupElementRequestAPI groupElementRequest)
         {
-            WebException webException = null;
+            Exception webException = null;
             GroupElementResponseAPI groupElementResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;

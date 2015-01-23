@@ -41,7 +41,7 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public TenantResponseAPI GetTenant(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl)
         {
-            WebException webException = null;
+            Exception webException = null;
             TenantResponseAPI responseAPI = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;

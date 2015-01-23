@@ -76,7 +76,7 @@ namespace ManyWho.Flow.SDK
 
         public List<CultureAPI> GetCultures(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId)
         {
-            WebException webException = null;
+            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;

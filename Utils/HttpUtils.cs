@@ -53,9 +53,9 @@ namespace ManyWho.Flow.SDK.Utils
             return authenticatedWho;
         }
 
-        public static WebException HandleUnsuccessfulHttpResponseMessage(INotifier notifier, IAuthenticatedWho authenticatedWho, Int32 iteration, HttpResponseMessage httpResponseMessage, String endpointUrl)
+        public static Exception HandleUnsuccessfulHttpResponseMessage(INotifier notifier, IAuthenticatedWho authenticatedWho, Int32 iteration, HttpResponseMessage httpResponseMessage, String endpointUrl)
         {
-            WebException webException = null;
+            Exception webException = null;
 
             if (iteration >= (MAXIMUM_RETRIES - 1))
             {
@@ -74,9 +74,9 @@ namespace ManyWho.Flow.SDK.Utils
             return webException;
         }
 
-        public static WebException HandleHttpException(INotifier notifier, IAuthenticatedWho authenticatedWho, Int32 iteration, Exception exception, String endpointUrl)
+        public static Exception HandleHttpException(INotifier notifier, IAuthenticatedWho authenticatedWho, Int32 iteration, Exception exception, String endpointUrl)
         {
-            WebException webException = null;
+            Exception webException = null;
 
             if (iteration >= (MAXIMUM_RETRIES - 1))
             {

@@ -76,7 +76,7 @@ namespace ManyWho.Flow.SDK
 
         public String ExportLatestFlowPackage(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String flowId, String codeReferenceName, String alertEmail)
         {
-            WebException webException = null;
+            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
