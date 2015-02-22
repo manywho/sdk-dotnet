@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Security;
 
 /*!
 
@@ -21,34 +20,27 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Run
+namespace ManyWho.Flow.SDK.Security
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class EngineAuthorizationContextAPI
+    public class AssignedUserPermissionAPI
     {
         [DataMember]
-        public String directoryName
+        public String userId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String directoryId
+        public String userPermissionType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String loginUrl
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String authenticationType
+        public String manywhoUserId
         {
             get;
             set;
