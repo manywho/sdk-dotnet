@@ -33,6 +33,20 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        public String avatarUrl
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String fullName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String userPermissionType
         {
             get;
