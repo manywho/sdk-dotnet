@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Utils;
+using ManyWho.Flow.SDK.Social;
 
 /*!
 
@@ -27,7 +28,7 @@ namespace ManyWho.Flow.SDK.Security
     public class AssignedUserPermissionRequestAPI
     {
         [DataMember]
-        public String[] userIds
+        public List<WhoAPI> whos
         {
             get;
             set;
