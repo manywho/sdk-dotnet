@@ -422,5 +422,11 @@ namespace ManyWho.Flow.SDK
 
         public const String STATE_LISTEN_TYPE_DONE = "DONE";
         public const String STATE_LISTEN_TYPE_UPDATE = "UPDATE";
+
+        public const String USER_PERMISSION_TYPE_CAN_EDIT_AND_ACTION = "CAN_EDIT_AND_ACTION";
+        public const String USER_PERMISSION_TYPE_CAN_ACTION = "CAN_ACTION";
+        public const String USER_PERMISSION_TYPE_CAN_EDIT = "CAN_EDIT";
+        public const String USER_PERMISSION_TYPE_CAN_VIEW = "CAN_VIEW";
+        public const String USER_PERMISSION_TYPE_CAN_COMMENT = "CAN_COMMENT";
     }
 }

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Security;
+using ManyWho.Flow.SDK.Utils;
+using ManyWho.Flow.SDK.Translate;
+using ManyWho.Flow.SDK.Draw.Elements.Group;
 
 /*!
 
@@ -21,34 +23,34 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Run
+namespace ManyWho.Flow.SDK.Run.Elements.Config
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class EngineAuthorizationContextAPI
+    public class ServiceNotificationRequestAPI : NotificationRequestAPI
     {
         [DataMember]
-        public String directoryName
+        public String[] userIds
         {
             get;
             set;
         }
 
         [DataMember]
-        public String directoryId
+        public CultureAPI culture
         {
             get;
             set;
         }
 
         [DataMember]
-        public String loginUrl
+        public List<EngineValueAPI> configurationValues
         {
             get;
             set;
         }
 
         [DataMember]
-        public String authenticationType
+        public GroupAuthorizationAPI authorization
         {
             get;
             set;

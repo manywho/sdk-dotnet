@@ -85,7 +85,7 @@ namespace ManyWho.Flow.SDK
 
         public void DispatchStateListenerResponse(INotifier notifier, IAuthenticatedWho authenticatedWho, String callbackUri, ListenerServiceResponseAPI listenerServiceResponse)
         {
-            WebException webException = null;
+            Exception webException = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
@@ -142,7 +142,7 @@ namespace ManyWho.Flow.SDK
 
         public IAuthenticatedWho Login(INotifier notifier, String tenantId, String stateId, AuthenticationCredentialsAPI authenticationCredentials)
         {
-            WebException webException = null;
+            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -213,7 +213,7 @@ namespace ManyWho.Flow.SDK
 
         public List<FlowResponseAPI> LoadFlows(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String filter)
         {
-            WebException webException = null;
+            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
@@ -275,18 +275,11 @@ namespace ManyWho.Flow.SDK
 
         public FlowResponseAPI LoadFlowById(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String flowId)
         {
-            WebException webException = null;
+            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
             FlowResponseAPI flowResponse = null;
-
-            // Check to make sure we have a flow id to pass up to the system
-            if (flowId == null ||
-                flowId.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The identifier for the flow is null or blank.");
-            }
 
             // We enclose the request in a for loop to handle http errors
             for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
@@ -344,7 +337,7 @@ namespace ManyWho.Flow.SDK
 
         public EngineInitializationResponseAPI Initialize(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, EngineInitializationRequestAPI engineInitializationRequest)
         {
-            WebException webException = null;
+            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -411,25 +404,12 @@ namespace ManyWho.Flow.SDK
 
         public EngineInvokeResponseAPI Execute(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, EngineInvokeRequestAPI engineInvokeRequest)
         {
-            WebException webException = null;
+            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
             EngineInvokeResponseAPI engineInvokeResponse = null;
-
-            // Make sure we have an engine invoke request object
-            if (engineInvokeRequest == null)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The EngineInvokeRequest object is null.");
-            }
-
-            // Make sure the state identifier has been provided as this is needed for the URI
-            if (engineInvokeRequest.stateId == null ||
-                engineInvokeRequest.stateId.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The EngineInvokeRequest.StateId property is null or blank.");
-            }
 
             // We enclose the execute request in a for loop to handle http errors
             for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
@@ -491,38 +471,11 @@ namespace ManyWho.Flow.SDK
 
         public String Response(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String callbackUri, ServiceResponseAPI serviceResponse)
         {
-            WebException webException = null;
+            Exception webException = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
             String invokeType = null;
-
-            // Make sure we have a tenant to associate this response with
-            if (tenantId == null ||
-                tenantId.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The TenantId is null or blank.");
-            }
-
-            // Make sure we know where we're posting to!
-            if (callbackUri == null ||
-                callbackUri.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The CallbackUri is null or blank.");
-            }
-
-            // Make sure we have a service response object
-            if (serviceResponse == null)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The ServiceResponse object is null.");
-            }
-
-            // Make sure the token identifier has been provided as this is needed for the URI
-            if (serviceResponse.token == null ||
-                serviceResponse.token.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The ServiceResponse.Token property is null or blank.");
-            }
 
             // We enclose the execute request in a for loop to handle http errors
             for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
@@ -581,38 +534,11 @@ namespace ManyWho.Flow.SDK
 
         public String Event(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String callbackUri, ListenerServiceResponseAPI listenerServiceResponse)
         {
-            WebException webException = null;
+            Exception webException = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
             String invokeType = null;
-
-            // Make sure we have a tenant to associate this response with
-            if (tenantId == null ||
-                tenantId.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The TenantId is null or blank.");
-            }
-
-            // Make sure we know where we're posting to!
-            if (callbackUri == null ||
-                callbackUri.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The CallbackUri is null or blank.");
-            }
-
-            // Make sure we have a listener service response object
-            if (listenerServiceResponse == null)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The ListenerServiceResponse object is null.");
-            }
-
-            // Make sure the token identifier has been provided as this is needed for the URI
-            if (listenerServiceResponse.token == null ||
-                listenerServiceResponse.token.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The ListenerServiceResponse.Token property is null or blank.");
-            }
 
             // We enclose the execute request in a for loop to handle http errors
             for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
@@ -671,25 +597,12 @@ namespace ManyWho.Flow.SDK
 
         public EngineNavigationResponseAPI GetNavigation(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String stateId, EngineNavigationRequestAPI engineNavigationRequest)
         {
-            WebException webException = null;
+            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
             EngineNavigationResponseAPI engineNavigationResponse = null;
-
-            // Make sure we have an engine navigation request object
-            if (engineNavigationRequest == null)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The EngineNavigationRequest object is null.");
-            }
-
-            // Make sure the state identifier has been provided as this is needed for the URI
-            if (engineNavigationRequest.stateId == null ||
-                engineNavigationRequest.stateId.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The EngineNavigationRequest.StateId property is null or blank.");
-            }
 
             // We enclose the execute request in a for loop to handle http errors
             for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
@@ -751,18 +664,11 @@ namespace ManyWho.Flow.SDK
 
         public String ExportState(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String stateId)
         {
-            WebException webException = null;
+            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
             String stateJson = null;
-
-            // Check to make sure we have a state id to pass up to the system
-            if (stateId == null ||
-                stateId.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "The identifier for the state is null or blank.");
-            }
 
             // We enclose the request in a for loop to handle http errors
             for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
@@ -820,7 +726,7 @@ namespace ManyWho.Flow.SDK
 
         public void ImportState(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String stateJson)
         {
-            WebException webException = null;
+            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;

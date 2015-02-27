@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net.Http;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
@@ -54,30 +53,18 @@ namespace ManyWho.Flow.SDK.Utils
             return isDebugging;
         }
 
-        public static WebException GetWebException(HttpStatusCode statusCode, String reasonPhrase)
+        public static ArgumentNullException GetWebException(HttpStatusCode statusCode, String reasonPhrase)
         {
-            WebException webException = null;
-            //HttpWebResponse httpResponseMessage = null;
-
-            // Create the new http response message with the status code
-            //httpResponseMessage = new HttpWebResponse();
-
-            // Reason phrases cannot have carriage returns
-            //httpResponseMessage.ReasonPhrase = reasonPhrase.Replace(Environment.NewLine, " ");
-
-            // Add the response message to the exception
-            webException = new WebException(reasonPhrase.Replace(Environment.NewLine, " "));
-
-            return webException;
+            return new ArgumentNullException(statusCode.ToString(), reasonPhrase.Replace(Environment.NewLine, " "));
         }
 
-        public static WebException GetWebException(HttpStatusCode statusCode, Exception exception)
+        public static ArgumentNullException GetWebException(HttpStatusCode statusCode, Exception exception)
         {
             // Aggregate the exception and return as a single reason phrase
             return GetWebException(statusCode, AggregateAndWriteErrorMessage(exception, "", false));
         }
 
-        public static WebException GetPluginWebException(IAuthenticatedWho authenticatedWho, Exception exception, String methodName, String pluginName, String shortDescription)
+        public static ArgumentNullException GetPluginWebException(IAuthenticatedWho authenticatedWho, Exception exception, String methodName, String pluginName, String shortDescription)
         {
             String message = null;
 
@@ -85,7 +72,7 @@ namespace ManyWho.Flow.SDK.Utils
             message = "PLUGIN: " + pluginName + " -- We hit a problem while " + shortDescription + ". The method being called on the plugin is: " + methodName + ". ";
             message = "The error we're getting back is: " + AggregateAndWriteErrorMessage(exception, message, false);
 
-            return GetWebException(GetStatusCode(exception), message);
+            return GetWebException(HttpStatusCode.BadRequest, message);
         }
 
         public static String GetExceptionMessage(Exception exception)
@@ -143,22 +130,6 @@ namespace ManyWho.Flow.SDK.Utils
                     // Hide any faults so we're not piling errors on errors
                 }
             }
-        }
-
-        private static HttpStatusCode GetStatusCode(Exception exception)
-        {
-            HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError;
-
-            if (exception != null)
-            {
-                if (exception is WebException &&
-                    ((WebException)exception).Response != null)
-                {
-                    httpStatusCode = ((HttpWebResponse)((WebException)exception).Response).StatusCode;
-                }
-            }
-
-            return httpStatusCode;
         }
 
         private static String AggregateAndWriteErrorMessage(Exception exception, String message, Boolean includeTrace)
