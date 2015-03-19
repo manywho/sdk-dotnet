@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 /*!
 
@@ -27,6 +28,7 @@ namespace ManyWho.Flow.SDK.Security
     public class AuthenticatedWho : IAuthenticatedWho
     {
         [DataMember]
+        [JsonProperty("manywhoUserId")]
         public Guid ManyWhoUserId
         {
             get;
@@ -34,6 +36,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("manywhoTenantId")]
         public Guid ManyWhoTenantId
         {
             get;
@@ -41,6 +44,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("manywhoToken")]
         public String ManyWhoToken
         {
             get;
@@ -48,6 +52,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("geoLocation")]
         public IGeoLocation GeoLocation
         {
             get;
@@ -55,6 +60,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("userId")]
         public String UserId
         {
             get;
@@ -62,6 +68,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("username")]
         public String Username
         {
             get;
@@ -69,6 +76,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("email")]
         public String Email
         {
             get;
@@ -76,6 +84,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("identityProvider")]
         public String IdentityProvider
         {
             get;
@@ -83,6 +92,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("token")]
         public String Token
         {
             get;
@@ -90,6 +100,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("tenantName")]
         public String TenantName
         {
             get;
@@ -97,6 +108,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("directoryName")]
         public String DirectoryName
         {
             get;
@@ -104,6 +116,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("directoryId")]
         public String DirectoryId
         {
             get;
@@ -111,6 +124,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("firstName")]
         public String FirstName
         {
             get;
@@ -118,6 +132,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("lastName")]
         public String LastName
         {
             get;
