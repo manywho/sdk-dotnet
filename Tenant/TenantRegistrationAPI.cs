@@ -5,31 +5,37 @@ namespace ManyWho.Flow.SDK.Tenant
 {
     public class TenantRegistrationAPI
     {
-        public String firstName
+        public string firstName
         {
             get;
             set;
         }
 
-        public String lastName
+        public string lastName
         {
             get;
             set;
         }
 
-        public String email
+        public string email
         {
             get;
             set;
         }
 
-        public String username
+        public string username
         {
             get;
             set;
         }
 
-        public String password
+        public string password
+        {
+            get;
+            set;
+        }
+
+        public string subdomain
         {
             get;
             set;
