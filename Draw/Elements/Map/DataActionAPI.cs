@@ -42,6 +42,20 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
+        public Boolean isSmartSave
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Int32 order
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public ValueElementIdAPI valueElementToReferenceId
         {
             get;
