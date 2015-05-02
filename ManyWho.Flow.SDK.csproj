@@ -86,7 +86,6 @@
     <Compile Include="Run\Elements\Config\BaseResponseAPI.cs" />
     <Compile Include="Run\Elements\Config\ListenerServiceRequestAPI.cs" />
     <Compile Include="Run\Elements\Config\ListenerServiceResponseAPI.cs" />
-    <Compile Include="Run\Elements\Type\IObjectAPIConvert.cs" />
     <Compile Include="Run\State\StateListenerRequestAPI.cs" />
     <Compile Include="Run\State\StateListenerResponseAPI.cs" />
     <Compile Include="Run\State\UserVoteAPI.cs" />
@@ -95,9 +94,7 @@
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="Tenant\DeleteAllAPI.cs" />
     <Compile Include="Utils\NotificationMessage.cs" />
-    <Compile Include="Utils\ObjectAPIConversion.cs" />
-    <Compile Include="Attributes\ObjectAPIAttribute.cs" />
-    <Compile Include="Attributes\PropertyAPIAttribute.cs" />
+    <Compile Include="Utils\MapperUtils.cs" />
     <Compile Include="DrawSingleton.cs" />
     <Compile Include="Draw\Elements\Map\FlowOutAPI.cs" />
     <Compile Include="Draw\Elements\Map\NavigationOverrideAPI.cs" />

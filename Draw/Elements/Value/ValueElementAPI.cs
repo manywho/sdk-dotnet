@@ -24,11 +24,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class ValueElementAPI : ElementAPI
     {
-        [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
+
     }
 }

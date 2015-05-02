@@ -26,13 +26,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
     public class GroupElementAPI : ElementAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public String groupElementId
         {
             get;

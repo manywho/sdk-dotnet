@@ -26,13 +26,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
     public class TagElementRequestAPI : ElementAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-        
-        [DataMember]
         public String contentType
         {
             get;
