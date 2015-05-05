@@ -28,12 +28,37 @@ namespace ManyWho.Flow.SDK
 
         public static List<T> Convert<T>(List<ObjectAPI> objectAPIs)
         {
+            List<object> objectList = null;
             List<T> list = null;
+            
+            objectList = Convert(typeof(T), objectAPIs);
+
+            // Convert the list to a typed list
+            if (objectList != null &&
+                objectList.Count > 0)
+            {
+                list = new List<T>();
+
+                foreach (object objectEntry in objectList)
+                {
+                    list.Add((T)objectEntry);
+                }
+            }
+
+            return list;
+        }
+
+        public static List<object> Convert(Type type, List<ObjectAPI> objectAPIs)
+        {
+            List<object> list = null;
 
             if (objectAPIs != null &&
                 objectAPIs.Count > 0)
             {
-                String typeName = GetCleanObjectName(typeof(T).Name);
+                String typeName = GetCleanObjectName(type.Name);
+
+                // Create the list to hold the translated objects
+                list = new List<object>();
 
                 foreach (ObjectAPI objectAPI in objectAPIs)
                 {
@@ -46,10 +71,10 @@ namespace ManyWho.Flow.SDK
                         objectAPI.properties.Count > 0)
                     {
                         // Create an instance of the typed object so we can fill it up with data
-                        T typedObject = (T)Activator.CreateInstance(typeof(T));
+                        object typedObject = Activator.CreateInstance(type);
 
                         // Grab the properties from the type so we can assign them from the incoming object api properties
-                        PropertyInfo[] propertyInfosFromType = typeof(T).GetProperties();
+                        PropertyInfo[] propertyInfosFromType = type.GetProperties();
 
                         // Go through the properties in the incoming data first as this may be a sub-set
                         foreach (PropertyAPI propertyAPI in objectAPI.properties)
@@ -140,27 +165,78 @@ namespace ManyWho.Flow.SDK
                                         }
                                         else
                                         {
-                                            // As an extra check, we make sure the name of the type ends with API or we may have a non-converted primitive property
-                                            if (propertyInfo.PropertyType.Name.EndsWith("API", StringComparison.OrdinalIgnoreCase) == false)
+                                            // We have some form of object type, so we need to do some additional testing
+                                            if (typeof(Dictionary<String, String>).IsAssignableFrom(propertyInfo.PropertyType))
                                             {
-                                                throw new NotImplementedException(propertyInfo.PropertyType.Name);
+                                                // TODO: Finish the dictionary
+                                                //throw new NotImplementedException("Have not yet implemented dictionary.");
+                                                //propertyInfo.SetValue(GetPropertyValueForDictionary(propertyAPI.objectData, propertyInfo);
                                             }
-
-                                            if (propertyInfo.PropertyType.Name.Equals("ValueElementIdAPI", StringComparison.OrdinalIgnoreCase) == true)
+                                            // string inherits from IEnumerable so add a check for "not string"
+                                            else if (typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType) &&
+                                                     propertyInfo.PropertyType != typeof(string))
                                             {
-                                                // This is a value element id so we convert it to a full reference so we have naming information, etc
-                                                //typeElementPropertyAPI.typeElementDeveloperName = Convert<ValueElementIdReferenceAPI>(typeElementRequestAPIs);
+                                                Type itemType = null;
+
+                                                // Check to make sure it is a full on list
+                                                if (propertyInfo.PropertyType.IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
+                                                {
+                                                    itemType = propertyInfo.PropertyType.GetGenericArguments()[0];
+                                                }
+
+                                                // As an extra check, we make sure the name of the type ends with API or we may have a non-converted primitive property
+                                                if (itemType.Name.EndsWith("API", StringComparison.OrdinalIgnoreCase) == false)
+                                                {
+                                                    throw new NotImplementedException(propertyInfo.PropertyType.Name);
+                                                }
+
+                                                List<object> objectList = Convert(itemType, propertyAPI.objectData);
+                                                IList typedList = null;
+
+                                                if (objectList != null &&
+                                                    objectList.Count > 0)
+                                                {
+                                                    var listType = typeof(List<>).MakeGenericType(itemType);
+                                                    typedList = (IList)Activator.CreateInstance(listType);
+
+                                                    foreach (object objectEntry in objectList)
+                                                    {
+                                                        typedList.Add(objectEntry);
+                                                    }
+                                                }
+
+                                                propertyInfo.SetValue(typedObject, typedList, null);
                                             }
                                             else
                                             {
-                                                // The property is an object, so we convert that over here so we have the type
-                                                //propertyInfo.SetValue(Convert(propertyInfo.PropertyType, typeElementRequestAPIs));
+                                                // As an extra check, we make sure the name of the type ends with API or we may have a non-converted primitive property
+                                                if (propertyInfo.PropertyType.Name.EndsWith("API", StringComparison.OrdinalIgnoreCase) == false)
+                                                {
+                                                    throw new NotImplementedException(propertyInfo.PropertyType.Name);
+                                                }
+
+                                                List<object> propertyList = Convert(propertyInfo.PropertyType, propertyAPI.objectData);
+
+                                                // Check to make sure we converted something over
+                                                if (propertyList != null &&
+                                                    propertyList.Count > 0)
+                                                {
+                                                    foreach (var propertyObject in propertyList)
+                                                    {
+                                                        // Assign the first entry in the returned list
+                                                        propertyInfo.SetValue(typedObject, propertyObject, null);
+                                                        break;
+                                                    }
+                                                }
                                             }
                                         }
                                     }
                                 }
                             }
                         }
+
+                        // Add the typed object to the list
+                        list.Add(typedObject);
                     }
                 }
             }
@@ -218,19 +294,25 @@ namespace ManyWho.Flow.SDK
             return typeElementRequestAPI.developerName;
         }
 
-        public static ObjectAPI Convert<T>(String externalId, object source)
+        public static ObjectAPI Convert<T>(String externalId, object source, List<ValueElementIdReferenceAPI> valueElementIdReferences)
         {
             Type type = typeof(T);
 
-            return Convert(type, externalId, source);
+            return Convert(type, externalId, source, valueElementIdReferences);
         }
 
-        private static ObjectAPI Convert(Type type, String externalId, object source)
+        private static ObjectAPI Convert(Type type, String externalId, object source, List<ValueElementIdReferenceAPI> valueElementIdReferences)
         {
             ObjectAPI objectAPI = null;
 
             if (source != null)
             {
+                // If we have a value element identifier, we need to translate it over
+                if (type.Name.Equals("ValueElementIdAPI", StringComparison.OrdinalIgnoreCase) == true)
+                {
+                    type = new ValueElementIdReferenceAPI().GetType();
+                }
+
                 objectAPI = new ObjectAPI();
                 objectAPI.developerName = GetCleanObjectName(type.Name);
                 objectAPI.externalId = externalId;
@@ -238,7 +320,7 @@ namespace ManyWho.Flow.SDK
 
                 foreach (PropertyInfo propertyInfo in type.GetProperties())
                 {
-                    PropertyAPI propertyAPI = Convert(source, propertyInfo);
+                    PropertyAPI propertyAPI = Convert(source, propertyInfo, valueElementIdReferences);
                     if (propertyAPI != null)
                     {
                         objectAPI.properties.Add(propertyAPI);
@@ -267,28 +349,28 @@ namespace ManyWho.Flow.SDK
             }
         }
 
-        public static PropertyAPI Convert(object source, PropertyInfo propertyInfo)
+        public static PropertyAPI Convert(object source, PropertyInfo propertyInfo, List<ValueElementIdReferenceAPI> valueElementIdReferences)
         {
             if (typeof(IDictionary).IsAssignableFrom(propertyInfo.PropertyType))
             {
-                return GetPropertyAPIFromDictionary(source, propertyInfo);
+                return GetPropertyAPIFromDictionary(source, propertyInfo, valueElementIdReferences);
             }
             // string inherits from IEnumerable so add a check for "not string"
             else if (typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType) && 
                         propertyInfo.PropertyType != typeof(string))
             {
-                return GetPropertyAPIFromCollection(source, propertyInfo);
+                return GetPropertyAPIFromCollection(source, propertyInfo, valueElementIdReferences);
             }
             else
             {
-                return GetPropertyAPIFromType(source, propertyInfo);
+                return GetPropertyAPIFromType(source, propertyInfo, valueElementIdReferences);
             }
         }
 
-        private static PropertyAPI GetPropertyAPIFromCollection(object source, PropertyInfo propertyInfo)
+        private static PropertyAPI GetPropertyAPIFromCollection(object source, PropertyInfo propertyInfo, List<ValueElementIdReferenceAPI> valueElementIdReferences)
         {
             IEnumerable values = (IEnumerable)propertyInfo.GetValue(source, null);
-            return GetPropertyAPIFromCollection(values, propertyInfo);
+            return GetPropertyAPIValueFromCollection(values, propertyInfo, valueElementIdReferences);
         }
 
         private static TypeElementPropertyAPI GetTypeElementPropertyAPIFromCollection(Dictionary<String, TypeElementRequestAPI> typeElementRequestAPIs, PropertyInfo propertyInfo)
@@ -312,7 +394,7 @@ namespace ManyWho.Flow.SDK
             return typeElementPropertyAPI;
         }
 
-        private static PropertyAPI GetPropertyAPIFromCollection(IEnumerable values, PropertyInfo propertyInfo)
+        private static PropertyAPI GetPropertyAPIValueFromCollection(IEnumerable values, PropertyInfo propertyInfo, List<ValueElementIdReferenceAPI> valueElementIdReferences)
         {
             List<ObjectAPI> objectAPIs = null;
             Type type = propertyInfo.PropertyType;
@@ -332,12 +414,12 @@ namespace ManyWho.Flow.SDK
                     if (objectEntry is ElementAPI)
                     {
                         // Assign the identifier property from the object
-                        objectAPIs.Add(Convert(type, ((ElementAPI)objectEntry).id, objectEntry));
+                        objectAPIs.Add(Convert(type, ((ElementAPI)objectEntry).id, objectEntry, valueElementIdReferences));
                     }
                     else
                     {
                         // Assign a random external identifier
-                        objectAPIs.Add(Convert(type, Guid.NewGuid().ToString(), objectEntry));
+                        objectAPIs.Add(Convert(type, Guid.NewGuid().ToString(), objectEntry, valueElementIdReferences));
                     }
                 }
             }
@@ -410,27 +492,27 @@ namespace ManyWho.Flow.SDK
             return typeElementPropertyAPI;
         }
 
-        private static PropertyAPI GetPropertyAPIFromDictionary(object source, PropertyInfo propertyInfo)
+        private static PropertyAPI GetPropertyAPIFromDictionary(object source, PropertyInfo propertyInfo, List<ValueElementIdReferenceAPI> valueElementIdReferences)
         {
             PropertyAPI propertyAPI = null;
             IDictionary value = (IDictionary)propertyInfo.GetValue(source, null);
 
             if (value != null)
             {
-                propertyAPI = GetPropertyAPIFromCollection(value.Values, propertyInfo);
+                propertyAPI = GetPropertyAPIFromCollection(value.Values, propertyInfo, valueElementIdReferences);
             }
 
             return propertyAPI;
         }
 
-        private static PropertyAPI GetPropertyAPIFromComplexType(String externalId, object source, PropertyInfo propertyInfo)
+        private static PropertyAPI GetPropertyAPIFromComplexType(String externalId, object source, PropertyInfo propertyInfo, List<ValueElementIdReferenceAPI> valueElementIdReferences)
         {
             object propertyValue = propertyInfo.GetValue(source, null);
             List<ObjectAPI> objectData = new List<ObjectAPI>();
 
             if (propertyValue != null)
             {
-                objectData.Add(Convert(source.GetType(), externalId, propertyValue));
+                objectData.Add(Convert(source.GetType(), externalId, propertyValue, valueElementIdReferences));
             }
 
             return new PropertyAPI()
@@ -490,10 +572,25 @@ namespace ManyWho.Flow.SDK
             return typeElementPropertyAPI;
         }
 
-        private static PropertyAPI GetPropertyAPIFromType(object source, PropertyInfo propertyInfo)
+        private static PropertyAPI GetPropertyAPIFromType(object source, PropertyInfo propertyInfo, List<ValueElementIdReferenceAPI> valueElementIdReferences)
         {
-            object propertyValue = propertyInfo.GetValue(source, null);
+            List<ObjectAPI> objectData = null;
             string value = null;
+
+            // Check to see if the source is a value element identifier, if so we map that over to the full reference
+            if (source is ValueElementIdAPI)
+            {
+                source = FindValueElementIdReferenceForValueElementId((ValueElementIdAPI)source, valueElementIdReferences);
+            }
+
+            object propertyValue = propertyInfo.GetValue(source, null);
+
+            // All of the ValueElementIds are translated to ValueElementIdReferences, so we need to do a little switch here
+            if (propertyInfo.PropertyType.Name.Equals("ValueElementIdAPI", StringComparison.OrdinalIgnoreCase) == true)
+            {
+                // We switch the source to the matching ValueElementIdReference rather than the actual ValueElementId
+                source = FindValueElementIdReferenceForValueElementId((ValueElementIdAPI)propertyValue, valueElementIdReferences);
+            }
 
             if (propertyValue != null)
             {
@@ -501,9 +598,17 @@ namespace ManyWho.Flow.SDK
                 {
                     value = ((DateTime)propertyValue).ToUniversalTime().ToString();
                 }
-                else
+                else if (propertyValue is Int32 ||
+                         propertyValue is Boolean ||
+                         propertyValue is String ||
+                         propertyValue is Guid)
                 {
                     value = propertyValue.ToString();
+                }
+                else
+                {
+                    objectData = new List<ObjectAPI>();
+                    objectData.Add(Convert(propertyInfo.PropertyType, Guid.NewGuid().ToString(), propertyValue, valueElementIdReferences));
                 }                
             }
 
@@ -511,7 +616,7 @@ namespace ManyWho.Flow.SDK
             {
                 developerName = GetCleanPropertyName(propertyInfo.Name),
                 contentValue = value,
-                objectData = null,
+                objectData = objectData,
                 typeElementPropertyId = null
             };
         }
@@ -519,6 +624,40 @@ namespace ManyWho.Flow.SDK
         public static String GetTypeName<T>()
         {
             return GetCleanObjectName(typeof(T).Name);
+        }
+
+        private static ValueElementIdReferenceAPI FindValueElementIdReferenceForValueElementId(ValueElementIdAPI valueElementId, List<ValueElementIdReferenceAPI> valueElementIdReferences)
+        {
+            ValueElementIdReferenceAPI valueElementIdReference = null;
+
+            if (valueElementId != null)
+            {
+                if (valueElementIdReferences != null &&
+                    valueElementIdReferences.Count > 0)
+                {
+                    foreach (ValueElementIdReferenceAPI valueElementIdReferenceEntry in valueElementIdReferences)
+                    {
+                        // For the value element reference to be a match, both the identifier and the type element property identifier must match
+                        if (valueElementIdReferenceEntry.id.Equals(valueElementId.id, StringComparison.OrdinalIgnoreCase) == true &&
+                            ((string.IsNullOrWhiteSpace(valueElementId.typeElementPropertyId) == true &&
+                             string.IsNullOrWhiteSpace(valueElementIdReferenceEntry.typeElementPropertyId) == true) ||
+                             (string.IsNullOrWhiteSpace(valueElementId.typeElementPropertyId) == false &&
+                              string.IsNullOrWhiteSpace(valueElementIdReferenceEntry.typeElementPropertyId) == false &&
+                              valueElementId.typeElementPropertyId.Equals(valueElementIdReferenceEntry.typeElementPropertyId, StringComparison.OrdinalIgnoreCase) == true)))
+                        {
+                            valueElementIdReference = valueElementIdReferenceEntry;
+                            break;
+                        }
+                    }
+                }
+
+                if (valueElementIdReference == null)
+                {
+                    // TODO: Warn the author that a reference has gone missing via a notification
+                }
+            }
+
+            return valueElementIdReference;
         }
 
         private static String GetCleanPropertyName(String name)
