@@ -12,6 +12,19 @@ namespace ManyWho.Flow.SDK.Errors
 
     public class ApiProblem
     {
+        public ApiProblem()
+        {
+            this.Kind = ProblemKind.api;
+        }
+
+        public ApiProblem(string uri, int statusCode, string message)
+            : this()
+        {
+            this.Uri = uri;
+            this.StatusCode = statusCode;
+            this.Message = message;
+        }
+
         [JsonProperty(PropertyName = "kind")]
         public ProblemKind Kind { get; set; }
         [JsonProperty(PropertyName = "uri")]
