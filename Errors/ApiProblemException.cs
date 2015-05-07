@@ -10,6 +10,6 @@ namespace ManyWho.Flow.SDK.Errors
             this.Problem = problem;
         }
 
-        public ApiProblem Problem { get; }
+        public ApiProblem Problem { get; private set; }
     }
 }
