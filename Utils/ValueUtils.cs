@@ -12,6 +12,34 @@ namespace ManyWho.Flow.SDK.Utils
 {
     public class ValueUtils
     {
+        public static String GetContentValue(String developerName, ObjectAPI objectData, Boolean required)
+        {
+            String contentValue = null;
+
+            if (objectData != null &&
+                objectData.properties != null &&
+                objectData.properties.Count > 0)
+            {
+                foreach (PropertyAPI property in objectData.properties)
+                {
+                    if (property.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase) == true)
+                    {
+                        contentValue = property.contentValue;
+                        break;
+                    }
+                }
+            }
+
+            if (required == true &&
+                (contentValue == null ||
+                 contentValue.Trim().Length == 0))
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, developerName + " cannot be null or blank.");
+            }
+
+            return contentValue;
+        }
+
         public static String GetContentValue(String developerName, List<EngineValueAPI> engineValues, Boolean required)
         {
             String contentValue = null;
@@ -43,6 +71,34 @@ namespace ManyWho.Flow.SDK.Utils
             }
 
             return contentValue;
+        }
+
+        public static List<ObjectAPI> GetObjectData(String developerName, ObjectAPI objectData, Boolean required)
+        {
+            List<ObjectAPI> listData = null;
+
+            if (objectData != null &&
+                objectData.properties != null &&
+                objectData.properties.Count > 0)
+            {
+                foreach (PropertyAPI property in objectData.properties)
+                {
+                    if (property.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase) == true)
+                    {
+                        listData = property.objectData;
+                        break;
+                    }
+                }
+            }
+
+            if (required == true && 
+                (listData == null ||
+                 listData.Count == 0))
+            {
+                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, developerName + " cannot be null.");
+            }
+
+            return listData;
         }
 
         public static ObjectAPI GetObjectData(String developerName, List<EngineValueAPI> engineValues, Boolean required)

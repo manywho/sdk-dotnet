@@ -61,6 +61,13 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         }
 
         [DataMember]
+        public Boolean isEditable
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public Int32 order
         {
             get;

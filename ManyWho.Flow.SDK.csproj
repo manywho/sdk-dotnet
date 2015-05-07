@@ -10,11 +10,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ManyWho.Flow.SDK</RootNamespace>
     <AssemblyName>ManyWho.Flow.SDK</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>Profile24</TargetFrameworkProfile>
-    <NuGetPackageImportStamp>7ef45f1c</NuGetPackageImportStamp>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <NuGetPackageImportStamp>bf70aa32</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,29 +38,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.6.0.5\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO">
-      <HintPath>packages\Microsoft.Bcl.1.1.9\lib\portable-net40+sl5+win8+wp8+wpa81\System.IO.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http">
       <HintPath>packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime">
-      <HintPath>packages\Microsoft.Bcl.1.1.9\lib\portable-net40+sl5+win8+wp8+wpa81\System.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Threading.Tasks">
-      <HintPath>packages\Microsoft.Bcl.1.1.9\lib\portable-net40+sl5+win8+wp8+wpa81\System.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
@@ -71,6 +66,11 @@
     <Compile Include="Draw\Log\LogAPI.cs" />
     <Compile Include="Draw\Log\LogEntryAPI.cs" />
     <Compile Include="Draw\Log\LogLevel.cs" />
+    <Compile Include="Errors\ApiProblem.cs" />
+    <Compile Include="Errors\ApiProblemException.cs" />
+    <Compile Include="Errors\ServiceProblem.cs" />
+    <Compile Include="Errors\ServiceProblemException.cs" />
+    <Compile Include="Run\Elements\Config\ServiceNotificationRequestAPI.cs" />
     <Compile Include="Run\Elements\Map\VoteRequestAPI.cs" />
     <Compile Include="Run\Elements\Map\VoteResponseAPI.cs" />
     <Compile Include="Draw\Elements\Map\ListenerAPI.cs" />
@@ -82,6 +82,8 @@
     <Compile Include="Run\State\StateListenerRequestAPI.cs" />
     <Compile Include="Run\State\StateListenerResponseAPI.cs" />
     <Compile Include="Run\State\UserVoteAPI.cs" />
+    <Compile Include="Security\AssignedUserPermissionAPI.cs" />
+    <Compile Include="Security\AssignedUserPermissionRequestAPI.cs" />
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="Tenant\DeleteAllAPI.cs" />
     <Compile Include="Utils\NotificationMessage.cs" />
@@ -288,17 +290,13 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="ManyWho.Flow.SDK.nuspec" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  <Import Project="packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
