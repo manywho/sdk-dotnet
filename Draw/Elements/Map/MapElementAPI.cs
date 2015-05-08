@@ -46,6 +46,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
+        public String pageElementId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public List<OutcomeAPI> outcomes
         {
             get;
