@@ -31,15 +31,21 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
-        /// <summary>
-        /// This is not included as a data member as it's a temp value.
-        /// </summary>
+        [DataMember]
         public string contentType
         {
             get;
             set;
         }
 
+        [DataMember]
+        public string typeElementId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public int order
         {
             get;
