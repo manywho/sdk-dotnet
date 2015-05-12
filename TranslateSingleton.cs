@@ -11,6 +11,8 @@ using ManyWho.Flow.SDK.Translate;
 using ManyWho.Flow.SDK.Utils;
 using ManyWho.Flow.SDK.Security;
 using ManyWho.Flow.SDK.Draw.Flow;
+using ManyWho.Flow.SDK.Errors;
+using Polly;
 
 /*!
 
@@ -76,20 +78,15 @@ namespace ManyWho.Flow.SDK
 
         public List<CultureAPI> GetCultures(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId)
         {
-            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
             List<CultureAPI> cultures = null;
 
-            // We enclose the request in a for loop to handle http errors
-            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
-                try
+                using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null))
                 {
-                    // Create the http client to handle our request
-                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null);
-
                     // Construct the URL for the content value culture request
                     endpointUrl = this.ServiceUrl + MANYWHO_PACKAGE_GET_CONTENT_VALUE_CULTURES_URI_PART;
 
@@ -101,37 +98,13 @@ namespace ManyWho.Flow.SDK
                     {
                         // Get the list of content value cultures from the service
                         cultures = JsonConvert.DeserializeObject<List<CultureAPI>>(httpResponseMessage.Content.ReadAsStringAsync().Result);
-
-                        // We successfully executed the request, we can break out of the retry loop
-                        break;
                     }
                     else
                     {
-                        // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
-
-                        if (webException != null)
-                        {
-                            throw webException;
-                        }
+                        throw new ServiceProblemException(new ServiceProblem(endpointUrl, httpResponseMessage, string.Empty));
                     }
                 }
-                catch (Exception exception)
-                {
-                    // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
-
-                    if (webException != null)
-                    {
-                        throw webException;
-                    }
-                }
-                finally
-                {
-                    // Clean up the objects from the request
-                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
-                }
-            }
+            });
 
             return cultures;
         }

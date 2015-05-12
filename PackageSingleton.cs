@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ManyWho.Flow.SDK.Utils;
 using ManyWho.Flow.SDK.Security;
-using ManyWho.Flow.SDK.Draw.Flow;
+using ManyWho.Flow.SDK.Errors;
+using Polly;
 
 /*!
 
@@ -76,20 +77,15 @@ namespace ManyWho.Flow.SDK
 
         public String ExportLatestFlowPackage(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String flowId, String codeReferenceName, String alertEmail)
         {
-            Exception webException = null;
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
             String flowPackage = null;
 
-            // We enclose the request in a for loop to handle http errors
-            for (int i = 0; i < HttpUtils.MAXIMUM_RETRIES; i++)
+            Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
-                try
+                using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null))
                 {
-                    // Create the http client to handle our request
-                    httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null);
-
                     // Construct the URL for the package request
                     endpointUrl = this.ServiceUrl + MANYWHO_PACKAGE_EXPORT_LATEST_FLOW_PACKAGE_URI_PART + flowId;
 
@@ -101,37 +97,13 @@ namespace ManyWho.Flow.SDK
                     {
                         // Get the flow package out of the response
                         flowPackage = JsonConvert.DeserializeObject<String>(httpResponseMessage.Content.ReadAsStringAsync().Result);
-
-                        // We successfully executed the request, we can break out of the retry loop
-                        break;
                     }
                     else
                     {
-                        // Make sure we handle the lack of success properly
-                        webException = HttpUtils.HandleUnsuccessfulHttpResponseMessage(notifier, authenticatedWho, i, httpResponseMessage, endpointUrl);
-
-                        if (webException != null)
-                        {
-                            throw webException;
-                        }
+                        throw new ServiceProblemException(new ServiceProblem(endpointUrl, httpResponseMessage, string.Empty));
                     }
                 }
-                catch (Exception exception)
-                {
-                    // Make sure we handle the exception properly
-                    webException = HttpUtils.HandleHttpException(notifier, null, i, exception, endpointUrl);
-
-                    if (webException != null)
-                    {
-                        throw webException;
-                    }
-                }
-                finally
-                {
-                    // Clean up the objects from the request
-                    HttpUtils.CleanUpHttp(httpClient, null, httpResponseMessage);
-                }
-            }
+            });
 
             return flowPackage;
         }

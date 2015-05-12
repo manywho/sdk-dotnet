@@ -31,10 +31,9 @@ namespace ManyWho.Flow.SDK.Utils
             }
 
             if (required == true &&
-                (contentValue == null ||
-                 contentValue.Trim().Length == 0))
+                string.IsNullOrWhiteSpace(contentValue))
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, developerName + " cannot be null or blank.");
+                throw new ArgumentNullException("contentValue", developerName + " cannot be null or blank.");
             }
 
             return contentValue;
@@ -64,10 +63,9 @@ namespace ManyWho.Flow.SDK.Utils
             }
 
             if (required == true &&
-                (contentValue == null ||
-                 contentValue.Trim().Length == 0))
+                string.IsNullOrWhiteSpace(contentValue))
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, developerName + " cannot be null or blank.");
+                throw new ArgumentNullException("contentValue", developerName + " cannot be null or blank.");
             }
 
             return contentValue;
@@ -92,10 +90,9 @@ namespace ManyWho.Flow.SDK.Utils
             }
 
             if (required == true && 
-                (listData == null ||
-                 listData.Count == 0))
+                (listData == null || listData.Count == 0))
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, developerName + " cannot be null.");
+                throw new ArgumentException("listData", developerName + " cannot be null.");
             }
 
             return listData;
@@ -131,7 +128,7 @@ namespace ManyWho.Flow.SDK.Utils
             if (required == true &&
                 objectData == null)
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, developerName + " cannot be null.");
+                throw new ArgumentNullException("objectData", developerName + " cannot be null.");
             }
 
             return objectData;
@@ -164,7 +161,7 @@ namespace ManyWho.Flow.SDK.Utils
                 (objectData == null ||
                  objectData.Count == 0))
             {
-                throw ErrorUtils.GetWebException(HttpStatusCode.BadRequest, developerName + " cannot be null or empty.");
+                throw new ArgumentException("objectData", developerName + " cannot be null or empty.");
             }
 
             return objectData;
@@ -245,20 +242,17 @@ namespace ManyWho.Flow.SDK.Utils
                         }
                     }
 
-                    if (typeElementEntryFound == false)
-                    {
-                        ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "Type element entry could not be found.");
-                    }
-
+                    Validation.Instance.IsTrue(typeElementEntryFound, "TypeElementEntry", "Type element entry could not be found.");
+                    
                     xml += "<complextypeentry typeelemententryid=\"" + typeElementEntryId + "\" contenttype=\"" + contentType + "\">";
 
                     if (contentType.Equals(ManyWhoConstants.CONTENT_TYPE_OBJECT, StringComparison.OrdinalIgnoreCase) == true)
                     {
-                        ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "Object properties not supported yet.");
+                        throw new ArgumentException("contentType", "Object properties not supported yet.");
                     }
                     else if (contentType.Equals(ManyWhoConstants.CONTENT_TYPE_LIST, StringComparison.OrdinalIgnoreCase) == true)
                     {
-                        ErrorUtils.GetWebException(HttpStatusCode.BadRequest, "List properties not supported yet.");
+                        throw new ArgumentException("contentType", "List properties not supported yet.");
                     }
                     else
                     {

@@ -43,8 +43,7 @@ namespace ManyWho.Flow.SDK.Utils
             IAuthenticatedWho authenticatedWho = null;
 
             // Check to see if it's null - it can be in some situations
-            if (authorizationHeader != null &&
-                authorizationHeader.Trim().Length > 0)
+            if (!string.IsNullOrWhiteSpace(authorizationHeader))
             {
                 // Deserialize into an object
                 authenticatedWho = AuthenticationUtils.Deserialize(Uri.EscapeDataString(authorizationHeader));
@@ -52,49 +51,7 @@ namespace ManyWho.Flow.SDK.Utils
 
             return authenticatedWho;
         }
-
-        public static Exception HandleUnsuccessfulHttpResponseMessage(INotifier notifier, IAuthenticatedWho authenticatedWho, Int32 iteration, HttpResponseMessage httpResponseMessage, String endpointUrl)
-        {
-            Exception webException = null;
-
-            if (iteration >= (MAXIMUM_RETRIES - 1))
-            {
-                // The the alert email the fault
-                ErrorUtils.SendAlert(notifier, authenticatedWho, "Fault", "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The status code is: " + httpResponseMessage.StatusCode + ". The reason is: " + httpResponseMessage.ReasonPhrase);
-
-                // Throw the fault up to the caller
-                webException = ErrorUtils.GetWebException(httpResponseMessage.StatusCode, httpResponseMessage.ReasonPhrase);
-            }
-            else
-            {
-                // Alert the admin that a retry has happened
-                ErrorUtils.SendAlert(notifier, authenticatedWho, "Warning", "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The status code is: " + httpResponseMessage.StatusCode + ". The reason is: " + httpResponseMessage.ReasonPhrase);
-            }
-
-            return webException;
-        }
-
-        public static Exception HandleHttpException(INotifier notifier, IAuthenticatedWho authenticatedWho, Int32 iteration, Exception exception, String endpointUrl)
-        {
-            Exception webException = null;
-
-            if (iteration >= (MAXIMUM_RETRIES - 1))
-            {
-                // The the alert email the fault
-                ErrorUtils.SendAlert(notifier, authenticatedWho, "Fault", "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The error message we're getting back is: " + ErrorUtils.GetExceptionMessage(exception));
-
-                // Throw the fault up to the caller
-                webException = ErrorUtils.GetWebException(HttpStatusCode.BadRequest, exception);
-            }
-            else
-            {
-                // Alert the admin that a retry has happened
-                ErrorUtils.SendAlert(notifier, authenticatedWho, "Warning", "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The error message we're getting back is: " + ErrorUtils.GetExceptionMessage(exception));
-            }
-
-            return webException;
-        }
-
+        
         public static HttpClient CreateHttpClient(IAuthenticatedWho authenticatedWho, String tenantId, String stateId)
         {
             return CreateHttpClient(authenticatedWho, tenantId, stateId, TIMEOUT_SECONDS);
@@ -112,15 +69,13 @@ namespace ManyWho.Flow.SDK.Utils
                 httpClient.DefaultRequestHeaders.Add(HEADER_AUTHORIZATION, Uri.EscapeDataString(AuthenticationUtils.Serialize(authenticatedWho)));
             }
 
-            if (tenantId != null &&
-                tenantId.Trim().Length > 0)
+            if (!string.IsNullOrWhiteSpace(tenantId))
             {
                 // Add the tenant to the header
                 httpClient.DefaultRequestHeaders.Add(HEADER_MANYWHO_TENANT, tenantId);
             }
 
-            if (stateId != null &&
-                stateId.Trim().Length > 0)
+            if (!string.IsNullOrWhiteSpace(stateId))
             {
                 // Add the state to the header
                 httpClient.DefaultRequestHeaders.Add(HEADER_MANYWHO_STATE, stateId);
@@ -130,27 +85,6 @@ namespace ManyWho.Flow.SDK.Utils
             httpClient.Timeout = TimeSpan.FromSeconds(timeOut);
 
             return httpClient;
-        }
-
-        public static void CleanUpHttp(HttpClient httpClient, HttpContent httpContent, HttpResponseMessage httpResponseMessage)
-        {
-            if (httpClient != null)
-            {
-                httpClient.Dispose();
-                httpClient = null;
-            }
-
-            if (httpContent != null)
-            {
-                httpContent.Dispose();
-                httpContent = null;
-            }
-
-            if (httpResponseMessage != null)
-            {
-                httpResponseMessage.Dispose();
-                httpResponseMessage = null;
-            }
         }
     }
 }

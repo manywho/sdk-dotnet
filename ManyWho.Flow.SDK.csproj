@@ -41,6 +41,10 @@
       <HintPath>packages\Newtonsoft.Json.6.0.5\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Polly, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Polly-Signed.2.2.1\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Polly.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
@@ -85,8 +89,9 @@
     <Compile Include="Security\AssignedUserPermissionRequestAPI.cs" />
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="Tenant\DeleteAllAPI.cs" />
-    <Compile Include="Utils\NotificationMessage.cs" />
+    <Compile Include="Utils\ErrorUtils.cs" />
     <Compile Include="Utils\MapperUtils.cs" />
+    <Compile Include="Utils\NotificationMessage.cs" />
     <Compile Include="DrawSingleton.cs" />
     <Compile Include="Draw\Elements\Map\FlowOutAPI.cs" />
     <Compile Include="Draw\Elements\Map\NavigationOverrideAPI.cs" />
@@ -268,7 +273,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translate\Flow\FlowImageTranslationResponseAPI.cs" />
     <Compile Include="Utils\AuthenticationUtils.cs" />
-    <Compile Include="Utils\ErrorUtils.cs" />
     <Compile Include="Utils\HttpRetryHelper.cs" />
     <Compile Include="Utils\HttpUtils.cs" />
     <Compile Include="Utils\INotificationMessage.cs" />
@@ -282,6 +286,7 @@
     <Compile Include="Utils\RunUtils.cs" />
     <Compile Include="Utils\SettingUtils.cs" />
     <Compile Include="Utils\SqlUtils.cs" />
+    <Compile Include="Utils\Validation.cs" />
     <Compile Include="Utils\ValueUtils.cs" />
   </ItemGroup>
   <ItemGroup>

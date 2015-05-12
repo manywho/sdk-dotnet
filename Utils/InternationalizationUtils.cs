@@ -44,31 +44,11 @@ namespace ManyWho.Flow.SDK.Utils
             languageParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.CULTURE_TOKEN_LANGUAGE, StringComparison.OrdinalIgnoreCase));
             variantParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.CULTURE_TOKEN_VARIANT, StringComparison.OrdinalIgnoreCase));
 
-            // Check to make sure we have all of the parameters
-            if (brandParameter == null ||
-                brandParameter.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_BRAND);
-            }
-
-            if (countryParameter == null ||
-                countryParameter.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_COUNTRY);
-            }
-
-            if (languageParameter == null ||
-                languageParameter.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_LANGUAGE);
-            }
-
-            if (variantParameter == null ||
-                variantParameter.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_VARIANT);
-            }
-
+            Validation.Instance.IsNotNullOrWhiteSpace(brandParameter, "Brand", "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_BRAND)
+                                .IsNotNullOrWhiteSpace(brandParameter, "Country", "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_COUNTRY)
+                                .IsNotNullOrWhiteSpace(brandParameter, "Language", "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_LANGUAGE)
+                                .IsNotNullOrWhiteSpace(brandParameter, "Variant", "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_VARIANT);
+            
             // Create our new authenticated who object
             culture = new CultureAPI();
             culture.brand = brandParameter.Split(ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER)[1];

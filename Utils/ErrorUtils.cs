@@ -38,53 +38,7 @@ namespace ManyWho.Flow.SDK.Utils
         public const String ALERT_TYPE_FAULT = "Fault";
         public const String ALERT_TYPE_WARNING = "Warning";
 
-        public static Boolean IsDebugging(String mode)
-        {
-            Boolean isDebugging = false;
-
-            // Check the mode to see if the user is debugging
-            if (String.IsNullOrWhiteSpace(mode) == false &&
-                (mode.Equals(ManyWhoConstants.MODE_DEBUG, StringComparison.OrdinalIgnoreCase) == true) ||
-                (mode.Equals(ManyWhoConstants.MODE_DEBUG_STEPTHROUGH, StringComparison.OrdinalIgnoreCase) == true))
-            {
-                isDebugging = true;
-            }
-
-            return isDebugging;
-        }
-
-        public static ArgumentNullException GetWebException(HttpStatusCode statusCode, String reasonPhrase)
-        {
-            return new ArgumentNullException(statusCode.ToString(), reasonPhrase.Replace(Environment.NewLine, " "));
-        }
-
-        public static ArgumentNullException GetWebException(HttpStatusCode statusCode, Exception exception)
-        {
-            // Aggregate the exception and return as a single reason phrase
-            return GetWebException(statusCode, AggregateAndWriteErrorMessage(exception, "", false));
-        }
-
-        public static ArgumentNullException GetPluginWebException(IAuthenticatedWho authenticatedWho, Exception exception, String methodName, String pluginName, String shortDescription)
-        {
-            String message = null;
-
-            // Create a fault message that's more friendly and doesn't expose core stack trace information
-            message = "PLUGIN: " + pluginName + " -- We hit a problem while " + shortDescription + ". The method being called on the plugin is: " + methodName + ". ";
-            message = "The error we're getting back is: " + AggregateAndWriteErrorMessage(exception, message, false);
-
-            return GetWebException(HttpStatusCode.BadRequest, message);
-        }
-
-        public static String GetExceptionMessage(Exception exception)
-        {
-            return AggregateAndWriteErrorMessage(exception, "", false);
-        }
-
-        public static String GetExceptionMessage(Exception exception, Boolean includeStackTrace)
-        {
-            return AggregateAndWriteErrorMessage(exception, "", includeStackTrace);
-        }
-
+ 
         public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String alertMessage)
         {
             SendAlert(notifier, authenticatedWho, alertType, alertMessage, null);
