@@ -26,14 +26,14 @@ namespace ManyWho.Flow.SDK.Utils
 {
     public class InternationalizationUtils
     {
-        public static CultureAPI Deserialize(String token)
+        public static CultureAPI Deserialize(string token)
         {
             CultureAPI culture = null;
-            String[] parameters = null;
-            String brandParameter = null;
-            String countryParameter = null;
-            String languageParameter = null;
-            String variantParameter = null;
+            string[] parameters = null;
+            string brandParameter = null;
+            string countryParameter = null;
+            string languageParameter = null;
+            string variantParameter = null;
 
             // Start by splitting the string so we have a complete key/value pairing
             parameters = token.Split('&');
@@ -59,9 +59,9 @@ namespace ManyWho.Flow.SDK.Utils
             return culture;
         }
 
-        public static String Serialize(CultureAPI culture)
+        public static string Serialize(CultureAPI culture)
         {
-            String token = "";
+            string token = "";
 
             if (culture.brand == null)
             {

@@ -90,8 +90,7 @@
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="Tenant\DeleteAllAPI.cs" />
     <Compile Include="Utils\ErrorUtils.cs" />
-    <Compile Include="Utils\MapperUtils.cs" />
-    <Compile Include="Utils\NotificationMessage.cs" />
+    <Compile Include="Notification\NotificationMessage.cs" />
     <Compile Include="DrawSingleton.cs" />
     <Compile Include="Draw\Elements\Map\FlowOutAPI.cs" />
     <Compile Include="Draw\Elements\Map\NavigationOverrideAPI.cs" />
@@ -273,19 +272,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translate\Flow\FlowImageTranslationResponseAPI.cs" />
     <Compile Include="Utils\AuthenticationUtils.cs" />
-    <Compile Include="Utils\HttpRetryHelper.cs" />
     <Compile Include="Utils\HttpUtils.cs" />
-    <Compile Include="Utils\INotificationMessage.cs" />
-    <Compile Include="Utils\INotifier.cs" />
+    <Compile Include="Notification\INotificationMessage.cs" />
+    <Compile Include="Notification\INotifier.cs" />
     <Compile Include="Utils\InternationalizationUtils.cs" />
     <Compile Include="ManyWhoPluginException.cs" />
-    <Compile Include="Utils\NotificationRequestAPI.cs" />
-    <Compile Include="Utils\NotificationMessageAPI.cs" />
-    <Compile Include="Utils\NotificationResponseAPI.cs" />
-    <Compile Include="Utils\NotificationUtils.cs" />
+    <Compile Include="Notification\NotificationRequestAPI.cs" />
+    <Compile Include="Notification\NotificationMessageAPI.cs" />
+    <Compile Include="Notification\NotificationResponseAPI.cs" />
+    <Compile Include="Notification\NotificationUtils.cs" />
     <Compile Include="Utils\RunUtils.cs" />
-    <Compile Include="Utils\SettingUtils.cs" />
-    <Compile Include="Utils\SqlUtils.cs" />
     <Compile Include="Utils\Validation.cs" />
     <Compile Include="Utils\ValueUtils.cs" />
   </ItemGroup>
