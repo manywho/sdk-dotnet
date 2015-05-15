@@ -27,13 +27,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     public class MapElementRequestAPI : MapElementAPI
     {
         [DataMember]
-        public String pageElementId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public List<OperationAPI> operations
         {
             get;
