@@ -294,6 +294,7 @@
     <Compile Include="Utils\RunUtils.cs" />
     <Compile Include="Utils\SettingUtils.cs" />
     <Compile Include="Utils\SqlUtils.cs" />
+    <Compile Include="Utils\Validation.cs" />
     <Compile Include="Utils\ValueUtils.cs" />
   </ItemGroup>
   <ItemGroup>
