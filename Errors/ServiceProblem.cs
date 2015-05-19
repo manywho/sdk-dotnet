@@ -1,11 +1,11 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace ManyWho.Flow.SDK.Errors
-{   public class ServiceProblem : ApiProblem
+{
+    public class ServiceProblem : ApiProblem
     {
         public ServiceProblem()
             : base()
