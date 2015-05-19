@@ -23,9 +23,9 @@ namespace ManyWho.Flow.SDK.Errors
             : this(uri, (int)response.StatusCode, response.ReasonPhrase)
         {
 
-            this.ResponseHeaders = (Dictionary<string, IEnumerable<string>>)(from KeyValuePair<string, IEnumerable<string>> header
-                                                                             in response.Headers
-                                                                            select header);
+            this.ResponseHeaders = (IEnumerable<KeyValuePair<string, IEnumerable<string>>>)(from KeyValuePair<string, IEnumerable<string>> header
+                                                                                             in response.Headers
+                                                                                            select header);
 
             this.ResponseBody = content;
         }
