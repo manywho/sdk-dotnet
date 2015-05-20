@@ -1,11 +1,9 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Reflection;
 using ManyWho.Flow.SDK.Draw.Elements;
-using ManyWho.Flow.SDK.Attributes;
 using ManyWho.Flow.SDK.Utils;
 using ManyWho.Flow.SDK.Run.Elements.Type;
 
@@ -27,44 +25,31 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Draw.Log
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    [ObjectAPI("LogEntry")]
     public class LogEntryAPI : ElementAPI
     {
-        [DataMember(Name = "id")]
-        [PropertyAPI("Id")]
-        public string Id
+        [DataMember]
+        public DateTime timestamp
         {
             get;
             set;
         }
 
-        [DataMember(Name = "timestamp")]
-        [PropertyAPI("Timestamp")]
-        public DateTime Timestamp
+        [DataMember]
+        public string message
         {
             get;
             set;
         }
 
-        [DataMember(Name = "message")]
-        [PropertyAPI("Message")]
-        public string Message
+        [DataMember]
+        public string data
         {
             get;
             set;
         }
 
-        [DataMember(Name = "data")]
-        [PropertyAPI("Data")]
-        public string Data
-        {
-            get;
-            set;
-        }
-
-        [DataMember(Name = "level")]
-        [PropertyAPI("Level")]
-        public LoggingLevel Level
+        [DataMember]
+        public LoggingLevel level
         {
             get;
             set;

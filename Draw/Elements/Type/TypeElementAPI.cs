@@ -25,13 +25,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     public class TypeElementAPI : ElementAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public String serviceElementId
         {
             get;

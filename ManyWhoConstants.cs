@@ -32,6 +32,8 @@ namespace ManyWho.Flow.SDK
         public const String INVOKE_TYPE_JOIN = "JOIN";
         // Tells the user we're waiting for something on the system side to complete
         public const String INVOKE_TYPE_WAIT = "WAIT";
+        // Tells the response caller that the engine is currently busy processing against the state
+        public const String INVOKE_TYPE_BUSY = "BUSY";
         // Tells the engine that the system didn't let them in for some reason - most likely authentication, but it could be some
         // other reason as we develop out various grouping use-cases.  This basically says: try again if you like!
         public const String INVOKE_TYPE_STATUS = "STATUS";
