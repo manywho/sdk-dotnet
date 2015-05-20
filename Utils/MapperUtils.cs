@@ -62,7 +62,12 @@ namespace ManyWho.Flow.SDK
 
                 foreach (ObjectAPI objectAPI in objectAPIs)
                 {
-                    if (objectAPI.developerName.Equals(typeName, StringComparison.OrdinalIgnoreCase) == false)
+                    // If we have a value element identifier, we need to translate it over
+                    if (type.Name.Equals("ValueElementIdAPI", StringComparison.OrdinalIgnoreCase) == true)
+                    {
+                        type = new ValueElementIdReferenceAPI().GetType();
+                    }
+                    else if (objectAPI.developerName.Equals(typeName, StringComparison.OrdinalIgnoreCase) == false)
                     {
                         throw new ArgumentNullException("ObjectAPI", String.Format("The provided list contains inconsistent objects. The Draw API expected {0} and it got {1}", typeName, objectAPI.developerName));
                     }
