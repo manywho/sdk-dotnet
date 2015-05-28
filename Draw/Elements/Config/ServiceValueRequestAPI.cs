@@ -47,6 +47,20 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         }
 
         [DataMember]
+        public string typeElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string typeElementId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public string contentType
         {
             get;
