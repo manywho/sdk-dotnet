@@ -96,10 +96,13 @@ namespace ManyWho.Flow.SDK
 
         // Constants for the various content types
         public const String CONTENT_TYPE_DATETIME = "ContentDateTime";
+        public const String CONTENT_TYPE_DATE = "ContentDate";
+        public const String CONTENT_TYPE_TIME = "ContentTime";
         public const String CONTENT_TYPE_NUMBER = "ContentNumber";
         public const String CONTENT_TYPE_OBJECT = "ContentObject";
         public const String CONTENT_TYPE_PASSWORD = "ContentPassword";
         public const String CONTENT_TYPE_STRING = "ContentString";
+        public const String CONTENT_TYPE_RESOURCE = "ContentResource";
         public const String CONTENT_TYPE_LIST = "ContentList";
         public const String CONTENT_TYPE_BOOLEAN = "ContentBoolean";
         public const String CONTENT_TYPE_CONTENT = "ContentContent";
