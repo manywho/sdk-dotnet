@@ -49,6 +49,8 @@ namespace ManyWho.Flow.SDK
         public const String INVOKE_TYPE_NAVIGATE = "NAVIGATE";
         // Tells the engine that the state is waiting on votes to come in
         public const String INVOKE_TYPE_WAITING_ON_VOTES = "WAITING_ON_VOTES";
+        // Tells the user that they are not allowed to perform any operations - this is to avoid testing "null"
+        public const String INVOKE_TYPE_NOT_ALLOWED = "NOT_ALLOWED";
 
         // Engine mode constants
         public const String MODE_DEFAULT = null;
@@ -93,13 +95,16 @@ namespace ManyWho.Flow.SDK
         public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_STARTS_WITH = "STARTS_WITH";
         public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ENDS_WITH = "ENDS_WITH";
         public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_IS_EMPTY = "IS_EMPTY";
-
+        
         // Constants for the various content types
         public const String CONTENT_TYPE_DATETIME = "ContentDateTime";
+        public const String CONTENT_TYPE_DATE = "ContentDate";
+        public const String CONTENT_TYPE_TIME = "ContentTime";
         public const String CONTENT_TYPE_NUMBER = "ContentNumber";
         public const String CONTENT_TYPE_OBJECT = "ContentObject";
         public const String CONTENT_TYPE_PASSWORD = "ContentPassword";
         public const String CONTENT_TYPE_STRING = "ContentString";
+        public const String CONTENT_TYPE_RESOURCE = "ContentResource";
         public const String CONTENT_TYPE_LIST = "ContentList";
         public const String CONTENT_TYPE_BOOLEAN = "ContentBoolean";
         public const String CONTENT_TYPE_CONTENT = "ContentContent";
