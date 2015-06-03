@@ -23,7 +23,7 @@ namespace ManyWho.Flow.SDK.Errors
             : this(uri, (int)response.StatusCode, response.ReasonPhrase)
         {
 
-            this.ResponseHeaders = (IEnumerable<KeyValuePair<string, IEnumerable<string>>>)(from KeyValuePair<string, IEnumerable<string>> header
+            this.ResponseHeaders = (IDictionary<string, IEnumerable<string>>)(from KeyValuePair<string, IEnumerable<string>> header
                                                                                              in response.Headers
                                                                                             select header);
 

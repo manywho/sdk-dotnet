@@ -35,6 +35,6 @@ namespace ManyWho.Flow.SDK.Errors
         [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }
         [JsonProperty(PropertyName = "responseHeaders")]
-        public IEnumerable<KeyValuePair<string, IEnumerable<string>>> ResponseHeaders { get; set; }
+        public IDictionary<string, IEnumerable<string>> ResponseHeaders { get; set; }
     }
 }
