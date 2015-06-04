@@ -49,6 +49,8 @@ namespace ManyWho.Flow.SDK
         public const String INVOKE_TYPE_NAVIGATE = "NAVIGATE";
         // Tells the engine that the state is waiting on votes to come in
         public const String INVOKE_TYPE_WAITING_ON_VOTES = "WAITING_ON_VOTES";
+        // Tells the user that they are not allowed to perform any operations - this is to avoid testing "null"
+        public const String INVOKE_TYPE_NOT_ALLOWED = "NOT_ALLOWED";
 
         // Engine mode constants
         public const String MODE_DEFAULT = null;
