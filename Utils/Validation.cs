@@ -104,6 +104,21 @@ namespace ManyWho.Flow.SDK.Utils
             return this;
         }
 
+        public Validation IsNullOrWhiteSpace(string value, string name, string message = "")
+        {
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                if (!string.IsNullOrWhiteSpace(message))
+                {
+                    message = name + " must be null or whitespace";
+                }
+
+                throw new ArgumentException(message, name);
+            }
+
+            return this;
+        }
+
         public Validation IsNotNullOrWhiteSpace(string value, string name, string message = "")
         {
             if (string.IsNullOrWhiteSpace(value))
