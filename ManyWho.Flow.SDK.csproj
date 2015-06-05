@@ -89,6 +89,7 @@
     <Compile Include="Security\AssignedUserPermissionAPI.cs" />
     <Compile Include="Security\AssignedUserPermissionRequestAPI.cs" />
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
+    <Compile Include="Service\ServiceRequestAPI.cs" />
     <Compile Include="Tenant\DeleteAllAPI.cs" />
     <Compile Include="Utils\ErrorUtils.cs" />
     <Compile Include="Notification\NotificationMessage.cs" />
