@@ -44,6 +44,20 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         }
 
         [DataMember]
+        public String contentFormat
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String contentType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String label
         {
             get;
