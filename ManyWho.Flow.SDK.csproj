@@ -10,10 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ManyWho.Flow.SDK</RootNamespace>
     <AssemblyName>ManyWho.Flow.SDK</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>Profile24</TargetFrameworkProfile>
-    <NuGetPackageImportStamp>bf70aa32</NuGetPackageImportStamp>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -40,34 +41,26 @@
       <HintPath>packages\Newtonsoft.Json.6.0.5\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.IO">
-      <HintPath>packages\Microsoft.Bcl.1.1.9\lib\portable-net40+sl5+win8+wp8+wpa81\System.IO.dll</HintPath>
+    <Reference Include="Polly, Version=2.2.2.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Polly-Signed.2.2.2\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Polly.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
     <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http">
+    <Reference Include="System.Net.Http, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Net.Http.Extensions">
+    <Reference Include="System.Net.Http.Extensions, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Net.Http.Primitives">
+    <Reference Include="System.Net.Http.Primitives, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Net.Http.2.2.28\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime">
-      <HintPath>packages\Microsoft.Bcl.1.1.9\lib\portable-net40+sl5+win8+wp8+wpa81\System.Runtime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Threading.Tasks">
-      <HintPath>packages\Microsoft.Bcl.1.1.9\lib\portable-net40+sl5+win8+wp8+wpa81\System.Threading.Tasks.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Xml" />
@@ -78,6 +71,10 @@
     <Compile Include="Draw\Log\LogAPI.cs" />
     <Compile Include="Draw\Log\LogEntryAPI.cs" />
     <Compile Include="Draw\Log\LogLevel.cs" />
+    <Compile Include="Errors\ApiProblem.cs" />
+    <Compile Include="Errors\ApiProblemException.cs" />
+    <Compile Include="Errors\ServiceProblem.cs" />
+    <Compile Include="Errors\ServiceProblemException.cs" />
     <Compile Include="Run\Elements\Config\ServiceNotificationRequestAPI.cs" />
     <Compile Include="Run\Elements\Map\VoteRequestAPI.cs" />
     <Compile Include="Run\Elements\Map\VoteResponseAPI.cs" />
@@ -86,7 +83,6 @@
     <Compile Include="Run\Elements\Config\BaseResponseAPI.cs" />
     <Compile Include="Run\Elements\Config\ListenerServiceRequestAPI.cs" />
     <Compile Include="Run\Elements\Config\ListenerServiceResponseAPI.cs" />
-    <Compile Include="Run\Elements\Type\IObjectAPIConvert.cs" />
     <Compile Include="Run\State\StateListenerRequestAPI.cs" />
     <Compile Include="Run\State\StateListenerResponseAPI.cs" />
     <Compile Include="Run\State\UserVoteAPI.cs" />
@@ -94,10 +90,8 @@
     <Compile Include="Security\AssignedUserPermissionRequestAPI.cs" />
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
     <Compile Include="Tenant\DeleteAllAPI.cs" />
-    <Compile Include="Utils\NotificationMessage.cs" />
-    <Compile Include="Utils\ObjectAPIConversion.cs" />
-    <Compile Include="Attributes\ObjectAPIAttribute.cs" />
-    <Compile Include="Attributes\PropertyAPIAttribute.cs" />
+    <Compile Include="Utils\ErrorUtils.cs" />
+    <Compile Include="Notification\NotificationMessage.cs" />
     <Compile Include="DrawSingleton.cs" />
     <Compile Include="Draw\Elements\Map\FlowOutAPI.cs" />
     <Compile Include="Draw\Elements\Map\NavigationOverrideAPI.cs" />
@@ -279,20 +273,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translate\Flow\FlowImageTranslationResponseAPI.cs" />
     <Compile Include="Utils\AuthenticationUtils.cs" />
-    <Compile Include="Utils\ErrorUtils.cs" />
-    <Compile Include="Utils\HttpRetryHelper.cs" />
     <Compile Include="Utils\HttpUtils.cs" />
-    <Compile Include="Utils\INotificationMessage.cs" />
-    <Compile Include="Utils\INotifier.cs" />
+    <Compile Include="Notification\INotificationMessage.cs" />
+    <Compile Include="Notification\INotifier.cs" />
     <Compile Include="Utils\InternationalizationUtils.cs" />
     <Compile Include="ManyWhoPluginException.cs" />
-    <Compile Include="Utils\NotificationRequestAPI.cs" />
-    <Compile Include="Utils\NotificationMessageAPI.cs" />
-    <Compile Include="Utils\NotificationResponseAPI.cs" />
-    <Compile Include="Utils\NotificationUtils.cs" />
+    <Compile Include="Notification\NotificationRequestAPI.cs" />
+    <Compile Include="Notification\NotificationMessageAPI.cs" />
+    <Compile Include="Notification\NotificationResponseAPI.cs" />
+    <Compile Include="Notification\NotificationUtils.cs" />
+    <Compile Include="Utils\MapperUtils.cs" />
     <Compile Include="Utils\RunUtils.cs" />
-    <Compile Include="Utils\SettingUtils.cs" />
-    <Compile Include="Utils\SqlUtils.cs" />
+    <Compile Include="Utils\Validation.cs" />
     <Compile Include="Utils\ValueUtils.cs" />
   </ItemGroup>
   <ItemGroup>

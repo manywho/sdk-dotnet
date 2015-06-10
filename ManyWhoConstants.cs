@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*!
 
@@ -32,6 +28,8 @@ namespace ManyWho.Flow.SDK
         public const String INVOKE_TYPE_JOIN = "JOIN";
         // Tells the user we're waiting for something on the system side to complete
         public const String INVOKE_TYPE_WAIT = "WAIT";
+        // Tells the response caller that the engine is currently busy processing against the state
+        public const String INVOKE_TYPE_BUSY = "BUSY";
         // Tells the engine that the system didn't let them in for some reason - most likely authentication, but it could be some
         // other reason as we develop out various grouping use-cases.  This basically says: try again if you like!
         public const String INVOKE_TYPE_STATUS = "STATUS";
@@ -47,6 +45,8 @@ namespace ManyWho.Flow.SDK
         public const String INVOKE_TYPE_NAVIGATE = "NAVIGATE";
         // Tells the engine that the state is waiting on votes to come in
         public const String INVOKE_TYPE_WAITING_ON_VOTES = "WAITING_ON_VOTES";
+        // Tells the user that they are not allowed to perform any operations - this is to avoid testing "null"
+        public const String INVOKE_TYPE_NOT_ALLOWED = "NOT_ALLOWED";
 
         // Engine mode constants
         public const String MODE_DEFAULT = null;

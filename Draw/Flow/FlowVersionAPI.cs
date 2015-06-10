@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Reflection;
-using ManyWho.Flow.SDK.Attributes;
-using ManyWho.Flow.SDK.Utils;
-using ManyWho.Flow.SDK.Run.Elements.Type;
 
 /*!
 
@@ -26,11 +20,9 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Draw.Flow
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    [ObjectAPI("FlowVersion")]
     public class FlowVersionAPI
     {
         [DataMember]
-        [PropertyAPI("Id")]
         public Guid id
         {
             get;
@@ -38,7 +30,6 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         [DataMember]
-        [PropertyAPI("FlowId")]
         public Guid flowId
         {
             get;
@@ -46,7 +37,6 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         [DataMember]
-        [PropertyAPI("DeveloperName")]
         public string developerName
         {
             get;
@@ -54,7 +44,6 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         [DataMember]
-        [PropertyAPI("Comment")]
         public string comment
         {
             get;
@@ -63,7 +52,6 @@ namespace ManyWho.Flow.SDK.Draw.Flow
 
         
         [DataMember]
-        [PropertyAPI("DateModified")]
         public DateTime dateModified
         {
             get;

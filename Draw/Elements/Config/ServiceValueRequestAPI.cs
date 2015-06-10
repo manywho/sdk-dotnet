@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
@@ -44,6 +41,20 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         /// </summary>
         [DataMember]
         public string valueElementToReferenceDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string typeElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string typeElementId
         {
             get;
             set;

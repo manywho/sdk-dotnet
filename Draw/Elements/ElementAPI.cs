@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Util;
-using ManyWho.Flow.SDK.Attributes;
 
 /*!
 
@@ -27,7 +23,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements
     public class ElementAPI
     {
         [DataMember]
-        [PropertyAPI("ElementType")]
+        public String id
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String elementType
         {
             get;
@@ -35,7 +37,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements
         }
 
         [DataMember]
-        [PropertyAPI("DeveloperName")]
         public String developerName
         {
             get;
@@ -43,7 +44,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements
         }
 
         [DataMember]
-        [PropertyAPI("DeveloperSummary")]
         public String developerSummary
         {
             get;

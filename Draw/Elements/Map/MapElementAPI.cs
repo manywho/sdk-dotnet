@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 
 /*!
@@ -25,13 +24,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     public class MapElementAPI : ElementAPI
     {
         [DataMember]
-        public String id
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
         public String groupElementId
         {
             get;
@@ -53,7 +45,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
-        public string pageElementId
+        public String pageElementId
         {
             get;
             set;
