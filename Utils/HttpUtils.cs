@@ -87,6 +87,41 @@ namespace ManyWho.Flow.SDK.Utils
             return httpClient;
         }
 
+        public static HttpClient CreateRuntimeHttpClient(string authenticationToken, string tenantId, string stateId)
+        {
+            return CreateRuntimeHttpClient(authenticationToken, tenantId, stateId, TIMEOUT_SECONDS);
+        }
+
+        public static HttpClient CreateRuntimeHttpClient(string authenticationToken, string tenantId, string stateId, int timeOut)
+        {
+            HttpClient httpClient = null;
+
+            httpClient = new HttpClient();
+
+            if (string.IsNullOrWhiteSpace(authenticationToken) == false)
+            {
+                // Serialize and add the user information to the header
+                httpClient.DefaultRequestHeaders.Add(HEADER_AUTHORIZATION, Uri.EscapeDataString(authenticationToken));
+            }
+
+            if (!string.IsNullOrWhiteSpace(tenantId))
+            {
+                // Add the tenant to the header
+                httpClient.DefaultRequestHeaders.Add(HEADER_MANYWHO_TENANT, tenantId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(stateId))
+            {
+                // Add the state to the header
+                httpClient.DefaultRequestHeaders.Add(HEADER_MANYWHO_STATE, stateId);
+            }
+
+            // Set the timeout for the request
+            httpClient.Timeout = TimeSpan.FromSeconds(timeOut);
+
+            return httpClient;
+        }
+
         public static bool IsWorthRetry(HttpStatusCode httpStatusCode)
         {
             bool isWorthRetry = true;
