@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Net;
-using System.Threading.Tasks;
 using ManyWho.Flow.SDK.Translate;
 
 /*!
@@ -26,14 +22,14 @@ namespace ManyWho.Flow.SDK.Utils
 {
     public class InternationalizationUtils
     {
-        public static CultureAPI Deserialize(String token)
+        public static CultureAPI Deserialize(string token)
         {
             CultureAPI culture = null;
-            String[] parameters = null;
-            String brandParameter = null;
-            String countryParameter = null;
-            String languageParameter = null;
-            String variantParameter = null;
+            string[] parameters = null;
+            string brandParameter = null;
+            string countryParameter = null;
+            string languageParameter = null;
+            string variantParameter = null;
 
             // Start by splitting the string so we have a complete key/value pairing
             parameters = token.Split('&');
@@ -44,31 +40,11 @@ namespace ManyWho.Flow.SDK.Utils
             languageParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.CULTURE_TOKEN_LANGUAGE, StringComparison.OrdinalIgnoreCase));
             variantParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.CULTURE_TOKEN_VARIANT, StringComparison.OrdinalIgnoreCase));
 
-            // Check to make sure we have all of the parameters
-            if (brandParameter == null ||
-                brandParameter.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_BRAND);
-            }
-
-            if (countryParameter == null ||
-                countryParameter.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_COUNTRY);
-            }
-
-            if (languageParameter == null ||
-                languageParameter.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_LANGUAGE);
-            }
-
-            if (variantParameter == null ||
-                variantParameter.Trim().Length == 0)
-            {
-                throw ErrorUtils.GetWebException(HttpStatusCode.Forbidden, "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_VARIANT);
-            }
-
+            Validation.Instance.IsNotNullOrWhiteSpace(brandParameter, "Brand", "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_BRAND)
+                                .IsNotNullOrWhiteSpace(brandParameter, "Country", "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_COUNTRY)
+                                .IsNotNullOrWhiteSpace(brandParameter, "Language", "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_LANGUAGE)
+                                .IsNotNullOrWhiteSpace(brandParameter, "Variant", "Missing parameter: " + ManyWhoConstants.CULTURE_TOKEN_VARIANT);
+            
             // Create our new authenticated who object
             culture = new CultureAPI();
             culture.brand = brandParameter.Split(ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER)[1];
@@ -79,9 +55,9 @@ namespace ManyWho.Flow.SDK.Utils
             return culture;
         }
 
-        public static String Serialize(CultureAPI culture)
+        public static string Serialize(CultureAPI culture)
         {
-            String token = "";
+            string token = "";
 
             if (culture.brand == null)
             {

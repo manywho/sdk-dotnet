@@ -34,7 +34,7 @@ namespace ManyWho.Flow.SDK
         public ObjectAPI Convert(object source)
         {           
             Type type = source.GetType();
-            object[] attributes = type.GetCustomAttributes(this.objectAPIConversionAttributeType, false);
+            object[] attributes = type.GetTypeInfo().GetCustomAttributes(this.objectAPIConversionAttributeType, false).ToArray();
             ObjectAPIAttribute conversionAttribute = null;
 
             if (attributes.Length > 0)
@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK
                 objectAPI.externalId = conversionAttribute.ExternalId;
                 objectAPI.properties = new List<PropertyAPI>();
 
-                foreach (PropertyInfo propertyInfo in type.GetProperties())
+                foreach (PropertyInfo propertyInfo in type.GetTypeInfo().DeclaredProperties)
                 {
                     PropertyAPI propertyAPI = this.Convert(source, propertyInfo);
                     if (propertyAPI != null)
@@ -63,7 +63,7 @@ namespace ManyWho.Flow.SDK
 
         public PropertyAPI Convert(object source, PropertyInfo propertyInfo)
         {                       
-            object[] attributes = propertyInfo.GetCustomAttributes(this.propertyAPIConversionAttributeType, false);
+            object[] attributes = propertyInfo.GetCustomAttributes(this.propertyAPIConversionAttributeType, false).ToArray();
             PropertyAPIAttribute conversionAttribute = null;
 
             if (source is IObjectAPIConvert)
@@ -79,12 +79,12 @@ namespace ManyWho.Flow.SDK
             {
                 conversionAttribute = (PropertyAPIAttribute)attributes[0];
                                         
-                if (typeof(IDictionary).IsAssignableFrom(propertyInfo.PropertyType))
+                if (typeof(IDictionary).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
                 {
                     return this.GetPropertyAPIFromDictionary(source, propertyInfo, conversionAttribute);
                 }
                 // string inherits from IEnumerable so add a check for "not string"
-                else if (typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType) && propertyInfo.PropertyType != typeof(string))
+                else if (typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()) && propertyInfo.PropertyType != typeof(string))
                 {
                     return this.GetPropertyAPIFromCollection(source, propertyInfo, conversionAttribute);
                 }

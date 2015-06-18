@@ -1,15 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Config;
-using ManyWho.Flow.SDK.Draw.Elements.Group;
-using ManyWho.Flow.SDK.Draw.Elements.Map;
-using ManyWho.Flow.SDK.Draw.Elements.Type;
-using ManyWho.Flow.SDK.Draw.Elements.UI;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
 using ManyWho.Flow.SDK.Translate.Elements.UI;
 using ManyWho.Flow.SDK.Translate.Elements.Map;
 using ManyWho.Flow.SDK.Translate.Elements.Value;

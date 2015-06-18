@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace ManyWho.Flow.SDK.Errors
@@ -36,6 +35,6 @@ namespace ManyWho.Flow.SDK.Errors
         [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }
         [JsonProperty(PropertyName = "responseHeaders")]
-        public Dictionary<string, IEnumerable<string>> ResponseHeaders { get; set; }
+        public IDictionary<string, IEnumerable<string>> ResponseHeaders { get; set; }
     }
 }
