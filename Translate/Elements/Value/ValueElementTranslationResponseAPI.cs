@@ -30,6 +30,13 @@ namespace ManyWho.Flow.SDK.Translate.Elements.Value
         }
 
         [DataMember]
+        public String contentFormatContentValueId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String defaultContentValueContentValueId
         {
             get;
