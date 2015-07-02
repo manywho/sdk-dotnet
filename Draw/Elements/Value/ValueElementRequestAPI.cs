@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Run.Elements.Type;
 using ManyWho.Flow.SDK.Draw.Elements.Map;
-using ManyWho.Flow.SDK.Draw.Elements.Type;
 
 /*!
 
@@ -43,6 +41,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
 
         [DataMember]
         public String contentType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String contentFormat
         {
             get;
             set;

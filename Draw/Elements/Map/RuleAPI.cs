@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Content;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!

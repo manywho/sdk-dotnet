@@ -22,7 +22,7 @@ namespace ManyWho.Flow.SDK
             {
                 throw new ArgumentNullException("TypeElementRequestAPIs", "The provided Dictionary cannot be null.");
             }
- 
+
             return Convert(typeof(T), typeElementRequestAPIs);
         }
 
@@ -30,7 +30,7 @@ namespace ManyWho.Flow.SDK
         {
             List<object> objectList = null;
             List<T> list = null;
-            
+
             objectList = Convert(typeof(T), objectAPIs);
 
             // Convert the list to a typed list
@@ -79,21 +79,21 @@ namespace ManyWho.Flow.SDK
                         object typedObject = Activator.CreateInstance(type);
 
                         // Grab the properties from the type so we can assign them from the incoming object api properties
-                        PropertyInfo[] propertyInfosFromType = type.GetProperties();
+                        IEnumerable<PropertyInfo> propertyInfosFromType = type.GetRuntimeProperties();
 
                         // Go through the properties in the incoming data first as this may be a sub-set
                         foreach (PropertyAPI propertyAPI in objectAPI.properties)
                         {
                             // Now go through the properties in the object to see if we have a matching one
-                            for (int i = 0; i < propertyInfosFromType.Length; i++)
+                            for (int i = 0; i < propertyInfosFromType.Count(); i++)
                             {
-                                PropertyInfo propertyInfoFromType = propertyInfosFromType[i];
+                                PropertyInfo propertyInfoFromType = propertyInfosFromType.ElementAt(i);
 
                                 // Check to see if this is the matching property in the type
                                 if (GetCleanPropertyName(propertyInfoFromType.Name).Equals(propertyAPI.developerName, StringComparison.OrdinalIgnoreCase) == true)
                                 {
                                     // The the property from the object, but only if it's public
-                                    PropertyInfo propertyInfo = typedObject.GetType().GetProperty(propertyInfoFromType.Name, BindingFlags.Public | BindingFlags.Instance);
+                                    PropertyInfo propertyInfo = typedObject.GetType().GetRuntimeProperty(propertyInfoFromType.Name);
 
                                     // Check to make sure we found one and that we can write to it
                                     if (propertyInfo != null &&
@@ -171,22 +171,22 @@ namespace ManyWho.Flow.SDK
                                         else
                                         {
                                             // We have some form of object type, so we need to do some additional testing
-                                            if (typeof(Dictionary<String, String>).IsAssignableFrom(propertyInfo.PropertyType))
+                                            if (typeof(Dictionary<String, String>).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
                                             {
                                                 // TODO: Finish the dictionary
                                                 //throw new NotImplementedException("Have not yet implemented dictionary.");
                                                 //propertyInfo.SetValue(GetPropertyValueForDictionary(propertyAPI.objectData, propertyInfo);
                                             }
                                             // string inherits from IEnumerable so add a check for "not string"
-                                            else if (typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType) &&
+                                            else if (typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()) &&
                                                      propertyInfo.PropertyType != typeof(string))
                                             {
                                                 Type itemType = null;
 
                                                 // Check to make sure it is a full on list
-                                                if (propertyInfo.PropertyType.IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
+                                                if (propertyInfo.PropertyType.GetTypeInfo().IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
                                                 {
-                                                    itemType = propertyInfo.PropertyType.GetGenericArguments()[0];
+                                                    itemType = propertyInfo.PropertyType.GenericTypeArguments.ElementAt(0);
                                                 }
 
                                                 // As an extra check, we make sure the name of the type ends with API or we may have a non-converted primitive property
@@ -280,7 +280,7 @@ namespace ManyWho.Flow.SDK
             typeElementRequestAPIs[typeElementRequestAPI.developerName] = typeElementRequestAPI;
 
             // Get the properties for the root type
-            foreach (PropertyInfo propertyInfo in type.GetProperties())
+            foreach (PropertyInfo propertyInfo in type.GetTypeInfo().DeclaredProperties)
             {
                 TypeElementPropertyAPI typeElementPropertyAPI = Convert(typeElementRequestAPIs, propertyInfo);
                 if (typeElementPropertyAPI != null)
@@ -323,7 +323,7 @@ namespace ManyWho.Flow.SDK
                 objectAPI.externalId = externalId;
                 objectAPI.properties = new List<PropertyAPI>();
 
-                foreach (PropertyInfo propertyInfo in type.GetProperties())
+                foreach (PropertyInfo propertyInfo in type.GetTypeInfo().DeclaredProperties)
                 {
                     PropertyAPI propertyAPI = Convert(source, propertyInfo, valueElementIdReferences);
                     if (propertyAPI != null)
@@ -338,12 +338,12 @@ namespace ManyWho.Flow.SDK
 
         public static TypeElementPropertyAPI Convert(Dictionary<String, TypeElementRequestAPI> typeElementRequestAPIs, PropertyInfo propertyInfo)
         {
-            if (typeof(Dictionary<String, String>).IsAssignableFrom(propertyInfo.PropertyType))
+            if (typeof(Dictionary<String, String>).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
             {
                 return GetTypeElementPropertyAPIFromDictionary(typeElementRequestAPIs, propertyInfo);
             }
             // string inherits from IEnumerable so add a check for "not string"
-            else if (typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType) && 
+            else if (typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()) &&
                      propertyInfo.PropertyType != typeof(string))
             {
                 return GetTypeElementPropertyAPIFromCollection(typeElementRequestAPIs, propertyInfo);
@@ -356,12 +356,12 @@ namespace ManyWho.Flow.SDK
 
         public static PropertyAPI Convert(object source, PropertyInfo propertyInfo, List<ValueElementIdReferenceAPI> valueElementIdReferences)
         {
-            if (typeof(IDictionary).IsAssignableFrom(propertyInfo.PropertyType))
+            if (typeof(IDictionary).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
             {
                 return GetPropertyAPIFromDictionary(source, propertyInfo, valueElementIdReferences);
             }
             // string inherits from IEnumerable so add a check for "not string"
-            else if (typeof(IEnumerable).IsAssignableFrom(propertyInfo.PropertyType) && 
+            else if (typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()) &&
                         propertyInfo.PropertyType != typeof(string))
             {
                 return GetPropertyAPIFromCollection(source, propertyInfo, valueElementIdReferences);
@@ -384,9 +384,9 @@ namespace ManyWho.Flow.SDK
             Type type = propertyInfo.PropertyType;
 
             // Check to make sure it is a full on list
-            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>))
+            if (type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>))
             {
-                Type itemType = type.GetGenericArguments()[0];
+                Type itemType = type.GetTypeInfo().GenericTypeArguments.ElementAt(0);
 
                 typeElementPropertyAPI = new TypeElementPropertyAPI();
                 typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_LIST;
@@ -405,9 +405,9 @@ namespace ManyWho.Flow.SDK
             Type type = propertyInfo.PropertyType;
 
             // Check to make sure it is a full on list and get the type from the entries
-            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>))
+            if (type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>))
             {
-                type = type.GetGenericArguments()[0];
+                type = type.GetTypeInfo().GenericTypeArguments.ElementAt(0);
             }
 
             if (values != null)
@@ -614,7 +614,7 @@ namespace ManyWho.Flow.SDK
                 {
                     objectData = new List<ObjectAPI>();
                     objectData.Add(Convert(propertyInfo.PropertyType, Guid.NewGuid().ToString(), propertyValue, valueElementIdReferences));
-                }                
+                }
             }
 
             return new PropertyAPI()

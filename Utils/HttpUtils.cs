@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 //using System.Text;
 using System.Net;
 using System.Net.Http;
@@ -26,25 +24,26 @@ namespace ManyWho.Flow.SDK.Utils
 {
     public class HttpUtils
     {
-        public const Int32 MAXIMUM_RETRIES = 3;
-        public const Int32 TIMEOUT_SECONDS = 20;
-        public const Int32 SYSTEM_TIMEOUT_SECONDS = 500;
+        public const int MAXIMUM_RETRIES = 3;
+        public const int TIMEOUT_SECONDS = 20;
+        public const int SYSTEM_TIMEOUT_SECONDS = 500;
+        public const int TIMEOUT_SECONDS_FOR_USER_INTERACTIONS = 600;
+        public const int TIMEOUT_SECONDS_FOR_SYSTEM_INTERACTIONS = 300;
 
-        public const String HEADER_AUTHORIZATION = "Authorization";
-        public const String HEADER_MANYWHO_STATE = "ManyWhoState";
-        public const String HEADER_MANYWHO_TENANT = "ManyWhoTenant";
-        public const String HEADER_CULTURE = "Culture";
+        public const string HEADER_AUTHORIZATION = "Authorization";
+        public const string HEADER_MANYWHO_STATE = "ManyWhoState";
+        public const string HEADER_MANYWHO_TENANT = "ManyWhoTenant";
+        public const string HEADER_CULTURE = "Culture";
 
         /// <summary>
         /// Utility method for getting the authenticated who from the header.
         /// </summary>
-        public static IAuthenticatedWho GetWho(String authorizationHeader)
+        public static IAuthenticatedWho GetWho(string authorizationHeader)
         {
             IAuthenticatedWho authenticatedWho = null;
 
             // Check to see if it's null - it can be in some situations
-            if (authorizationHeader != null &&
-                authorizationHeader.Trim().Length > 0)
+            if (!string.IsNullOrWhiteSpace(authorizationHeader))
             {
                 // Deserialize into an object
                 authenticatedWho = AuthenticationUtils.Deserialize(Uri.EscapeDataString(authorizationHeader));
@@ -52,55 +51,13 @@ namespace ManyWho.Flow.SDK.Utils
 
             return authenticatedWho;
         }
-
-        public static Exception HandleUnsuccessfulHttpResponseMessage(INotifier notifier, IAuthenticatedWho authenticatedWho, Int32 iteration, HttpResponseMessage httpResponseMessage, String endpointUrl)
-        {
-            Exception webException = null;
-
-            if (iteration >= (MAXIMUM_RETRIES - 1))
-            {
-                // The the alert email the fault
-                ErrorUtils.SendAlert(notifier, authenticatedWho, "Fault", "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The status code is: " + httpResponseMessage.StatusCode + ". The reason is: " + httpResponseMessage.ReasonPhrase);
-
-                // Throw the fault up to the caller
-                webException = ErrorUtils.GetWebException(httpResponseMessage.StatusCode, httpResponseMessage.ReasonPhrase);
-            }
-            else
-            {
-                // Alert the admin that a retry has happened
-                ErrorUtils.SendAlert(notifier, authenticatedWho, "Warning", "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The status code is: " + httpResponseMessage.StatusCode + ". The reason is: " + httpResponseMessage.ReasonPhrase);
-            }
-
-            return webException;
-        }
-
-        public static Exception HandleHttpException(INotifier notifier, IAuthenticatedWho authenticatedWho, Int32 iteration, Exception exception, String endpointUrl)
-        {
-            Exception webException = null;
-
-            if (iteration >= (MAXIMUM_RETRIES - 1))
-            {
-                // The the alert email the fault
-                ErrorUtils.SendAlert(notifier, authenticatedWho, "Fault", "The system has attempted multiple retries (" + MAXIMUM_RETRIES + ") with no luck on: " + endpointUrl + ". The error message we're getting back is: " + ErrorUtils.GetExceptionMessage(exception));
-
-                // Throw the fault up to the caller
-                webException = ErrorUtils.GetWebException(HttpStatusCode.BadRequest, exception);
-            }
-            else
-            {
-                // Alert the admin that a retry has happened
-                ErrorUtils.SendAlert(notifier, authenticatedWho, "Warning", "The system is attempting a retry (" + iteration + ") on: " + endpointUrl + ". The error message we're getting back is: " + ErrorUtils.GetExceptionMessage(exception));
-            }
-
-            return webException;
-        }
-
-        public static HttpClient CreateHttpClient(IAuthenticatedWho authenticatedWho, String tenantId, String stateId)
+        
+        public static HttpClient CreateHttpClient(IAuthenticatedWho authenticatedWho, string tenantId, string stateId)
         {
             return CreateHttpClient(authenticatedWho, tenantId, stateId, TIMEOUT_SECONDS);
         }
 
-        public static HttpClient CreateHttpClient(IAuthenticatedWho authenticatedWho, String tenantId, String stateId, Int32 timeOut)
+        public static HttpClient CreateHttpClient(IAuthenticatedWho authenticatedWho, string tenantId, string stateId, int timeOut)
         {
             HttpClient httpClient = null;
 
@@ -112,15 +69,13 @@ namespace ManyWho.Flow.SDK.Utils
                 httpClient.DefaultRequestHeaders.Add(HEADER_AUTHORIZATION, Uri.EscapeDataString(AuthenticationUtils.Serialize(authenticatedWho)));
             }
 
-            if (tenantId != null &&
-                tenantId.Trim().Length > 0)
+            if (!string.IsNullOrWhiteSpace(tenantId))
             {
                 // Add the tenant to the header
                 httpClient.DefaultRequestHeaders.Add(HEADER_MANYWHO_TENANT, tenantId);
             }
 
-            if (stateId != null &&
-                stateId.Trim().Length > 0)
+            if (!string.IsNullOrWhiteSpace(stateId))
             {
                 // Add the state to the header
                 httpClient.DefaultRequestHeaders.Add(HEADER_MANYWHO_STATE, stateId);
@@ -132,25 +87,70 @@ namespace ManyWho.Flow.SDK.Utils
             return httpClient;
         }
 
-        public static void CleanUpHttp(HttpClient httpClient, HttpContent httpContent, HttpResponseMessage httpResponseMessage)
+        public static HttpClient CreateRuntimeHttpClient(string authenticationToken, string tenantId, string stateId)
         {
-            if (httpClient != null)
+            return CreateRuntimeHttpClient(authenticationToken, tenantId, stateId, TIMEOUT_SECONDS);
+        }
+
+        public static HttpClient CreateRuntimeHttpClient(string authenticationToken, string tenantId, string stateId, int timeOut)
+        {
+            HttpClient httpClient = null;
+
+            httpClient = new HttpClient();
+
+            if (string.IsNullOrWhiteSpace(authenticationToken) == false)
             {
-                httpClient.Dispose();
-                httpClient = null;
+                // Serialize and add the user information to the header
+                httpClient.DefaultRequestHeaders.Add(HEADER_AUTHORIZATION, Uri.EscapeDataString(authenticationToken));
             }
 
-            if (httpContent != null)
+            if (!string.IsNullOrWhiteSpace(tenantId))
             {
-                httpContent.Dispose();
-                httpContent = null;
+                // Add the tenant to the header
+                httpClient.DefaultRequestHeaders.Add(HEADER_MANYWHO_TENANT, tenantId);
             }
 
-            if (httpResponseMessage != null)
+            if (!string.IsNullOrWhiteSpace(stateId))
             {
-                httpResponseMessage.Dispose();
-                httpResponseMessage = null;
+                // Add the state to the header
+                httpClient.DefaultRequestHeaders.Add(HEADER_MANYWHO_STATE, stateId);
             }
+
+            // Set the timeout for the request
+            httpClient.Timeout = TimeSpan.FromSeconds(timeOut);
+
+            return httpClient;
+        }
+
+        public static bool IsWorthRetry(HttpStatusCode httpStatusCode)
+        {
+            bool isWorthRetry = true;
+
+            // If we get any of these status codes, there's no point hammering the service again as the request either got there and an error
+            // occurred, or we're referencing something that isn't there (though if we get a "NOT FOUND", we do try again just in case!)
+            if (httpStatusCode == HttpStatusCode.Forbidden ||
+                httpStatusCode == HttpStatusCode.MethodNotAllowed ||
+                httpStatusCode == HttpStatusCode.Moved ||
+                httpStatusCode == HttpStatusCode.MovedPermanently ||
+                httpStatusCode == HttpStatusCode.NotImplemented ||
+                httpStatusCode == HttpStatusCode.PreconditionFailed ||
+                httpStatusCode == HttpStatusCode.ProxyAuthenticationRequired ||
+                httpStatusCode == HttpStatusCode.Redirect ||
+                httpStatusCode == HttpStatusCode.RedirectKeepVerb ||
+                httpStatusCode == HttpStatusCode.RedirectMethod ||
+                httpStatusCode == HttpStatusCode.RequestEntityTooLarge ||
+                httpStatusCode == HttpStatusCode.RequestUriTooLong ||
+                httpStatusCode == HttpStatusCode.SeeOther ||
+                httpStatusCode == HttpStatusCode.Unauthorized ||
+                httpStatusCode == HttpStatusCode.UnsupportedMediaType ||
+                httpStatusCode == HttpStatusCode.UseProxy ||
+                httpStatusCode == HttpStatusCode.BadRequest ||
+                httpStatusCode == HttpStatusCode.InternalServerError)
+            {
+                isWorthRetry = false;
+            }
+
+            return isWorthRetry;
         }
     }
 }

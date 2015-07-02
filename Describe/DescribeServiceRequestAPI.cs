@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Run;
-using ManyWho.Flow.SDK.Run.Elements.Config;
 using ManyWho.Flow.SDK.Translate;
 
 /*!
