@@ -44,6 +44,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         }
 
         [DataMember]
+        public String contentFormat
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String typeElementId
         {
             get;
