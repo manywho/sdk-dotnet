@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace ManyWho.Flow.SDK.Errors
 {
@@ -25,6 +26,7 @@ namespace ManyWho.Flow.SDK.Errors
         }
 
         [JsonProperty(PropertyName = "kind")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public ProblemKind Kind { get; set; }
         [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }
