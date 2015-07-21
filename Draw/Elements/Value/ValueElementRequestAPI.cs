@@ -47,6 +47,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         }
 
         [DataMember]
+        public String contentFormat
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String defaultContentValue
         {
             get;

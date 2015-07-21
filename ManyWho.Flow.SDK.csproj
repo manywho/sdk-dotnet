@@ -42,7 +42,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Polly, Version=2.2.2.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Polly-Signed.2.2.2\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Polly.dll</HintPath>
+      <HintPath>packages\Polly-Signed.2.2.2\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Polly.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -89,6 +89,9 @@
     <Compile Include="Security\AssignedUserPermissionAPI.cs" />
     <Compile Include="Security\AssignedUserPermissionRequestAPI.cs" />
     <Compile Include="Security\UserRegistrationSettingsAPI.cs" />
+    <Compile Include="Service\ServiceFailureAPI.cs" />
+    <Compile Include="Service\ServiceRequestAPI.cs" />
+    <Compile Include="Service\ServiceResponseAPI.cs" />
     <Compile Include="Tenant\DeleteAllAPI.cs" />
     <Compile Include="Utils\ErrorUtils.cs" />
     <Compile Include="Notification\NotificationMessage.cs" />

@@ -106,13 +106,12 @@ namespace ManyWho.Flow.SDK
             });
         }
 
-        public IAuthenticatedWho Login(INotifier notifier, String tenantId, String stateId, AuthenticationCredentialsAPI authenticationCredentials)
+        public String Login(INotifier notifier, String tenantId, String stateId, AuthenticationCredentialsAPI authenticationCredentials)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
-            IAuthenticatedWho authenticatedWho = null;
             String authenticationToken = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
@@ -134,9 +133,6 @@ namespace ManyWho.Flow.SDK
                     {
                         // Get the authentication token from the response message
                         authenticationToken = JsonConvert.DeserializeObject<String>(httpResponseMessage.Content.ReadAsStringAsync().Result);
-
-                        // Parse the authentication token into an authentication object
-                        authenticatedWho = AuthenticationUtils.Deserialize(Uri.UnescapeDataString(authenticationToken));
                     }
                     else
                     {
@@ -145,7 +141,7 @@ namespace ManyWho.Flow.SDK
                 }
             });
 
-            return authenticatedWho;
+            return authenticationToken;
         }
 
         public List<FlowResponseAPI> LoadFlows(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String filter)
@@ -181,7 +177,7 @@ namespace ManyWho.Flow.SDK
             return flowResponses;
         }
 
-        public FlowResponseAPI LoadFlowById(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String flowId)
+        public FlowResponseAPI LoadFlowById(INotifier notifier, String authenticationToken, String tenantId, String flowId)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
@@ -190,7 +186,7 @@ namespace ManyWho.Flow.SDK
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
-                using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null))
+                using (httpClient = HttpUtils.CreateRuntimeHttpClient(authenticationToken, tenantId, null))
                 {
                     // Construct the URL for the engine execute request
                     endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_LOAD_FLOW_BY_ID_URI_PART + flowId;
@@ -214,7 +210,7 @@ namespace ManyWho.Flow.SDK
             return flowResponse;
         }
 
-        public EngineInitializationResponseAPI Initialize(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, EngineInitializationRequestAPI engineInitializationRequest)
+        public EngineInitializationResponseAPI Initialize(INotifier notifier, String authenticationToken, String tenantId, EngineInitializationRequestAPI engineInitializationRequest)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
@@ -224,7 +220,7 @@ namespace ManyWho.Flow.SDK
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
-                using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null))
+                using (httpClient = HttpUtils.CreateRuntimeHttpClient(authenticationToken, tenantId, null))
                 {
                     // Use the JSON formatter to create the content of the request body
                     httpContent = new StringContent(JsonConvert.SerializeObject(engineInitializationRequest));
@@ -252,7 +248,7 @@ namespace ManyWho.Flow.SDK
             return engineInitializationResponse;
         }
 
-        public EngineInvokeResponseAPI Execute(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, EngineInvokeRequestAPI engineInvokeRequest)
+        public EngineInvokeResponseAPI Execute(INotifier notifier, String authenticationToken, String tenantId, EngineInvokeRequestAPI engineInvokeRequest)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
@@ -262,7 +258,7 @@ namespace ManyWho.Flow.SDK
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
-                using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, engineInvokeRequest.stateId))
+                using (httpClient = HttpUtils.CreateRuntimeHttpClient(authenticationToken, tenantId, engineInvokeRequest.stateId))
                 {
                     // Use the JSON formatter to create the content of the request body
                     httpContent = new StringContent(JsonConvert.SerializeObject(engineInvokeRequest));
@@ -358,7 +354,7 @@ namespace ManyWho.Flow.SDK
             return invokeType;
         }
 
-        public EngineNavigationResponseAPI GetNavigation(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String stateId, EngineNavigationRequestAPI engineNavigationRequest)
+        public EngineNavigationResponseAPI GetNavigation(INotifier notifier, String authenticationToken, String tenantId, String stateId, EngineNavigationRequestAPI engineNavigationRequest)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
@@ -368,7 +364,7 @@ namespace ManyWho.Flow.SDK
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
-                using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, engineNavigationRequest.stateId))
+                using (httpClient = HttpUtils.CreateRuntimeHttpClient(authenticationToken, tenantId, engineNavigationRequest.stateId))
                 {
                     // Use the JSON formatter to create the content of the request body
                     httpContent = new StringContent(JsonConvert.SerializeObject(engineNavigationRequest));
