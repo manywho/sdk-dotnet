@@ -16,5 +16,7 @@ namespace ManyWho.Flow.SDK.Service
         public Guid StateId { get; set; }
         [DataMember]
         public DateTime CreatedAt { get; set; }
+        [DataMember]
+        public string Content { get; set; }
     }
 }

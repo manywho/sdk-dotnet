@@ -25,5 +25,7 @@ namespace ManyWho.Flow.SDK.Service
         public List<ServiceResponseAPI> Responses { get; set; }
         [DataMember]
         public List<ServiceFailureAPI> Failures { get; set; }
+        [DataMember]
+        public Dictionary<string, object> Attributes { get; set; }
     }
 }
