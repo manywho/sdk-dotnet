@@ -43,5 +43,12 @@ namespace ManyWho.Flow.SDK.Tenant
             get;
             set;
         }
+
+        [DataMember]
+        public string subdomain
+        {
+            get;
+            set;
+        }
     }
 }
