@@ -17,6 +17,6 @@ namespace ManyWho.Flow.SDK.Tenant
         {
             get;
             set;
-        }
+        } = true;
     }
 }
