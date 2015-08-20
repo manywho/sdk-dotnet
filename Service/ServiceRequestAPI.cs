@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace ManyWho.Flow.SDK.Service
 {
@@ -19,6 +20,8 @@ namespace ManyWho.Flow.SDK.Service
         public string Method { get; set; }
         [DataMember]
         public string Uri { get; set; }
+        [JsonIgnore]
+        public string AuthorizationHeader { get; set; }
         [DataMember]
         public DateTime CreatedAt { get; set; }
         [DataMember]
