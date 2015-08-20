@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Flow;
+using ManyWho.Flow.SDK.Draw.Log;
 
 /*!
 
@@ -145,6 +146,13 @@ namespace ManyWho.Flow.SDK.Run.State
 
         [DataMember]
         public bool isDone
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public LogAPI log
         {
             get;
             set;
