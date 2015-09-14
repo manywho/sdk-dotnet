@@ -108,7 +108,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
-        public List<KeyValuePair<string, int>> controlPoints
+        public List<ControlPointAPI> controlPoints
         {
             get;
             set;
