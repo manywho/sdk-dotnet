@@ -107,40 +107,29 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public DescribeServiceResponseAPI Describe(INotifier notifier, IAuthenticatedWho authenticatedWho, DescribeServiceRequestAPI describeServiceRequest)
         {
-            DescribeServiceResponseAPI responseAPI = null;
-            HttpClient httpClient = null;
-            HttpContent httpContent = null;
-            HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
-
-            Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
+            using (var httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null, HttpUtils.SYSTEM_TIMEOUT_SECONDS))
             {
-                using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null, HttpUtils.SYSTEM_TIMEOUT_SECONDS))
+                // Use the JSON formatter to create the content of the request body.
+                HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(describeServiceRequest));
+                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                // Construct the URL for the describe request
+                string endpointUrl = describeServiceRequest.uri + "/metadata";
+
+                // Send the describe request over to the remote service
+                HttpResponseMessage httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;
+
+                // Check the status of the response and respond appropriately
+                if (httpResponseMessage.IsSuccessStatusCode)
                 {
-                    // Use the JSON formatter to create the content of the request body.
-                    httpContent = new StringContent(JsonConvert.SerializeObject(describeServiceRequest));
-                    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-                    // Construct the URL for the describe request
-                    endpointUrl = describeServiceRequest.uri + "/metadata";
-
-                    // Send the describe request over to the remote service
-                    httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;
-
-                    // Check the status of the response and respond appropriately
-                    if (httpResponseMessage.IsSuccessStatusCode)
-                    {
-                        // Get the describe response object from the response message
-                        responseAPI = JsonConvert.DeserializeObject<DescribeServiceResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
-                    }
-                    else
-                    {
-                        throw new ServiceProblemException(new ServiceProblem(endpointUrl, httpResponseMessage, string.Empty));
-                    }
+                    // Get the describe response object from the response message
+                    return JsonConvert.DeserializeObject<DescribeServiceResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
                 }
-            });
-
-            return responseAPI;
+                else
+                {
+                    throw new ServiceProblemException(new ServiceProblem(endpointUrl, httpResponseMessage, string.Empty));
+                }
+            }
         }
 
         /// <summary>
