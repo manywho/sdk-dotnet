@@ -3,33 +3,9 @@ using ManyWho.Flow.SDK.Utils;
 
 namespace ManyWho.Flow.SDK.Tenant
 {
-    public class TenantRegistrationAPI
+    public class TenantRegistrationAPI : UserRegistrationAPI
     {
-        public String firstName
-        {
-            get;
-            set;
-        }
-
-        public String lastName
-        {
-            get;
-            set;
-        }
-
-        public String email
-        {
-            get;
-            set;
-        }
-
-        public String username
-        {
-            get;
-            set;
-        }
-
-        public String password
+        public string subdomain
         {
             get;
             set;
