@@ -280,7 +280,7 @@ namespace ManyWho.Flow.SDK
             typeElementRequestAPIs[typeElementRequestAPI.developerName] = typeElementRequestAPI;
 
             // Get the properties for the root type
-            foreach (PropertyInfo propertyInfo in type.GetTypeInfo().DeclaredProperties)
+            foreach (PropertyInfo propertyInfo in type.GetRuntimeProperties())
             {
                 TypeElementPropertyAPI typeElementPropertyAPI = Convert(typeElementRequestAPIs, propertyInfo);
                 if (typeElementPropertyAPI != null)
