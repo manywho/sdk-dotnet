@@ -378,6 +378,7 @@ namespace ManyWho.Flow.SDK
         // Action bindings for map elements
         public const String ACTION_BINDING_SAVE = "SAVE";
         public const String ACTION_BINDING_NO_SAVE = "NO_SAVE";
+        public const String ACTION_BINDING_PARTIAL_SAVE = "PARTIAL_SAVE";
 
         // Action types for map elements
         public const String ACTION_TYPE_NEW = "NEW";
