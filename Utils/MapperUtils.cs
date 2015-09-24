@@ -323,7 +323,7 @@ namespace ManyWho.Flow.SDK
                 objectAPI.externalId = externalId;
                 objectAPI.properties = new List<PropertyAPI>();
 
-                foreach (PropertyInfo propertyInfo in type.GetTypeInfo().DeclaredProperties)
+                foreach (PropertyInfo propertyInfo in type.GetRuntimeProperties())
                 {
                     PropertyAPI propertyAPI = Convert(source, propertyInfo, valueElementIdReferences);
                     if (propertyAPI != null)
