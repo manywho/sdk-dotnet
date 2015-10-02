@@ -412,10 +412,10 @@ namespace ManyWho.Flow.SDK
 
             if (values != null)
             {
-                foreach (Object objectEntry in values)
-                {
-                    objectAPIs = new List<ObjectAPI>();
+                objectAPIs = new List<ObjectAPI>();
 
+                foreach (Object objectEntry in values)
+                {                    
                     if (objectEntry is ElementAPI)
                     {
                         // Assign the identifier property from the object
