@@ -77,5 +77,12 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             get;
             set;
         }
+
+        [DataMember]
+        public string Access
+        {
+            get;
+            set;
+        }
     }
 }
