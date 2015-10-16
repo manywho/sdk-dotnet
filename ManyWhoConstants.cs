@@ -207,12 +207,57 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_GROUP_PROPERTY_GROUP_NAME = "Group Name";
         public const String MANYWHO_GROUP_PROPERTY_GROUP_OWNER_USER_ID = "Group Owner User ID";
 
+        public static readonly string MANYWHO_STATE_DEVELOPER_NAME = "$State";
+        public static readonly Guid MANYWHO_STATE_VALUE_ID = Guid.Parse("1F2A56FD-E14B-460C-AABD-9FBF344B84F3");
+
+        public static readonly string MANYWHO_STATE_PROPERTY_ID = "ID";
+        public static readonly string MANYWHO_STATE_PROPERTY_PARENT_ID = "Parent ID";
+        public static readonly string MANYWHO_STATE_PROPERTY_EXTERNAL_ID = "External ID";
+        public static readonly string MANYWHO_STATE_PROPERTY_FLOW_ID = "Flow ID";
+        public static readonly string MANYWHO_STATE_PROPERTY_FLOW_VERSION_ID = "Flow Version ID";
+        public static readonly string MANYWHO_STATE_PROPERTY_FLOW_DEVELOPER_NAME = "Flow Developer Name";
+        public static readonly string MANYWHO_STATE_PROPERTY_IS_DONE = "Is Done?";
+        public static readonly string MANYWHO_STATE_PROPERTY_OWNER_ID = "Owner ID";
+        public static readonly string MANYWHO_STATE_PROPERTY_OWNER_USER_ID = "Owner User ID";
+        public static readonly string MANYWHO_STATE_PROPERTY_OWNER_FIRST_NAME = "Owner First Name";
+        public static readonly string MANYWHO_STATE_PROPERTY_OWNER_LAST_NAME = "Owner Last Name";
+        public static readonly string MANYWHO_STATE_PROPERTY_OWNER_USERNAME = "Owner Username";
+        public static readonly string MANYWHO_STATE_PROPERTY_OWNER_EMAIL = "Owner Email";
+        public static readonly string MANYWHO_STATE_PROPERTY_OWNER_NAME = "Owner Name";
+        public static readonly string MANYWHO_STATE_PROPERTY_DATE_CREATED = "Date Created";
+        public static readonly string MANYWHO_STATE_PROPERTY_DATE_MODIFIED = "Date Modified";
+        public static readonly string MANYWHO_STATE_PROPERTY_CURRENT_MAP_ELEMENT_ID = "Current Map Element ID";
+        public static readonly string MANYWHO_STATE_PROPERTY_CURRENT_MAP_ELEMENT_DEVELOPER_NAME = "Current Map Element Developer Name";
+        public static readonly string MANYWHO_STATE_PROPERTY_JOIN_URI = "Join URI";
+
+        public static readonly Guid MANYWHO_STATE_TYPE_ELEMENT_ID = Guid.Parse("6F5844B9-B79F-49CE-BA65-843DC754D1B6");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_ID = Guid.Parse("A4368EA1-F120-47A1-A67B-A8CE9452C127");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_PARENT_ID = Guid.Parse("C0986C48-DBC5-43C6-9222-3F8F3D4E2247");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_EXTERNAL_ID = Guid.Parse("6BA0852D-CED1-428E-BE7E-6F80D4B85F1F");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_FLOW_ID = Guid.Parse("5BB41D1F-8F1D-4028-AE44-763617537338");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_FLOW_VERSION_ID = Guid.Parse("B43B6AFA-2E56-461A-AD96-2B74BC92C90D");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_FLOW_DEVELOPER_NAME = Guid.Parse("45BB98B0-9C3D-47F2-B708-1327E5CD1DCA");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_IS_DONE = Guid.Parse("43FF2B25-78D8-4279-B517-3F82A888084C");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_OWNER_ID = Guid.Parse("EB621350-D117-4C16-848E-0DCE15021093");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_OWNER_USER_ID = Guid.Parse("EAE019C3-EA80-4DAC-844E-BAFD1A90861F");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_OWNER_FIRST_NAME = Guid.Parse("8D39A782-3A8A-4816-A660-823CFDAF190D");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_OWNER_LAST_NAME = Guid.Parse("1E453F03-6365-452C-BE93-43E37B270ADD");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_OWNER_USERNAME = Guid.Parse("F72489D4-2175-4095-B4D0-113FB489F0D9");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_OWNER_EMAIL = Guid.Parse("329A5FC0-F665-44F0-B5A9-A4DD39040FF2");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_OWNER_NAME = Guid.Parse("0289AFC0-4F92-4C5A-A07D-3AF40B8F2F00");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_DATE_CREATED = Guid.Parse("DCF75168-8F6E-4FBC-9E9D-543793BC4AFD");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_DATE_MODIFIED = Guid.Parse("23F6B3CA-E136-4908-8028-AC6F975441FA");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_CURRENT_MAP_ELEMENT_ID = Guid.Parse("81707A21-EDD7-48D5-AD80-FFCFA3471B6C");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_CURRENT_MAP_ELEMENT_DEVELOPER_NAME = Guid.Parse("AE1EB1E1-1760-41EA-9A02-919781BFF313");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_JOIN_URI = Guid.Parse("1A3B4FC9-912C-486E-A0FC-FF0D9F9796B7");
+
         // Service description constants
         public const String SERVICE_DESCRIPTION_VALUE_TABLE_NAME = "TableName";
 
         // Plugin constants
         public const String SERVICE_REQUEST_FORM_POST_KEY = "ServiceRequest";
         public const String FILE_DATA_REQUEST_FORM_POST_KEY = "FileDataRequest";
+        public const string FILE_DATA_REQUEST_FORM_FILE_NAME = "file";
 
         // Authentication constants
         //public const String OBJECT_TYPE_GROUP_AUTHORIZATION_GROUP = "GroupAuthorizationGroup";
@@ -334,6 +379,7 @@ namespace ManyWho.Flow.SDK
         // Action bindings for map elements
         public const String ACTION_BINDING_SAVE = "SAVE";
         public const String ACTION_BINDING_NO_SAVE = "NO_SAVE";
+        public const String ACTION_BINDING_PARTIAL_SAVE = "PARTIAL_SAVE";
 
         // Action types for map elements
         public const String ACTION_TYPE_NEW = "NEW";

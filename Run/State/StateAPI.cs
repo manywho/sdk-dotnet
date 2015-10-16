@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Flow;
+using ManyWho.Flow.SDK.Draw.Log;
 
 /*!
 
@@ -95,6 +96,13 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
+        public string currentRunningUserEmail
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String externalIdentifier
         {
             get;
@@ -138,6 +146,20 @@ namespace ManyWho.Flow.SDK.Run.State
 
         [DataMember]
         public String authorizationHeader
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool isDone
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public LogAPI log
         {
             get;
             set;

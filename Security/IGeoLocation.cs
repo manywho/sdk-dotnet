@@ -20,7 +20,7 @@ namespace ManyWho.Flow.SDK.Security
 {
     public interface IGeoLocation
     {
-        DateTime TimeStamp
+        DateTimeOffset TimeStamp
         {
             get;
             set;

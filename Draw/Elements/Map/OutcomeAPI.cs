@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 /*!
@@ -101,6 +102,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
 
         [DataMember]
         public FlowOutAPI flowOut
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<ControlPointAPI> controlPoints
         {
             get;
             set;

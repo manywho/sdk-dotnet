@@ -64,5 +64,12 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             get;
             set;
         }
+
+        [DataMember]
+        public int order
+        {
+            get;
+            set;
+        }
     }
 }

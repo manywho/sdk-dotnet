@@ -72,7 +72,7 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
-        public DateTime time
+        public DateTimeOffset time
         {
             get;
             set;

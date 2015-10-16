@@ -84,5 +84,12 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
             get;
             set;
         }
+
+        [DataMember]
+        public string typeElementPropertyToDisplayId
+        {
+            get;
+            set;
+        }
     }
 }
