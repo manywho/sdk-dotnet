@@ -72,6 +72,7 @@
     <Compile Include="Draw\Log\LogAPI.cs" />
     <Compile Include="Draw\Log\LogEntryAPI.cs" />
     <Compile Include="Draw\Log\LogLevel.cs" />
+    <Compile Include="Draw\Recording\StatePlaybackAPI.cs" />
     <Compile Include="Errors\ApiProblem.cs" />
     <Compile Include="Errors\ApiProblemException.cs" />
     <Compile Include="Errors\EngineException.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Run\Elements\Config\ListenerServiceResponseAPI.cs" />
     <Compile Include="Run\State\StateListenerRequestAPI.cs" />
     <Compile Include="Run\State\StateListenerResponseAPI.cs" />
+    <Compile Include="Draw\Recording\StateRecordingAPI.cs" />
     <Compile Include="Run\State\UserVoteAPI.cs" />
     <Compile Include="Security\AssignedUserPermissionAPI.cs" />
     <Compile Include="Security\AssignedUserPermissionRequestAPI.cs" />

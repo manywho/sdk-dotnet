@@ -53,12 +53,19 @@ namespace ManyWho.Flow.SDK
         public const String MODE_LOG = "LOG";
         public const String MODE_DEBUG = "DEBUG";
         public const String MODE_DEBUG_STEPTHROUGH = "DEBUG_STEPTHROUGH";
+        public const string MODE_RECORD = "RECORD";
 
         // Reporting mode constants
         public const String REPORT_NONE = null;
         public const String REPORT_VALUES = "VALUES";
         public const String REPORT_PATH = "PATH";
         public const String REPORT_PATH_AND_VALUES = "PATH_AND_VALUES";
+
+        // State playback status constants
+        public const string STATE_PLAYBACK_STATUS_QUEUED = "QUEUED";
+        public const string STATE_PLAYBACK_STATUS_RUNNING = "RUNNING";
+        public const string STATE_PLAYBACK_STATUS_FAILED = "FAILED";
+        public const string STATE_PLAYBACK_STATUS_SUCCESS = "SUCCESS";
 
         // Content Value Implementation constants
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_DETACH = "DETACH"; // Removes the external identifier from the root object only
