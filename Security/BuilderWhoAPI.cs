@@ -56,5 +56,12 @@ namespace ManyWho.Flow.SDK.Security
             get;
             set;
         }
+
+        [DataMember]
+        public bool verified
+        {
+            get;
+            set;
+        }
     }
 }

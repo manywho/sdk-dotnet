@@ -257,6 +257,7 @@ namespace ManyWho.Flow.SDK
         // Plugin constants
         public const String SERVICE_REQUEST_FORM_POST_KEY = "ServiceRequest";
         public const String FILE_DATA_REQUEST_FORM_POST_KEY = "FileDataRequest";
+        public const string FILE_DATA_REQUEST_FORM_FILE_NAME = "file";
 
         // Authentication constants
         //public const String OBJECT_TYPE_GROUP_AUTHORIZATION_GROUP = "GroupAuthorizationGroup";
@@ -378,6 +379,7 @@ namespace ManyWho.Flow.SDK
         // Action bindings for map elements
         public const String ACTION_BINDING_SAVE = "SAVE";
         public const String ACTION_BINDING_NO_SAVE = "NO_SAVE";
+        public const String ACTION_BINDING_PARTIAL_SAVE = "PARTIAL_SAVE";
 
         // Action types for map elements
         public const String ACTION_TYPE_NEW = "NEW";

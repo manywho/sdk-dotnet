@@ -96,6 +96,13 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
+        public string currentRunningUserEmail
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String externalIdentifier
         {
             get;

@@ -67,6 +67,13 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         [DataMember]
+        public int stateExpirationLength
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public GroupAuthorizationAPI authorization
         {
             get;
