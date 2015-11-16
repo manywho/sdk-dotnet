@@ -26,6 +26,11 @@ namespace ManyWho.Flow.SDK
             return Convert(typeof(T), typeElementRequestAPIs);
         }
 
+        public static T Convert<T>(ObjectAPI objectApi)
+        {
+            return Convert<T>(new List<ObjectAPI> { objectApi }).FirstOrDefault();
+        }
+
         public static List<T> Convert<T>(List<ObjectAPI> objectAPIs)
         {
             List<object> objectList = null;
