@@ -33,6 +33,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         }
 
         [DataMember]
+        public Boolean isVersionless
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String access
         {
             get;
