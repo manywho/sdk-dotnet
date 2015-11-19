@@ -91,5 +91,12 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
             get;
             set;
         }
+
+        [DataMember]
+        public string componentType
+        {
+            get;
+            set;
+        }
     }
 }
