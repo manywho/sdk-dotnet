@@ -94,6 +94,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         }
 
         [DataMember]
+        public bool providesAutoBinding
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public List<ServiceActionRequestAPI> actions
         {
             get;
