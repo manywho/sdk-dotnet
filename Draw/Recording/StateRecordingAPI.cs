@@ -42,6 +42,13 @@ namespace ManyWho.Flow.SDK.Draw.Recording
         }
 
         [DataMember]
+        public string AuthenticationType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public DateTimeOffset CreatedAt
         {
             get;

@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace ManyWho.Flow.SDK.Draw.Recording
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class StatePlaybackAPI
+    public class StatePlaybackResponseAPI
     {
         [DataMember]
         public Guid Id
@@ -44,6 +44,13 @@ namespace ManyWho.Flow.SDK.Draw.Recording
 
         [DataMember]
         public string Status
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string RuntimeAuthenticationToken
         {
             get;
             set;
