@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using AsyncBridge;
 using Newtonsoft.Json;
 using ManyWho.Flow.SDK.Run;
 using ManyWho.Flow.SDK.Run.Elements.Config;
@@ -210,42 +213,46 @@ namespace ManyWho.Flow.SDK
             return flowResponse;
         }
 
-        public EngineInitializationResponseAPI Initialize(INotifier notifier, String authenticationToken, String tenantId, EngineInitializationRequestAPI engineInitializationRequest)
+        public async Task<EngineInitializationResponseAPI> InitializeAsync(INotifier notifier, string authenticationToken, string tenantId, EngineInitializationRequestAPI engineInitializationRequest)
         {
-            String endpointUrl = null;
-            HttpClient httpClient = null;
-            HttpContent httpContent = null;
-            HttpResponseMessage httpResponseMessage = null;
-            EngineInitializationResponseAPI engineInitializationResponse = null;
-
-            Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
+            return await Policy.Handle<ServiceProblemException>().RetryAsync(HttpUtils.MAXIMUM_RETRIES).ExecuteAsync(async () =>
             {
-                using (httpClient = HttpUtils.CreateRuntimeHttpClient(authenticationToken, tenantId, null))
+                using (var client = HttpUtils.CreateRuntimeHttpClient(authenticationToken, tenantId, null))
                 {
                     // Use the JSON formatter to create the content of the request body
-                    httpContent = new StringContent(JsonConvert.SerializeObject(engineInitializationRequest));
-                    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    var content = new ObjectContent<EngineInitializationRequestAPI>(engineInitializationRequest, new JsonMediaTypeFormatter(), "application/json");
 
                     // Construct the URL for the engine initialization request
-                    endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_INITIALIZE_URI_PART;
+                    var endpointUrl = this.ServiceUrl + MANYWHO_ENGINE_INITIALIZE_URI_PART;
 
-                    // Post the engine initialization request over to ManyWho
-                    httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;
-
-                    // Check the status of the response and respond appropriately
-                    if (httpResponseMessage.IsSuccessStatusCode)
+                    // Post the engine initialization request over to ManyWho, then check the status of the response and respond appropriately
+                    var response = await client.PostAsync(endpointUrl, content);
+                    if (response.IsSuccessStatusCode)
                     {
                         // Get the engine initialization response object from the response message
-                        engineInitializationResponse = JsonConvert.DeserializeObject<EngineInitializationResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+                        return await response.Content.ReadAsAsync<EngineInitializationResponseAPI>();
                     }
-                    else
-                    {
-                        throw new ServiceProblemException(new ServiceProblem(endpointUrl, httpResponseMessage, string.Empty));
-                    }
+
+                    throw new ServiceProblemException(new ServiceProblem(endpointUrl, response, string.Empty));
                 }
             });
+        }
 
-            return engineInitializationResponse;
+        public EngineInitializationResponseAPI Initialize(INotifier notifier, string authenticationToken, string tenantId, EngineInitializationRequestAPI engineInitializationRequest)
+        {
+            EngineInitializationResponseAPI initializationResponse = null;
+
+            using (var async = AsyncHelper.Wait)
+            {
+                var task = InitializeAsync(notifier, authenticationToken, tenantId, engineInitializationRequest);
+
+                async.Run(task, result => 
+                {
+                    initializationResponse = result;
+                });
+            }
+
+            return initializationResponse;
         }
 
         public EngineInvokeResponseAPI Execute(INotifier notifier, String authenticationToken, String tenantId, EngineInvokeRequestAPI engineInvokeRequest)
