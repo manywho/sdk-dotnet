@@ -65,6 +65,7 @@ namespace ManyWho.Flow.SDK
         public const string STATE_PLAYBACK_STATUS_QUEUED = "QUEUED";
         public const string STATE_PLAYBACK_STATUS_RUNNING = "RUNNING";
         public const string STATE_PLAYBACK_STATUS_FAILED = "FAILED";
+        public const string STATE_PLAYBACK_STATUS_UNAUTHORIZED = "UNAUTHORIZED";
         public const string STATE_PLAYBACK_STATUS_SUCCESS = "SUCCESS";
 
         // Content Value Implementation constants
