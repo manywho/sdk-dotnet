@@ -42,7 +42,7 @@ namespace ManyWho.Flow.SDK.Draw.Recording
         }
 
         [DataMember]
-        public string AuthenticationType
+        public bool IsPublic
         {
             get;
             set;
