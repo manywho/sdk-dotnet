@@ -28,5 +28,12 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             get;
             set;
         }
+
+        [DataMember]
+        public DateTime dateModified
+        {
+            get;
+            set;
+        }
     }
 }
