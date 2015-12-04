@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace ManyWho.Flow.SDK.Draw.Recording
@@ -43,6 +44,13 @@ namespace ManyWho.Flow.SDK.Draw.Recording
 
         [DataMember]
         public bool IsPublic
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<StatePlaybackResponseAPI> Playbacks
         {
             get;
             set;
