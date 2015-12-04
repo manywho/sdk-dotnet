@@ -50,7 +50,7 @@ namespace ManyWho.Flow.SDK.Draw.Recording
         }
 
         [DataMember]
-        public string RuntimeAuthenticationToken
+        public string AuthenticationToken
         {
             get;
             set;
