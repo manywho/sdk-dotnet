@@ -50,14 +50,14 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
-        public string valueElementToReferenceName
+        public string valueElementToReferenceDeveloperName
         {
             get;
             set;
         }
 
         [DataMember]
-        public string typeElementName
+        public string typeElementDeveloperName
         {
             get;
             set;
