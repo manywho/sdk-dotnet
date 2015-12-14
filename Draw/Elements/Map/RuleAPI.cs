@@ -43,5 +43,26 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             get;
             set;
         }
+
+        [DataMember]
+        public string leftValueElementToReferenceDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string rightValueElementToReferenceDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string criteriaTypeFriendly
+        {
+            get;
+            set;
+        }
     }
 }
