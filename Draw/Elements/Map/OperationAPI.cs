@@ -52,6 +52,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
+        public bool disabled
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public string valueElementToApplyDeveloperName
         {
             get;
