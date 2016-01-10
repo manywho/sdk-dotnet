@@ -557,6 +557,10 @@ namespace ManyWho.Flow.SDK
             {
                 typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_BOOLEAN;
             }
+            else if (propertyInfo.PropertyType.GetTypeInfo().IsEnum)
+            {
+                typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_STRING;
+            }
             else
             {
                 // As an extra check, we make sure the name of the type ends with API or we may have a non-converted primitive property
