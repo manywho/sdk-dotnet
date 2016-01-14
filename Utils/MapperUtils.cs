@@ -507,8 +507,9 @@ namespace ManyWho.Flow.SDK
             PropertyAPI propertyAPI = null;
             IDictionary value = (IDictionary)propertyInfo.GetValue(source, null);
 
-            if (value != null)
+            if (value != null && !propertyInfo.Name.Equals("attributes", StringComparison.OrdinalIgnoreCase))
             {
+                IEnumerable values = (IEnumerable)propertyInfo.GetValue(source, null);
                 propertyAPI = GetPropertyAPIFromCollection(value.Values, propertyInfo, valueElementIdReferences);
             }
 
