@@ -66,5 +66,19 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         }
+
+        [DataMember]
+        public bool isVisible
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool isEnabled
+        {
+            get;
+            set;
+        }
     }
 }
