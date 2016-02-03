@@ -57,5 +57,12 @@ namespace ManyWho.Flow.SDK.Tenant
             get;
             set;
         }
+
+        [DataMember]
+        public TenantSettingsAPI tenantSettings
+        {
+            get;
+            set;
+        }
     }
 }

@@ -64,5 +64,12 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             get;
             set;
         }
+
+        [DataMember]
+        public Guid typeElementId
+        {
+            get;
+            set;
+        }
     }
 }

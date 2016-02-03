@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 /*!
 
@@ -17,20 +16,13 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Flow
+namespace ManyWho.Flow.SDK.Run.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class FlowGraphResponseAPI : FlowGraphRequestAPI
+    public class ListFilterSearchCriteriaAPI
     {
         [DataMember]
-        public String tenantId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public DateTime dateModified
+        public string columnName
         {
             get;
             set;

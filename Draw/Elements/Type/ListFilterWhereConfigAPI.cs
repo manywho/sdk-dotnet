@@ -52,5 +52,19 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             get;
             set;
         }
+
+        [DataMember]
+        public string columnTypeElementPropertyDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToReferenceDeveloperName
+        {
+            get;
+            set;
+        }
     }
 }

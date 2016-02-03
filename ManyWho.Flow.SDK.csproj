@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Draw\Elements\Map\ControlPointAPI.cs" />
     <Compile Include="Draw\Elements\Map\VoteAPI.cs" />
+    <Compile Include="Draw\Elements\Type\ListFilterSearchCriteriaConfigAPI.cs" />
     <Compile Include="Draw\Flow\FlowVersionAPI.cs" />
     <Compile Include="Draw\Log\LogAPI.cs" />
     <Compile Include="Draw\Log\LogEntryAPI.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Run\Elements\Config\BaseResponseAPI.cs" />
     <Compile Include="Run\Elements\Config\ListenerServiceRequestAPI.cs" />
     <Compile Include="Run\Elements\Config\ListenerServiceResponseAPI.cs" />
+    <Compile Include="Run\Elements\Type\ListFilterSearchCriteriaAPI.cs" />
     <Compile Include="Run\State\StateListenerRequestAPI.cs" />
     <Compile Include="Run\State\StateListenerResponseAPI.cs" />
     <Compile Include="Run\State\UserVoteAPI.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Service\ServiceRequestAPI.cs" />
     <Compile Include="Service\ServiceResponseAPI.cs" />
     <Compile Include="Tenant\DeleteAllAPI.cs" />
+    <Compile Include="Tenant\TenantSettingsAPI.cs" />
     <Compile Include="Tenant\UserRegistrationAPI.cs" />
     <Compile Include="Tenant\StateSettingsAPI.cs" />
     <Compile Include="Utils\ErrorUtils.cs" />

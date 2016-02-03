@@ -17,20 +17,16 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Flow
+namespace ManyWho.Flow.SDK.Draw.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class FlowGraphResponseAPI : FlowGraphRequestAPI
+    public class ListFilterSearchCriteriaConfigAPI
     {
+        /// <summary>
+        /// The column to filter by.
+        /// </summary>
         [DataMember]
-        public String tenantId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public DateTime dateModified
+        public String columnTypeElementPropertyId
         {
             get;
             set;
