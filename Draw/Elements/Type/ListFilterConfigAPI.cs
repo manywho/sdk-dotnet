@@ -93,5 +93,12 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             get;
             set;
         }
+
+        [DataMember]
+        public List<ListFilterSearchCriteriaConfigAPI> searchCriteria
+        {
+            get;
+            set;
+        }
     }
 }

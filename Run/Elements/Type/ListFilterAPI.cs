@@ -112,5 +112,15 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
             get;
             set;
         }
+
+        /// <summary>
+        /// Any extra criteria that should be used when searching
+        /// </summary>
+        [DataMember]
+        public List<ListFilterSearchCriteriaAPI> searchCriteria
+        {
+            get;
+            set;
+        }
     }
 }
