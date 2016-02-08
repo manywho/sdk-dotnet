@@ -97,6 +97,8 @@
     <Compile Include="Service\ServiceRequestAPI.cs" />
     <Compile Include="Service\ServiceResponseAPI.cs" />
     <Compile Include="Tenant\DeleteAllAPI.cs" />
+    <Compile Include="Tenant\TenantSettingsAPI.cs" />
+    <Compile Include="Tenant\UserRegistrationAPI.cs" />
     <Compile Include="Tenant\StateSettingsAPI.cs" />
     <Compile Include="Utils\ErrorUtils.cs" />
     <Compile Include="Notification\NotificationMessage.cs" />

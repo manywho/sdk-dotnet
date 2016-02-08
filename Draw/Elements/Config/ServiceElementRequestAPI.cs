@@ -113,5 +113,12 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
             get;
             set;
         }
+
+        [DataMember]
+        public bool sendDecryptedValues
+        {
+            get;
+            set;
+        }
     }
 }

@@ -45,7 +45,21 @@ namespace ManyWho.Flow.SDK.Tenant
         }
 
         [DataMember]
+        public string subdomain
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public StateSettingsAPI stateSettings
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public TenantSettingsAPI tenantSettings
         {
             get;
             set;
