@@ -116,6 +116,13 @@ namespace ManyWho.Flow.SDK.Describe
             set;
         }
 
+        [DataMember]
+        public bool providesAutoBinding
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// The actions available for this service.  The actions are basically a proxy for methods.
         /// </summary>
