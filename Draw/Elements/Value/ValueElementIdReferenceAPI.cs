@@ -84,6 +84,5 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             get;
             set;
         }
-
     }
 }

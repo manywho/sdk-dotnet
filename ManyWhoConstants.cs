@@ -103,6 +103,7 @@ namespace ManyWho.Flow.SDK
         public const String CONTENT_TYPE_LIST = "ContentList";
         public const String CONTENT_TYPE_BOOLEAN = "ContentBoolean";
         public const String CONTENT_TYPE_CONTENT = "ContentContent";
+        public const String CONTENT_TYPE_ENCRYPTED = "ContentEncrypted";
 
         // Content parser strings
         public const String EMBEDDED_KEY_START_INTERNAL = "flowkey___";
