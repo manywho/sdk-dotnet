@@ -70,6 +70,7 @@ namespace ManyWho.Flow.SDK
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_NEXT = "GET_NEXT"; // gets the next complex object in the table
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_FILTER = "FILTER";
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_LENGTH = "GET_LENGTH"; // gets the length of a list, string, content or password
+        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_VALUE = "VALUE_OF"; // gets the content value / objectdata of a Value
 
         // These are the command properties associated with the filter
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_COLUMN = "COLUMN";
