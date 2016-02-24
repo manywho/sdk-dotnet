@@ -66,5 +66,19 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             get;
             set;
         }
+
+        [DataMember]
+        public int group
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string comparisonWithNextGroup
+        {
+            get;
+            set;
+        }
     }
 }
