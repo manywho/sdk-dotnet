@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The developer name of the column to order by.
         /// </summary>
         [DataMember]
-        public String orderByPropertyDeveloperName
+        public string columnName
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The direction of the ordering.
         /// </summary>
         [DataMember]
-        public String orderByDirectionType
+        public string direction
         {
             get;
             set;
