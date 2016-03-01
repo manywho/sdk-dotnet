@@ -83,6 +83,13 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
             set;
         }
 
+        [DataMember]
+        public List<ListFilterOrderByAPI> orderBy
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// The number of objects to retrieve in the list.
         /// </summary>

@@ -74,6 +74,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             set;
         }
 
+        [DataMember]
+        public List<ListFilterOrderByConfigAPI> orderBy
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// The number of objects to retrieve in the list.
         /// </summary>
