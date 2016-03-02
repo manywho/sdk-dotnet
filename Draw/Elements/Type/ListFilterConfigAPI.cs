@@ -22,33 +22,13 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Draw.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ListFilterConfigAPI
+    public class ListFilterConfigAPI : ListFilterMinimalConfigAPI
     {
         /// <summary>
         /// The identifier of the actual object to filter by - this basically gives an individual result back.
         /// </summary>
         [DataMember]
         public ValueElementIdAPI filterId
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// The comparison when evaluating the 'where' entries.  This is either "AND" or "OR" and we do not support nesting (just yet anyway).
-        /// </summary>
-        [DataMember]
-        public String comparisonType
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// The where filter to apply to the list.
-        /// </summary>
-        [DataMember]
-        public List<ListFilterWhereConfigAPI> where
         {
             get;
             set;

@@ -57,19 +57,5 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
             get;
             set;
         }
-
-        [DataMember]
-        public int group
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public string comparisonWithNext
-        {
-            get;
-            set;
-        }
     }
 }

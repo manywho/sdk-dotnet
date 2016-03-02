@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -21,47 +21,33 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Draw.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ListFilterWhereConfigAPI
+    public class ListFilterMinimalConfigAPI
     {
         /// <summary>
-        /// The column to filter by.
+        /// The comparison when evaluating the 'where' entries.  This is either "AND" or "OR" and we do not support nesting (just yet anyway).
         /// </summary>
         [DataMember]
-        public String columnTypeElementPropertyId
+        public String comparisonType
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The criteria of the filter.
+        /// The where filter to apply to the list.
         /// </summary>
         [DataMember]
-        public String criteriaType
+        public List<ListFilterWhereConfigAPI> where
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The value to filter by.
+        /// A list of nested minimal ListFilters that can be used for grouped ordering and comparisons
         /// </summary>
         [DataMember]
-        public ValueElementIdAPI valueElementToReferenceId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public string columnTypeElementPropertyDeveloperName
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public string valueElementToReferenceDeveloperName
+        public List<ListFilterMinimalConfigAPI> listFilters
         {
             get;
             set;
