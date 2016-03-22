@@ -591,6 +591,7 @@ namespace ManyWho.Flow.SDK
         {
             List<ObjectAPI> objectData = null;
             string value = null;
+            object propertyValue = null;
 
             // Check to see if the source is a value element identifier, if so we map that over to the full reference
             if (source is ValueElementIdAPI)
@@ -598,7 +599,10 @@ namespace ManyWho.Flow.SDK
                 source = FindValueElementIdReferenceForValueElementId((ValueElementIdAPI)source, valueElementIdReferences);
             }
 
-            object propertyValue = propertyInfo.GetValue(source, null);
+            if (source != null)
+            {
+                propertyValue = propertyInfo.GetValue(source, null);
+            }
 
             // All of the ValueElementIds are translated to ValueElementIdReferences, so we need to do a little switch here
             if (propertyInfo.PropertyType.Name.Equals("ValueElementIdAPI", StringComparison.OrdinalIgnoreCase) == true)
