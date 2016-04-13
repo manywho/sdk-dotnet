@@ -479,5 +479,7 @@ namespace ManyWho.Flow.SDK
         public const String USER_PERMISSION_TYPE_CAN_EDIT = "CAN_EDIT";
         public const String USER_PERMISSION_TYPE_CAN_VIEW = "CAN_VIEW";
         public const String USER_PERMISSION_TYPE_CAN_COMMENT = "CAN_COMMENT";
+
+        public const string CONTENT_ENCRYPTED_PLACEHOLDER = "__ENCRYPTED__";
     }
 }
