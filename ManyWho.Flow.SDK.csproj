@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Draw\Elements\Group\AuthenticationAttributeAPI.cs" />
     <Compile Include="Draw\Elements\Map\ControlPointAPI.cs" />
     <Compile Include="Draw\Elements\Map\VoteAPI.cs" />
     <Compile Include="Draw\Elements\Type\ListFilterMinimalConfigAPI.cs" />
