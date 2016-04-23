@@ -105,6 +105,8 @@
     <Compile Include="Tenant\TenantSettingsAPI.cs" />
     <Compile Include="Tenant\UserRegistrationAPI.cs" />
     <Compile Include="Tenant\StateSettingsAPI.cs" />
+    <Compile Include="Translate\Elements\Type\PropertyTranslationResponseAPI.cs" />
+    <Compile Include="Translate\Elements\Type\TypeElementTranslationResponseAPI.cs" />
     <Compile Include="Utils\ErrorUtils.cs" />
     <Compile Include="Notification\NotificationMessage.cs" />
     <Compile Include="DrawSingleton.cs" />
