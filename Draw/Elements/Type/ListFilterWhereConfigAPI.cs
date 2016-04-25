@@ -43,6 +43,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             set;
         }
 
+        [DataMember]
+        public string criteriaTypeFriendly
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// The value to filter by.
         /// </summary>
