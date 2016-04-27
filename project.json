@@ -1,0 +1,19 @@
+﻿{
+  "supports": {
+    "net46.app": {},
+    "dnxcore50.app": {}
+  },
+  "dependencies": {
+    "Microsoft.NETCore": "5.0.0",
+    "Microsoft.NETCore.Portable.Compatibility": "1.0.0",
+    "Newtonsoft.Json": "8.0.3",
+    "Polly-Signed": "4.2.0",
+    "System.Net.Requests": "4.0.10",
+    "System.Runtime.Serialization.Primitives": "4.0.10"
+  },
+  "frameworks": {
+    "dotnet": {
+      "imports": "portable-net452"
+    }
+  }
+}
