@@ -42,5 +42,12 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             get;
             set;
         }
+
+        [DataMember]
+        public string developerName
+        {
+            get;
+            set;
+        }
     }
 }
