@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         [DataMember]
-        public string developerName
+        public string generatedSummary
         {
             get;
             set;

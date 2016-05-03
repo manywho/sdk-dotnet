@@ -256,6 +256,13 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_CURRENT_MAP_ELEMENT_DEVELOPER_NAME = Guid.Parse("AE1EB1E1-1760-41EA-9A02-919781BFF313");
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_JOIN_URI = Guid.Parse("1A3B4FC9-912C-486E-A0FC-FF0D9F9796B7");
 
+        // Metadata constants for page rules and conditions
+        public const String META_DATA_VALUE = "VALUE";
+        public const String META_DATA_ENABLED = "METADATA.ENABLED";
+        public const String META_DATA_EDITABLE = "METADATA.EDITABLE";
+        public const String META_DATA_VISIBLE = "METADATA.VISIBLE";
+        public const String META_DATA_REQUIRED = "METADATA.REQUIRED";
+
         // Service description constants
         public const String SERVICE_DESCRIPTION_VALUE_TABLE_NAME = "TableName";
 
