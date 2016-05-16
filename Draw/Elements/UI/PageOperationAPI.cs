@@ -44,5 +44,12 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             get;
             set;
         }
+
+        [DataMember]
+        public string generatedSummary
+        {
+            get;
+            set;
+        }
     }
 }
