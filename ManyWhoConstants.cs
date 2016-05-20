@@ -459,6 +459,7 @@ namespace ManyWho.Flow.SDK
         // The authentication types that are currently supported
         public const String AUTHENTICATION_TYPE_USERNAME_PASSWORD = "USERNAME_PASSWORD";
         public const String AUTHENTICATION_TYPE_OAUTH2 = "OAUTH2";
+        public const String AUTHENTICATION_TYPE_SAML = "SAML";
 
         public const String PROPERTY_SEARCH = "PROPERTY:";
         public const String EXACT_SEARCH = "EXACT:";
