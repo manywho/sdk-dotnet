@@ -693,7 +693,10 @@ namespace ManyWho.Flow.SDK
             name = char.ToUpper(name[0]) + name.Substring(1);
 
             // Chop off the API bit at the end
-            name = name.Substring(0, name.Length - 3);
+            if (name.EndsWith("API"))
+            {
+                return name.Remove(name.LastIndexOf("API", StringComparison.Ordinal));
+            }
 
             return name;
         }
