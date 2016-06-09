@@ -178,9 +178,23 @@ namespace ManyWho.Flow.SDK
                                             // We have some form of object type, so we need to do some additional testing
                                             if (typeof(Dictionary<String, String>).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
                                             {
-                                                // TODO: Finish the dictionary
-                                                //throw new NotImplementedException("Have not yet implemented dictionary.");
-                                                //propertyInfo.SetValue(GetPropertyValueForDictionary(propertyAPI.objectData, propertyInfo);
+                                                // Check if we're looking at the Attributes field and whether we have any
+                                                if (propertyInfo.Name.Equals("attributes") && propertyAPI.objectData != null && propertyAPI.objectData.Count > 0)
+                                                {
+                                                    // If there are any attributes then map all of them into a Dictionary<string, string>
+                                                    var attributes = propertyAPI.objectData.Where(o => o.developerName.Equals("KeyPair"))
+                                                        .ToDictionary(
+                                                            o =>
+                                                            {
+                                                                return o.properties.First(p => p.developerName.Equals("Key")).contentValue;
+                                                            },
+                                                            o =>
+                                                            {
+                                                                return o.properties.First(p => p.developerName.Equals("Value")).contentValue;
+                                                            });
+
+                                                    propertyInfo.SetValue(typedObject, attributes);
+                                                }
                                             }
                                             // string inherits from IEnumerable so add a check for "not string"
                                             else if (typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()) &&
@@ -420,7 +434,7 @@ namespace ManyWho.Flow.SDK
                 objectAPIs = new List<ObjectAPI>();
 
                 foreach (Object objectEntry in values)
-                {                    
+                {
                     if (objectEntry is ElementAPI)
                     {
                         // Assign the identifier property from the object
@@ -507,10 +521,32 @@ namespace ManyWho.Flow.SDK
             PropertyAPI propertyAPI = null;
             IDictionary value = (IDictionary)propertyInfo.GetValue(source, null);
 
-            if (value != null && !propertyInfo.Name.Equals("attributes", StringComparison.OrdinalIgnoreCase))
+            if (value != null && propertyInfo.Name.Equals("attributes", StringComparison.OrdinalIgnoreCase))
             {
-                IEnumerable values = (IEnumerable)propertyInfo.GetValue(source, null);
-                propertyAPI = GetPropertyAPIFromCollection(value.Values, propertyInfo, valueElementIdReferences);
+                var values = value as IDictionary<string, string>;
+                if (values.Count > 0)
+                {
+                    // Add a new list of "Object: String" type objects
+                    propertyAPI = new PropertyAPI();
+                    propertyAPI.developerName = "Attributes";
+
+                    // For each keypair, create a new "Object: String" object
+                    propertyAPI.objectData = new List<ObjectAPI>();
+
+                    foreach (var attribute in values)
+                    {
+                        propertyAPI.objectData.Add(new ObjectAPI()
+                        {
+                            developerName = "KeyPair",
+                            externalId = Guid.NewGuid().ToString(),
+                            properties = new List<PropertyAPI>()
+                            {
+                                new PropertyAPI() { developerName = "Key", contentValue = attribute.Key },
+                                new PropertyAPI() { developerName = "Value", contentValue = attribute.Value }
+                            }
+                        });
+                    }
+                }
             }
 
             return propertyAPI;
