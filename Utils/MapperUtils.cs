@@ -196,6 +196,10 @@ namespace ManyWho.Flow.SDK
                                                     propertyInfo.SetValue(typedObject, attributes);
                                                 }
                                             }
+                                            else if (typeof(Enum).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
+                                            {
+                                                propertyInfo.SetValue(typedObject, Enum.Parse(propertyInfo.PropertyType, propertyAPI.contentValue));
+                                            }
                                             // string inherits from IEnumerable so add a check for "not string"
                                             else if (typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()) &&
                                                      propertyInfo.PropertyType != typeof(string))
@@ -379,6 +383,11 @@ namespace ManyWho.Flow.SDK
             {
                 return GetPropertyAPIFromDictionary(source, propertyInfo, valueElementIdReferences);
             }
+
+            if (typeof(Enum).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
+            {
+                return GetPropertyAPIFromEnum(source, propertyInfo);
+            }
             // string inherits from IEnumerable so add a check for "not string"
             else if (typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()) &&
                         propertyInfo.PropertyType != typeof(string))
@@ -389,6 +398,17 @@ namespace ManyWho.Flow.SDK
             {
                 return GetPropertyAPIFromType(source, propertyInfo, valueElementIdReferences);
             }
+        }
+
+        static PropertyAPI GetPropertyAPIFromEnum(object source, PropertyInfo propertyInfo)
+        {
+            var value = propertyInfo.GetValue(source);
+
+            return new PropertyAPI
+            {
+                developerName = GetCleanObjectName(propertyInfo.Name),
+                contentValue = value.ToString()
+            };
         }
 
         private static PropertyAPI GetPropertyAPIFromCollection(object source, PropertyInfo propertyInfo, List<ValueElementIdReferenceAPI> valueElementIdReferences)
