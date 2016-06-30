@@ -58,6 +58,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
             set;
         }
 
+        [DataMember]
         public Dictionary<string, string> attributes
         {
             get;
