@@ -81,7 +81,6 @@
     <Compile Include="Errors\EngineException.cs" />
     <Compile Include="Errors\ServiceProblem.cs" />
     <Compile Include="Errors\ServiceProblemException.cs" />
-    <Compile Include="Run\Elements\Config\ExecutionMode.cs" />
     <Compile Include="Run\Elements\Config\ServiceNotificationRequestAPI.cs" />
     <Compile Include="Run\Elements\Map\VoteRequestAPI.cs" />
     <Compile Include="Run\Elements\Map\VoteResponseAPI.cs" />
