@@ -75,7 +75,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         [DataMember]
-        public ExecutionMode executionMode
+        public string executionMode
         {
             get;
             set;

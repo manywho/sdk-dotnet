@@ -53,6 +53,7 @@ namespace ManyWho.Flow.SDK
         public const String MODE_LOG = "LOG";
         public const String MODE_DEBUG = "DEBUG";
         public const String MODE_DEBUG_STEPTHROUGH = "DEBUG_STEPTHROUGH";
+        public const string MODE_RECORD = "RECORD";
 
         // Reporting mode constants
         public const String REPORT_NONE = null;
