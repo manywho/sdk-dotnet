@@ -73,5 +73,12 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
             get;
             set;
         }
+
+        [DataMember]
+        public ExecutionMode executionMode
+        {
+            get;
+            set;
+        }
     }
 }
