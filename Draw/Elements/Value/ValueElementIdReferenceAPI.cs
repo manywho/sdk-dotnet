@@ -65,6 +65,20 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         }
 
         [DataMember]
+        public String serviceElementId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String serviceElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String contentType
         {
             get;
