@@ -124,6 +124,10 @@ namespace ManyWho.Flow.SDK
         public const String AUTHENTICATED_USER_KEY_DIRECTORY_ID = "DIRECTORY_ID";
         public const String AUTHENTICATED_USER_PUBLIC_DIRECTORY_ID = "UNAUTHENTICATED";
         public const String AUTHENTICATED_USER_PUBLIC_DIRECTORY_NAME = "UNKNOWN";
+        public const String AUTHENTICATED_USER_PUBLIC_ROLE_ID = "UNAUTHENTICATED";
+        public const String AUTHENTICATED_USER_PUBLIC_ROLE_NAME = "UNKNOWN";
+        public const String AUTHENTICATED_USER_PUBLIC_PRIMARY_GROUP_ID = "UNAUTHENTICATED";
+        public const String AUTHENTICATED_USER_PUBLIC_PRIMARY_GROUP_NAME = "UNKNOWN";
         public const String AUTHENTICATED_USER_PUBLIC_EMAIL = "admin@manywho.com";
         public const String AUTHENTICATED_USER_PUBLIC_TENANT_NAME = "UNKNOWN";
         public const String AUTHENTICATED_USER_PUBLIC_USER_ID = "PUBLIC_USER";
@@ -137,6 +141,10 @@ namespace ManyWho.Flow.SDK
         public const String AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN = "ManyWhoToken";
         public const String AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID = "DirectoryId";
         public const String AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME = "DirectoryName";
+        public const String AUTHENTICATED_WHO_TOKEN_ROLE_ID = "RoleId";
+        public const String AUTHENTICATED_WHO_TOKEN_ROLE_NAME = "RoleName";
+        public const String AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_ID = "PrimaryGroupId";
+        public const String AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_NAME = "PrimaryGroupName";
         public const String AUTHENTICATED_WHO_TOKEN_EMAIL = "Email";
         public const String AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER = "IdentityProvider";
         public const String AUTHENTICATED_WHO_TOKEN_TENANT_NAME = "TenantName";
@@ -177,6 +185,10 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_LOCATION = Guid.Parse("4FA61B42-A370-455E-85ED-D9A0A8723A43");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_DIRECTORY_ID = Guid.Parse("4FA61B52-A370-455E-85ED-D9A0A8723A43");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_DIRECTORY_NAME = Guid.Parse("4FA61B45-A370-455E-85ED-D9A0A8723A43");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_ROLE_ID = Guid.Parse("5582D6D3-B673-4972-A65F-9E915C0C10AA");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_ROLE_NAME = Guid.Parse("D9904FDD-8F19-4f26-96C1-83EC2f58A540");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_PRIMARY_GROUP_ID = Guid.Parse("CE98CE03-41EE-405D-B849-509974610D7F");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_PRIMARY_GROUP_NAME = Guid.Parse("F26BA831-B013-4654-8AE3-8EB3AB5E6C1E");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_STATUS = Guid.Parse("4FA61B46-A370-455E-85ED-D9A0A8723A43");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_AUTHENTICATION_TYPE = Guid.Parse("4FA61B47-A370-455E-85ED-D9A0A8723A43");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_LOGIN_URL = Guid.Parse("4FA61B48-A370-455E-85ED-D9A0A8723A43");
@@ -321,6 +333,10 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_USER_PROPERTY_LOCATION = "Location";
         public const String MANYWHO_USER_PROPERTY_DIRECTORY_ID = "Directory Id";
         public const String MANYWHO_USER_PROPERTY_DIRECTORY_NAME = "Directory Name";
+        public const String MANYWHO_USER_PROPERTY_ROLE_ID = "Role Id";
+        public const String MANYWHO_USER_PROPERTY_ROLE_NAME = "Role Name";
+        public const String MANYWHO_USER_PROPERTY_PRIMARY_GROUP_ID = "Primary Group Id";
+        public const String MANYWHO_USER_PROPERTY_PRIMARY_GROUP_NAME = "Primary Group Name";
         public const String MANYWHO_USER_PROPERTY_STATUS = "Status";
         public const String MANYWHO_USER_PROPERTY_AUTHENTICATION_TYPE = "AuthenticationType";
         public const String MANYWHO_USER_PROPERTY_LOGIN_URL = "LoginUrl";

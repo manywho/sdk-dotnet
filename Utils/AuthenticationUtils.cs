@@ -28,6 +28,10 @@ namespace ManyWho.Flow.SDK.Utils
             String[] parameters = null;
             String directoryIdParameter = null;
             String directoryNameParameter = null;
+            String roleIdParameter = null;
+            String roleNameParameter = null;
+            String primaryGroupIdParameter = null;
+            String primaryGroupNameParameter = null;
             String identityProviderParameter = null;
             String manywhoTenantIdParameter = null;
             String manywhoUserIdParameter = null;
@@ -49,6 +53,10 @@ namespace ManyWho.Flow.SDK.Utils
             manywhoTokenParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN, StringComparison.OrdinalIgnoreCase));
             directoryIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID, StringComparison.OrdinalIgnoreCase));
             directoryNameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME, StringComparison.OrdinalIgnoreCase));
+            roleIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_ROLE_ID, StringComparison.OrdinalIgnoreCase));
+            roleNameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_ROLE_NAME, StringComparison.OrdinalIgnoreCase));
+            primaryGroupIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_ID, StringComparison.OrdinalIgnoreCase));
+            primaryGroupNameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_NAME, StringComparison.OrdinalIgnoreCase));
             emailParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_EMAIL, StringComparison.OrdinalIgnoreCase));
             identityProviderParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER, StringComparison.OrdinalIgnoreCase));
             tenantNameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_TENANT_NAME, StringComparison.OrdinalIgnoreCase));
@@ -101,6 +109,26 @@ namespace ManyWho.Flow.SDK.Utils
                 authenticatedWho.Username = usernameParameter.Split(ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER)[1];
             }
 
+            if (!string.IsNullOrWhiteSpace(roleIdParameter))
+            {
+                authenticatedWho.RoleId = roleIdParameter.Split(ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER)[1];
+            }
+
+            if (!string.IsNullOrWhiteSpace(roleNameParameter))
+            {
+                authenticatedWho.RoleName = roleNameParameter.Split(ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER)[1];
+            }
+
+            if (!string.IsNullOrWhiteSpace(primaryGroupIdParameter))
+            {
+                authenticatedWho.PrimaryGroupId = primaryGroupIdParameter.Split(ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER)[1];
+            }
+
+            if (!string.IsNullOrWhiteSpace(primaryGroupNameParameter))
+            {
+                authenticatedWho.PrimaryGroupName = primaryGroupNameParameter.Split(ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER)[1];
+            }
+
             // Finally, validate the object is OK
             ValidateAuthenticatedWho(authenticatedWho);
 
@@ -120,6 +148,10 @@ namespace ManyWho.Flow.SDK.Utils
             token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.ManyWhoToken + "&";
             token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.DirectoryId + "&";
             token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.DirectoryName + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_ROLE_ID + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.RoleId + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_ROLE_NAME + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.RoleName + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_ID + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.PrimaryGroupId + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_NAME + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.PrimaryGroupName + "&";
             token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_EMAIL + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.Email + "&";
             token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.IdentityProvider + "&";
             token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_TENANT_NAME + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.TenantName + "&";
@@ -151,6 +183,10 @@ namespace ManyWho.Flow.SDK.Utils
             authenticatedWho = new AuthenticatedWho();
             authenticatedWho.DirectoryId = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_DIRECTORY_ID;
             authenticatedWho.DirectoryName = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_DIRECTORY_NAME;
+            authenticatedWho.RoleId = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_ROLE_ID;
+            authenticatedWho.RoleName = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_ROLE_NAME;
+            authenticatedWho.PrimaryGroupId = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_PRIMARY_GROUP_ID;
+            authenticatedWho.PrimaryGroupName = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_PRIMARY_GROUP_NAME;
             authenticatedWho.IdentityProvider = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_IDENTITY_PROVIDER;
             authenticatedWho.Email = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_EMAIL;
             authenticatedWho.TenantName = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_TENANT_NAME;
