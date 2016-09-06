@@ -42,7 +42,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Polly, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Polly-Signed.4.0.0\lib\portable-net45+netcore45+wpa81+wp8\Polly.dll</HintPath>
+      <HintPath>packages\Polly-Signed.4.0.0\lib\portable-net45+netcore45+wpa81+wp8\Polly.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
