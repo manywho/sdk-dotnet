@@ -16,14 +16,19 @@ namespace ManyWho.Flow.SDK
 {
     public class MapperUtils
     {
-        public static String Convert<T>(Dictionary<String, TypeElementRequestAPI> typeElementRequestAPIs)
+        public static String Convert<T>(Dictionary<String, TypeElementRequestAPI> typeElementRequestAPIs, IEnumerable<TypeElementPropertyAPI> properties)
         {
             if (typeElementRequestAPIs == null)
             {
                 throw new ArgumentNullException("TypeElementRequestAPIs", "The provided Dictionary cannot be null.");
             }
 
-            return Convert(typeof(T), typeElementRequestAPIs);
+            return Convert(typeof(T), typeElementRequestAPIs, properties);
+        }
+
+        public static String Convert<T>(Dictionary<String, TypeElementRequestAPI> typeElementRequestAPIs)
+        {
+            return MapperUtils.Convert<T>(typeElementRequestAPIs, null);
         }
 
         public static T Convert<T>(ObjectAPI objectApi)
@@ -272,7 +277,7 @@ namespace ManyWho.Flow.SDK
             return list;
         }
 
-        private static String Convert(Type type, Dictionary<String, TypeElementRequestAPI> typeElementRequestAPIs)
+        private static String Convert(Type type, Dictionary<String, TypeElementRequestAPI> typeElementRequestAPIs, IEnumerable<TypeElementPropertyAPI> properties)
         {
             String name = GetCleanObjectName(type.Name);
 
@@ -316,6 +321,21 @@ namespace ManyWho.Flow.SDK
                     // Add the property and binding
                     typeElementBindingAPI.propertyBindings.Add(typeElementPropertyBindingAPI);
                     typeElementRequestAPI.properties.Add(typeElementPropertyAPI);
+                }
+            }
+
+            if (properties != null)
+            {
+                foreach (TypeElementPropertyAPI property in properties)
+                {
+                    TypeElementPropertyBindingAPI typeElementPropertyBindingAPI = new TypeElementPropertyBindingAPI();
+                    typeElementPropertyBindingAPI.databaseContentType = property.contentType;
+                    typeElementPropertyBindingAPI.databaseFieldName = property.developerName;
+                    typeElementPropertyBindingAPI.typeElementPropertyDeveloperName = property.developerName;
+
+                    // Add the property and binding
+                    typeElementBindingAPI.propertyBindings.Add(typeElementPropertyBindingAPI);
+                    typeElementRequestAPI.properties.Add(property);
                 }
             }
 
@@ -432,7 +452,7 @@ namespace ManyWho.Flow.SDK
                 typeElementPropertyAPI.developerName = GetCleanPropertyName(propertyInfo.Name);
 
                 // This method returns the name of the root type - which we need here
-                typeElementPropertyAPI.typeElementDeveloperName = Convert(itemType, typeElementRequestAPIs);
+                typeElementPropertyAPI.typeElementDeveloperName = Convert(itemType, typeElementRequestAPIs, null);
             }
 
             return typeElementPropertyAPI;
@@ -634,7 +654,7 @@ namespace ManyWho.Flow.SDK
                 else
                 {
                     // The property is an object, so we convert that over here so we have the type
-                    typeElementPropertyAPI.typeElementDeveloperName = Convert(propertyInfo.PropertyType, typeElementRequestAPIs);
+                    typeElementPropertyAPI.typeElementDeveloperName = Convert(propertyInfo.PropertyType, typeElementRequestAPIs, null);
                 }
 
                 typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_OBJECT;
