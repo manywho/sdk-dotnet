@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 /*!
@@ -17,20 +18,13 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Flow
+namespace ManyWho.Flow.SDK.Translate.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class FlowGraphResponseAPI : FlowGraphRequestAPI
+    public class TypeElementTranslationResponseAPI : ElementTranslationResponseAPI
     {
         [DataMember]
-        public String tenantId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public DateTime dateModified
+        public List<PropertyTranslationResponseAPI> properties
         {
             get;
             set;

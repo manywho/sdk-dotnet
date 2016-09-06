@@ -41,8 +41,8 @@
       <HintPath>packages\Newtonsoft.Json.6.0.5\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Polly, Version=2.2.2.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
-      <HintPath>packages\Polly-Signed.2.2.2\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Polly.dll</HintPath>
+    <Reference Include="Polly, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Polly-Signed.4.0.0\lib\portable-net45+netcore45+wpa81+wp8\Polly.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -66,8 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Draw\Elements\Group\AuthenticationAttributeAPI.cs" />
     <Compile Include="Draw\Elements\Map\ControlPointAPI.cs" />
     <Compile Include="Draw\Elements\Map\VoteAPI.cs" />
+    <Compile Include="Draw\Elements\Type\ListFilterMinimalConfigAPI.cs" />
+    <Compile Include="Draw\Elements\Type\ListFilterOrderByConfigAPI.cs" />
+    <Compile Include="Draw\Elements\Type\ListFilterSearchCriteriaConfigAPI.cs" />
     <Compile Include="Draw\Flow\FlowVersionAPI.cs" />
     <Compile Include="Draw\Log\LogAPI.cs" />
     <Compile Include="Draw\Log\LogEntryAPI.cs" />
@@ -85,6 +89,9 @@
     <Compile Include="Run\Elements\Config\BaseResponseAPI.cs" />
     <Compile Include="Run\Elements\Config\ListenerServiceRequestAPI.cs" />
     <Compile Include="Run\Elements\Config\ListenerServiceResponseAPI.cs" />
+    <Compile Include="Run\Elements\Type\ListFilterMinimalAPI.cs" />
+    <Compile Include="Run\Elements\Type\ListFilterOrderByAPI.cs" />
+    <Compile Include="Run\Elements\Type\ListFilterSearchCriteriaAPI.cs" />
     <Compile Include="Run\State\StateListenerRequestAPI.cs" />
     <Compile Include="Run\State\StateListenerResponseAPI.cs" />
     <Compile Include="Run\State\UserVoteAPI.cs" />
@@ -95,8 +102,11 @@
     <Compile Include="Service\ServiceRequestAPI.cs" />
     <Compile Include="Service\ServiceResponseAPI.cs" />
     <Compile Include="Tenant\DeleteAllAPI.cs" />
+    <Compile Include="Tenant\TenantSettingsAPI.cs" />
     <Compile Include="Tenant\UserRegistrationAPI.cs" />
     <Compile Include="Tenant\StateSettingsAPI.cs" />
+    <Compile Include="Translate\Elements\Type\PropertyTranslationResponseAPI.cs" />
+    <Compile Include="Translate\Elements\Type\TypeElementTranslationResponseAPI.cs" />
     <Compile Include="Utils\ErrorUtils.cs" />
     <Compile Include="Notification\NotificationMessage.cs" />
     <Compile Include="DrawSingleton.cs" />

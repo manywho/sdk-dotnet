@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 
+
 /*!
 
-Copyright 2013 Manywho, Inc.
+Copyright 2016 Manywho, Inc.
 
 Licensed under the Manywho License, Version 1.0 (the "License"); you may not use this
 file except in compliance with the License.
@@ -22,18 +23,8 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Draw.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ListFilterConfigAPI : ListFilterMinimalConfigAPI
+    public class ListFilterOrderByConfigAPI
     {
-        /// <summary>
-        /// The identifier of the actual object to filter by - this basically gives an individual result back.
-        /// </summary>
-        [DataMember]
-        public ValueElementIdAPI filterId
-        {
-            get;
-            set;
-        }
-
         /// <summary>
         /// The type element entry id of the column to order by.
         /// </summary>
@@ -49,40 +40,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// </summary>
         [DataMember]
         public String orderByDirectionType
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<ListFilterOrderByConfigAPI> orderBy
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// The number of objects to retrieve in the list.
-        /// </summary>
-        [DataMember]
-        public Int32 limit
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Use the list of provided objects as the filter for the lookup.  This allows us to refresh data that can be transient in the remote system.
-        /// </summary>
-        [DataMember]
-        public Boolean filterByProvidedObjects
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<ListFilterSearchCriteriaConfigAPI> searchCriteria
         {
             get;
             set;

@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 /*!
 
-Copyright 2013 Manywho, Inc.
+Copyright 2016 Manywho, Inc.
 
 Licensed under the Manywho License, Version 1.0 (the "License"); you may not use this
 file except in compliance with the License.
@@ -16,21 +17,26 @@ KIND, either express or implied. See the License for the specific language gover
 permissions and limitations under the License.
 
 */
-
-namespace ManyWho.Flow.SDK.Draw.Flow
+namespace ManyWho.Flow.SDK.Run.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class FlowGraphResponseAPI : FlowGraphRequestAPI
+    public class ListFilterOrderByAPI
     {
+        /// <summary>
+        /// The developer name of the column to order by.
+        /// </summary>
         [DataMember]
-        public String tenantId
+        public string columnName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The direction of the ordering.
+        /// </summary>
         [DataMember]
-        public DateTime dateModified
+        public string direction
         {
             get;
             set;

@@ -35,5 +35,34 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             get;
             set;
         }
+
+        [DataMember]
+        public string attributeLabel
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string friendlyName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string developerSummary
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string serviceElementId
+        {
+            get;
+            set;
+        }
+
     }
 }

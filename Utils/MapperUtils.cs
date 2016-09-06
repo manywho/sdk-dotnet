@@ -26,6 +26,11 @@ namespace ManyWho.Flow.SDK
             return Convert(typeof(T), typeElementRequestAPIs);
         }
 
+        public static T Convert<T>(ObjectAPI objectApi)
+        {
+            return Convert<T>(new List<ObjectAPI> { objectApi }).FirstOrDefault();
+        }
+
         public static List<T> Convert<T>(List<ObjectAPI> objectAPIs)
         {
             List<object> objectList = null;
@@ -62,7 +67,12 @@ namespace ManyWho.Flow.SDK
 
                 foreach (ObjectAPI objectAPI in objectAPIs)
                 {
-                    if (objectAPI.developerName.Equals(typeName, StringComparison.OrdinalIgnoreCase) == false)
+                    // If we have a value element identifier, we need to translate it over
+                    if (type.Name.Equals("ValueElementIdAPI", StringComparison.OrdinalIgnoreCase) == true)
+                    {
+                        type = new ValueElementIdReferenceAPI().GetType();
+                    }
+                    else if (objectAPI.developerName.Equals(typeName, StringComparison.OrdinalIgnoreCase) == false)
                     {
                         throw new ArgumentNullException("ObjectAPI", String.Format("The provided list contains inconsistent objects. The Draw API expected {0} and it got {1}", typeName, objectAPI.developerName));
                     }
@@ -168,9 +178,27 @@ namespace ManyWho.Flow.SDK
                                             // We have some form of object type, so we need to do some additional testing
                                             if (typeof(Dictionary<String, String>).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
                                             {
-                                                // TODO: Finish the dictionary
-                                                //throw new NotImplementedException("Have not yet implemented dictionary.");
-                                                //propertyInfo.SetValue(GetPropertyValueForDictionary(propertyAPI.objectData, propertyInfo);
+                                                // Check if we're looking at the Attributes field and whether we have any
+                                                if (propertyInfo.Name.Equals("attributes") && propertyAPI.objectData != null && propertyAPI.objectData.Count > 0)
+                                                {
+                                                    // If there are any attributes then map all of them into a Dictionary<string, string>
+                                                    var attributes = propertyAPI.objectData.Where(o => o.developerName.Equals("KeyPair"))
+                                                        .ToDictionary(
+                                                            o =>
+                                                            {
+                                                                return o.properties.First(p => p.developerName.Equals("Key")).contentValue;
+                                                            },
+                                                            o =>
+                                                            {
+                                                                return o.properties.First(p => p.developerName.Equals("Value")).contentValue;
+                                                            });
+
+                                                    propertyInfo.SetValue(typedObject, attributes);
+                                                }
+                                            }
+                                            else if (typeof(Enum).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
+                                            {
+                                                propertyInfo.SetValue(typedObject, Enum.Parse(propertyInfo.PropertyType, propertyAPI.contentValue));
                                             }
                                             // string inherits from IEnumerable so add a check for "not string"
                                             else if (typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()) &&
@@ -275,7 +303,7 @@ namespace ManyWho.Flow.SDK
             typeElementRequestAPIs[typeElementRequestAPI.developerName] = typeElementRequestAPI;
 
             // Get the properties for the root type
-            foreach (PropertyInfo propertyInfo in type.GetTypeInfo().DeclaredProperties)
+            foreach (PropertyInfo propertyInfo in type.GetRuntimeProperties())
             {
                 TypeElementPropertyAPI typeElementPropertyAPI = Convert(typeElementRequestAPIs, propertyInfo);
                 if (typeElementPropertyAPI != null)
@@ -318,7 +346,7 @@ namespace ManyWho.Flow.SDK
                 objectAPI.externalId = externalId;
                 objectAPI.properties = new List<PropertyAPI>();
 
-                foreach (PropertyInfo propertyInfo in type.GetTypeInfo().DeclaredProperties)
+                foreach (PropertyInfo propertyInfo in type.GetRuntimeProperties())
                 {
                     PropertyAPI propertyAPI = Convert(source, propertyInfo, valueElementIdReferences);
                     if (propertyAPI != null)
@@ -355,6 +383,11 @@ namespace ManyWho.Flow.SDK
             {
                 return GetPropertyAPIFromDictionary(source, propertyInfo, valueElementIdReferences);
             }
+
+            if (typeof(Enum).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
+            {
+                return GetPropertyAPIFromEnum(source, propertyInfo);
+            }
             // string inherits from IEnumerable so add a check for "not string"
             else if (typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()) &&
                         propertyInfo.PropertyType != typeof(string))
@@ -365,6 +398,17 @@ namespace ManyWho.Flow.SDK
             {
                 return GetPropertyAPIFromType(source, propertyInfo, valueElementIdReferences);
             }
+        }
+
+        static PropertyAPI GetPropertyAPIFromEnum(object source, PropertyInfo propertyInfo)
+        {
+            var value = propertyInfo.GetValue(source);
+
+            return new PropertyAPI
+            {
+                developerName = GetCleanObjectName(propertyInfo.Name),
+                contentValue = value.ToString()
+            };
         }
 
         private static PropertyAPI GetPropertyAPIFromCollection(object source, PropertyInfo propertyInfo, List<ValueElementIdReferenceAPI> valueElementIdReferences)
@@ -407,10 +451,10 @@ namespace ManyWho.Flow.SDK
 
             if (values != null)
             {
+                objectAPIs = new List<ObjectAPI>();
+
                 foreach (Object objectEntry in values)
                 {
-                    objectAPIs = new List<ObjectAPI>();
-
                     if (objectEntry is ElementAPI)
                     {
                         // Assign the identifier property from the object
@@ -497,9 +541,32 @@ namespace ManyWho.Flow.SDK
             PropertyAPI propertyAPI = null;
             IDictionary value = (IDictionary)propertyInfo.GetValue(source, null);
 
-            if (value != null)
+            if (value != null && propertyInfo.Name.Equals("attributes", StringComparison.OrdinalIgnoreCase))
             {
-                propertyAPI = GetPropertyAPIFromCollection(value.Values, propertyInfo, valueElementIdReferences);
+                var values = value as IDictionary<string, string>;
+                if (values.Count > 0)
+                {
+                    // Add a new list of "Object: String" type objects
+                    propertyAPI = new PropertyAPI();
+                    propertyAPI.developerName = "Attributes";
+
+                    // For each keypair, create a new "Object: String" object
+                    propertyAPI.objectData = new List<ObjectAPI>();
+
+                    foreach (var attribute in values)
+                    {
+                        propertyAPI.objectData.Add(new ObjectAPI()
+                        {
+                            developerName = "KeyPair",
+                            externalId = Guid.NewGuid().ToString(),
+                            properties = new List<PropertyAPI>()
+                            {
+                                new PropertyAPI() { developerName = "Key", contentValue = attribute.Key },
+                                new PropertyAPI() { developerName = "Value", contentValue = attribute.Value }
+                            }
+                        });
+                    }
+                }
             }
 
             return propertyAPI;
@@ -547,6 +614,10 @@ namespace ManyWho.Flow.SDK
             {
                 typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_BOOLEAN;
             }
+            else if (propertyInfo.PropertyType.GetTypeInfo().IsEnum)
+            {
+                typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_STRING;
+            }
             else
             {
                 // As an extra check, we make sure the name of the type ends with API or we may have a non-converted primitive property
@@ -576,6 +647,7 @@ namespace ManyWho.Flow.SDK
         {
             List<ObjectAPI> objectData = null;
             string value = null;
+            object propertyValue = null;
 
             // Check to see if the source is a value element identifier, if so we map that over to the full reference
             if (source is ValueElementIdAPI)
@@ -583,7 +655,10 @@ namespace ManyWho.Flow.SDK
                 source = FindValueElementIdReferenceForValueElementId((ValueElementIdAPI)source, valueElementIdReferences);
             }
 
-            object propertyValue = propertyInfo.GetValue(source, null);
+            if (source != null)
+            {
+                propertyValue = propertyInfo.GetValue(source, null);
+            }
 
             // All of the ValueElementIds are translated to ValueElementIdReferences, so we need to do a little switch here
             if (propertyInfo.PropertyType.Name.Equals("ValueElementIdAPI", StringComparison.OrdinalIgnoreCase) == true)
@@ -674,7 +749,10 @@ namespace ManyWho.Flow.SDK
             name = char.ToUpper(name[0]) + name.Substring(1);
 
             // Chop off the API bit at the end
-            name = name.Substring(0, name.Length - 3);
+            if (name.EndsWith("API"))
+            {
+                return name.Remove(name.LastIndexOf("API", StringComparison.Ordinal));
+            }
 
             return name;
         }

@@ -50,5 +50,82 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             get;
             set;
         }
+
+        [DataMember]
+        public bool disabled
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToApplyDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToReferenceDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToApplyCommand
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToReferenceCommand
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToApplyCommandFriendly
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToReferenceCommandFriendly
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToApplyContentType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToApplyTypeElementId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToReferenceContentType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToReferenceTypeElementId
+        {
+            get;
+            set;
+        }
     }
 }

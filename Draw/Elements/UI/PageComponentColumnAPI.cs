@@ -77,5 +77,19 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             get;
             set;
         }
+
+        [DataMember]
+        public string componentType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string typeElementPropertyDeveloperName
+        {
+            get;
+            set;
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 /*!
@@ -18,46 +17,39 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Draw.Elements.UI
+namespace ManyWho.Flow.SDK.Run.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class PageConditionAPI
+    public class ListFilterMinimalAPI
     {
+        /// <summary>
+        /// The comparison type to use when evaluating the wheres.
+        /// </summary>
         [DataMember]
-        public List<PageRuleAPI> pageRules
+        public string comparisonType
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The rules that must evaluate to "true" for this condition to fire the associated actions.
+        /// The where filter to apply to the list.
         /// </summary>
         [DataMember]
-        public String comparisonType
+        public List<ListFilterWhereAPI> where
         {
             get;
             set;
         }
 
         /// <summary>
-        /// These are the actions to be performed based on the above rules evaluating to true.  We do not need to bind a specific field
-        /// to events as we consider all fields as event generating in the UI by default.  If we want to do smart optimization, we need
-        /// to look at each of the rules and derive which fields to bind events from that - we don't explicitly give a list.
+        /// A list of nested minimal ListFilters that can be used for grouped ordering and comparisons
         /// </summary>
         [DataMember]
-        public List<PageOperationAPI> pageOperations
+        public List<ListFilterMinimalAPI> listFilters
         {
             get;
             set;
         }
-        
-        [DataMember]
-        public string generatedSummary
-        {
-            get;
-            set;
-        }
-
     }
 }

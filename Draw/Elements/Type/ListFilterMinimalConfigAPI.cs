@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Run.Elements.UI;
-using ManyWho.Flow.SDK.Translate;
 
 /*!
 
@@ -20,62 +18,36 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Run
+namespace ManyWho.Flow.SDK.Draw.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class EngineNavigationResponseAPI
+    public class ListFilterMinimalConfigAPI
     {
+        /// <summary>
+        /// The comparison when evaluating the 'where' entries.  This is either "AND" or "OR" and we do not support nesting (just yet anyway).
+        /// </summary>
         [DataMember]
-        public CultureAPI culture
+        public String comparisonType
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The where filter to apply to the list.
+        /// </summary>
         [DataMember]
-        public String developerName
+        public List<ListFilterWhereConfigAPI> where
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// A list of nested minimal ListFilters that can be used for grouped ordering and comparisons
+        /// </summary>
         [DataMember]
-        public String label
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<NavigationItemResponseAPI> navigationItemResponses
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<NavigationItemDataResponseAPI> navigationItemDataResponses
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public List<EngineValueAPI> tags
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public bool isVisible
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public bool isEnabled
+        public List<ListFilterMinimalConfigAPI> listFilters
         {
             get;
             set;
