@@ -59,6 +59,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
+        public string macroElementToExecuteDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public string valueElementToApplyDeveloperName
         {
             get;

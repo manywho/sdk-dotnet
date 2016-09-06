@@ -56,5 +56,26 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             get;
             set;
         }
+
+        [DataMember]
+        public string locationMapElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string navigationElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string navigationItemDeveloperName
+        {
+            get;
+            set;
+        }
     }
 }

@@ -121,5 +121,12 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        [DataMember]
+        public Dictionary<string, string> attributes
+        {
+            get;
+            set;
+        }
+
     }
 }

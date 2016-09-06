@@ -89,6 +89,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         }
 
         [DataMember]
+        public String typeElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public Boolean updateByName
         {
             get;
