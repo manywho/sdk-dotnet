@@ -121,6 +121,42 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         /// <summary>
+        /// The name of the user role.
+        /// </summary>
+        String RoleName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The unique identifier for the user role.
+        /// </summary>
+        String RoleId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The name of the primary group for which this user is a member.
+        /// </summary>
+        String PrimaryGroupName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The unique identifier for the primary group for which this user is a member.
+        /// </summary>
+        String PrimaryGroupId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The validated email address for this user.
         /// </summary>
         String Email
