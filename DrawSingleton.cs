@@ -125,10 +125,9 @@ namespace ManyWho.Flow.SDK
                     // Get the describe response object from the response message
                     return JsonConvert.DeserializeObject<DescribeServiceResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
                 }
-                else
-                {
-                    throw new ServiceProblemException(new ServiceProblem(endpointUrl, httpResponseMessage, string.Empty));
-                }
+
+                // Otherwise, if we have an error then throw an appropriate exception
+                throw ErrorUtils.BuildProblemException(httpResponseMessage).Result;
             }
         }
 
