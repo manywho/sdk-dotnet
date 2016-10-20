@@ -42,7 +42,7 @@ namespace ManyWho.Flow.SDK.Draw.Util
         {
             get;
             set;
-        }
+        } = new List<ModelBuilderQueryWhereAPI>();
 
         [DataMember]
         public Int32 limit

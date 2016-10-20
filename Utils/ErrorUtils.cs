@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
+using ManyWho.Flow.SDK.Errors;
 using ManyWho.Flow.SDK.Security;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 /*!
 
@@ -182,6 +187,33 @@ namespace ManyWho.Flow.SDK.Utils
             }
 
             return message;
+        }
+
+        public static async Task<ApiProblemException> BuildProblemException(HttpResponseMessage response)
+        {
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            if (!response.Headers.Contains("X-ManyWho-Service-Problem-Kind") || string.IsNullOrWhiteSpace(responseBody))
+            {
+                return new ServiceProblemException(new ServiceProblem(response.RequestMessage.RequestUri.AbsoluteUri, response, responseBody));
+            }
+
+            var values = response.Headers.GetValues("X-ManyWho-Service-Problem-Kind");
+            if (!values.Any())
+            {
+                return new ServiceProblemException(new ServiceProblem(response.RequestMessage.RequestUri.AbsoluteUri, response, responseBody));
+            }
+
+            var problemKind = (ProblemKind)Enum.Parse(typeof(ProblemKind), values.FirstOrDefault());
+            switch (problemKind)
+            {
+                case ProblemKind.api:
+                    return new ApiProblemException(JsonConvert.DeserializeObject<ApiProblem>(responseBody));
+                case ProblemKind.service:
+                    return new ServiceProblemException(JsonConvert.DeserializeObject<ServiceProblem>(responseBody));
+            }
+
+            return new ServiceProblemException(new ServiceProblem(response.RequestMessage.RequestUri.AbsoluteUri, response, responseBody));
         }
     }
 }
