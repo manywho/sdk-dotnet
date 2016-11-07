@@ -76,6 +76,7 @@
     <Compile Include="Draw\Log\LogAPI.cs" />
     <Compile Include="Draw\Log\LogEntryAPI.cs" />
     <Compile Include="Draw\Log\LogLevel.cs" />
+    <Compile Include="Draw\Util\DependencyAPI.cs" />
     <Compile Include="Errors\ApiProblem.cs" />
     <Compile Include="Errors\ApiProblemException.cs" />
     <Compile Include="Errors\EngineException.cs" />
