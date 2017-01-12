@@ -22,5 +22,12 @@ namespace ManyWho.Flow.SDK.Tenant
             [EnumMember(Value = "unstable")]
             Unstable = 1
         }
+
+        [DataMember]
+        public bool formatValues
+        {
+            get;
+            set;
+        }
     }
 }
