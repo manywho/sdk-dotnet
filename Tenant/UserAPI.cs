@@ -40,7 +40,13 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
-        public DateTimeOffset CreatedAt
+        public string Username
+        {
+            get;
+            set;
+        }
+
+        public DateTimeOffset? CreatedAt
         {
             get;
             set;
