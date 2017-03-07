@@ -79,6 +79,7 @@
     <Compile Include="Tenant\UserAPI.cs" />
     <Compile Include="Tenant\UserRegistrationAPI.cs" />
     <Compile Include="Tenant\StateSettingsAPI.cs" />
+    <Compile Include="Tenant\UserTokenAPI.cs" />
     <Compile Include="Translate\Elements\Type\PropertyTranslationResponseAPI.cs" />
     <Compile Include="Translate\Elements\Type\TypeElementTranslationResponseAPI.cs" />
     <Compile Include="Utils\ErrorUtils.cs" />

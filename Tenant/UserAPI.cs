@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ManyWho.Flow.SDK.Tenant
 {
@@ -28,6 +29,12 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        public string Password
+        {
+            get;
+            set;
+        }
+
         public bool Verified
         {
             get;
@@ -47,6 +54,12 @@ namespace ManyWho.Flow.SDK.Tenant
         }
 
         public DateTimeOffset? CreatedAt
+        {
+            get;
+            set;
+        }
+
+        public List<UserTokenAPI> Tokens
         {
             get;
             set;
