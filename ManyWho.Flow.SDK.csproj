@@ -78,6 +78,7 @@
     <Compile Include="Tenant\TenantSettingsAPI.cs" />
     <Compile Include="Tenant\UserMeAPI.cs" />
     <Compile Include="Tenant\UserAPI.cs" />
+    <Compile Include="Tenant\UserTenantAPI.cs" />
     <Compile Include="Tenant\UserRegistrationAPI.cs" />
     <Compile Include="Tenant\StateSettingsAPI.cs" />
     <Compile Include="Tenant\UserTokenAPI.cs" />

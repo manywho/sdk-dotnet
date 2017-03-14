@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
-        public List<TenantResponseAPI> Tenants
+        public List<UserTenantAPI> Tenants
         {
             get;
             set;
