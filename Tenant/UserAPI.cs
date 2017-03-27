@@ -10,12 +10,6 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
-        public string Username
-        {
-            get;
-            set;
-        }
-
         public List<UserTokenAPI> Tokens
         {
             get;
