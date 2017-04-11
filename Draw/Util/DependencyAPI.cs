@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
+﻿using Newtonsoft.Json;
+using System;
 
 /*!
 
@@ -23,39 +19,34 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Draw.Util
 {
-    [DataContract(Namespace = "http://www.manywho.com/api")]
     public class DependencyAPI
     {
-        [DataMember]
-        public string objectId
+        public Guid Id
         {
             get;
             set;
         }
 
-        [DataMember]
-        public string objectDeveloperName
+        public string DeveloperName
         {
             get;
             set;
         }
 
-        [DataMember]
-        public string objectDeveloperSummary
+        public string DeveloperSummary
         {
             get;
             set;
         }
 
-        [DataMember]
-        public string objectType
+        public string Type
         {
             get;
             set;
         }
 
-        [DataMember]
-        public string objectFriendlyType
+        [JsonIgnore]
+        public string FriendlyType
         {
             get;
             set;
