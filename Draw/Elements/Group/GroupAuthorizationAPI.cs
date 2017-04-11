@@ -45,6 +45,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         }
 
         [DataMember]
+        public Boolean showPagesAsReadOnly
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public List<GroupAuthorizationGroupAPI> groups
         {
             get;

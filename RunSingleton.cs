@@ -80,11 +80,12 @@ namespace ManyWho.Flow.SDK
             return run;
         }
 
-        public void DispatchStateListenerResponse(INotifier notifier, IAuthenticatedWho authenticatedWho, String callbackUri, ListenerServiceResponseAPI listenerServiceResponse)
+        public string DispatchStateListenerResponse(INotifier notifier, IAuthenticatedWho authenticatedWho, String callbackUri, ListenerServiceResponseAPI listenerServiceResponse)
         {
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
+            string invokeResponse = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
@@ -98,12 +99,18 @@ namespace ManyWho.Flow.SDK
                     httpResponseMessage = httpClient.PostAsync(callbackUri, httpContent).Result;
 
                     // Check the status of the response and respond appropriately
-                    if (!httpResponseMessage.IsSuccessStatusCode)
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        invokeResponse = JsonConvert.DeserializeObject<string>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+                    }
+                    else
                     {
                         throw new ServiceProblemException(new ServiceProblem(callbackUri, httpResponseMessage, string.Empty));
                     }
                 }
             });
+
+            return invokeResponse;
         }
 
         public String Login(INotifier notifier, String tenantId, String stateId, AuthenticationCredentialsAPI authenticationCredentials)

@@ -192,6 +192,7 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_STATUS = Guid.Parse("4FA61B46-A370-455E-85ED-D9A0A8723A43");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_AUTHENTICATION_TYPE = Guid.Parse("4FA61B47-A370-455E-85ED-D9A0A8723A43");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_LOGIN_URL = Guid.Parse("4FA61B48-A370-455E-85ED-D9A0A8723A43");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_IP_ADDRESS = Guid.Parse("0dabbcd3-b5b1-47b3-b7e1-535c5b5e1878");
 
         public static readonly Guid MANYWHO_LOCATION_TYPE_ELEMENT_ID = Guid.Parse("7834CE95-DD99-42C6-96FC-AD12E1B48A69");
         public static readonly Guid MANYWHO_LOCATION_PROPERTY_ID_TIMESTAMP = Guid.Parse("FFC4CBD6-FA28-4141-95A4-DA9BACDB0203");
@@ -340,6 +341,7 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_USER_PROPERTY_STATUS = "Status";
         public const String MANYWHO_USER_PROPERTY_AUTHENTICATION_TYPE = "AuthenticationType";
         public const String MANYWHO_USER_PROPERTY_LOGIN_URL = "LoginUrl";
+        public const string MANYWHO_USER_PROPERTY_IP_ADDRESS = "IP Address";
 
         public const String MANYWHO_LOCATION_DEVELOPER_NAME = "$Location";
 
