@@ -70,7 +70,7 @@ namespace ManyWho.Flow.SDK
             return translate;
         }
 
-        public List<CultureAPI> GetCultures(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId)
+        public List<CultureAPI> GetCultures(IAuthenticatedWho authenticatedWho, String tenantId)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;

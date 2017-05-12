@@ -35,7 +35,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method should be used to get descriptions of supported plugins.
         /// </summary>
-        public TenantResponseAPI GetTenant(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl)
+        public TenantResponseAPI GetTenant(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl)
         {
             TenantResponseAPI responseAPI = null;
             HttpClient httpClient = null;

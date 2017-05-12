@@ -18,7 +18,7 @@ namespace ManyWho.Flow.SDK.Utils
             set;
         }
 
-        String Reason
+        string Reason
         {
             get;
             set;

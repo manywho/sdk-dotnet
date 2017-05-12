@@ -69,7 +69,7 @@ namespace ManyWho.Flow.SDK
             return package;
         }
 
-        public String ExportLatestFlowPackage(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String flowId, String codeReferenceName, String alertEmail)
+        public String ExportLatestFlowPackage(IAuthenticatedWho authenticatedWho, String tenantId, String flowId, String codeReferenceName, String alertEmail)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
