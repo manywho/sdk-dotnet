@@ -27,5 +27,11 @@ namespace ManyWho.Flow.SDK.Tenant
             get;
             set;
         }
+
+        public UserTenantSettingsAPI Settings
+        {
+            get;
+            set;
+        }
     }
 }
