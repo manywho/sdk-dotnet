@@ -28,17 +28,6 @@ namespace ManyWho.Flow.SDK.Utils
 {
     public class ErrorUtils
     {
-        public const String SETTING_SEND_ALERTS = "ManyWho.SendAlerts";
-        public const String SETTING_SEND_ALERT_FROM_EMAIL = "ManyWho.SendAlertFromEmail";
-        public const String SETTING_SENDGRID_SERVER_BASE_PATH = "ManyWho.SendGrid.ServerBasePath";
-        public const String SETTING_SENDGRID_USERNAME = "ManyWho.SendGrid.Username";
-        public const String SETTING_SENDGRID_PASSWORD = "ManyWho.SendGrid.Password";
-        public const String SETTING_SENDGRID_SMTP = "ManyWho.SendGrid.SMTP";
-
-        public const String ALERT_TYPE_FAULT = "Fault";
-        public const String ALERT_TYPE_WARNING = "Warning";
-
- 
         public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String alertMessage)
         {
             SendAlert(notifier, authenticatedWho, alertType, alertMessage, null);
