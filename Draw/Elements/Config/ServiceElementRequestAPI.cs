@@ -101,6 +101,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         }
 
         [DataMember]
+        public bool providesConsuming
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public List<ServiceActionRequestAPI> actions
         {
             get;
