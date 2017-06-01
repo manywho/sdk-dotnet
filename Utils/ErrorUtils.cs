@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using ManyWho.Flow.SDK.Errors;
 using ManyWho.Flow.SDK.Security;
@@ -83,10 +81,6 @@ namespace ManyWho.Flow.SDK.Utils
                 {
                     message = AggregateAndWriteAggregateErrorMessage((AggregateException)exception, message, includeTrace);
                 }
-                else if (exception is WebException)
-                {
-                    message = AggregateAndWriteHttpResponseErrorMessage((WebException)exception, message);
-                }
                 else
                 {
                     message = AggregateAndWriteExceptionErrorMessage(exception, message, includeTrace);
@@ -113,48 +107,11 @@ namespace ManyWho.Flow.SDK.Utils
                         {
                             message = AggregateAndWriteAggregateErrorMessage((AggregateException)innerException, message, includeTrace);
                         }
-                        else if (innerException is WebException)
-                        {
-                            message = AggregateAndWriteHttpResponseErrorMessage((WebException)innerException, message);
-                        }
                         else
                         {
                             message = AggregateAndWriteErrorMessage(innerException, message, includeTrace);
                         }
                     }
-                }
-            }
-
-            return message;
-        }
-
-        private static String AggregateAndWriteHttpResponseErrorMessage(WebException exception, String message)
-        {
-            WebResponse webResponse = null;
-            String statusDescription = null;
-
-            if (exception != null)
-            {
-                if (exception.Response != null)
-                {
-                    webResponse = exception.Response;
-
-                    if (webResponse is HttpWebResponse)
-                    {
-                        statusDescription = ((HttpWebResponse)webResponse).StatusDescription;
-
-                        // Grab the message from the 
-                        if (statusDescription != null &&
-                            statusDescription.Trim().Length > 0)
-                        {
-                            message += "HttpResponseException:" + Environment.NewLine;
-                            message += statusDescription + Environment.NewLine + Environment.NewLine;
-                        }
-                    }
-                }
-                else
-                {
-                    message += exception.Message;
                 }
             }
 
