@@ -1,26 +1,28 @@
-﻿namespace ManyWho.Flow.SDK.Tenant
+﻿using System;
+
+namespace ManyWho.Flow.SDK.Tenant
 {
-    public class UserRegistrationAPI
+    public class UserTenantAPI
     {
-        public string firstName
+        public string Id
         {
             get;
             set;
         }
 
-        public string lastName
+        public string DeveloperName
         {
             get;
             set;
         }
 
-        public string email
+        public string DeveloperSummary
         {
             get;
             set;
         }
 
-        public string password
+        public DateTimeOffset? LastLoggedInAt
         {
             get;
             set;

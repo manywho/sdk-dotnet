@@ -508,5 +508,8 @@ namespace ManyWho.Flow.SDK
         public const String USER_PERMISSION_TYPE_CAN_COMMENT = "CAN_COMMENT";
 
         public const string CONTENT_ENCRYPTED_PLACEHOLDER = "__ENCRYPTED__";
+
+        public const string ROLE_BUILDER = "builder";
+        public const string ROLE_USER = "user";
     }
 }
