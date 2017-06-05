@@ -26,52 +26,15 @@ namespace ManyWho.Flow.SDK.Utils
 {
     public class ErrorUtils
     {
-        public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String alertMessage)
-        {
-            SendAlert(notifier, authenticatedWho, alertType, alertMessage, null);
-        }
+        public const String SETTING_SEND_ALERTS = "ManyWho.SendAlerts";
+        public const String SETTING_SEND_ALERT_FROM_EMAIL = "ManyWho.SendAlertFromEmail";
+        public const String SETTING_SENDGRID_SERVER_BASE_PATH = "ManyWho.SendGrid.ServerBasePath";
+        public const String SETTING_SENDGRID_USERNAME = "ManyWho.SendGrid.Username";
+        public const String SETTING_SENDGRID_PASSWORD = "ManyWho.SendGrid.Password";
+        public const String SETTING_SENDGRID_SMTP = "ManyWho.SendGrid.SMTP";
 
-        public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String alertMessage, Exception exception)
-        {
-            String message = null;
-
-            // Check to see if the caller has in fact provided a notifier - if not, we don't bother to do anything
-            if (notifier != null)
-            {
-                try
-                {
-                    // Create the full message
-                    message = "";
-
-                    // Create the alert message block
-                    message += "Alert Message" + Environment.NewLine;
-                    message += "-----" + Environment.NewLine;
-                    message += alertMessage + Environment.NewLine + Environment.NewLine;
-
-                    // Only include the authenticated who if we have one
-                    if (authenticatedWho != null)
-                    {
-                        // Create the running user summary block
-                        message += "Affected User" + Environment.NewLine;
-                        message += "-------------" + Environment.NewLine;
-
-                        // Serialize the user information
-                        message += NotificationUtils.SerializeAuthenticatedWhoInfo(NotificationUtils.MEDIA_TYPE_PLAIN, authenticatedWho) + Environment.NewLine;
-                    }
-
-                    // Finally, we add the exception details if there is an exception
-                    message += AggregateAndWriteErrorMessage(exception, "", true);
-
-                    // Set the notification and send
-                    notifier.AddNotificationMessage(NotificationUtils.MEDIA_TYPE_PLAIN, message);
-                    notifier.SendNotification();
-                }
-                catch (Exception)
-                {
-                    // Hide any faults so we're not piling errors on errors
-                }
-            }
-        }
+        public const String ALERT_TYPE_FAULT = "Fault";
+        public const String ALERT_TYPE_WARNING = "Warning";
 
         private static String AggregateAndWriteErrorMessage(Exception exception, String message, Boolean includeTrace)
         {

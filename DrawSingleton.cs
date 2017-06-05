@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to login as an author of flows.
         /// </summary>
-        public IAuthenticatedWho Login(INotifier notifier, String tenantId, String manywhoBaseUrl, AuthenticationCredentialsAPI authenticationCredentials)
+        public IAuthenticatedWho Login(String tenantId, String manywhoBaseUrl, AuthenticationCredentialsAPI authenticationCredentials)
         {
             String authorizationToken = null;
             IAuthenticatedWho authenticatedWho = null;
@@ -105,7 +105,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method should be used to get descriptions of supported plugins.
         /// </summary>
-        public DescribeServiceResponseAPI Describe(INotifier notifier, IAuthenticatedWho authenticatedWho, DescribeServiceRequestAPI describeServiceRequest)
+        public DescribeServiceResponseAPI Describe(IAuthenticatedWho authenticatedWho, DescribeServiceRequestAPI describeServiceRequest)
         {
             using (var httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null, HttpUtils.SYSTEM_TIMEOUT_SECONDS))
             {
@@ -134,7 +134,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save flows back to the service.
         /// </summary>
-        public FlowResponseAPI SaveFlow(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, FlowRequestAPI flowRequest)
+        public FlowResponseAPI SaveFlow(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, FlowRequestAPI flowRequest)
         {
             FlowResponseAPI flowResponse = null;
             HttpClient httpClient = null;
@@ -175,7 +175,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method loads all of the flows in the draw service.
         /// </summary>
-        public List<FlowResponseAPI> LoadFlows(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String tenantId, String filter)
+        public List<FlowResponseAPI> LoadFlows(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String tenantId, String filter)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
@@ -211,7 +211,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method snap shots the latest flow in the modelling environment.
         /// </summary>
-        public FlowResponseAPI SnapShotFlow(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String flowId)
+        public FlowResponseAPI SnapShotFlow(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String flowId)
         {
             FlowResponseAPI flowResponse = null;
             HttpClient httpClient = null;
@@ -247,7 +247,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method takes a flow snap shot and activates it based on the provided settings.
         /// </summary>
-        public FlowResponseAPI SetFlowActivation(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, FlowIdAPI flowId, Boolean isDefault, Boolean isActivated)
+        public FlowResponseAPI SetFlowActivation(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, FlowIdAPI flowId, Boolean isDefault, Boolean isActivated)
         {
             FlowResponseAPI flowResponse = null;
             HttpClient httpClient = null;
@@ -283,7 +283,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save shared elements back to the service.
         /// </summary>
-        public void AddElementToFlow(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String flowId, String elementType, String elementId)
+        public void AddElementToFlow(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String flowId, String elementType, String elementId)
         {
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -315,7 +315,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save value elements back to the service.
         /// </summary>
-        public ValueElementResponseAPI SaveValueElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, ValueElementRequestAPI valueElementRequest)
+        public ValueElementResponseAPI SaveValueElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, ValueElementRequestAPI valueElementRequest)
         {
             ValueElementResponseAPI valueElementResponse = null;
             HttpClient httpClient = null;
@@ -353,7 +353,7 @@ namespace ManyWho.Flow.SDK
             return valueElementResponse;
         }
 
-        public TypeElementResponseAPI SaveTypeElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, TypeElementRequestAPI typeElementRequest)
+        public TypeElementResponseAPI SaveTypeElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, TypeElementRequestAPI typeElementRequest)
         {
             TypeElementResponseAPI typeElementResponse = null;
             HttpClient httpClient = null;
@@ -394,7 +394,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save service elements back to the service.
         /// </summary>
-        public ServiceElementResponseAPI SaveServiceElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, ServiceElementRequestAPI serviceElementRequest)
+        public ServiceElementResponseAPI SaveServiceElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, ServiceElementRequestAPI serviceElementRequest)
         {
             ServiceElementResponseAPI serviceElementResponse = null;
             HttpClient httpClient = null;
@@ -435,7 +435,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save page elements back to the service.
         /// </summary>
-        public PageElementResponseAPI SavePageElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, PageElementRequestAPI pageElementRequest)
+        public PageElementResponseAPI SavePageElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, PageElementRequestAPI pageElementRequest)
         {
             PageElementResponseAPI pageElementResponse = null;
             HttpClient httpClient = null;
@@ -473,7 +473,7 @@ namespace ManyWho.Flow.SDK
             return pageElementResponse;
         }
 
-        public MapElementResponseAPI LoadMapElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, String mapElementId)
+        public MapElementResponseAPI LoadMapElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, String mapElementId)
         {
             MapElementResponseAPI mapElementResponse = null;
             HttpClient httpClient = null;
@@ -506,7 +506,7 @@ namespace ManyWho.Flow.SDK
             return mapElementResponse;
         }
 
-        public MapElementResponseAPI SaveMapElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, MapElementRequestAPI mapElementRequest)
+        public MapElementResponseAPI SaveMapElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, MapElementRequestAPI mapElementRequest)
         {
             MapElementResponseAPI mapElementResponse = null;
             HttpClient httpClient = null;
@@ -544,7 +544,7 @@ namespace ManyWho.Flow.SDK
             return mapElementResponse;
         }
 
-        public GroupElementResponseAPI LoadGroupElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, String groupElementId)
+        public GroupElementResponseAPI LoadGroupElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, String groupElementId)
         {
             GroupElementResponseAPI groupElementResponse = null;
             HttpClient httpClient = null;
@@ -577,7 +577,7 @@ namespace ManyWho.Flow.SDK
             return groupElementResponse;
         }
 
-        public GroupElementResponseAPI SaveGroupElement(INotifier notifier, IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, GroupElementRequestAPI groupElementRequest)
+        public GroupElementResponseAPI SaveGroupElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, GroupElementRequestAPI groupElementRequest)
         {
             GroupElementResponseAPI groupElementResponse = null;
             HttpClient httpClient = null;
