@@ -1,10 +1,17 @@
-﻿using System;
+﻿using ManyWho.Flow.SDK.Tenant;
+using System;
 
 namespace ManyWho.Flow.SDK.Notification
 {
     public class NotificationAPI
     {
         public Guid Id
+        {
+            get;
+            set;
+        }
+
+        public TenantMinimalAPI Tenant
         {
             get;
             set;
