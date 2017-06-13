@@ -11,6 +11,7 @@ using ManyWho.Flow.SDK.Draw.Elements.Type;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 using ManyWho.Flow.SDK.Run.Elements.Type;
 using ManyWho.Flow.SDK.Draw.Elements;
+using Xenolope.Extensions;
 
 namespace ManyWho.Flow.SDK
 {
@@ -620,7 +621,14 @@ namespace ManyWho.Flow.SDK
             if (propertyInfo.PropertyType.Name.Equals(typeof(String).Name, StringComparison.OrdinalIgnoreCase) == true ||
                 propertyInfo.PropertyType.Name.Equals(typeof(Guid).Name, StringComparison.OrdinalIgnoreCase) == true)
             {
-                typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_STRING;
+                if (propertyInfo.Name.ContainsIgnoreCase("Password"))
+                {
+                    typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_PASSWORD;
+                }
+                else
+                {
+                    typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_STRING;
+                }
             }
             else if (propertyInfo.PropertyType.Name.Equals(typeof(Int32).Name, StringComparison.OrdinalIgnoreCase) == true)
             {

@@ -15,6 +15,8 @@ using ManyWho.Flow.SDK.Draw.Elements.Config;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 using ManyWho.Flow.SDK.Errors;
 using Polly;
+using System.Threading.Tasks;
+using System.Text;
 
 namespace ManyWho.Flow.SDK
 {
@@ -105,7 +107,7 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method should be used to get descriptions of supported plugins.
         /// </summary>
-        public DescribeServiceResponseAPI Describe(IAuthenticatedWho authenticatedWho, DescribeServiceRequestAPI describeServiceRequest)
+        public async Task<DescribeServiceResponseAPI> DescribeAsync(IAuthenticatedWho authenticatedWho, DescribeServiceRequestAPI describeServiceRequest)
         {
             using (var httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null, HttpUtils.SYSTEM_TIMEOUT_SECONDS))
             {
@@ -117,17 +119,56 @@ namespace ManyWho.Flow.SDK
                 string endpointUrl = describeServiceRequest.uri + "/metadata";
 
                 // Send the describe request over to the remote service
-                HttpResponseMessage httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;
+                HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(endpointUrl, httpContent);
 
                 // Check the status of the response and respond appropriately
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
                     // Get the describe response object from the response message
-                    return JsonConvert.DeserializeObject<DescribeServiceResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+                    return JsonConvert.DeserializeObject<DescribeServiceResponseAPI>(await httpResponseMessage.Content.ReadAsStringAsync());
                 }
 
                 // Otherwise, if we have an error then throw an appropriate exception
-                throw ErrorUtils.BuildProblemException(httpResponseMessage).Result;
+                throw await ErrorUtils.BuildProblemException(httpResponseMessage);
+            }
+        }
+
+        /// <summary>
+        /// This method should be used to get descriptions of supported plugins.
+        /// </summary>
+        public async Task<DescribeServiceResponseV2API> DescribeAsync(Guid tenant, string authorizationHeader, string uri)
+        {
+            using (var httpClient = HttpUtils.CreateHttpClientV2(authorizationHeader, tenant))
+            {
+                // Send the describe request over to the remote service
+                var response = await httpClient.GetAsync(uri + "/metadata");
+                if (response.IsSuccessStatusCode)
+                {
+                    // Get the describe response object from the response message
+                    return JsonConvert.DeserializeObject<DescribeServiceResponseV2API>(await response.Content.ReadAsStringAsync());
+                }
+
+                // Otherwise, if we have an error then throw an appropriate exception
+                throw await ErrorUtils.BuildProblemException(response);
+            }
+        }
+
+        public async Task<DescribeInstallResponseAPI> DescribeInstallAsync(Guid tenant, string authorizationHeader, string uri, DescribeInstallRequestAPI request)
+        {
+            using (var httpClient = HttpUtils.CreateHttpClientV2(authorizationHeader, tenant))
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+
+                // Send the describe request over to the remote service
+                var response = await httpClient.PostAsync(uri + "/metadata/install", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    // Get the describe response object from the response message
+                    return JsonConvert.DeserializeObject<DescribeInstallResponseAPI>(await response.Content.ReadAsStringAsync());
+                }
+
+                // Otherwise, if we have an error then throw an appropriate exception
+                throw await ErrorUtils.BuildProblemException(response);
             }
         }
 

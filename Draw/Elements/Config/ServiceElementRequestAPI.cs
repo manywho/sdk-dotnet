@@ -127,5 +127,23 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
             get;
             set;
         }
+
+        public string HttpAuthenticationUsername
+        {
+            get;
+            set;
+        }
+
+        public string HttpAuthenticationPassword
+        {
+            get;
+            set;
+        }
+
+        public string Version
+        {
+            get;
+            set;
+        }
     }
 }
