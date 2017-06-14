@@ -15,7 +15,6 @@ using ManyWho.Flow.SDK.Draw.Elements.Config;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 using ManyWho.Flow.SDK.Errors;
 using Polly;
-using ManyWho.Flow.SDK.Describe.Validator;
 
 namespace ManyWho.Flow.SDK
 {
@@ -124,12 +123,9 @@ namespace ManyWho.Flow.SDK
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
                     // Get the describe response object from the response message
+                    return JsonConvert.DeserializeObject<DescribeServiceResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+              
                     var serviceDescription = JsonConvert.DeserializeObject<DescribeServiceResponseAPI>(httpResponseMessage.Content.ReadAsStringAsync().Result);
-
-                    // It will throw an exception if is not valid
-                    DescriptionValidator.validate(serviceDescription);
-
-                    return serviceDescription;
                 }
 
                 // Otherwise, if we have an error then throw an appropriate exception
