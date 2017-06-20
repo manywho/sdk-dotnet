@@ -699,7 +699,11 @@ namespace ManyWho.Flow.SDK
             {
                 if (propertyValue is DateTime)
                 {
-                    value = ((DateTime)propertyValue).ToUniversalTime().ToString();
+                    value = (new DateTimeOffset((DateTime)propertyValue)).ToString("o");
+                }
+                else if (propertyValue is DateTimeOffset)
+                {
+                    value = ((DateTimeOffset)propertyValue).ToString("o");
                 }
                 else if (propertyValue is Int32 ||
                          propertyValue is Boolean ||
