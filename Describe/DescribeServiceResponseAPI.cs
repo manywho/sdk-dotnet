@@ -21,13 +21,11 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Describe
 {
-    [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class DescribeServiceResponseAPI
+    public class DescribeServiceResponseAPI : DescribeServiceResponseBaseAPI
     {
         /// <summary>
         /// The culture for the service request.
         /// </summary>
-        [DataMember]
         public CultureAPI culture
         {
             get;
@@ -37,87 +35,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// <summary>
         /// The Uri for the service to describe.
         /// </summary>
-        [DataMember]
         public String uri
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Configuration information that's required to set up the service.  These are values that are typically not associated with
-        /// input/output or moment in time information - this is stuff that is required for the service to function correctly.
-        /// </summary>
-        [DataMember]
-        public List<DescribeValueAPI> configurationValues
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Tells the system whether or not the service exposes logic actions.
-        /// </summary>
-        [DataMember]
-        public Boolean providesLogic
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Tells the system whether or not the service exposes views.
-        /// </summary>
-        [DataMember]
-        public Boolean providesViews
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Indicates if this service provides object data support for the provided types.
-        /// </summary>
-        [DataMember]
-        public Boolean providesDatabase
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Indicates if this service provides identity information for authentication and authorization calls.
-        /// </summary>
-        [DataMember]
-        public Boolean providesIdentity
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Indicates if this service provides social networking capabilities to the flow.
-        /// </summary>
-        [DataMember]
-        public Boolean providesSocial
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Indicates if this service provides files for download and upload. This is logically separate from the social networking where it is
-        /// assumed the feed supports basic file attachments.
-        /// </summary>
-        [DataMember]
-        public Boolean providesFiles
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public bool providesAutoBinding
         {
             get;
             set;
@@ -126,7 +44,6 @@ namespace ManyWho.Flow.SDK.Describe
         /// <summary>
         /// The actions available for this service.  The actions are basically a proxy for methods.
         /// </summary>
-        [DataMember]
         public List<DescribeServiceActionResponseAPI> actions
         {
             get;
@@ -139,7 +56,6 @@ namespace ManyWho.Flow.SDK.Describe
         /// just the meta-data, but can only be modified by the service - not the end user (except translations of labels, etc)).  
         /// If the service gets updated, then those changes are applied as if they're a different version of this type.
         /// </summary>
-        [DataMember]
         public DescribeServiceInstallResponseAPI install
         {
             get;
