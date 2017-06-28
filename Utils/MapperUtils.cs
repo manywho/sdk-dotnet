@@ -2,11 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Reflection;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
-using ManyWho.Flow.SDK;
 using ManyWho.Flow.SDK.Draw.Elements.Type;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 using ManyWho.Flow.SDK.Run.Elements.Type;
@@ -742,20 +738,12 @@ namespace ManyWho.Flow.SDK
                 if (valueElementIdReferences != null &&
                     valueElementIdReferences.Count > 0)
                 {
-                    foreach (ValueElementIdReferenceAPI valueElementIdReferenceEntry in valueElementIdReferences)
-                    {
-                        // For the value element reference to be a match, both the identifier and the type element property identifier must match
-                        if (valueElementIdReferenceEntry.id.Equals(valueElementId.id, StringComparison.OrdinalIgnoreCase) == true &&
-                            ((string.IsNullOrWhiteSpace(valueElementId.typeElementPropertyId) == true &&
-                             string.IsNullOrWhiteSpace(valueElementIdReferenceEntry.typeElementPropertyId) == true) ||
-                             (string.IsNullOrWhiteSpace(valueElementId.typeElementPropertyId) == false &&
-                              string.IsNullOrWhiteSpace(valueElementIdReferenceEntry.typeElementPropertyId) == false &&
-                              valueElementId.typeElementPropertyId.Equals(valueElementIdReferenceEntry.typeElementPropertyId, StringComparison.OrdinalIgnoreCase) == true)))
-                        {
-                            valueElementIdReference = valueElementIdReferenceEntry;
-                            break;
-                        }
-                    }
+                    // For the value element reference to be a match, both the identifier and the type element property identifier must match
+                    valueElementIdReference = valueElementIdReferences
+                        .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.id == valueElementId.id)
+                        .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.typeElementPropertyId != null)
+                        .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.typeElementPropertyId == valueElementId.typeElementPropertyId)
+                        .FirstOrDefault();
                 }
 
                 if (valueElementIdReference == null)
