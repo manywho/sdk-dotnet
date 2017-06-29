@@ -739,7 +739,7 @@ namespace ManyWho.Flow.SDK
                     valueElementIdReferences.Count > 0)
                 {
                     // If we're not given a property ID, then we're looking for a scalar value
-                    if (valueElementId.typeElementPropertyId == null)
+                    if (string.IsNullOrWhiteSpace(valueElementId.typeElementPropertyId))
                     {
                         valueElementIdReference = valueElementIdReferences
                             .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.id == valueElementId.id)
