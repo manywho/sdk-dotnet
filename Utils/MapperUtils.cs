@@ -738,12 +738,21 @@ namespace ManyWho.Flow.SDK
                 if (valueElementIdReferences != null &&
                     valueElementIdReferences.Count > 0)
                 {
-                    // For the value element reference to be a match, both the identifier and the type element property identifier must match
-                    valueElementIdReference = valueElementIdReferences
-                        .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.id == valueElementId.id)
-                        .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.typeElementPropertyId != null)
-                        .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.typeElementPropertyId == valueElementId.typeElementPropertyId)
-                        .FirstOrDefault();
+                    // If we're not given a property ID, then we're looking for a scalar value
+                    if (valueElementId.typeElementPropertyId == null)
+                    {
+                        valueElementIdReference = valueElementIdReferences
+                            .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.id == valueElementId.id)
+                            .FirstOrDefault();
+                    }
+                    else
+                    {
+                        // For the value element reference to be a match, both the identifier and the type element property identifier must match
+                        valueElementIdReference = valueElementIdReferences
+                            .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.id == valueElementId.id)
+                            .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.typeElementPropertyId == valueElementId.typeElementPropertyId)
+                            .FirstOrDefault();
+                    }                    
                 }
 
                 if (valueElementIdReference == null)
