@@ -181,7 +181,7 @@ namespace ManyWho.Flow.SDK
                                             if (typeof(Dictionary<String, String>).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
                                             {
                                                 // Check if we're looking at the Attributes field and whether we have any
-                                                if (propertyInfo.Name.Equals("attributes") && propertyAPI.objectData != null && propertyAPI.objectData.Count > 0)
+                                                if (propertyInfo.Name.EqualsOneOfIgnoreCase("attributes", "properties") && propertyAPI.objectData != null && propertyAPI.objectData.Count > 0)
                                                 {
                                                     // If there are any attributes then map all of them into a Dictionary<string, string>
                                                     var attributes = propertyAPI.objectData.Where(o => o.developerName.Equals("KeyPair"))
@@ -558,14 +558,22 @@ namespace ManyWho.Flow.SDK
             PropertyAPI propertyAPI = null;
             IDictionary value = (IDictionary)propertyInfo.GetValue(source, null);
 
-            if (value != null && propertyInfo.Name.Equals("attributes", StringComparison.OrdinalIgnoreCase))
+            if (value != null)
             {
                 var values = value as IDictionary<string, string>;
-                if (values.Count > 0)
+                if (values != null && values.Count > 0)
                 {
                     // Add a new list of "Object: String" type objects
                     propertyAPI = new PropertyAPI();
-                    propertyAPI.developerName = "Attributes";
+
+                    if (propertyInfo.Name.EqualsIgnoreCase("properties"))
+                    {
+                        propertyAPI.developerName = "Properties";
+                    }
+                    else
+                    {
+                        propertyAPI.developerName = "Attributes";
+                    }
 
                     // For each keypair, create a new "Object: String" object
                     propertyAPI.objectData = new List<ObjectAPI>();
