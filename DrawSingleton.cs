@@ -116,7 +116,7 @@ namespace ManyWho.Flow.SDK
                 httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                 // Construct the URL for the describe request
-                string endpointUrl = describeServiceRequest.uri.Trim() + "/metadata";
+                string endpointUrl = describeServiceRequest.uri + "/metadata";
 
                 // Send the describe request over to the remote service
                 HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(endpointUrl, httpContent);
@@ -141,7 +141,7 @@ namespace ManyWho.Flow.SDK
             using (var httpClient = HttpUtils.CreateHttpClientV2(authorizationHeader, tenant))
             {
                 // Send the describe request over to the remote service
-                var response = await httpClient.GetAsync(uri.Trim() + "/metadata");
+                var response = await httpClient.GetAsync(uri + "/metadata");
                 if (response.IsSuccessStatusCode)
                 {
                     // Get the describe response object from the response message
@@ -160,7 +160,7 @@ namespace ManyWho.Flow.SDK
                 var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
 
                 // Send the describe request over to the remote service
-                var response = await httpClient.PostAsync(uri.Trim() + "/metadata/install", content);
+                var response = await httpClient.PostAsync(uri + "/metadata/install", content);
                 if (response.IsSuccessStatusCode)
                 {
                     // Get the describe response object from the response message
