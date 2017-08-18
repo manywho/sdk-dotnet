@@ -1,22 +1,22 @@
-﻿using ManyWho.Flow.SDK.Utils;
+﻿using System;
 
 namespace ManyWho.Flow.SDK.Tenant
 {
-    public class TenantRegistrationAPI : UserRegistrationAPI
+    public class UserTokenAPI
     {
-        public string tenantName
+        public Guid ServiceId
         {
             get;
             set;
         }
 
-        public string subdomain
+        public DateTimeOffset CreatedAt
         {
             get;
             set;
         }
 
-        public NotificationRequestAPI notification
+        public DateTimeOffset UpdatedAt
         {
             get;
             set;

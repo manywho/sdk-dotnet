@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using ManyWho.Flow.SDK.Errors;
 using ManyWho.Flow.SDK.Security;
@@ -38,54 +36,6 @@ namespace ManyWho.Flow.SDK.Utils
         public const String ALERT_TYPE_FAULT = "Fault";
         public const String ALERT_TYPE_WARNING = "Warning";
 
- 
-        public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String alertMessage)
-        {
-            SendAlert(notifier, authenticatedWho, alertType, alertMessage, null);
-        }
-
-        public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String alertMessage, Exception exception)
-        {
-            String message = null;
-
-            // Check to see if the caller has in fact provided a notifier - if not, we don't bother to do anything
-            if (notifier != null)
-            {
-                try
-                {
-                    // Create the full message
-                    message = "";
-
-                    // Create the alert message block
-                    message += "Alert Message" + Environment.NewLine;
-                    message += "-----" + Environment.NewLine;
-                    message += alertMessage + Environment.NewLine + Environment.NewLine;
-
-                    // Only include the authenticated who if we have one
-                    if (authenticatedWho != null)
-                    {
-                        // Create the running user summary block
-                        message += "Affected User" + Environment.NewLine;
-                        message += "-------------" + Environment.NewLine;
-
-                        // Serialize the user information
-                        message += NotificationUtils.SerializeAuthenticatedWhoInfo(NotificationUtils.MEDIA_TYPE_PLAIN, authenticatedWho) + Environment.NewLine;
-                    }
-
-                    // Finally, we add the exception details if there is an exception
-                    message += AggregateAndWriteErrorMessage(exception, "", true);
-
-                    // Set the notification and send
-                    notifier.AddNotificationMessage(NotificationUtils.MEDIA_TYPE_PLAIN, message);
-                    notifier.SendNotification();
-                }
-                catch (Exception)
-                {
-                    // Hide any faults so we're not piling errors on errors
-                }
-            }
-        }
-
         private static String AggregateAndWriteErrorMessage(Exception exception, String message, Boolean includeTrace)
         {
             if (exception != null)
@@ -93,10 +43,6 @@ namespace ManyWho.Flow.SDK.Utils
                 if (exception is AggregateException)
                 {
                     message = AggregateAndWriteAggregateErrorMessage((AggregateException)exception, message, includeTrace);
-                }
-                else if (exception is WebException)
-                {
-                    message = AggregateAndWriteHttpResponseErrorMessage((WebException)exception, message);
                 }
                 else
                 {
@@ -124,48 +70,11 @@ namespace ManyWho.Flow.SDK.Utils
                         {
                             message = AggregateAndWriteAggregateErrorMessage((AggregateException)innerException, message, includeTrace);
                         }
-                        else if (innerException is WebException)
-                        {
-                            message = AggregateAndWriteHttpResponseErrorMessage((WebException)innerException, message);
-                        }
                         else
                         {
                             message = AggregateAndWriteErrorMessage(innerException, message, includeTrace);
                         }
                     }
-                }
-            }
-
-            return message;
-        }
-
-        private static String AggregateAndWriteHttpResponseErrorMessage(WebException exception, String message)
-        {
-            WebResponse webResponse = null;
-            String statusDescription = null;
-
-            if (exception != null)
-            {
-                if (exception.Response != null)
-                {
-                    webResponse = exception.Response;
-
-                    if (webResponse is HttpWebResponse)
-                    {
-                        statusDescription = ((HttpWebResponse)webResponse).StatusDescription;
-
-                        // Grab the message from the 
-                        if (statusDescription != null &&
-                            statusDescription.Trim().Length > 0)
-                        {
-                            message += "HttpResponseException:" + Environment.NewLine;
-                            message += statusDescription + Environment.NewLine + Environment.NewLine;
-                        }
-                    }
-                }
-                else
-                {
-                    message += exception.Message;
                 }
             }
 

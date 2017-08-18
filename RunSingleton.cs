@@ -80,7 +80,7 @@ namespace ManyWho.Flow.SDK
             return run;
         }
 
-        public string DispatchStateListenerResponse(INotifier notifier, IAuthenticatedWho authenticatedWho, String callbackUri, ListenerServiceResponseAPI listenerServiceResponse)
+        public string DispatchStateListenerResponse(IAuthenticatedWho authenticatedWho, String callbackUri, ListenerServiceResponseAPI listenerServiceResponse)
         {
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -113,7 +113,7 @@ namespace ManyWho.Flow.SDK
             return invokeResponse;
         }
 
-        public String Login(INotifier notifier, String tenantId, String stateId, AuthenticationCredentialsAPI authenticationCredentials)
+        public String Login(String tenantId, String stateId, AuthenticationCredentialsAPI authenticationCredentials)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
@@ -151,7 +151,7 @@ namespace ManyWho.Flow.SDK
             return authenticationToken;
         }
 
-        public List<FlowResponseAPI> LoadFlows(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String filter)
+        public List<FlowResponseAPI> LoadFlows(IAuthenticatedWho authenticatedWho, String tenantId, String filter)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
@@ -184,7 +184,7 @@ namespace ManyWho.Flow.SDK
             return flowResponses;
         }
 
-        public FlowResponseAPI LoadFlowById(INotifier notifier, String authenticationToken, String tenantId, String flowId)
+        public FlowResponseAPI LoadFlowById(String authenticationToken, String tenantId, String flowId)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
@@ -217,7 +217,7 @@ namespace ManyWho.Flow.SDK
             return flowResponse;
         }
 
-        public EngineInitializationResponseAPI Initialize(INotifier notifier, String authenticationToken, String tenantId, EngineInitializationRequestAPI engineInitializationRequest)
+        public EngineInitializationResponseAPI Initialize(String authenticationToken, String tenantId, EngineInitializationRequestAPI engineInitializationRequest)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
@@ -255,7 +255,7 @@ namespace ManyWho.Flow.SDK
             return engineInitializationResponse;
         }
 
-        public EngineInvokeResponseAPI Execute(INotifier notifier, String authenticationToken, String tenantId, EngineInvokeRequestAPI engineInvokeRequest)
+        public EngineInvokeResponseAPI Execute(String authenticationToken, String tenantId, EngineInvokeRequestAPI engineInvokeRequest)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
@@ -293,7 +293,7 @@ namespace ManyWho.Flow.SDK
             return engineInvokeResponse;
         }
 
-        public String Response(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String callbackUri, ServiceResponseAPI serviceResponse)
+        public String Response(IAuthenticatedWho authenticatedWho, String tenantId, String callbackUri, ServiceResponseAPI serviceResponse)
         {
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -327,7 +327,7 @@ namespace ManyWho.Flow.SDK
             return invokeType;
         }
 
-        public String Event(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String callbackUri, ListenerServiceResponseAPI listenerServiceResponse)
+        public String Event(IAuthenticatedWho authenticatedWho, String tenantId, String callbackUri, ListenerServiceResponseAPI listenerServiceResponse)
         {
             HttpClient httpClient = null;
             HttpContent httpContent = null;
@@ -361,7 +361,7 @@ namespace ManyWho.Flow.SDK
             return invokeType;
         }
 
-        public EngineNavigationResponseAPI GetNavigation(INotifier notifier, String authenticationToken, String tenantId, String stateId, EngineNavigationRequestAPI engineNavigationRequest)
+        public EngineNavigationResponseAPI GetNavigation(String authenticationToken, String tenantId, String stateId, EngineNavigationRequestAPI engineNavigationRequest)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
@@ -399,7 +399,7 @@ namespace ManyWho.Flow.SDK
             return engineNavigationResponse;
         }
 
-        public String ExportState(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String stateId)
+        public String ExportState(IAuthenticatedWho authenticatedWho, String tenantId, String stateId)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;
@@ -432,7 +432,7 @@ namespace ManyWho.Flow.SDK
             return stateJson;
         }
 
-        public void ImportState(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String stateJson)
+        public void ImportState(IAuthenticatedWho authenticatedWho, String tenantId, String stateJson)
         {
             String endpointUrl = null;
             HttpClient httpClient = null;

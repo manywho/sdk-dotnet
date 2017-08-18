@@ -2,15 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Reflection;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
-using ManyWho.Flow.SDK;
 using ManyWho.Flow.SDK.Draw.Elements.Type;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 using ManyWho.Flow.SDK.Run.Elements.Type;
 using ManyWho.Flow.SDK.Draw.Elements;
+using Xenolope.Extensions;
 
 namespace ManyWho.Flow.SDK
 {
@@ -184,7 +181,7 @@ namespace ManyWho.Flow.SDK
                                             if (typeof(Dictionary<String, String>).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
                                             {
                                                 // Check if we're looking at the Attributes field and whether we have any
-                                                if (propertyInfo.Name.Equals("attributes") && propertyAPI.objectData != null && propertyAPI.objectData.Count > 0)
+                                                if (propertyInfo.Name.EqualsOneOfIgnoreCase("attributes", "properties") && propertyAPI.objectData != null && propertyAPI.objectData.Count > 0)
                                                 {
                                                     // If there are any attributes then map all of them into a Dictionary<string, string>
                                                     var attributes = propertyAPI.objectData.Where(o => o.developerName.Equals("KeyPair"))
@@ -561,14 +558,22 @@ namespace ManyWho.Flow.SDK
             PropertyAPI propertyAPI = null;
             IDictionary value = (IDictionary)propertyInfo.GetValue(source, null);
 
-            if (value != null && propertyInfo.Name.Equals("attributes", StringComparison.OrdinalIgnoreCase))
+            if (value != null)
             {
                 var values = value as IDictionary<string, string>;
-                if (values.Count > 0)
+                if (values != null && values.Count > 0)
                 {
                     // Add a new list of "Object: String" type objects
                     propertyAPI = new PropertyAPI();
-                    propertyAPI.developerName = "Attributes";
+
+                    if (propertyInfo.Name.EqualsIgnoreCase("properties"))
+                    {
+                        propertyAPI.developerName = "Properties";
+                    }
+                    else
+                    {
+                        propertyAPI.developerName = "Attributes";
+                    }
 
                     // For each keypair, create a new "Object: String" object
                     propertyAPI.objectData = new List<ObjectAPI>();
@@ -620,7 +625,14 @@ namespace ManyWho.Flow.SDK
             if (propertyInfo.PropertyType.Name.Equals(typeof(String).Name, StringComparison.OrdinalIgnoreCase) == true ||
                 propertyInfo.PropertyType.Name.Equals(typeof(Guid).Name, StringComparison.OrdinalIgnoreCase) == true)
             {
-                typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_STRING;
+                if (propertyInfo.Name.ContainsIgnoreCase("Password"))
+                {
+                    typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_PASSWORD;
+                }
+                else
+                {
+                    typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_STRING;
+                }
             }
             else if (propertyInfo.PropertyType.Name.Equals(typeof(Int32).Name, StringComparison.OrdinalIgnoreCase) == true)
             {
@@ -691,7 +703,11 @@ namespace ManyWho.Flow.SDK
             {
                 if (propertyValue is DateTime)
                 {
-                    value = ((DateTime)propertyValue).ToUniversalTime().ToString();
+                    value = (new DateTimeOffset((DateTime)propertyValue)).ToString("o");
+                }
+                else if (propertyValue is DateTimeOffset)
+                {
+                    value = ((DateTimeOffset)propertyValue).ToString("o");
                 }
                 else if (propertyValue is Int32 ||
                          propertyValue is Boolean ||
@@ -730,20 +746,21 @@ namespace ManyWho.Flow.SDK
                 if (valueElementIdReferences != null &&
                     valueElementIdReferences.Count > 0)
                 {
-                    foreach (ValueElementIdReferenceAPI valueElementIdReferenceEntry in valueElementIdReferences)
+                    // If we're not given a property ID, then we're looking for a scalar value
+                    if (string.IsNullOrWhiteSpace(valueElementId.typeElementPropertyId))
+                    {
+                        valueElementIdReference = valueElementIdReferences
+                            .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.id == valueElementId.id)
+                            .FirstOrDefault();
+                    }
+                    else
                     {
                         // For the value element reference to be a match, both the identifier and the type element property identifier must match
-                        if (valueElementIdReferenceEntry.id.Equals(valueElementId.id, StringComparison.OrdinalIgnoreCase) == true &&
-                            ((string.IsNullOrWhiteSpace(valueElementId.typeElementPropertyId) == true &&
-                             string.IsNullOrWhiteSpace(valueElementIdReferenceEntry.typeElementPropertyId) == true) ||
-                             (string.IsNullOrWhiteSpace(valueElementId.typeElementPropertyId) == false &&
-                              string.IsNullOrWhiteSpace(valueElementIdReferenceEntry.typeElementPropertyId) == false &&
-                              valueElementId.typeElementPropertyId.Equals(valueElementIdReferenceEntry.typeElementPropertyId, StringComparison.OrdinalIgnoreCase) == true)))
-                        {
-                            valueElementIdReference = valueElementIdReferenceEntry;
-                            break;
-                        }
-                    }
+                        valueElementIdReference = valueElementIdReferences
+                            .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.id == valueElementId.id)
+                            .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.typeElementPropertyId == valueElementId.typeElementPropertyId)
+                            .FirstOrDefault();
+                    }                    
                 }
 
                 if (valueElementIdReference == null)

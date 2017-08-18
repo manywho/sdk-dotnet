@@ -57,6 +57,13 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             get;
             set;
         }
+
+        [DataMember]
+        public Boolean isActive
+        {
+            get;
+            set;
+        }
     }
 
     

@@ -1,26 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netstandard1.1;net45</TargetFrameworks>
     <AssemblyName>ManyWho.Flow.SDK</AssemblyName>
-    <PackageId>ManyWho.Flow.SDK</PackageId>
-    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
-    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
-    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <PackageId>ManyWho.SDK</PackageId>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Version>1.16.0</Version>
+    <Authors>ManyWho</Authors>
+    <Description>The SDK for developing against the ManyWho platform APIs using .NET</Description>
+    <PackageLicenseUrl>https://manywho.com/sharedsource</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/manywho/ManyWho_Flow_SDK_CSharp</PackageProjectUrl>
+    <PackageIconUrl>https://s3.amazonaws.com/cdn.manywho.com/icon32.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/manywho/ManyWho_Flow_SDK_CSharp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    <PackageReference Include="Polly-Signed" Version="5.0.6" />
-    <PackageReference Include="System.Net.Requests" Version="4.0.11" />
-    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.1.1" />
+    <PackageReference Include="Polly-Signed" Version="5.1.0" />
+    <PackageReference Include="Xenolope.Extensions" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
 </Project>
