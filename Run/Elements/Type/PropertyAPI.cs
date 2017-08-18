@@ -64,5 +64,12 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
             get;
             set;
         }
+
+        [DataMember]
+        public string typeElementId
+        {
+            get;
+            set;
+        }       
     }
 }

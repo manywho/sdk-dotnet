@@ -78,6 +78,8 @@ namespace ManyWho.Flow.SDK
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_NEXT = "GET_NEXT"; // gets the next complex object in the table
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_FILTER = "FILTER";
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_LENGTH = "GET_LENGTH"; // gets the length of a list, string, content or password
+        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_VALUE = "VALUE_OF"; // gets the content value / objectdata of a Value
+        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_SET_EQUAL = "SET_EQUAL"; // sets the content value / objectdata of a value
 
         // These are the command properties associated with the filter
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_COLUMN = "COLUMN";
@@ -90,6 +92,8 @@ namespace ManyWho.Flow.SDK
 
         // Criteria for content values
         public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_EQUAL = "EQUAL";
+        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ALL_EQUAL = "ALL_EQUAL";
+        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ANY_EQUAL = "ANY_EQUAL";
         public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_NOT_EQUAL = "NOT_EQUAL";
         public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_GREATER_THAN = "GREATER_THAN";
         public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_GREATER_THAN_OR_EQUAL = "GREATER_THAN_OR_EQUAL";
@@ -109,6 +113,7 @@ namespace ManyWho.Flow.SDK
         public const String CONTENT_TYPE_LIST = "ContentList";
         public const String CONTENT_TYPE_BOOLEAN = "ContentBoolean";
         public const String CONTENT_TYPE_CONTENT = "ContentContent";
+        public const String CONTENT_TYPE_ENCRYPTED = "ContentEncrypted";
 
         // Content parser strings
         public const String EMBEDDED_KEY_START_INTERNAL = "flowkey___";
@@ -126,6 +131,10 @@ namespace ManyWho.Flow.SDK
         public const String AUTHENTICATED_USER_KEY_DIRECTORY_ID = "DIRECTORY_ID";
         public const String AUTHENTICATED_USER_PUBLIC_DIRECTORY_ID = "UNAUTHENTICATED";
         public const String AUTHENTICATED_USER_PUBLIC_DIRECTORY_NAME = "UNKNOWN";
+        public const String AUTHENTICATED_USER_PUBLIC_ROLE_ID = "UNAUTHENTICATED";
+        public const String AUTHENTICATED_USER_PUBLIC_ROLE_NAME = "UNKNOWN";
+        public const String AUTHENTICATED_USER_PUBLIC_PRIMARY_GROUP_ID = "UNAUTHENTICATED";
+        public const String AUTHENTICATED_USER_PUBLIC_PRIMARY_GROUP_NAME = "UNKNOWN";
         public const String AUTHENTICATED_USER_PUBLIC_EMAIL = "admin@manywho.com";
         public const String AUTHENTICATED_USER_PUBLIC_TENANT_NAME = "UNKNOWN";
         public const String AUTHENTICATED_USER_PUBLIC_USER_ID = "PUBLIC_USER";
@@ -139,6 +148,10 @@ namespace ManyWho.Flow.SDK
         public const String AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN = "ManyWhoToken";
         public const String AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID = "DirectoryId";
         public const String AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME = "DirectoryName";
+        public const String AUTHENTICATED_WHO_TOKEN_ROLE_ID = "RoleId";
+        public const String AUTHENTICATED_WHO_TOKEN_ROLE_NAME = "RoleName";
+        public const String AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_ID = "PrimaryGroupId";
+        public const String AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_NAME = "PrimaryGroupName";
         public const String AUTHENTICATED_WHO_TOKEN_EMAIL = "Email";
         public const String AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER = "IdentityProvider";
         public const String AUTHENTICATED_WHO_TOKEN_TENANT_NAME = "TenantName";
@@ -179,9 +192,14 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_LOCATION = Guid.Parse("4FA61B42-A370-455E-85ED-D9A0A8723A43");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_DIRECTORY_ID = Guid.Parse("4FA61B52-A370-455E-85ED-D9A0A8723A43");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_DIRECTORY_NAME = Guid.Parse("4FA61B45-A370-455E-85ED-D9A0A8723A43");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_ROLE_ID = Guid.Parse("5582D6D3-B673-4972-A65F-9E915C0C10AA");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_ROLE_NAME = Guid.Parse("D9904FDD-8F19-4f26-96C1-83EC2f58A540");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_PRIMARY_GROUP_ID = Guid.Parse("CE98CE03-41EE-405D-B849-509974610D7F");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_PRIMARY_GROUP_NAME = Guid.Parse("F26BA831-B013-4654-8AE3-8EB3AB5E6C1E");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_STATUS = Guid.Parse("4FA61B46-A370-455E-85ED-D9A0A8723A43");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_AUTHENTICATION_TYPE = Guid.Parse("4FA61B47-A370-455E-85ED-D9A0A8723A43");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_LOGIN_URL = Guid.Parse("4FA61B48-A370-455E-85ED-D9A0A8723A43");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_IP_ADDRESS = Guid.Parse("0dabbcd3-b5b1-47b3-b7e1-535c5b5e1878");
 
         public static readonly Guid MANYWHO_LOCATION_TYPE_ELEMENT_ID = Guid.Parse("7834CE95-DD99-42C6-96FC-AD12E1B48A69");
         public static readonly Guid MANYWHO_LOCATION_PROPERTY_ID_TIMESTAMP = Guid.Parse("FFC4CBD6-FA28-4141-95A4-DA9BACDB0203");
@@ -259,6 +277,13 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_CURRENT_MAP_ELEMENT_DEVELOPER_NAME = Guid.Parse("AE1EB1E1-1760-41EA-9A02-919781BFF313");
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_JOIN_URI = Guid.Parse("1A3B4FC9-912C-486E-A0FC-FF0D9F9796B7");
 
+        // Metadata constants for page rules and conditions
+        public const String META_DATA_VALUE = "VALUE";
+        public const String META_DATA_ENABLED = "METADATA.ENABLED";
+        public const String META_DATA_EDITABLE = "METADATA.EDITABLE";
+        public const String META_DATA_VISIBLE = "METADATA.VISIBLE";
+        public const String META_DATA_REQUIRED = "METADATA.REQUIRED";
+
         // Service description constants
         public const String SERVICE_DESCRIPTION_VALUE_TABLE_NAME = "TableName";
 
@@ -316,9 +341,14 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_USER_PROPERTY_LOCATION = "Location";
         public const String MANYWHO_USER_PROPERTY_DIRECTORY_ID = "Directory Id";
         public const String MANYWHO_USER_PROPERTY_DIRECTORY_NAME = "Directory Name";
+        public const String MANYWHO_USER_PROPERTY_ROLE_ID = "Role Id";
+        public const String MANYWHO_USER_PROPERTY_ROLE_NAME = "Role Name";
+        public const String MANYWHO_USER_PROPERTY_PRIMARY_GROUP_ID = "Primary Group Id";
+        public const String MANYWHO_USER_PROPERTY_PRIMARY_GROUP_NAME = "Primary Group Name";
         public const String MANYWHO_USER_PROPERTY_STATUS = "Status";
         public const String MANYWHO_USER_PROPERTY_AUTHENTICATION_TYPE = "AuthenticationType";
         public const String MANYWHO_USER_PROPERTY_LOGIN_URL = "LoginUrl";
+        public const string MANYWHO_USER_PROPERTY_IP_ADDRESS = "IP Address";
 
         public const String MANYWHO_LOCATION_DEVELOPER_NAME = "$Location";
 
@@ -455,6 +485,7 @@ namespace ManyWho.Flow.SDK
         // The authentication types that are currently supported
         public const String AUTHENTICATION_TYPE_USERNAME_PASSWORD = "USERNAME_PASSWORD";
         public const String AUTHENTICATION_TYPE_OAUTH2 = "OAUTH2";
+        public const String AUTHENTICATION_TYPE_SAML = "SAML";
 
         public const String PROPERTY_SEARCH = "PROPERTY:";
         public const String EXACT_SEARCH = "EXACT:";
@@ -482,5 +513,10 @@ namespace ManyWho.Flow.SDK
         public const String USER_PERMISSION_TYPE_CAN_EDIT = "CAN_EDIT";
         public const String USER_PERMISSION_TYPE_CAN_VIEW = "CAN_VIEW";
         public const String USER_PERMISSION_TYPE_CAN_COMMENT = "CAN_COMMENT";
+
+        public const string CONTENT_ENCRYPTED_PLACEHOLDER = "__ENCRYPTED__";
+
+        public const string ROLE_BUILDER = "builder";
+        public const string ROLE_USER = "user";
     }
 }

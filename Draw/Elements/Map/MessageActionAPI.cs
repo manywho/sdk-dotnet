@@ -71,5 +71,19 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             get;
             set;
         }
+
+        [DataMember]
+        public string serviceActionName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool disabled
+        {
+            get;
+            set;
+        }
     }
 }

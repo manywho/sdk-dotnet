@@ -103,5 +103,12 @@ namespace ManyWho.Flow.SDK.Security
             get;
             set;
         }
+
+        [DataMember]
+        public string tenantId
+        {
+            get;
+            set;
+        }
     }
 }

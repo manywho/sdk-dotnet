@@ -2,28 +2,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Reflection;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
-using ManyWho.Flow.SDK;
 using ManyWho.Flow.SDK.Draw.Elements.Type;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 using ManyWho.Flow.SDK.Run.Elements.Type;
 using ManyWho.Flow.SDK.Draw.Elements;
+using Xenolope.Extensions;
 
 namespace ManyWho.Flow.SDK
 {
     public class MapperUtils
     {
-        public static String Convert<T>(Dictionary<String, TypeElementRequestAPI> typeElementRequestAPIs)
+        public static String Convert<T>(Dictionary<String, TypeElementRequestAPI> typeElementRequestAPIs, IEnumerable<TypeElementPropertyAPI> properties)
         {
             if (typeElementRequestAPIs == null)
             {
                 throw new ArgumentNullException("TypeElementRequestAPIs", "The provided Dictionary cannot be null.");
             }
 
-            return Convert(typeof(T), typeElementRequestAPIs);
+            return Convert(typeof(T), typeElementRequestAPIs, properties);
+        }
+
+        public static String Convert<T>(Dictionary<String, TypeElementRequestAPI> typeElementRequestAPIs)
+        {
+            return MapperUtils.Convert<T>(typeElementRequestAPIs, null);
         }
 
         public static T Convert<T>(ObjectAPI objectApi)
@@ -67,7 +69,12 @@ namespace ManyWho.Flow.SDK
 
                 foreach (ObjectAPI objectAPI in objectAPIs)
                 {
-                    if (objectAPI.developerName.Equals(typeName, StringComparison.OrdinalIgnoreCase) == false)
+                    // If we have a value element identifier, we need to translate it over
+                    if (type.Name.Equals("ValueElementIdAPI", StringComparison.OrdinalIgnoreCase) == true)
+                    {
+                        type = new ValueElementIdReferenceAPI().GetType();
+                    }
+                    else if (objectAPI.developerName.Equals(typeName, StringComparison.OrdinalIgnoreCase) == false)
                     {
                         throw new ArgumentNullException("ObjectAPI", String.Format("The provided list contains inconsistent objects. The Draw API expected {0} and it got {1}", typeName, objectAPI.developerName));
                     }
@@ -173,9 +180,27 @@ namespace ManyWho.Flow.SDK
                                             // We have some form of object type, so we need to do some additional testing
                                             if (typeof(Dictionary<String, String>).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
                                             {
-                                                // TODO: Finish the dictionary
-                                                //throw new NotImplementedException("Have not yet implemented dictionary.");
-                                                //propertyInfo.SetValue(GetPropertyValueForDictionary(propertyAPI.objectData, propertyInfo);
+                                                // Check if we're looking at the Attributes field and whether we have any
+                                                if (propertyInfo.Name.EqualsOneOfIgnoreCase("attributes", "properties") && propertyAPI.objectData != null && propertyAPI.objectData.Count > 0)
+                                                {
+                                                    // If there are any attributes then map all of them into a Dictionary<string, string>
+                                                    var attributes = propertyAPI.objectData.Where(o => o.developerName.Equals("KeyPair"))
+                                                        .ToDictionary(
+                                                            o =>
+                                                            {
+                                                                return o.properties.First(p => p.developerName.Equals("Key")).contentValue;
+                                                            },
+                                                            o =>
+                                                            {
+                                                                return o.properties.First(p => p.developerName.Equals("Value")).contentValue;
+                                                            });
+
+                                                    propertyInfo.SetValue(typedObject, attributes);
+                                                }
+                                            }
+                                            else if (typeof(Enum).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
+                                            {
+                                                propertyInfo.SetValue(typedObject, Enum.Parse(propertyInfo.PropertyType, propertyAPI.contentValue));
                                             }
                                             // string inherits from IEnumerable so add a check for "not string"
                                             else if (typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()) &&
@@ -249,7 +274,7 @@ namespace ManyWho.Flow.SDK
             return list;
         }
 
-        private static String Convert(Type type, Dictionary<String, TypeElementRequestAPI> typeElementRequestAPIs)
+        private static String Convert(Type type, Dictionary<String, TypeElementRequestAPI> typeElementRequestAPIs, IEnumerable<TypeElementPropertyAPI> properties)
         {
             String name = GetCleanObjectName(type.Name);
 
@@ -280,7 +305,7 @@ namespace ManyWho.Flow.SDK
             typeElementRequestAPIs[typeElementRequestAPI.developerName] = typeElementRequestAPI;
 
             // Get the properties for the root type
-            foreach (PropertyInfo propertyInfo in type.GetTypeInfo().DeclaredProperties)
+            foreach (PropertyInfo propertyInfo in type.GetRuntimeProperties())
             {
                 TypeElementPropertyAPI typeElementPropertyAPI = Convert(typeElementRequestAPIs, propertyInfo);
                 if (typeElementPropertyAPI != null)
@@ -293,6 +318,21 @@ namespace ManyWho.Flow.SDK
                     // Add the property and binding
                     typeElementBindingAPI.propertyBindings.Add(typeElementPropertyBindingAPI);
                     typeElementRequestAPI.properties.Add(typeElementPropertyAPI);
+                }
+            }
+
+            if (properties != null)
+            {
+                foreach (TypeElementPropertyAPI property in properties)
+                {
+                    TypeElementPropertyBindingAPI typeElementPropertyBindingAPI = new TypeElementPropertyBindingAPI();
+                    typeElementPropertyBindingAPI.databaseContentType = property.contentType;
+                    typeElementPropertyBindingAPI.databaseFieldName = property.developerName;
+                    typeElementPropertyBindingAPI.typeElementPropertyDeveloperName = property.developerName;
+
+                    // Add the property and binding
+                    typeElementBindingAPI.propertyBindings.Add(typeElementPropertyBindingAPI);
+                    typeElementRequestAPI.properties.Add(property);
                 }
             }
 
@@ -323,7 +363,7 @@ namespace ManyWho.Flow.SDK
                 objectAPI.externalId = externalId;
                 objectAPI.properties = new List<PropertyAPI>();
 
-                foreach (PropertyInfo propertyInfo in type.GetTypeInfo().DeclaredProperties)
+                foreach (PropertyInfo propertyInfo in type.GetRuntimeProperties())
                 {
                     PropertyAPI propertyAPI = Convert(source, propertyInfo, valueElementIdReferences);
                     if (propertyAPI != null)
@@ -360,6 +400,11 @@ namespace ManyWho.Flow.SDK
             {
                 return GetPropertyAPIFromDictionary(source, propertyInfo, valueElementIdReferences);
             }
+
+            if (typeof(Enum).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()))
+            {
+                return GetPropertyAPIFromEnum(source, propertyInfo);
+            }
             // string inherits from IEnumerable so add a check for "not string"
             else if (typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType.GetTypeInfo()) &&
                         propertyInfo.PropertyType != typeof(string))
@@ -370,6 +415,17 @@ namespace ManyWho.Flow.SDK
             {
                 return GetPropertyAPIFromType(source, propertyInfo, valueElementIdReferences);
             }
+        }
+
+        static PropertyAPI GetPropertyAPIFromEnum(object source, PropertyInfo propertyInfo)
+        {
+            var value = propertyInfo.GetValue(source);
+
+            return new PropertyAPI
+            {
+                developerName = GetCleanObjectName(propertyInfo.Name),
+                contentValue = value.ToString()
+            };
         }
 
         private static PropertyAPI GetPropertyAPIFromCollection(object source, PropertyInfo propertyInfo, List<ValueElementIdReferenceAPI> valueElementIdReferences)
@@ -393,7 +449,7 @@ namespace ManyWho.Flow.SDK
                 typeElementPropertyAPI.developerName = GetCleanPropertyName(propertyInfo.Name);
 
                 // This method returns the name of the root type - which we need here
-                typeElementPropertyAPI.typeElementDeveloperName = Convert(itemType, typeElementRequestAPIs);
+                typeElementPropertyAPI.typeElementDeveloperName = Convert(itemType, typeElementRequestAPIs, null);
             }
 
             return typeElementPropertyAPI;
@@ -412,10 +468,10 @@ namespace ManyWho.Flow.SDK
 
             if (values != null)
             {
+                objectAPIs = new List<ObjectAPI>();
+
                 foreach (Object objectEntry in values)
                 {
-                    objectAPIs = new List<ObjectAPI>();
-
                     if (objectEntry is ElementAPI)
                     {
                         // Assign the identifier property from the object
@@ -504,7 +560,38 @@ namespace ManyWho.Flow.SDK
 
             if (value != null)
             {
-                propertyAPI = GetPropertyAPIFromCollection(value.Values, propertyInfo, valueElementIdReferences);
+                var values = value as IDictionary<string, string>;
+                if (values != null && values.Count > 0)
+                {
+                    // Add a new list of "Object: String" type objects
+                    propertyAPI = new PropertyAPI();
+
+                    if (propertyInfo.Name.EqualsIgnoreCase("properties"))
+                    {
+                        propertyAPI.developerName = "Properties";
+                    }
+                    else
+                    {
+                        propertyAPI.developerName = "Attributes";
+                    }
+
+                    // For each keypair, create a new "Object: String" object
+                    propertyAPI.objectData = new List<ObjectAPI>();
+
+                    foreach (var attribute in values)
+                    {
+                        propertyAPI.objectData.Add(new ObjectAPI()
+                        {
+                            developerName = "KeyPair",
+                            externalId = Guid.NewGuid().ToString(),
+                            properties = new List<PropertyAPI>()
+                            {
+                                new PropertyAPI() { developerName = "Key", contentValue = attribute.Key },
+                                new PropertyAPI() { developerName = "Value", contentValue = attribute.Value }
+                            }
+                        });
+                    }
+                }
             }
 
             return propertyAPI;
@@ -538,7 +625,14 @@ namespace ManyWho.Flow.SDK
             if (propertyInfo.PropertyType.Name.Equals(typeof(String).Name, StringComparison.OrdinalIgnoreCase) == true ||
                 propertyInfo.PropertyType.Name.Equals(typeof(Guid).Name, StringComparison.OrdinalIgnoreCase) == true)
             {
-                typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_STRING;
+                if (propertyInfo.Name.ContainsIgnoreCase("Password"))
+                {
+                    typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_PASSWORD;
+                }
+                else
+                {
+                    typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_STRING;
+                }
             }
             else if (propertyInfo.PropertyType.Name.Equals(typeof(Int32).Name, StringComparison.OrdinalIgnoreCase) == true)
             {
@@ -551,6 +645,10 @@ namespace ManyWho.Flow.SDK
             else if (propertyInfo.PropertyType.Name.Equals(typeof(Boolean).Name, StringComparison.OrdinalIgnoreCase) == true)
             {
                 typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_BOOLEAN;
+            }
+            else if (propertyInfo.PropertyType.GetTypeInfo().IsEnum)
+            {
+                typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_STRING;
             }
             else
             {
@@ -568,7 +666,7 @@ namespace ManyWho.Flow.SDK
                 else
                 {
                     // The property is an object, so we convert that over here so we have the type
-                    typeElementPropertyAPI.typeElementDeveloperName = Convert(propertyInfo.PropertyType, typeElementRequestAPIs);
+                    typeElementPropertyAPI.typeElementDeveloperName = Convert(propertyInfo.PropertyType, typeElementRequestAPIs, null);
                 }
 
                 typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_OBJECT;
@@ -581,6 +679,7 @@ namespace ManyWho.Flow.SDK
         {
             List<ObjectAPI> objectData = null;
             string value = null;
+            object propertyValue = null;
 
             // Check to see if the source is a value element identifier, if so we map that over to the full reference
             if (source is ValueElementIdAPI)
@@ -588,7 +687,10 @@ namespace ManyWho.Flow.SDK
                 source = FindValueElementIdReferenceForValueElementId((ValueElementIdAPI)source, valueElementIdReferences);
             }
 
-            object propertyValue = propertyInfo.GetValue(source, null);
+            if (source != null)
+            {
+                propertyValue = propertyInfo.GetValue(source, null);
+            }
 
             // All of the ValueElementIds are translated to ValueElementIdReferences, so we need to do a little switch here
             if (propertyInfo.PropertyType.Name.Equals("ValueElementIdAPI", StringComparison.OrdinalIgnoreCase) == true)
@@ -601,7 +703,11 @@ namespace ManyWho.Flow.SDK
             {
                 if (propertyValue is DateTime)
                 {
-                    value = ((DateTime)propertyValue).ToUniversalTime().ToString();
+                    value = (new DateTimeOffset((DateTime)propertyValue)).ToString("o");
+                }
+                else if (propertyValue is DateTimeOffset)
+                {
+                    value = ((DateTimeOffset)propertyValue).ToString("o");
                 }
                 else if (propertyValue is Int32 ||
                          propertyValue is Boolean ||
@@ -640,20 +746,21 @@ namespace ManyWho.Flow.SDK
                 if (valueElementIdReferences != null &&
                     valueElementIdReferences.Count > 0)
                 {
-                    foreach (ValueElementIdReferenceAPI valueElementIdReferenceEntry in valueElementIdReferences)
+                    // If we're not given a property ID, then we're looking for a scalar value
+                    if (string.IsNullOrWhiteSpace(valueElementId.typeElementPropertyId))
+                    {
+                        valueElementIdReference = valueElementIdReferences
+                            .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.id == valueElementId.id)
+                            .FirstOrDefault();
+                    }
+                    else
                     {
                         // For the value element reference to be a match, both the identifier and the type element property identifier must match
-                        if (valueElementIdReferenceEntry.id.Equals(valueElementId.id, StringComparison.OrdinalIgnoreCase) == true &&
-                            ((string.IsNullOrWhiteSpace(valueElementId.typeElementPropertyId) == true &&
-                             string.IsNullOrWhiteSpace(valueElementIdReferenceEntry.typeElementPropertyId) == true) ||
-                             (string.IsNullOrWhiteSpace(valueElementId.typeElementPropertyId) == false &&
-                              string.IsNullOrWhiteSpace(valueElementIdReferenceEntry.typeElementPropertyId) == false &&
-                              valueElementId.typeElementPropertyId.Equals(valueElementIdReferenceEntry.typeElementPropertyId, StringComparison.OrdinalIgnoreCase) == true)))
-                        {
-                            valueElementIdReference = valueElementIdReferenceEntry;
-                            break;
-                        }
-                    }
+                        valueElementIdReference = valueElementIdReferences
+                            .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.id == valueElementId.id)
+                            .Where(valueElementIdReferenceEntry => valueElementIdReferenceEntry.typeElementPropertyId == valueElementId.typeElementPropertyId)
+                            .FirstOrDefault();
+                    }                    
                 }
 
                 if (valueElementIdReference == null)
@@ -679,7 +786,10 @@ namespace ManyWho.Flow.SDK
             name = char.ToUpper(name[0]) + name.Substring(1);
 
             // Chop off the API bit at the end
-            name = name.Substring(0, name.Length - 3);
+            if (name.EndsWith("API"))
+            {
+                return name.Remove(name.LastIndexOf("API", StringComparison.Ordinal));
+            }
 
             return name;
         }

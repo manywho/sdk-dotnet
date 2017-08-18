@@ -113,5 +113,20 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             get;
             set;
         }
+
+        [DataMember]
+        public string nextMapElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Dictionary<string, string> attributes
+        {
+            get;
+            set;
+        }
+
     }
 }

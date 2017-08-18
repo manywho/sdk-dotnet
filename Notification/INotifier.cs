@@ -18,20 +18,10 @@ namespace ManyWho.Flow.SDK.Utils
             set;
         }
 
-        String Reason
+        string Reason
         {
             get;
             set;
         }
-
-        void AddLogEntry(String entry);
-
-        void AddNotificationMessage(String mediaType, String message);
-
-        void SendNotification();
-
-        void SendNotification(IAuthenticatedWho receivingAuthenticatedWho);
-
-        void SendNotification(IAuthenticatedWho receivingAuthenticatedWho, String reason, String mediaType, String message);
     }
 }

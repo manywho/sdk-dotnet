@@ -120,6 +120,38 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        [JsonProperty("roleName")]
+        public String RoleName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        [JsonProperty("roleId")]
+        public String RoleId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        [JsonProperty("primaryGroupName")]
+        public String PrimaryGroupName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        [JsonProperty("primaryGroupId")]
+        public String PrimaryGroupId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         [JsonProperty("firstName")]
         public String FirstName
         {

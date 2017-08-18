@@ -29,7 +29,7 @@ namespace ManyWho.Flow.SDK.Tenant
         }
 
         [DataMember]
-        public bool pageLayouts
+        public bool pages
         {
             get;
             set;
@@ -72,6 +72,13 @@ namespace ManyWho.Flow.SDK.Tenant
 
         [DataMember]
         public bool states
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool macros
         {
             get;
             set;
