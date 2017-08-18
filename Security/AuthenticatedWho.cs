@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
@@ -118,6 +114,38 @@ namespace ManyWho.Flow.SDK.Security
         [DataMember]
         [JsonProperty("directoryId")]
         public String DirectoryId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        [JsonProperty("roleName")]
+        public String RoleName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        [JsonProperty("roleId")]
+        public String RoleId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        [JsonProperty("primaryGroupName")]
+        public String PrimaryGroupName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        [JsonProperty("primaryGroupId")]
+        public String PrimaryGroupId
         {
             get;
             set;

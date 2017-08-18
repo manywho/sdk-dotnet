@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 
 /*!
@@ -62,6 +60,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
 
         [DataMember]
         public List<TypeElementPropertyBindingAPI> propertyBindings
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Guid typeElementId
         {
             get;
             set;

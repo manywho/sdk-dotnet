@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Net;
-using System.Net.Mail;
-using System.Net.Mime;
+using ManyWho.Flow.SDK.Errors;
 using ManyWho.Flow.SDK.Security;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 /*!
 
@@ -38,100 +36,6 @@ namespace ManyWho.Flow.SDK.Utils
         public const String ALERT_TYPE_FAULT = "Fault";
         public const String ALERT_TYPE_WARNING = "Warning";
 
-        public static Boolean IsDebugging(String mode)
-        {
-            Boolean isDebugging = false;
-
-            // Check the mode to see if the user is debugging
-            if (String.IsNullOrWhiteSpace(mode) == false &&
-                (mode.Equals(ManyWhoConstants.MODE_DEBUG, StringComparison.OrdinalIgnoreCase) == true) ||
-                (mode.Equals(ManyWhoConstants.MODE_DEBUG_STEPTHROUGH, StringComparison.OrdinalIgnoreCase) == true))
-            {
-                isDebugging = true;
-            }
-
-            return isDebugging;
-        }
-
-        public static ArgumentNullException GetWebException(HttpStatusCode statusCode, String reasonPhrase)
-        {
-            return new ArgumentNullException(statusCode.ToString(), reasonPhrase.Replace(Environment.NewLine, " "));
-        }
-
-        public static ArgumentNullException GetWebException(HttpStatusCode statusCode, Exception exception)
-        {
-            // Aggregate the exception and return as a single reason phrase
-            return GetWebException(statusCode, AggregateAndWriteErrorMessage(exception, "", false));
-        }
-
-        public static ArgumentNullException GetPluginWebException(IAuthenticatedWho authenticatedWho, Exception exception, String methodName, String pluginName, String shortDescription)
-        {
-            String message = null;
-
-            // Create a fault message that's more friendly and doesn't expose core stack trace information
-            message = "PLUGIN: " + pluginName + " -- We hit a problem while " + shortDescription + ". The method being called on the plugin is: " + methodName + ". ";
-            message = "The error we're getting back is: " + AggregateAndWriteErrorMessage(exception, message, false);
-
-            return GetWebException(HttpStatusCode.BadRequest, message);
-        }
-
-        public static String GetExceptionMessage(Exception exception)
-        {
-            return AggregateAndWriteErrorMessage(exception, "", false);
-        }
-
-        public static String GetExceptionMessage(Exception exception, Boolean includeStackTrace)
-        {
-            return AggregateAndWriteErrorMessage(exception, "", includeStackTrace);
-        }
-
-        public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String alertMessage)
-        {
-            SendAlert(notifier, authenticatedWho, alertType, alertMessage, null);
-        }
-
-        public static void SendAlert(INotifier notifier, IAuthenticatedWho authenticatedWho, String alertType, String alertMessage, Exception exception)
-        {
-            String message = null;
-
-            // Check to see if the caller has in fact provided a notifier - if not, we don't bother to do anything
-            if (notifier != null)
-            {
-                try
-                {
-                    // Create the full message
-                    message = "";
-
-                    // Create the alert message block
-                    message += "Alert Message" + Environment.NewLine;
-                    message += "-----" + Environment.NewLine;
-                    message += alertMessage + Environment.NewLine + Environment.NewLine;
-
-                    // Only include the authenticated who if we have one
-                    if (authenticatedWho != null)
-                    {
-                        // Create the running user summary block
-                        message += "Affected User" + Environment.NewLine;
-                        message += "-------------" + Environment.NewLine;
-
-                        // Serialize the user information
-                        message += NotificationUtils.SerializeAuthenticatedWhoInfo(NotificationUtils.MEDIA_TYPE_PLAIN, authenticatedWho) + Environment.NewLine;
-                    }
-
-                    // Finally, we add the exception details if there is an exception
-                    message += AggregateAndWriteErrorMessage(exception, "", true);
-
-                    // Set the notification and send
-                    notifier.AddNotificationMessage(NotificationUtils.MEDIA_TYPE_PLAIN, message);
-                    notifier.SendNotification();
-                }
-                catch (Exception)
-                {
-                    // Hide any faults so we're not piling errors on errors
-                }
-            }
-        }
-
         private static String AggregateAndWriteErrorMessage(Exception exception, String message, Boolean includeTrace)
         {
             if (exception != null)
@@ -139,10 +43,6 @@ namespace ManyWho.Flow.SDK.Utils
                 if (exception is AggregateException)
                 {
                     message = AggregateAndWriteAggregateErrorMessage((AggregateException)exception, message, includeTrace);
-                }
-                else if (exception is WebException)
-                {
-                    message = AggregateAndWriteHttpResponseErrorMessage((WebException)exception, message);
                 }
                 else
                 {
@@ -170,48 +70,11 @@ namespace ManyWho.Flow.SDK.Utils
                         {
                             message = AggregateAndWriteAggregateErrorMessage((AggregateException)innerException, message, includeTrace);
                         }
-                        else if (innerException is WebException)
-                        {
-                            message = AggregateAndWriteHttpResponseErrorMessage((WebException)innerException, message);
-                        }
                         else
                         {
                             message = AggregateAndWriteErrorMessage(innerException, message, includeTrace);
                         }
                     }
-                }
-            }
-
-            return message;
-        }
-
-        private static String AggregateAndWriteHttpResponseErrorMessage(WebException exception, String message)
-        {
-            WebResponse webResponse = null;
-            String statusDescription = null;
-
-            if (exception != null)
-            {
-                if (exception.Response != null)
-                {
-                    webResponse = exception.Response;
-
-                    if (webResponse is HttpWebResponse)
-                    {
-                        statusDescription = ((HttpWebResponse)webResponse).StatusDescription;
-
-                        // Grab the message from the 
-                        if (statusDescription != null &&
-                            statusDescription.Trim().Length > 0)
-                        {
-                            message += "HttpResponseException:" + Environment.NewLine;
-                            message += statusDescription + Environment.NewLine + Environment.NewLine;
-                        }
-                    }
-                }
-                else
-                {
-                    message += exception.Message;
                 }
             }
 
@@ -233,6 +96,33 @@ namespace ManyWho.Flow.SDK.Utils
             }
 
             return message;
+        }
+
+        public static async Task<ApiProblemException> BuildProblemException(HttpResponseMessage response)
+        {
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            if (!response.Headers.Contains("X-ManyWho-Service-Problem-Kind") || string.IsNullOrWhiteSpace(responseBody))
+            {
+                return new ServiceProblemException(new ServiceProblem(response.RequestMessage.RequestUri.AbsoluteUri, response, responseBody));
+            }
+
+            var values = response.Headers.GetValues("X-ManyWho-Service-Problem-Kind");
+            if (!values.Any())
+            {
+                return new ServiceProblemException(new ServiceProblem(response.RequestMessage.RequestUri.AbsoluteUri, response, responseBody));
+            }
+
+            var problemKind = (ProblemKind)Enum.Parse(typeof(ProblemKind), values.FirstOrDefault());
+            switch (problemKind)
+            {
+                case ProblemKind.api:
+                    return new ApiProblemException(JsonConvert.DeserializeObject<ApiProblem>(responseBody));
+                case ProblemKind.service:
+                    return new ServiceProblemException(JsonConvert.DeserializeObject<ServiceProblem>(responseBody));
+            }
+
+            return new ServiceProblemException(new ServiceProblem(response.RequestMessage.RequestUri.AbsoluteUri, response, responseBody));
         }
     }
 }

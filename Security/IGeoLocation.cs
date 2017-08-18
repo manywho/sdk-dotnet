@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 /*!
 
@@ -23,7 +20,7 @@ namespace ManyWho.Flow.SDK.Security
 {
     public interface IGeoLocation
     {
-        DateTime TimeStamp
+        DateTimeOffset TimeStamp
         {
             get;
             set;

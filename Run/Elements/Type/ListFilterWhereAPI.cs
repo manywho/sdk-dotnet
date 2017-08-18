@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 
 /*!
@@ -41,6 +39,20 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
 
         [DataMember]
         public String value
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String contentValue
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<ObjectAPI> objectData
         {
             get;
             set;

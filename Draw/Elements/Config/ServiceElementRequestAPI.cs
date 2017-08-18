@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Type;
 
 /*!
 
@@ -96,6 +94,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         }
 
         [DataMember]
+        public bool providesAutoBinding
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public List<ServiceActionRequestAPI> actions
         {
             get;
@@ -111,6 +116,31 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
 
         [DataMember]
         public Boolean updateByName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool sendDecryptedValues
+        {
+            get;
+            set;
+        }
+
+        public string HttpAuthenticationUsername
+        {
+            get;
+            set;
+        }
+
+        public string HttpAuthenticationPassword
+        {
+            get;
+            set;
+        }
+
+        public string Version
         {
             get;
             set;

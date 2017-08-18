@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Flow;
-using ManyWho.Flow.SDK.Run.Elements;
 using ManyWho.Flow.SDK.Run.Elements.UI;
 using ManyWho.Flow.SDK.Translate;
 
@@ -66,6 +62,20 @@ namespace ManyWho.Flow.SDK.Run
 
         [DataMember]
         public List<EngineValueAPI> tags
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool isVisible
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool isEnabled
         {
             get;
             set;

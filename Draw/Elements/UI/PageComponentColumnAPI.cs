@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 
 /*!
@@ -69,6 +66,27 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
 
         [DataMember]
         public Int32 order
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string typeElementPropertyToDisplayId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string componentType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string typeElementPropertyDeveloperName
         {
             get;
             set;

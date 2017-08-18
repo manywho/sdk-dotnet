@@ -1,38 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ManyWho.Flow.SDK.Utils;
+﻿using ManyWho.Flow.SDK.Utils;
 
 namespace ManyWho.Flow.SDK.Tenant
 {
-    public class TenantRegistrationAPI
+    public class TenantRegistrationAPI : UserRegistrationAPI
     {
-        public String firstName
+        public string tenantName
         {
             get;
             set;
         }
 
-        public String lastName
-        {
-            get;
-            set;
-        }
-
-        public String email
-        {
-            get;
-            set;
-        }
-
-        public String username
-        {
-            get;
-            set;
-        }
-
-        public String password
+        public string subdomain
         {
             get;
             set;

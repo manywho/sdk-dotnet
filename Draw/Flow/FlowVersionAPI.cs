@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Reflection;
-using ManyWho.Flow.SDK.Utils;
-using ManyWho.Flow.SDK.Run.Elements.Type;
 
 /*!
 
@@ -58,6 +53,13 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         
         [DataMember]
         public DateTime dateModified
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Boolean isActive
         {
             get;
             set;

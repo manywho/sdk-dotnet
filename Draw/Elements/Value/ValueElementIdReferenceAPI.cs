@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
 /*!
@@ -48,6 +44,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         }
 
         [DataMember]
+        public string typeElementEntryTypeElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String typeElementPropertyTypeElementId
         {
             get;
@@ -69,6 +72,20 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         }
 
         [DataMember]
+        public String serviceElementId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String serviceElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String contentType
         {
             get;
@@ -76,7 +93,21 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         }
 
         [DataMember]
+        public String parentContentType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public Boolean isFixed
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string access
         {
             get;
             set;

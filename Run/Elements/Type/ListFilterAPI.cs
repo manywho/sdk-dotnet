@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 
 /*!
@@ -23,7 +21,7 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Run.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ListFilterAPI
+    public class ListFilterAPI : ListFilterMinimalAPI
     {
         /// <summary>
         /// The identifier of the actual object to filter by - this basically gives an individual result back.
@@ -36,30 +34,10 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         /// <summary>
-        /// The comparison type to use when evaluating the wheres.
-        /// </summary>
-        [DataMember]
-        public String comparisonType
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// Use the list of provided objects as the filter for the lookup.  This allows us to refresh data that can be transient in the remote system.
         /// </summary>
         [DataMember]
         public Boolean filterByProvidedObjects
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// The where filter to apply to the list.
-        /// </summary>
-        [DataMember]
-        public List<ListFilterWhereAPI> where
         {
             get;
             set;
@@ -80,6 +58,13 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// </summary>
         [DataMember]
         public String orderByDirectionType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public List<ListFilterOrderByAPI> orderBy
         {
             get;
             set;
@@ -110,6 +95,16 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// </summary>
         [DataMember]
         public String search
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Any extra criteria that should be used when searching
+        /// </summary>
+        [DataMember]
+        public List<ListFilterSearchCriteriaAPI> searchCriteria
         {
             get;
             set;

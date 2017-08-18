@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 
 /*!
@@ -41,6 +38,34 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
 
         [DataMember]
         public Boolean runningUser
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string attributeLabel
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string friendlyName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string developerSummary
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string serviceElementId
         {
             get;
             set;

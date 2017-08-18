@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Security;
 
@@ -42,6 +39,27 @@ namespace ManyWho.Flow.SDK.Tenant
 
         [DataMember]
         public ReportSettingsAPI reportSettings
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string subdomain
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public StateSettingsAPI stateSettings
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public TenantSettingsAPI tenantSettings
         {
             get;
             set;

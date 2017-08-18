@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Group;
-using ManyWho.Flow.SDK.Translate;
 using ManyWho.Flow.SDK.Run.Elements.Map;
 
 /*!
@@ -72,6 +69,13 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// </summary>
         [DataMember]
         public List<OutcomeAvailableAPI> outcomes
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string executionMode
         {
             get;
             set;

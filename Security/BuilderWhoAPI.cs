@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 
 /*!
@@ -55,6 +52,13 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         public String username
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool verified
         {
             get;
             set;

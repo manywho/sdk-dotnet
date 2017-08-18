@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Run;
 
@@ -101,6 +99,13 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         public String instanceUrl
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string tenantId
         {
             get;
             set;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 
 /*!
@@ -107,5 +106,27 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             get;
             set;
         }
+
+        [DataMember]
+        public List<ControlPointAPI> controlPoints
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string nextMapElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Dictionary<string, string> attributes
+        {
+            get;
+            set;
+        }
+
     }
 }

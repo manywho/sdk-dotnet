@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 
 /*!
@@ -26,6 +24,13 @@ namespace ManyWho.Flow.SDK.Draw.Flow
     {
         [DataMember]
         public String tenantId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public DateTime dateModified
         {
             get;
             set;

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 
 /*!
@@ -55,6 +52,27 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
 
         [DataMember]
         public String locationMapElementId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string locationMapElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string navigationElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string navigationItemDeveloperName
         {
             get;
             set;

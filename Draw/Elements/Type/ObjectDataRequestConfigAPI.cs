@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Content;
 
@@ -67,6 +64,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// </summary>
         [DataMember]
         public CommandAPI command
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string typeElementDeveloperName
         {
             get;
             set;

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Elements.Type;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
@@ -50,6 +47,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
 
         [DataMember]
         public Int32 order
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool disabled
         {
             get;
             set;

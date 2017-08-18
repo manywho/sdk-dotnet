@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Translate;
 
@@ -76,6 +73,34 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         [DataMember]
+        public String roleId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String roleName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String primaryGroupId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String primaryGroupName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String tenantName
         {
             get;
@@ -122,6 +147,20 @@ namespace ManyWho.Flow.SDK.Security
         {
             get;
             set;
+        }
+
+        public static AuthenticatedWhoResultAPI CreateDeniedResult()
+        {
+            return CreateDeniedResult("Unable to login with the provided credentials");
+        }
+
+        public static AuthenticatedWhoResultAPI CreateDeniedResult(string message)
+        {
+            return new AuthenticatedWhoResultAPI()
+            {
+                status = ManyWhoConstants.AUTHENTICATED_USER_STATUS_ACCESS_DENIED,
+                statusMessage = message
+            };
         }
     }
 }

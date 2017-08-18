@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Security;
+﻿using System.Runtime.Serialization;
 
 /*!
 
@@ -34,7 +29,7 @@ namespace ManyWho.Flow.SDK.Tenant
         }
 
         [DataMember]
-        public bool pageLayouts
+        public bool pages
         {
             get;
             set;
@@ -77,6 +72,13 @@ namespace ManyWho.Flow.SDK.Tenant
 
         [DataMember]
         public bool states
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool macros
         {
             get;
             set;

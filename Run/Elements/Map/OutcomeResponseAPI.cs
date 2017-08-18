@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
+using System.Collections.Generic;
 
 /*!
 
@@ -54,6 +53,13 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
 
         [DataMember]
         public Boolean isOut
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Dictionary<string, string> attributes
         {
             get;
             set;

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 /*!
 
@@ -43,6 +40,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// </summary>
         [DataMember]
         public PageOperationFilterAPI filter
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string generatedSummary
         {
             get;
             set;

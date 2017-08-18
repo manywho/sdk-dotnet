@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Content;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
@@ -49,6 +46,90 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
 
         [DataMember]
         public Int32 order
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool disabled
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string macroElementToExecuteDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToApplyDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToReferenceDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToApplyCommand
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToReferenceCommand
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToApplyCommandFriendly
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToReferenceCommandFriendly
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToApplyContentType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToApplyTypeElementId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToReferenceContentType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string valueElementToReferenceTypeElementId
         {
             get;
             set;

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 
 /*!
@@ -41,6 +38,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
 
         [DataMember]
         public PageObjectReferenceAPI right
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string generatedSummary
         {
             get;
             set;

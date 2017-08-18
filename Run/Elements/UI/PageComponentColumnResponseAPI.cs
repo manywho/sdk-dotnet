@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 
 /*!
@@ -47,6 +44,20 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         }
 
         [DataMember]
+        public String contentFormat
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public String contentType
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public String label
         {
             get;
@@ -69,6 +80,20 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
 
         [DataMember]
         public Int32 order
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string typeElementPropertyToDisplayId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string componentType
         {
             get;
             set;

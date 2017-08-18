@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Content;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
@@ -42,6 +39,27 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
 
         [DataMember]
         public ValueElementIdAPI rightValueElementToReferenceId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string leftValueElementToReferenceDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string rightValueElementToReferenceDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string criteriaTypeFriendly
         {
             get;
             set;

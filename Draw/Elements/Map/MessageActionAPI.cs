@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 /*!
 
@@ -62,6 +60,27 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
 
         [DataMember]
         public Dictionary<String, String> attributes
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public int order
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string serviceActionName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool disabled
         {
             get;
             set;
