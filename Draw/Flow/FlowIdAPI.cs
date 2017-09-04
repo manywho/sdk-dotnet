@@ -22,6 +22,30 @@ namespace ManyWho.Flow.SDK.Draw.Flow
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowIdAPI
     {
+        public FlowIdAPI()
+        {
+        }
+
+        public FlowIdAPI(string id) 
+        {
+            this.id = id;
+        }
+
+        public FlowIdAPI(string id, string versionId) : this(id)
+        {
+            this.versionId = versionId;
+        }
+
+        public FlowIdAPI(Guid id)
+        {
+            this.id = id.ToString();
+        }
+
+        public FlowIdAPI(Guid id, Guid versionId) : this(id)
+        {
+            this.versionId = versionId.ToString();
+        }
+
         [DataMember]
         public String id
         {
