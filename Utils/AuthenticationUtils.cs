@@ -204,12 +204,8 @@ namespace ManyWho.Flow.SDK.Utils
                                 .IsNotEmpty(authenticatedWho.ManyWhoTenantId, "ManyWhoTenantId")
                                 .IsNotEmpty(authenticatedWho.ManyWhoUserId, "ManyWhoUserId")
                                 .IsNotNullOrWhiteSpace(authenticatedWho.ManyWhoToken, "ManyWhoToken")
-                                .IsNotNullOrWhiteSpace(authenticatedWho.DirectoryId, "DirectoryId")
-                                .IsNotNullOrWhiteSpace(authenticatedWho.DirectoryName, "DirectoryName")
                                 .IsNotNullOrWhiteSpace(authenticatedWho.Email, "Email")
-                                .IsNotNullOrWhiteSpace(authenticatedWho.IdentityProvider, "IdentityProvider")
                                 .IsNotNullOrWhiteSpace(authenticatedWho.ManyWhoToken, "ManyWhoToken")
-                                .IsNotNullOrWhiteSpace(authenticatedWho.TenantName, "TenantName")
                                 .IsNotNullOrWhiteSpace(authenticatedWho.Token, "Token")
                                 .IsNotNullOrWhiteSpace(authenticatedWho.UserId, "UserId");
         }
