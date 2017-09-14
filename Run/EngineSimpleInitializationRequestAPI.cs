@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ManyWho.Flow.SDK.Run
 {
@@ -17,6 +18,12 @@ namespace ManyWho.Flow.SDK.Run
         }
 
         public string DeveloperName
+        {
+            get;
+            set;
+        }
+
+        public List<EngineValueAPI> Inputs
         {
             get;
             set;
