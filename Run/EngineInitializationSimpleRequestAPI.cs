@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace ManyWho.Flow.SDK.Run
 {
-    public class EngineSimpleInitializationRequestAPI
+    public class EngineInitializationSimpleRequestAPI
     {
-        public Guid Id
+        public Guid? Id
         {
             get;
             set;
         }
 
-        public Guid VersionId
+        public Guid? VersionId
         {
             get;
             set;
@@ -29,7 +29,13 @@ namespace ManyWho.Flow.SDK.Run
             set;
         }
 
-        public string Player
+        public string Username
+        {
+            get;
+            set;
+        }
+
+        public string Password
         {
             get;
             set;
