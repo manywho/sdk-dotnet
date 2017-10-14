@@ -110,7 +110,7 @@ namespace ManyWho.Flow.SDK.Run
         {
             get;
             set;
-        }
+        } = new List<MapElementInvokeResponseAPI>();
 
         [DataMember]
         public VoteResponseAPI voteResponse
@@ -180,6 +180,6 @@ namespace ManyWho.Flow.SDK.Run
         {
             get;
             set;
-        }
+        } = new List<NavigationElementReferenceAPI>();
     }
 }
