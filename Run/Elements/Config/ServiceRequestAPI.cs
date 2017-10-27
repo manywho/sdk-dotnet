@@ -68,7 +68,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The outcomes that are available for this element. The system can return it's desired selected outcome in addition to sending back outputs.
         /// </summary>
         [DataMember]
-        public List<OutcomeAvailableAPI> outcomes
+        public List<OutcomeResponseAPI> outcomes
         {
             get;
             set;
