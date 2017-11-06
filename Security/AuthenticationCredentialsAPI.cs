@@ -34,6 +34,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The type of authentication being performed
+        /// </summary>
         [DataMember]
         public String authenticationType
         {
@@ -41,6 +44,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The username for your account in the directory
+        /// </summary>
         [DataMember]
         public String username
         {
@@ -48,6 +54,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The password for your account in the directory
+        /// </summary>
         [DataMember]
         public String password
         {
@@ -55,6 +64,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The account token for the directory. For OAuth2 integration, this the access token
+        /// </summary>
         [DataMember]
         public String token
         {
@@ -62,6 +74,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The OAuth2 code
+        /// </summary>
         [DataMember]
         public String code
         {
@@ -69,6 +84,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The session token for the directory. For services such as salesforce.com, this is the sessionId
+        /// </summary>
         [DataMember]
         public String sessionToken
         {
@@ -76,6 +94,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The session URL for the directory. For services such as salesforce.com, this is the pod instance you are currently logged into
+        /// </summary>
         [DataMember]
         public String sessionUrl
         {
@@ -83,6 +104,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The REST endpoint for the plugin providing the identity
+        /// </summary>
         [DataMember]
         public String loginUrl
         {
@@ -90,6 +114,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The OAuth2 redirect URI
+        /// </summary>
         [DataMember]
         public String redirectUri
         {
@@ -97,6 +124,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The particular instance of the directory. For services such as salesforce.com, this is either "https://login.salesforce.com" (default) or "https://test.salesforce.com".
+        /// </summary>
         [DataMember]
         public String instanceUrl
         {

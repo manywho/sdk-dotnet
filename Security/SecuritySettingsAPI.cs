@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Security
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class SecuritySettingsAPI
     {
+        /// <summary>
+        /// A boolean value indicating if requests to the Admin API are restricted by IP range. If this is true, the list of IP ranges should be listed in the authorizedAdminIPRanges property
+        /// </summary>
         [DataMember]
         public Boolean isAdminRestrictedByIPRange
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// A boolean value indicating if requests to the Package API are restricted by IP range. If this is true, the list of IP ranges should be listed in the authorizedPackagingIPRanges property
+        /// </summary>
         [DataMember]
         public Boolean isPackagingRestrictedByIPRange
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// A boolean value indicating if requests to the Draw API are restricted by IP range. If this is true, the list of IP ranges should be listed in the authorizedDrawIPRanges property
+        /// </summary>
         [DataMember]
         public Boolean isDrawRestrictedByIPRange
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// A boolean value indicating if requests to the Run API are restricted by IP range. If this is true, the list of IP ranges should be listed in the authorizedRunIPRanges property
+        /// </summary>
         [DataMember]
         public Boolean isRunRestrictedByIPRange
         {
@@ -51,6 +63,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// A boolean value indicating if running Flows can send data to Services that are not explicitly listed
+        /// </summary>
         [DataMember]
         public Boolean isServiceRestrictedByRemoteSites
         {
@@ -58,6 +73,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// A list of IP ranges that requests to the Admin API must originate from to gain access
+        /// </summary>
         [DataMember]
         public List<IPRangeAPI> authorizedAdminIPRanges
         {
@@ -65,6 +83,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// A list of IP ranges that requests to the Packaging API must originate from to gain access
+        /// </summary>
         [DataMember]
         public List<IPRangeAPI> authorizedPackagingIPRanges
         {
@@ -72,6 +93,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// A list of IP ranges that requests to the Draw API must originate from to gain access
+        /// </summary>
         [DataMember]
         public List<IPRangeAPI> authorizedDrawIPRanges
         {
@@ -79,6 +103,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// A list of IP ranges that requests to the Run API must originate from to gain access
+        /// </summary>
         [DataMember]
         public List<IPRangeAPI> authorizedRunIPRanges
         {
@@ -86,6 +113,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// A list of remote site addresses that any Services must adhere to if included in a Flow. If a Flow attempts to connect to a Service not listed as a remote site, the request to the Service will be denied.
+        /// </summary>
         [DataMember]
         public List<RemoteSiteAPI> authorizedServiceRemoteSites
         {
@@ -93,6 +123,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The user registration settings that determine how builder users are added to the tenant
+        /// </summary>
         [DataMember]
         public UserRegistrationSettingsAPI userRegistrationSettings
         {

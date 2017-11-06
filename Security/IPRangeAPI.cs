@@ -22,6 +22,9 @@ namespace ManyWho.Flow.SDK.Security
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class IPRangeAPI
     {
+        /// <summary>
+        /// The name for this IP range restriction
+        /// </summary>
         [DataMember]
         public String developerName
         {
@@ -29,6 +32,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// Any additional summary information about this IP range restriction
+        /// </summary>
         [DataMember]
         public String developerSummary
         {
@@ -36,6 +42,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The lower end of the IP range in IPv4 format (dotted decimal)
+        /// </summary>
         [DataMember]
         public String startIPAddress
         {
@@ -43,6 +52,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The upper end of the IP range in IPv4 format  (dotted decimal)
+        /// </summary>
         [DataMember]
         public String endIPAddress
         {

@@ -22,6 +22,9 @@ namespace ManyWho.Flow.SDK.Security
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class RemoteSiteAPI
     {
+        /// <summary>
+        /// The name for this remote site restriction
+        /// </summary>
         [DataMember]
         public String developerName
         {
@@ -29,6 +32,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// Any additional summary information about this remote site restriction
+        /// </summary>
         [DataMember]
         public String developerSummary
         {
@@ -36,6 +42,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The base Uri for the remote site (e.g. https://flow.manywho.com)
+        /// </summary>
         [DataMember]
         public String uri
         {
@@ -43,6 +52,9 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// A boolean value indicating if requests to this remote site can be made without SSL encryption
+        /// </summary>
         [DataMember]
         public Boolean disableProtocolSecurity
         {
