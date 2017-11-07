@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Utils
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class NotificationRequestAPI
     {
+        /// <summary>
+        /// The reason for the notification. Typically, the reason will be provided as the 'subject' for email notifications.
+        /// </summary>
         [DataMember]
         public String reason
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Utils
             set;
         }
 
+        /// <summary>
+        /// The Url to redirect the user to once this notification has been processed by the platform.
+        /// </summary>
         [DataMember]
         public String redirectUrl
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Utils
             set;
         }
 
+        /// <summary>
+        /// The list of notification messages to be sent.
+        /// </summary>
         [DataMember]
         public List<NotificationMessageAPI> notificationMessages
         {

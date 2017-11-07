@@ -22,6 +22,9 @@ namespace ManyWho.Flow.SDK.Utils
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class NotificationMessageAPI
     {
+        /// <summary>
+        /// The media type for the message. Currently the platform only supports: text/html or text/plain
+        /// </summary>
         [DataMember]
         public String mediaType
         {
@@ -29,6 +32,9 @@ namespace ManyWho.Flow.SDK.Utils
             set;
         }
 
+        /// <summary>
+        /// The message string in the correct format for the media type.
+        /// </summary>
         [DataMember]
         public String message
         {
