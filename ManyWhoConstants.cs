@@ -81,6 +81,8 @@ namespace ManyWho.Flow.SDK
         /// Tells the user that they are not allowed to perform any operations - this is to avoid testing "null"
         /// </summary>
         public const String INVOKE_TYPE_NOT_ALLOWED = "NOT_ALLOWED";
+        
+        #endregion
 
         #region Flow Modes
 
@@ -99,6 +101,8 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public const String MODE_DEBUG_STEPTHROUGH = "DEBUG_STEPTHROUGH";
         public const string MODE_RECORD = "RECORD";
+
+        #endregion
 
         #region Reporting Modes
 
@@ -121,6 +125,8 @@ namespace ManyWho.Flow.SDK
         /// Store both PATH and VALUES information.
         /// </summary>
         public const String REPORT_PATH_AND_VALUES = "PATH_AND_VALUES";
+
+        #endregion
 
         #region Content Value Implementation constants
 
@@ -188,6 +194,8 @@ namespace ManyWho.Flow.SDK
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_TYPE_ELEMENT_ENTRY_ID = "SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_TYPE_ELEMENT_ENTRY_ID";
         public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_COMMAND = "SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_COMMAND";
 
+        #endregion
+
         #region Criteria for content values
 
         /// <summary>
@@ -250,6 +258,8 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_IS_EMPTY = "IS_EMPTY";
 
+        #endregion
+
         #region Content types
 
         /// <summary>
@@ -296,6 +306,8 @@ namespace ManyWho.Flow.SDK
         /// A string value that is encrypted at rest and never shown to users. The value can be decrypted when sent to a service, if the builder chooses it to be.
         /// </summary>
         public const String CONTENT_TYPE_ENCRYPTED = "ContentEncrypted";
+
+        #endregion
 
         // Content parser strings
         public const String EMBEDDED_KEY_START_INTERNAL = "flowkey___";
@@ -486,6 +498,8 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public const String META_DATA_REQUIRED = "METADATA.REQUIRED";
 
+        #endregion
+
         // Service description constants
         public const String SERVICE_DESCRIPTION_VALUE_TABLE_NAME = "TableName";
 
@@ -541,6 +555,8 @@ namespace ManyWho.Flow.SDK
         public const String GROUP_AUTHORIZATION_STREAM_BEHAVIOUR_NONE = "NONE";
         public const String GROUP_AUTHORIZATION_USER = "USER";
 
+        #endregion
+
         #region List Filter Config
 
         /// <summary>
@@ -562,6 +578,8 @@ namespace ManyWho.Flow.SDK
         /// Compare the values using 'or'. E.g. this or that must be true.
         /// </summary>
         public const String LIST_FILTER_CONFIG_COMPARISON_TYPE_OR = "OR";
+
+        #endregion
 
         // Page Container constants
         public const String PAGE_CONTAINER_CONTAINER_TYPE_VERTICAL_FLOW = "VERTICAL_FLOW";
@@ -697,6 +715,8 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public const String COMPONENT_TYPE_FILES = "FILES";
 
+        #endregion
+
         #region Container types for pages
 
         /// <summary>
@@ -719,6 +739,8 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public const String CONTAINER_TYPE_GROUP = "GROUP";
 
+        #endregion
+
         #region Map Element Action Bindings
 
         /// <summary>
@@ -731,6 +753,8 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public const String ACTION_BINDING_NO_SAVE = "NO_SAVE";
         public const String ACTION_BINDING_PARTIAL_SAVE = "PARTIAL_SAVE";
+
+        #endregion
 
         // Action types for map elements
         public const String ACTION_TYPE_NEW = "NEW";
@@ -836,6 +860,8 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public const String TYPE_ELEMENT_TYPE_IMPLEMENTATION_TYPE = "TYPE";
 
+        #endregion
+
         #region Post Update Types
 
         /// <summary>
@@ -848,6 +874,8 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public const String POST_UPDATE_WHEN_ON_EXIT = "ON_EXIT";
 
+        #endregion
+
         // Guids for the reserved outcomes for faults and debug
         public static readonly Guid DEBUG_GUID = Guid.Parse("EE6C8827-11E2-486D-B5FA-4D1A0CBB77A3");
         public static readonly Guid FAULT_GUID = Guid.Parse("318B0F3A-A570-4C5D-835C-21C1EEB17787");
@@ -856,6 +884,7 @@ namespace ManyWho.Flow.SDK
         public const String FAULT_DEVELOPER_NAME = "FAULT";
 
         #region Authentication Types
+
         /// <summary>
         /// The user should login using username/password authentication credentials
         /// </summary>
@@ -873,6 +902,8 @@ namespace ManyWho.Flow.SDK
 
         public const String PROPERTY_SEARCH = "PROPERTY:";
         public const String EXACT_SEARCH = "EXACT:";
+
+        #endregion
 
         #region User Registration
 
@@ -905,6 +936,8 @@ namespace ManyWho.Flow.SDK
         /// Indicates that a specific builder user should be notified when another user is requesting access to the tenant.
         /// </summary>
         public const String USER_REGISTRATION_NOTIFY_NONE = "NONE";
+
+        #endregion
 
         /// <summary>
         /// The Vote should be based on a fixed number of users that click on a particularly Outcome.
