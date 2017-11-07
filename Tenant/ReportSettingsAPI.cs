@@ -22,6 +22,9 @@ namespace ManyWho.Flow.SDK.Tenant
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class ReportSettingsAPI
     {
+        /// <summary>
+        /// The Uri for the reporting service endpoint all State data will be posted to.
+        /// </summary>
         [DataMember]
         public String reportingServiceUri
         {

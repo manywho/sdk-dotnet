@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Tenant
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class TenantResponseAPI : TenantRequestAPI
     {
+        /// <summary>
+        /// The unique identifier for the tenant. The unique identifier is assigned by the platform.
+        /// </summary>
         [DataMember]
         public String id
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// The unique developer name for the tenant. The developer name is related to the domain information provided in the builder username.
+        /// </summary>
         [DataMember]
         public String developerName
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// The list of sub tenants associated with this parent tenant.
+        /// </summary>
         [DataMember]
         public List<TenantResponseAPI> subTenants
         {

@@ -10,12 +10,18 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// The subdomain to register for the tenant
+        /// </summary>
         public string subdomain
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The notification to be sent to the user as part of the registration process.
+        /// </summary>
         public NotificationRequestAPI notification
         {
             get;

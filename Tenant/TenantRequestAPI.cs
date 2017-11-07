@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Tenant
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class TenantRequestAPI
     {
+        /// <summary>
+        /// Summary information about this tenant.
+        /// </summary>
         [DataMember]
         public String developerSummary
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Specific security settings that should be applied to this tenant beyond the defaults.
+        /// </summary>
         [DataMember]
         public SecuritySettingsAPI securitySettings
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Specific report settings to allow reporting data to be sent to an alternative endpoint.
+        /// </summary>
         [DataMember]
         public ReportSettingsAPI reportSettings
         {
