@@ -34,8 +34,15 @@ namespace ManyWho.Flow.SDK.Errors
             }
         }
 
+        /// <summary>
+        /// The expected invoke type returned by the service
+        /// </summary>
         [JsonProperty(PropertyName = "invokeType")]
         public string InvokeType { get; set; }
+        
+        /// <summary>
+        /// The name of the action executed by the service
+        /// </summary>
         [JsonProperty(PropertyName = "action")]
         public string Action { get; set; }
     }

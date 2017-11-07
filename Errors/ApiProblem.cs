@@ -25,19 +25,34 @@ namespace ManyWho.Flow.SDK.Errors
             this.Message = message;
         }
 
+        /// <summary>
+        /// The kind of problem
+        /// </summary>
         [JsonProperty(PropertyName = "kind")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ProblemKind Kind { get; set; }
 
+        /// <summary>
+        /// The URI of the service endpoint the problem originated from
+        /// </summary>
         [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }
 
+        /// <summary>
+        /// The status code returned by the service
+        /// </summary>
         [JsonProperty(PropertyName = "statusCode")]
         public int StatusCode { get; set; }
 
+        /// <summary>
+        /// The body returned by the service
+        /// </summary>
         [JsonProperty(PropertyName = "responseBody")]
         public string ResponseBody { get; set; }
 
+        /// <summary>
+        /// A short summary of the error returned by the service
+        /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }
 
