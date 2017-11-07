@@ -22,7 +22,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
     public class PageOperationAssignmentAPI
     {
         /// <summary>
-        /// The form element to have the assignment applied.
+        /// The page element that should have its metadata altered by this assignment.
         /// </summary>
         [DataMember]
         public PageObjectReferenceAPI assignee
@@ -32,7 +32,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The form element of value to use in the assignment.
+        /// The page that should supply the metadata to assign.
         /// </summary>
         [DataMember]
         public PageObjectReferenceAPI assignor

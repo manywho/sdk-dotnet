@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class GroupAuthorizationAPI
     {
+        /// <summary>
+        /// The unique identifier for the Service that this authorization configuration is associated. The Service must support identity.
+        /// </summary>
         [DataMember]
         public String serviceElementId
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// The global authentication type for this Flow.
+        /// </summary>
         [DataMember]
         public String globalAuthenticationType
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// The stream behaviour type for this Flow.
+        /// </summary>
         [DataMember]
         public String streamBehaviourType
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// Whether to display page fields as read only
+        /// </summary>
         [DataMember]
         public Boolean showPagesAsReadOnly
         {
@@ -51,6 +63,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// The list of groups that are associated with this authorization configuration.
+        /// </summary>
         [DataMember]
         public List<GroupAuthorizationGroupAPI> groups
         {
@@ -58,6 +73,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// The list of users that are associated with this authorization configuration.
+        /// </summary>
         [DataMember]
         public List<GroupAuthorizationUserAPI> users
         {
@@ -65,6 +83,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// The list of locations that are associated with this authorization configuration.
+        /// </summary>
         [DataMember]
         public List<GroupAuthorizationLocationAPI> locations
         {

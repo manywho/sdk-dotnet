@@ -24,6 +24,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class ListenerAPI
     {
+        /// <summary>
+        /// The developer name for the Listener. This is useful for keeping track of the Listener in the modeling tool and API.
+        /// </summary>
         [DataMember]
         public String developerName
         {
@@ -31,6 +34,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for the Service that this Listener configuration is associated. The Service must support listening to the object you've selected to listen to.
+        /// </summary>
         [DataMember]
         public String serviceElementId
         {
@@ -38,6 +44,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The type of Listener this metadata represents. The ListenerType is determined by the Service, though there are some basic ListenerTypes built into the tooling.
+        /// </summary>
         [DataMember]
         public String listenerType
         {
@@ -52,6 +61,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// Arbitrary key value pairs that may help the Service execute the Listener. Use attributes to extend our Listener metadata with implementation specific settings.
+        /// </summary>
         [DataMember]
         public Dictionary<String, String> attributes
         {

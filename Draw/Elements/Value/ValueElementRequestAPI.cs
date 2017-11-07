@@ -25,6 +25,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class ValueElementRequestAPI : ValueElementAPI
     {
+        /// <summary>
+        /// Indicates if the value of the Value can be changed by operations in the Flow or from outside systems. If this property is set to 'true', the Value will act like a 'constant' - i.e. it can't be changed by anyone except the Flow author at design time.
+        /// </summary>
         [DataMember]
         public Boolean isFixed
         {
@@ -39,6 +42,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             set;
         }
 
+        /// <summary>
+        /// Sets the level of access this Value has to change. In many situations, Values can only be changed by the operations defined in your Flow and the value is not exposed outside of the Flow. Alternatively, you may wish to allow the value of the Value to be assigned at initialization.
+        /// </summary>
         [DataMember]
         public String access
         {
@@ -46,6 +52,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             set;
         }
 
+        /// <summary>
+        /// The type of content the Value holds.
+        /// </summary>
         [DataMember]
         public String contentType
         {
@@ -60,6 +69,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             set;
         }
 
+        /// <summary>
+        /// The default content value for the Value before any operations have been performed. This is for primitive Values.
+        /// </summary>
         [DataMember]
         public String defaultContentValue
         {
@@ -67,6 +79,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             set;
         }
 
+        /// <summary>
+        /// The default object data for the Value before any operations have been performed. This is for Object and List Values.
+        /// </summary>
         [DataMember]
         public List<ObjectAPI> defaultObjectData
         {
@@ -74,6 +89,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             set;
         }
 
+        /// <summary>
+        /// The operations that should be performed when the object is initialized. Initialization operations are only appropriate for Values of content type ContentObject.
+        /// </summary>
         [DataMember]
         public List<OperationAPI> initializationOperations
         {
@@ -81,6 +99,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for the Type and object or list data must adhere to in structure (the Type basically defines the 'interface' that all objects and lists stored in this Value must implement). This property is only applicable for ContentObject and ContentList content types.
+        /// </summary>
         [DataMember]
         public String typeElementId
         {
@@ -95,6 +116,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             set;
         }
 
+        /// <summary>
+        /// Indicates if the platform should attempt to find a Value with the same developer name as the one provided and match them up by name as opposed to 'id'. This is useful when creating scripts to create Flows - as you can use the developerName property as the reference as opposed to needing to know the ids of all created Elements.
+        /// </summary>
         [DataMember]
         public Boolean updateByName
         {

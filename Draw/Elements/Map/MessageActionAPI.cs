@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class MessageActionAPI
     {
+        /// <summary>
+        /// The developer name to help identify this message action in tooling and APIs.
+        /// </summary>
         [DataMember]
         public String developerName
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for the Service that this message action will be executed against. The Service also defines the list inputs/outputs that need to be configured for this message action.
+        /// </summary>
         [DataMember]
         public String serviceElementId
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The unique Uri part that should be used when invoking the Service. The Uri part will inform the Service implementation which message action you are executing against.
+        /// </summary>
         [DataMember]
         public String uriPart
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The list of message inputs that should be sent to the Service when this action is invoked. The list of inputs is defined by the Service.
+        /// </summary>
         [DataMember]
         public List<MessageInputAPI> inputs
         {
@@ -51,6 +63,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The list of message outputs that should be sent back from the Service and applied to Values in the executing Flow (State). The list of outputs is defined by the Service.
+        /// </summary>
         [DataMember]
         public List<MessageOutputAPI> outputs
         {
@@ -58,6 +73,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// Arbitrary key value pairs that may help the Service execute the MessageAction. Use attributes to extend our MessageAction metadata with implementation specific settings.
+        /// </summary>
         [DataMember]
         public Dictionary<String, String> attributes
         {
@@ -79,6 +97,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// Whether the message action is disabled or not
+        /// </summary>
         [DataMember]
         public bool disabled
         {

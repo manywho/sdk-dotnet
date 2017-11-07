@@ -47,6 +47,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             this.command = command;
         }
 
+        /// <summary>
+        /// The unique identifier for the Value to be referenced with this identifier.
+        /// </summary>
         [DataMember]
         public String id
         {
@@ -54,6 +57,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for a property in the Value to be referenced with this identifier. This only applies for Values of type ContentObject.
+        /// </summary>
         [DataMember]
         public String typeElementPropertyId
         {
@@ -61,6 +67,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             set;
         }
 
+        /// <summary>
+        /// The command to execute as part of the Value reference. For certain objects, the command exposes additional properties that can be referenced.
+        /// </summary>
         [DataMember]
         public String command
         {

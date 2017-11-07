@@ -23,7 +23,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     public class ListFilterSearchCriteriaConfigAPI
     {
         /// <summary>
-        /// The column to filter by.
+        /// The unique identifier for the column in the bound component data to filter by.
         /// </summary>
         [DataMember]
         public String columnTypeElementPropertyId

@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowResponseAPI : FlowRequestAPI
     {
+        /// <summary>
+        /// The date the Flow was first created.
+        /// </summary>
         [DataMember]
         public DateTime dateCreated
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The date the last modificiation was made to the Flow.
+        /// </summary>
         [DataMember]
         public DateTime dateModified
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The builder user who created the Flow.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoCreated
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The builder user who last modified the Flow.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoModified
         {
@@ -51,6 +63,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The builder user who owns this Flow.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoOwner
         {
@@ -65,6 +80,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// Indicates if this Flow version is the active version. In the case of run operations, this will always be true.
+        /// </summary>
         [DataMember]
         public Boolean isActive
         {
@@ -72,6 +90,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// Indicates if this Flow version is the default version. In the case of run operations, this will always be true.
+        /// </summary>
         [DataMember]
         public Boolean isDefault
         {

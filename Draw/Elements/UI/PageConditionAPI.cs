@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class PageConditionAPI
     {
+        /// <summary>
+        /// The list of page rules that should be evaluated for this condition. If the page rules evaluate to 'true', the condition will execute the associated page operations.
+        /// </summary>
         [DataMember]
         public List<PageRuleAPI> pageRules
         {
@@ -31,7 +34,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The rules that must evaluate to "true" for this condition to fire the associated actions.
+        /// The comparison to use when evaluating the page rules associated with this page condition.
         /// </summary>
         [DataMember]
         public String comparisonType

@@ -24,6 +24,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowRequestAPI
     {
+        /// <summary>
+        /// The editing token for this particular editing session. An editing token is required so the modeling engine can track multiple user changes.
+        /// </summary>
         [DataMember]
         public String editingToken
         {
@@ -31,6 +34,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The complete unique identifier for the currently edited version of the Flow.
+        /// </summary>
         [DataMember]
         public FlowIdAPI id
         {
@@ -38,6 +44,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The developer name for the Flow. When referencing flows by name, this is the name you should use in your referencing.
+        /// </summary>
         [DataMember]
         public String developerName
         {
@@ -45,6 +54,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The developer summary the author provided to give more information about the Flow.
+        /// </summary>
         [DataMember]
         public String developerSummary
         {
@@ -52,13 +64,19 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for the first element in the Flow.
+        /// </summary>
         [DataMember]
         public String startMapElementId
         {
             get;
             set;
         }
-
+        
+        /// <summary>
+        /// Indicates that the builder of the Flow will allow users to jump to any position in the Flow regardless of Outcomes and/or Navigation.
+        /// </summary>
         [DataMember]
         public Boolean allowJumping
         {
@@ -73,6 +91,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The Authorization object for this Flow.
+        /// </summary>
         [DataMember]
         public GroupAuthorizationAPI authorization
         {

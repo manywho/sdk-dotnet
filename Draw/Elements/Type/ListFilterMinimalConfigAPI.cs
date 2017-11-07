@@ -34,7 +34,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         }
 
         /// <summary>
-        /// The where filter to apply to the list.
+        /// The filter criteria that should be applied during the lookup.
         /// </summary>
         [DataMember]
         public List<ListFilterWhereConfigAPI> where

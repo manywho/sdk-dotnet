@@ -22,6 +22,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class PageRuleAPI
     {
+        /// <summary>
+        /// The reference to the value that should be used for the "left" side of the rule evaluation: e.g. if {left} is greater than {right} then ...
+        /// </summary>
         [DataMember]
         public PageObjectReferenceAPI left
         {
@@ -29,6 +32,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The criteria that should be used when evaluating this rule: e.g. EQUAL
+        /// </summary>
         [DataMember]
         public String criteriaType
         {
@@ -36,6 +42,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The reference to the value that should be used for the "right" side of the rule evaluation: e.g. if {left} is greater than {right} then ...
+        /// </summary>
         [DataMember]
         public PageObjectReferenceAPI right
         {

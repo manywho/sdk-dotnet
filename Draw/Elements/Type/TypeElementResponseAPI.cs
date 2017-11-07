@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class TypeElementResponseAPI : TypeElementRequestAPI
     {
+        /// <summary>
+        /// The date the Type was first created.
+        /// </summary>
         [DataMember]
         public DateTime dateCreated
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             set;
         }
 
+        /// <summary>
+        /// The date the last modification was made to the Type.
+        /// </summary>
         [DataMember]
         public DateTime dateModified
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             set;
         }
 
+        /// <summary>
+        /// The builder user who created the Type.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoCreated
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             set;
         }
 
+        /// <summary>
+        /// The builder user who last modified the Type.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoModified
         {
@@ -51,6 +63,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             set;
         }
 
+        /// <summary>
+        /// The builder user who owns this Type.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoOwner
         {

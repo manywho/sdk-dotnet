@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class OperationAPI
     {
+        /// <summary>
+        /// The Value that should be assigned as part of this operation.
+        /// </summary>
         [DataMember]
         public ValueElementIdAPI valueElementToApplyId
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The Value that should be used to source the value that will be applied to this Value.
+        /// </summary>
         [DataMember]
         public ValueElementIdAPI valueElementToReferenceId
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The Macro that should be executed for this operation.
+        /// </summary>
         [DataMember]
         public String macroElementToExecuteId
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The order in which the operations should be executed. The lowest number is executed first.
+        /// </summary>
         [DataMember]
         public Int32 order
         {
@@ -51,6 +63,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// Whether the operation is disabled or not
+        /// </summary>
         [DataMember]
         public bool disabled
         {

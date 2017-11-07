@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class PageContainerAPI
     {
+        /// <summary>
+        /// The unique identifier for the page container. This property is created by the service.
+        /// </summary>
         [DataMember]
         public String id
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The type of container to render. The current player implementations support the container types listed in the enumeration. However, developers can define their own container types (but will need to make sure these are then supported in the player).
+        /// </summary>
         [DataMember]
         public String containerType
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The developer name for the page container. This will be used to identify the container in your layout - and this can be used to ease the creation of the page metadata. Developers should ensure that the developer name is unique for the page.
+        /// </summary>
         [DataMember]
         public String developerName
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The label for this particular container.
+        /// </summary>
         [DataMember]
         public String label
         {
@@ -51,6 +63,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The tree hierarchy of page containers that are children of this page container. Conceptually, page containers are similar to HTML 'div' tags.
+        /// </summary>
         [DataMember]
         public List<PageContainerAPI> pageContainers
         {
@@ -58,6 +73,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The order in which the page container should be rendered relative to its peers. The lowest number is rendered first.
+        /// </summary>
         [DataMember]
         public Int32 order
         {
@@ -65,6 +83,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// Arbitrary key value pairs that may help the container render/execute. Use attributes to extend our PageContainer metadata with implementation specific settings.
+        /// </summary>
         [DataMember]
         public Dictionary<String, String> attributes
         {
@@ -72,6 +93,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The list of page tags that allow additional metadata to be applied to the page container. Conceptually tags can be used to mimic html css but can also be used to provided data to enrich functionality of the page container.
+        /// </summary>
         [DataMember]
         public List<PageTagAPI> tags
         {

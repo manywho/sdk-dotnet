@@ -25,6 +25,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowGraphRequestAPI : FlowRequestAPI
     {
+        /// <summary>
+        /// The array of MapElements that are part of the Flow graph.
+        /// </summary>
         [DataMember]
         public List<MapElementAPI> mapElements
         {
@@ -87,6 +90,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             this.mapElements.Add(reducedMapElement);
         }
 
+        /// <summary>
+        /// The array of GroupElements that are part of the Flow graph.
+        /// </summary>
         [DataMember]
         public List<GroupElementAPI> groupElements
         {

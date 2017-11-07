@@ -12,6 +12,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowImageResponseAPI : FlowResponseAPI
     {
+        /// <summary>
+        /// The complete object metadata for all Navigations in your Flow.
+        /// </summary>
         [DataMember]
         public List<NavigationElementResponseAPI> navigationElements
         {
@@ -19,6 +22,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The complete object metadata for all Map Elements in your Flow.
+        /// </summary>
         [DataMember]
         public List<MapElementResponseAPI> mapElements
         {
@@ -26,6 +32,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The complete object metadata for all Groups in your Flow.
+        /// </summary>
         [DataMember]
         public List<GroupElementResponseAPI> groupElements
         {
@@ -33,6 +42,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The complete object metadata for all Pages in your Flow.
+        /// </summary>
         [DataMember]
         public List<PageElementResponseAPI> pageElements
         {
@@ -40,6 +52,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The complete object metadata for all Values in your Flow.
+        /// </summary>
         [DataMember]
         public List<ValueElementResponseAPI> valueElements
         {
@@ -47,6 +62,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The complete object metadata for all Macros in your Flow.
+        /// </summary>
         [DataMember]
         public List<MacroElementResponseAPI> macroElements
         {
@@ -54,6 +72,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The complete object metadata for all Services in your Flow.
+        /// </summary>
         [DataMember]
         public List<ServiceElementResponseAPI> serviceElements
         {
@@ -61,6 +82,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The complete object metadata for all Types in your Flow.
+        /// </summary>
         [DataMember]
         public List<TypeElementResponseAPI> typeElements
         {
@@ -68,6 +92,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The complete object metadata for all Tags in your Flow.
+        /// </summary>
         [DataMember]
         public List<TagElementResponseAPI> tagElements
         {

@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class NavigationElementRequestAPI : NavigationElementAPI
     {
+        /// <summary>
+        /// The label to display the user.
+        /// </summary>
         [DataMember]
         public String label
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The navigation items that are available for this Navigation. The navigation items are the "links" the user can use to navigate around your Flow.
+        /// </summary>
         [DataMember]
         public List<NavigationItemAPI> navigationItems
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The list of tags that are associated with this Navigation.
+        /// </summary>
         [DataMember]
         public List<PageTagAPI> tags
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// Indicates if the platform should attempt to find a Navigation with the same developer name as the one provided and match them up by name as opposed to 'id'. This is useful when creating scripts to create Flows - as you can use the developerName property as the reference as opposed to needing to know the ids of all created Elements.
+        /// </summary>
         [DataMember]
         public Boolean updateByName
         {

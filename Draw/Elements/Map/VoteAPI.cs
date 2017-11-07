@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class VoteAPI
     {
+        /// <summary>
+        /// The type of Vote this metadata represents. The VoteType is determined by the Service, though there are two standard VoteTypes built into the tooling.
+        /// </summary>
         [DataMember]
         public String voteType
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The minimum number of users that need to click on an Outcome before the Flow will proceed to the next step.
+        /// </summary>
         [DataMember]
         public Int32 minimumCount
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The minimum percentage of users that need to click on an Outcome before the Flow will proceed to the next step. The percentage is determined based on the authorization context of either the Flow or the Group Swimlane (if the Map Element is contained in a Swimlane).
+        /// </summary>
         [DataMember]
         public Int32 minimumPercent
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// Arbitrary key value pairs that may help the Service execute the Vote. Use attributes to extend our Vote metadata with implementation specific settings.
+        /// </summary>
         [DataMember]
         public Dictionary<String, String> attributes
         {

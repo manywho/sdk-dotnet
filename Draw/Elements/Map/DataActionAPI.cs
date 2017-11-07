@@ -24,6 +24,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class DataActionAPI
     {
+        /// <summary>
+        /// The developer name to help identify this data action in tooling and APIs.
+        /// </summary>
         [DataMember]
         public String developerName
         {
@@ -31,6 +34,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The CRUD (create, read, update, delete - or in ManyWho - SAVE, LOAD, DELETE) operation that should be performed on the objects provided in this data action.
+        /// </summary>
         [DataMember]
         public String crudOperationType
         {
@@ -52,6 +58,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// Whether the data action is disabled or not
+        /// </summary>
         [DataMember]
         public bool disabled
         {
@@ -59,6 +68,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The reference to the Value that should be used to send data to the Service. The Value must be a ContentObject or ContentList and must have a valid binding in the selected Service.
+        /// </summary>
         [DataMember]
         public ValueElementIdAPI valueElementToReferenceId
         {
@@ -66,6 +78,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The reference to the Value that should be used to apply any data back from the Service. The Value must be a ContentObject or ContentList and must have a valid binding in the selected Service.
+        /// </summary>
         [DataMember]
         public ValueElementIdAPI valueElementToApplyId
         {
@@ -73,6 +88,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The object data request properties object holds the specific configuration information that the Service can use to optimize requests from ManyWho.
+        /// </summary>
         [DataMember]
         public ObjectDataRequestConfigAPI objectDataRequest
         {

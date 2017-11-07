@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class PageTagAPI
     {
+        /// <summary>
+        /// The reference to the Value that holds the data to be provided in the tag. This may be a specific CSS reference or a full object containing configuration data needed to the UI.
+        /// </summary>
         [DataMember]
         public ValueElementIdAPI valueElementToReferenceId
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for the Tag that this tag is associated. This Tag will be used to provide the Tag name at runtime and also ensure Tag content and object type references are maintained.
+        /// </summary>
         [DataMember]
         public String tagElementId
         {

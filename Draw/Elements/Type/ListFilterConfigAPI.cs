@@ -25,7 +25,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     public class ListFilterConfigAPI : ListFilterMinimalConfigAPI
     {
         /// <summary>
-        /// The identifier of the actual object to filter by - this basically gives an individual result back.
+        /// The reference to the Value that holds a very specific identifier to filter the objects by. This property should be used when loading specific objects as opposed to lists of object results.
         /// </summary>
         [DataMember]
         public ValueElementIdAPI filterId
@@ -35,7 +35,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         }
 
         /// <summary>
-        /// The type element entry id of the column to order by.
+        /// The unique identifier for the property in the Type (associated with this filter) that should be used for ordering the results.
         /// </summary>
         [DataMember]
         public String orderByTypeElementPropertyId
@@ -45,7 +45,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         }
 
         /// <summary>
-        /// The direction of the ordering.
+        /// The direction in which to order the results.
         /// </summary>
         [DataMember]
         public String orderByDirectionType
@@ -54,6 +54,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             set;
         }
 
+        /// <summary>
+        /// The ordering clauses for the result set
+        /// </summary>
         [DataMember]
         public List<ListFilterOrderByConfigAPI> orderBy
         {
@@ -62,7 +65,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         }
 
         /// <summary>
-        /// The number of objects to retrieve in the list.
+        /// The maximum number of results to return from the request.
         /// </summary>
         [DataMember]
         public Int32 limit

@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Draw.Content
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class CommandAPI
     {
+        /// <summary>
+        /// The type of command to be executed.
+        /// </summary>
         [DataMember]
         public String commandType
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Draw.Content
             set;
         }
 
+        /// <summary>
+        /// Additional key value pairs that may help the Command execute.
+        /// </summary>
         [DataMember]
         public Dictionary<String, String> properties
         {

@@ -22,6 +22,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class MacroElementRequestAPI : MacroElementAPI
     {
+        /// <summary>
+        /// The JavaScript code for the Macro.
+        /// </summary>
         [DataMember]
         public String code
         {
@@ -29,6 +32,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             set;
         }
 
+        /// <summary>
+        /// Indicates if the platform should attempt to find a Macro with the same developer name as the one provided and match them up by name as opposed to 'id'. This is useful when creating scripts to create Flows - as you can use the developerName property as the reference as opposed to needing to know the ids of all created Elements.
+        /// </summary>
         [DataMember]
         public Boolean updateByName
         {

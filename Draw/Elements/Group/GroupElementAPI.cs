@@ -29,6 +29,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// The x location of the Group on the Flow diagram.
+        /// </summary>
         [DataMember]
         public Int32 x
         {
@@ -36,6 +39,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// The y location of the Group on the Flow diagram.
+        /// </summary>
         [DataMember]
         public Int32 y
         {
@@ -43,6 +49,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// The height of the Group on the Flow diagram.
+        /// </summary>
         [DataMember]
         public Int32 height
         {
@@ -50,6 +59,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// The width of the Group on the Flow diagram.
+        /// </summary>
         [DataMember]
         public Int32 width
         {
@@ -57,6 +69,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// The Authorization object for this Group.
+        /// </summary>
         [DataMember]
         public GroupAuthorizationAPI authorization
         {

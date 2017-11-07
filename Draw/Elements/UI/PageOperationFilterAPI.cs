@@ -44,7 +44,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// This is the type element entry for the column field to do the filtering on.
+        /// The unique identifier for the column in the bound component data to filter by. This property should only be used when filtering components that are bound to lists stored in the engine state. For filtering asynchronous data, use the objectDataRequest property.
         /// </summary>
         [DataMember]
         public String columnTypeElementPropertyId
@@ -54,7 +54,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The criteria for the filter to apply to the column.
+        /// The criteria to filter the list data by.
         /// </summary>
         [DataMember]
         public String criteriaType
@@ -64,7 +64,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The value to reference when performing the filter.
+        /// The reference to the object that contains the value to filter the list data by.
         /// </summary>
         [DataMember]
         public PageObjectReferenceAPI filterValue
@@ -74,7 +74,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// This object will not be null if we want to apply a different object data request to the field in question.  This allows us
+        /// The object data request object to apply to the page component. This will be provided back to the player to execute asynchronously. This allows us
         /// to do more complex data querying than that provided by the "in-UI" Filter object above.  You cannot use the filter above
         /// with the object data request - it's basically either or.
         /// </summary>

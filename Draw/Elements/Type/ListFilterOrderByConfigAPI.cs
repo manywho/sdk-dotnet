@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     public class ListFilterOrderByConfigAPI
     {
         /// <summary>
-        /// The type element entry id of the column to order by.
+        /// The unique identifier for the property in the Type (associated with this filter) that should be used for ordering the results.
         /// </summary>
         [DataMember]
         public String orderByTypeElementPropertyId
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         }
 
         /// <summary>
-        /// The direction of the ordering.
+        /// The direction in which to order the results.
         /// </summary>
         [DataMember]
         public String orderByDirectionType
