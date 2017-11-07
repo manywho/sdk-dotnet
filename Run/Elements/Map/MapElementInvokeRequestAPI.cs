@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class MapElementInvokeRequestAPI
     {
+        /// <summary>
+        /// The unique identifier for the outcome the user is taking action on. The outcomes are provided in the MapElementInvokeResponse as part of the outcomeResponses property.
+        /// </summary>
         [DataMember]
         public String selectedOutcomeId
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The page data that has been provided by the user so far.
+        /// </summary>
         [DataMember]
         public PageRequestAPI pageRequest
         {

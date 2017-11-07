@@ -22,6 +22,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class OutcomeAvailableAPI : IComparable
     {
+        /// <summary>
+        /// The unique identifier for the outcome.
+        /// </summary>
         [DataMember]
         public String id
         {
@@ -29,6 +32,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The developer name provided by the builder user to help identify the outcome.
+        /// </summary>
         [DataMember]
         public String developerName
         {
@@ -36,6 +42,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The label provided by the builder user to help Flow users select the correct outcome.
+        /// </summary>
         [DataMember]
         public String label
         {
@@ -43,6 +52,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The order in which this outcome should appear with respect to sibling outcomes.
+        /// </summary>
         [DataMember]
         public Int32 order
         {

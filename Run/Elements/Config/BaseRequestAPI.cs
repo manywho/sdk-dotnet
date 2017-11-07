@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
     public class BaseRequestAPI
     {
         /// <summary>
-        /// The token for this service request.  The token is needed for the service execution manager to identify the correct state.
+        /// The execution token needed for any callback responses from the Service.
         /// </summary>
         [DataMember]
         public String token
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The tenant from which this service request eminated.
+        /// The unique identifier for the tenant making the request to the Service.
         /// </summary>
         [DataMember]
         public String tenantId
@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The state for which this service request is associated.
+        /// The unique identifier for the Flow State making the request to the Service.
         /// </summary>
         [DataMember]
         public String stateId
@@ -56,7 +56,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The Uri for any callbacks from the remote service.
+        /// The Uri that should be used for any callbacks made from the Service to ManyWho.
         /// </summary>
         [DataMember]
         public String callbackUri
@@ -66,7 +66,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The culture for the service request.
+        /// The Culture of the user whose action generated the request to the Service.
         /// </summary>
         [DataMember]
         public CultureAPI culture
@@ -76,7 +76,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The configuration information needed for the service to function.
+        /// The array of configuration values are needed for the Service to operate correctly. Services should not store tenant specific authentication information.
         /// </summary>
         [DataMember]
         public List<EngineValueAPI> configurationValues
@@ -86,9 +86,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The authorization context the message is running within. If we're running identity with the same service, this will tell the user
-        /// which users are currently authorized. The purpose of this property is to help with notifications - not to restrict access - that is
-        /// managed by the ManyWho engine.
+        /// The authorization context the request should be executed within. The Authorization object informs the Service about access rights specified by the builder user.
         /// </summary>
         [DataMember]
         public GroupAuthorizationAPI authorization
@@ -98,7 +96,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// We pass the annotations as part of the service request.
+        /// Any runtime annotations that were provided to the State.
         /// </summary>
         [DataMember]
         public Dictionary<String, String> annotations
@@ -108,7 +106,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// Any additional metadata that might be helpful to tell the service what to do.
+        /// Arbitrary key value pairs that may help the Service execute this request. Use attributes to extend our metadata with implementation specific settings.
         /// </summary>
         [DataMember]
         public Dictionary<String, String> attributes

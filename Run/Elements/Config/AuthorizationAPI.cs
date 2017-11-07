@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class AuthorizationAPI
     {
+        /// <summary>
+        /// An array containing the list of Users that are authorized to access this part of the Flow.
+        /// </summary>
         [DataMember]
         public List<UserAPI> users
         {
@@ -30,6 +33,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
             set;
         }
 
+        /// <summary>
+        /// An array containing the list of Groups that are authorized to access this part of the Flow.
+        /// </summary>
         [DataMember]
         public List<GroupAPI> groups
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
             set;
         }
 
+        /// <summary>
+        /// The unique identifier of the assigned "running user". This is not necessarily the user currently accessing the Flow, but rather the reference user identifier that should be used for relationships such as "Manager" or "Colleague" when moving from one authentication context to another.
+        /// </summary>
         [DataMember]
         public String runningAuthenticationId
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
             set;
         }
 
+        /// <summary>
+        /// The overall authentication type that should be used when authorizing users.
+        /// </summary>
         [DataMember]
         public String globalAuthenticationType
         {

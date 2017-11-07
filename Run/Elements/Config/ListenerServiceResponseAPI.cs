@@ -22,8 +22,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
     public class ListenerServiceResponseAPI : BaseResponseAPI
     {
         /// <summary>
-        /// This is the other side of the value for listening that will have been passed in. The listening event value should be the same
-        /// value with any updates to the data.
+        /// The value that had the event. This is a ContentObject that contains the necessary identifiers and data from the Service. This value should contain any updated information but should be symmetrical with the valueForListening provided in the request (i.e. it should be the same value).
         /// </summary>
         [DataMember]
         public EngineValueAPI listeningEventValue

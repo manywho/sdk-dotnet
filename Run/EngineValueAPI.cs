@@ -24,6 +24,9 @@ namespace ManyWho.Flow.SDK.Run
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class EngineValueAPI
     {
+        /// <summary>
+        /// The unique identifier for the value in the flow being assigned. Using the id to reference the value ensures that your player is guaranteed to be assigning the correct value. If you reference a value by developerName, it is possible for the author to break integration points simply by changing the name of the value. You must provide an 'id' or a 'developerName'.
+        /// </summary>
         [DataMember]
         public String valueElementId
         {
@@ -31,6 +34,9 @@ namespace ManyWho.Flow.SDK.Run
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for the object type of the value in the flow being assigned. Using the typeElementId ensures that your player is guaranteed to be referencing the correct object type. If you use the typeElementDeveloperName property, a change in the type name can break the integration. We ask that you specify the type as we may in future support type casting and we therefore want to know the type you're passing in so we can validate it is correct before mapping to the super type.
+        /// </summary>
         [DataMember]
         public String typeElementId
         {
@@ -38,6 +44,9 @@ namespace ManyWho.Flow.SDK.Run
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for the object property of the value in the flow being assigned. Typed objects all have properties. Using the typeElementPropertyId allows you to assign a property in an object value as opposed to the whole value. As with the other identifier references, using the typeElementPropertyId ensures that your player is guaranteed to be assigning the correct value. Using the typeElementPropertyDeveloperName makes it possible to break the integration if the author changes the developerName of a property in the type.
+        /// </summary>
         [DataMember]
         public String typeElementPropertyId
         {
@@ -52,6 +61,9 @@ namespace ManyWho.Flow.SDK.Run
             set;
         }
 
+        /// <summary>
+        /// The developer name for the object type of the value in the flow being assigned.
+        /// </summary>
         [DataMember]
         public String typeElementDeveloperName
         {
@@ -59,6 +71,9 @@ namespace ManyWho.Flow.SDK.Run
             set;
         }
 
+        /// <summary>
+        /// The developer name for the object property of the value in the flow being assigned.
+        /// </summary>
         [DataMember]
         public String typeElementPropertyDeveloperName
         {
@@ -66,6 +81,9 @@ namespace ManyWho.Flow.SDK.Run
             set;
         }
 
+        /// <summary>
+        /// The actual content value being assigned to the value in the flow. This property should be used for all "primitive", non-typed values in your flow. For example, if you are referencing a value called "First Name", this would be the value you actually want to assign to it: e.g. "Steve".
+        /// </summary>
         [DataMember]
         public String contentValue
         {
@@ -73,6 +91,9 @@ namespace ManyWho.Flow.SDK.Run
             set;
         }
 
+        /// <summary>
+        /// The content type of the value you are passing into the flow. The content types are specified by the ContentType enumeration.
+        /// </summary>
         [DataMember]
         public String contentType
         {

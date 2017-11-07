@@ -23,8 +23,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
     public class ListenerServiceRequestAPI : BaseRequestAPI
     {
         /// <summary>
-        /// If this service request is to listen to events, then the listen type will be provided so the service can register this request
-        /// for the right events.
+        /// The type of listening the Service should do on the provide value. The listen types are determined by the Service as there can be many types of events the listener may be interested in "hearing".
         /// </summary>
         [DataMember]
         public String listenType
@@ -34,7 +33,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The value that the remote service should refer to to associate the listening request.
+        /// The value that should be listened to. This is a ContentObject that contains the necessary identifiers and data to inform the Service. For example, this could be the description information of a File, or the details of a record in the underlying Service database.
         /// </summary>
         [DataMember]
         public EngineValueAPI valueForListening

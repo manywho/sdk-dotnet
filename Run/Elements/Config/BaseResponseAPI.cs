@@ -25,7 +25,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
     public class BaseResponseAPI
     {
         /// <summary>
-        /// The token for this service request.  The token is needed for the service execution manager to identify the correct state.
+        /// The execution token needed for any callback responses from the Service.
         /// </summary>
         [DataMember]
         public String token
@@ -35,7 +35,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The tenant for which the response applies.
+        /// The unique identifier for the tenant that made the request to the Service.
         /// </summary>
         [DataMember]
         public String tenantId
@@ -45,7 +45,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The culture for the response.
+        /// The Culture of the Service sending the response back to ManyWho.
         /// </summary>
         [DataMember]
         public CultureAPI culture
@@ -55,7 +55,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// Passes back any annotations to the service.
+        /// Any runtime annotations that were provided to the State plus any additional annotations the Service may be providing.
         /// </summary>
         [DataMember]
         public Dictionary<String, String> annotations

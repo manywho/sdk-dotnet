@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The wait message to show the user if we're dealing with an asynchronous message.
+        /// The "wait" message that should be provided to users waiting for the Service to complete its tasks.
         /// </summary>
         [DataMember]
         public String waitMessage
@@ -46,8 +46,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The outputs from the service response.  The service can return interim output values if we're in
-        /// a WAIT engine command state.
+        /// The output values from the Service being sent back to the Flow State. Outputs will be applied to the Flow State even if the InvokeType is set to WAIT.
         /// </summary>
         [DataMember]
         public List<EngineValueAPI> outputs
@@ -57,7 +56,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The outcome the service wishes to select to progress the engine. This may or may not succeed based on business rules.
+        /// The Outcome the Service would like the Flow to follow. If the Outcome has Rules, the Service request for this outcome will be ignored unless the Rules are also satisfied.
         /// </summary>
         [DataMember]
         public String selectedOutcomeId
@@ -67,7 +66,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// Any general root faults that happened from making the request.
+        /// Any faults that have happened in the Service that should be reported up to the Flow State.
         /// </summary>
         [DataMember]
         public Dictionary<String, String> rootFaults
@@ -77,7 +76,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The faults that occurred with the input values that were provided in the request.
+        /// Any faults that are directly attributed to an input value provided in the ServiceRequest. If a ValueFault is specified, ManyWho will attempt to match this error with any input fields that are bound to that Value.
         /// </summary>
         [DataMember]
         public List<ValueFaultAPI> valueFaults
@@ -87,8 +86,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The debug mode to run the engine in.  For the service response, we do not pass the mode up into the engine as it would make it impossible to step through
-        /// currently as the user won't have access (though we simply haven't tried it - it might work).
+        /// The mode which the Service would like the Flow State to execute under.
         /// </summary>
         [DataMember]
         public String mode

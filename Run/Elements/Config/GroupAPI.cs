@@ -22,6 +22,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class GroupAPI
     {
+        /// <summary>
+        /// A unique identifier provided by the Service for the AuthorizationGroup. The AuthorizationGroup can represent any object in the underlying Service identity management system.
+        /// </summary>
         [DataMember]
         public String authenticationId
         {
@@ -29,6 +32,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
             set;
         }
 
+        /// <summary>
+        /// The attribute associated with the authentication identifier. The attributes are defined by the Service, but typically they're things like: MEMBER, OWNER, etc.
+        /// </summary>
         [DataMember]
         public String attribute
         {
