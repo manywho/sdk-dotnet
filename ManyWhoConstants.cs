@@ -43,7 +43,7 @@ namespace ManyWho.Flow.SDK
         public const String INVOKE_TYPE_WAIT = "WAIT";
 
         /// <summary>
-        /// Tells the caller that the state is currently busy being processed against 
+        /// Tells the caller that the state is currently busy being processed against
         /// </summary>
         public const String INVOKE_TYPE_BUSY = "BUSY";
 
@@ -81,7 +81,7 @@ namespace ManyWho.Flow.SDK
         /// Tells the user that they are not allowed to perform any operations - this is to avoid testing "null"
         /// </summary>
         public const String INVOKE_TYPE_NOT_ALLOWED = "NOT_ALLOWED";
-        
+
         #endregion
 
         #region Flow Modes
@@ -427,7 +427,7 @@ namespace ManyWho.Flow.SDK
         public const String MANYWHO_GROUP_PROPERTY_GROUP_NAME = "Group Name";
         public const String MANYWHO_GROUP_PROPERTY_GROUP_OWNER_USER_ID = "Group Owner User ID";
 
-        public static readonly string MANYWHO_STATE_DEVELOPER_NAME = "$State";
+        public const string MANYWHO_STATE_DEVELOPER_NAME = "$State";
         public static readonly Guid MANYWHO_STATE_VALUE_ID = Guid.Parse("1F2A56FD-E14B-460C-AABD-9FBF344B84F3");
 
         public static readonly string MANYWHO_STATE_PROPERTY_ID = "ID";
