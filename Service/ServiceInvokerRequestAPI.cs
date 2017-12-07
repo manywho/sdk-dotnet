@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace ManyWho.Flow.SDK.Service
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ServiceRequestAPI
+    public class ServiceInvokerRequestAPI
     {
         /// <summary>
         /// The unique ID of the Request
@@ -57,13 +57,13 @@ namespace ManyWho.Flow.SDK.Service
         /// A list of responses sent back from the service. This field is only populated when fetching a single Request
         /// </summary>
         [DataMember]
-        public List<ServiceResponseAPI> Responses { get; set; }
+        public List<ServiceInvokerResponseAPI> Responses { get; set; }
         
         /// <summary>
         /// A list of failures sent back from the service. This field is only populated when fetching a single Request
         /// </summary>
         [DataMember]
-        public List<ServiceFailureAPI> Failures { get; set; }
+        public List<ServiceInvokerFailureAPI> Failures { get; set; }
         
         [DataMember]
         public Dictionary<string, object> Attributes { get; set; }

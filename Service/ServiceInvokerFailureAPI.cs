@@ -5,7 +5,7 @@ using ManyWho.Flow.SDK.Errors;
 namespace ManyWho.Flow.SDK.Service
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ServiceFailureAPI
+    public class ServiceInvokerFailureAPI
     {
         /// <summary>
         /// The unique ID of the Failure

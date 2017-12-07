@@ -20,10 +20,10 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Run.Elements.Config
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class UserAPI
+    public class AuthorizationGroupAPI
     {
         /// <summary>
-        /// A unique identifier provided by the Service for the AuthorizationUser. The AuthorizationUser can represent any object in the underlying Service identity management system, but typically it is an actual user identity.
+        /// A unique identifier provided by the Service for the AuthorizationGroup. The AuthorizationGroup can represent any object in the underlying Service identity management system.
         /// </summary>
         [DataMember]
         public String authenticationId
@@ -33,20 +33,10 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The attribute associated with the authentication identifier. The attributes are defined by the Service, but typically they're things like: MANAGER, USER, DELEGATES, COLLEAGUES, etc.
+        /// The attribute associated with the authentication identifier. The attributes are defined by the Service, but typically they're things like: MEMBER, OWNER, etc.
         /// </summary>
         [DataMember]
         public String attribute
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Indicates that the authorization should be based on the running user, not on a pre-configured user authentication identifier.
-        /// </summary>
-        [DataMember]
-        public Boolean runningUser
         {
             get;
             set;

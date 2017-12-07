@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace ManyWho.Flow.SDK.Service
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ServiceResponseAPI
+    public class ServiceInvokerResponseAPI
     {
         /// <summary>
         /// The unique ID of the Response

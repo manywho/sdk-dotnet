@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// An array containing the list of Users that are authorized to access this part of the Flow.
         /// </summary>
         [DataMember]
-        public List<UserAPI> users
+        public List<AuthorizationUserAPI> users
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// An array containing the list of Groups that are authorized to access this part of the Flow.
         /// </summary>
         [DataMember]
-        public List<GroupAPI> groups
+        public List<AuthorizationGroupAPI> groups
         {
             get;
             set;
