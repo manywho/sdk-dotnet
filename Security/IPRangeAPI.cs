@@ -23,20 +23,20 @@ namespace ManyWho.Flow.SDK.Security
     public class IPRangeAPI
     {
         /// <summary>
-        /// The name for this IP range restriction
+        /// The name for this IP range restriction, and typically a helpful one to remind builders of the purpose
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Any additional summary information about this IP range restriction
+        /// Any additional summary information about this IP range restriction that will help explain the purpose
         /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
@@ -46,17 +46,17 @@ namespace ManyWho.Flow.SDK.Security
         /// The lower end of the IP range in IPv4 format (dotted decimal)
         /// </summary>
         [DataMember]
-        public String startIPAddress
+        public string startIPAddress
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The upper end of the IP range in IPv4 format  (dotted decimal)
+        /// The upper end of the IP range in IPv4 format (dotted decimal)
         /// </summary>
         [DataMember]
-        public String endIPAddress
+        public string endIPAddress
         {
             get;
             set;

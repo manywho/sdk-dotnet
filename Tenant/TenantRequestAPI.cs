@@ -24,7 +24,8 @@ namespace ManyWho.Flow.SDK.Tenant
     public class TenantRequestAPI
     {
         /// <summary>
-        /// Summary information about this tenant.
+        /// A summary of the tenant. This is typically additional information that will help explain the purpose of the
+        /// tenant
         /// </summary>
         [DataMember]
         public String developerSummary
@@ -34,7 +35,7 @@ namespace ManyWho.Flow.SDK.Tenant
         }
 
         /// <summary>
-        /// Specific security settings that should be applied to this tenant beyond the defaults.
+        /// Specific security settings that should be applied to this tenant, beyond the defaults (excluding subtenants)
         /// </summary>
         [DataMember]
         public SecuritySettingsAPI securitySettings
@@ -47,12 +48,17 @@ namespace ManyWho.Flow.SDK.Tenant
         /// Specific report settings to allow reporting data to be sent to an alternative endpoint.
         /// </summary>
         [DataMember]
+        [Obsolete]
         public ReportSettingsAPI reportSettings
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The requested subdomain to register for this tenant. If provided, the subdomain must be unique for the 
+        /// entire platform
+        /// </summary>
         [DataMember]
         public string subdomain
         {
@@ -60,6 +66,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Settings used for state persistence and reporting
+        /// </summary>
         [DataMember]
         public StateSettingsAPI stateSettings
         {
@@ -67,6 +76,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Settings that are specific to features used in the tenant
+        /// </summary>
         [DataMember]
         public TenantSettingsAPI tenantSettings
         {

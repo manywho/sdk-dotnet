@@ -4,6 +4,9 @@ namespace ManyWho.Flow.SDK.Tenant
 {
     public class TenantRegistrationAPI : UserRegistrationAPI
     {
+        /// <summary>
+        /// The name of the tenant to create
+        /// </summary>
         public string tenantName
         {
             get;
@@ -11,7 +14,7 @@ namespace ManyWho.Flow.SDK.Tenant
         }
 
         /// <summary>
-        /// The subdomain to register for the tenant
+        /// An optional, globally unique subdomain to reserve for this tenant
         /// </summary>
         public string subdomain
         {

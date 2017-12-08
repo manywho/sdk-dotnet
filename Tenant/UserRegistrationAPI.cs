@@ -21,7 +21,7 @@
         }
 
         /// <summary>
-        /// The email of the user.
+        /// The email of the user
         /// </summary>
         public string email
         {

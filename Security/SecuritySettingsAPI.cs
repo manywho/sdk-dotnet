@@ -20,11 +20,16 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Security
 {
+    /// <summary>
+    /// Specific security settings that should be applied to this tenant, beyond the defaults (excluding subtenants)
+    /// </summary>
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class SecuritySettingsAPI
     {
         /// <summary>
-        /// A boolean value indicating if requests to the Admin API are restricted by IP range. If this is true, the list of IP ranges should be listed in the authorizedAdminIPRanges property
+        /// Indicates that the Admin APIs should be protected by the provided IP ranges in `authorizedAdminIPRanges`.
+        /// Setting this to `false` will not remove the list of IP Range entries and will simply disable IP range 
+        /// restrictions
         /// </summary>
         [DataMember]
         public Boolean isAdminRestrictedByIPRange
@@ -34,7 +39,9 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         /// <summary>
-        /// A boolean value indicating if requests to the Package API are restricted by IP range. If this is true, the list of IP ranges should be listed in the authorizedPackagingIPRanges property
+        /// Indicates that the Packaging APIs should be protected by the provided IP ranges in 
+        /// `authorizedPackagingIPRanges`. Setting this to `false` will not remove the list of IP Range entries and will 
+        /// simply disable IP range restrictions
         /// </summary>
         [DataMember]
         public Boolean isPackagingRestrictedByIPRange
@@ -44,7 +51,9 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         /// <summary>
-        /// A boolean value indicating if requests to the Draw API are restricted by IP range. If this is true, the list of IP ranges should be listed in the authorizedDrawIPRanges property
+        /// Indicates that the Draw APIs should be protected by the provided IP ranges in `authorizedDrawIPRanges`. 
+        /// Setting this to `false` will not remove the list of IP Range entries and will simply disable IP range 
+        /// restrictions
         /// </summary>
         [DataMember]
         public Boolean isDrawRestrictedByIPRange
@@ -54,7 +63,9 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         /// <summary>
-        /// A boolean value indicating if requests to the Run API are restricted by IP range. If this is true, the list of IP ranges should be listed in the authorizedRunIPRanges property
+        /// Indicates that the Run APIs should be protected by the provided IP ranges in `authorizedRunIPRanges`. 
+        /// Setting this to `false` will not remove the list of IP Range entries and will simply disable IP range 
+        /// restrictions
         /// </summary>
         [DataMember]
         public Boolean isRunRestrictedByIPRange
@@ -64,7 +75,9 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         /// <summary>
-        /// A boolean value indicating if running Flows can send data to Services that are not explicitly listed
+        /// Indicates that services may only be allowed to be installed and used based on the settings outlined 
+        /// in the `authorizedServiceRemoteSites` property. Setting this to `false` will not remove the existing Remote 
+        /// Site settings
         /// </summary>
         [DataMember]
         public Boolean isServiceRestrictedByRemoteSites
@@ -84,7 +97,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         /// <summary>
-        /// A list of IP ranges that requests to the Packaging API must originate from to gain access
+        /// A list of IP ranges that requests to the Packaging API must originate from to be allowed access
         /// </summary>
         [DataMember]
         public List<IPRangeAPI> authorizedPackagingIPRanges
@@ -94,7 +107,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         /// <summary>
-        /// A list of IP ranges that requests to the Draw API must originate from to gain access
+        /// A list of IP ranges that requests to the Draw API must originate from to to be allowed access
         /// </summary>
         [DataMember]
         public List<IPRangeAPI> authorizedDrawIPRanges
@@ -104,7 +117,7 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         /// <summary>
-        /// A list of IP ranges that requests to the Run API must originate from to gain access
+        /// A list of IP ranges that requests to the Run API must originate from to be allowed access
         /// </summary>
         [DataMember]
         public List<IPRangeAPI> authorizedRunIPRanges
@@ -114,7 +127,8 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         /// <summary>
-        /// A list of remote site addresses that any Services must adhere to if included in a Flow. If a Flow attempts to connect to a Service not listed as a remote site, the request to the Service will be denied.
+        /// A list of remote site addresses that any services must adhere to if included in a flow. If a flow attempts 
+        /// to connect to a service not listed as a remote site, the request to the service will be denied
         /// </summary>
         [DataMember]
         public List<RemoteSiteAPI> authorizedServiceRemoteSites
@@ -127,6 +141,7 @@ namespace ManyWho.Flow.SDK.Security
         /// The user registration settings that determine how builder users are added to the tenant
         /// </summary>
         [DataMember]
+        [Obsolete]
         public UserRegistrationSettingsAPI userRegistrationSettings
         {
             get;

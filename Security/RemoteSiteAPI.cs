@@ -23,40 +23,40 @@ namespace ManyWho.Flow.SDK.Security
     public class RemoteSiteAPI
     {
         /// <summary>
-        /// The name for this remote site restriction
+        /// The name for this remote site restriction, typically a helpful one to remind builders of the purpose
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Any additional summary information about this remote site restriction
+        /// Any additional summary information about this remote site restriction that will help explain the purpose
         /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The base Uri for the remote site (e.g. https://flow.manywho.com)
+        /// The base URI of the remote site (e.g. https://flow.manywho.com)
         /// </summary>
         [DataMember]
-        public String uri
+        public string uri
         {
             get;
             set;
         }
 
         /// <summary>
-        /// A boolean value indicating if requests to this remote site can be made without SSL encryption
+        /// Indicates if the remote site can be accessed without encryption (SSL)
         /// </summary>
         [DataMember]
-        public Boolean disableProtocolSecurity
+        public bool disableProtocolSecurity
         {
             get;
             set;
