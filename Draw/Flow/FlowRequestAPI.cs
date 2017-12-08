@@ -25,10 +25,13 @@ namespace ManyWho.Flow.SDK.Draw.Flow
     public class FlowRequestAPI
     {
         /// <summary>
-        /// The editing token for this particular editing session. An editing token is required so the modeling engine can track multiple user changes.
+        /// A unique token for this particular editing session
         /// </summary>
+        /// <remarks>
+        /// An editing token is required so the modelling engine can track multiple user changes.
+        /// </remarks>
         [DataMember]
-        public String editingToken
+        public string editingToken
         {
             get;
             set;
@@ -48,7 +51,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// The developer name for the Flow. When referencing flows by name, this is the name you should use in your referencing.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -58,7 +61,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// The developer summary the author provided to give more information about the Flow.
         /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
@@ -68,7 +71,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// The unique identifier for the first element in the Flow.
         /// </summary>
         [DataMember]
-        public String startMapElementId
+        public string startMapElementId
         {
             get;
             set;
@@ -78,7 +81,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// Indicates that the builder of the Flow will allow users to jump to any position in the Flow regardless of Outcomes and/or Navigation.
         /// </summary>
         [DataMember]
-        public Boolean allowJumping
+        public bool allowJumping
         {
             get;
             set;

@@ -24,7 +24,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
     public class FlowResponseAPI : FlowRequestAPI
     {
         /// <summary>
-        /// The date the Flow was first created.
+        /// The date and time the flow was created at
         /// </summary>
         [DataMember]
         public DateTime dateCreated
@@ -34,7 +34,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// The date the last modificiation was made to the Flow.
+        /// The date and time of the last modification to the flow
         /// </summary>
         [DataMember]
         public DateTime dateModified
@@ -44,7 +44,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// The builder user who created the Flow.
+        /// The builder who created the flow
         /// </summary>
         [DataMember]
         public BuilderWhoAPI whoCreated
@@ -54,7 +54,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// The builder user who last modified the Flow.
+        /// The builder who last modified the flow
         /// </summary>
         [DataMember]
         public BuilderWhoAPI whoModified
@@ -64,7 +64,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// The builder user who owns this Flow.
+        /// The builder who owns the flow
         /// </summary>
         [DataMember]
         public BuilderWhoAPI whoOwner
@@ -73,33 +73,39 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The email of the builder who activated the flow
+        /// </summary>
         [DataMember]
-        public String alertEmail
+        public string alertEmail
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Indicates if this Flow version is the active version. In the case of run operations, this will always be true.
+        /// Indicates if this flow version is the active version. In the case of run operations, this will always be true
         /// </summary>
         [DataMember]
-        public Boolean isActive
+        public bool isActive
         {
             get;
             set;
         }
 
         /// <summary>
-        /// Indicates if this Flow version is the default version. In the case of run operations, this will always be true.
+        /// Indicates if this flow version is the default version. In the case of run operations, this will always be true
         /// </summary>
         [DataMember]
-        public Boolean isDefault
+        public bool isDefault
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The activation comment provided by the builder, if given
+        /// </summary>
         [DataMember]
         public string comment
         {
