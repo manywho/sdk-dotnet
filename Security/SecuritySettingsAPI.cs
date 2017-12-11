@@ -136,16 +136,5 @@ namespace ManyWho.Flow.SDK.Security
             get;
             set;
         }
-
-        /// <summary>
-        /// The user registration settings that determine how builder users are added to the tenant
-        /// </summary>
-        [DataMember]
-        [Obsolete]
-        public UserRegistrationSettingsAPI userRegistrationSettings
-        {
-            get;
-            set;
-        }
     }
 }

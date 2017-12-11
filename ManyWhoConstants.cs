@@ -905,40 +905,6 @@ namespace ManyWho.Flow.SDK
 
         #endregion
 
-        #region User Registration
-
-        /// <summary>
-        /// Indicates that all users can self provision if their email and username match with the existing tenant. This is the default setting for domain tenants that use the email to determine tenancy.
-        /// </summary>
-        public const String USER_REGISTRATION_TYPE_SELF = "SELF";
-
-        /// <summary>
-        /// Indicates that all users must be provisioned manually by another builder user, however, existing builder users will be notified that another user is requesting access.
-        /// </summary>
-        public const String USER_REGISTRATION_TYPE_REQUEST = "REQUEST";
-
-        /// <summary>
-        /// Indicates that all users must be provisioned manually by another builder user.
-        /// </summary>
-        public const String USER_REGISTRATION_TYPE_MANUAL = "MANUAL";
-
-        /// <summary>
-        /// Indicates that all builder users will be notified when another user is requesting access to the tenant.
-        /// </summary>
-        public const String USER_REGISTRATION_NOTIFY_ALL = "ALL";
-
-        /// <summary>
-        /// Indicates that a specific builder user should be notified when another user is requesting access to the tenant.
-        /// </summary>
-        public const String USER_REGISTRATION_NOTIFY_SPECIFIC = "SPECIFIC";
-
-        /// <summary>
-        /// Indicates that a specific builder user should be notified when another user is requesting access to the tenant.
-        /// </summary>
-        public const String USER_REGISTRATION_NOTIFY_NONE = "NONE";
-
-        #endregion
-
         /// <summary>
         /// The Vote should be based on a fixed number of users that click on a particularly Outcome.
         /// </summary>
