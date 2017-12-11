@@ -45,17 +45,6 @@ namespace ManyWho.Flow.SDK.Tenant
         }
 
         /// <summary>
-        /// Specific report settings to allow reporting data to be sent to an alternative endpoint.
-        /// </summary>
-        [DataMember]
-        [Obsolete]
-        public ReportSettingsAPI reportSettings
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// The requested subdomain to register for this tenant. If provided, the subdomain must be unique for the 
         /// entire platform
         /// </summary>
