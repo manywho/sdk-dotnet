@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ManyWho.Flow.SDK.Tenant
 {
@@ -19,13 +18,5 @@ namespace ManyWho.Flow.SDK.Tenant
             get;
             set;
         }
-
-        [DataMember]
-        [Obsolete]
-        public bool persistToDatabase
-        {
-            get;
-            set;
-        } = true;
     }
 }
