@@ -34,7 +34,7 @@ namespace ManyWho.Flow.SDK.Service
         /// The date and time that the response was created and received at
         /// </summary>
         [DataMember]
-        public DateTime CreatedAt { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
         
         /// <summary>
         /// The serialised body of the Response sent back from the service

@@ -33,7 +33,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         [DataMember]
-        public DateTime dateModified
+        public DateTimeOffset dateModified
         {
             get;
             set;

@@ -22,13 +22,13 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
-        public DateTime dateCreated
+        public DateTimeOffset dateCreated
         {
             get;
             set;
         }
 
-        public DateTime dateModified
+        public DateTimeOffset dateModified
         {
             get;
             set;

@@ -41,6 +41,6 @@ namespace ManyWho.Flow.SDK.Service
         /// The date and time that the failure was created and received at
         /// </summary>
         [DataMember]
-        public DateTime CreatedAt { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
     }
 }

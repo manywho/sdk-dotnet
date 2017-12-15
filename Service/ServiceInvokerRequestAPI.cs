@@ -51,7 +51,7 @@ namespace ManyWho.Flow.SDK.Service
         /// The date and time that the request was created and sent at
         /// </summary>
         [DataMember]
-        public DateTime CreatedAt { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
         
         /// <summary>
         /// A list of responses sent back from the service. This field is only populated when fetching a single Request

@@ -52,7 +52,7 @@ namespace ManyWho.Flow.SDK.Social
         }
 
         [DataMember]
-        public DateTime createdDate 
+        public DateTimeOffset createdDate 
         { 
             get; 
             set; 

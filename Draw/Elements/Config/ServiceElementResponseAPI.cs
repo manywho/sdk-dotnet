@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         /// The date the Service was first created.
         /// </summary>
         [DataMember]
-        public DateTime dateCreated
+        public DateTimeOffset dateCreated
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         /// The date the last modification was made to the Service.
         /// </summary>
         [DataMember]
-        public DateTime dateModified
+        public DateTimeOffset dateModified
         {
             get;
             set;

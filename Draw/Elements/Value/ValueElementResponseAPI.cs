@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         /// The date the Value was first created.
         /// </summary>
         [DataMember]
-        public DateTime dateCreated
+        public DateTimeOffset dateCreated
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         /// The date the last modification was made to the Value.
         /// </summary>
         [DataMember]
-        public DateTime dateModified
+        public DateTimeOffset dateModified
         {
             get;
             set;

@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// The date and time the flow was created at
         /// </summary>
         [DataMember]
-        public DateTime dateCreated
+        public DateTimeOffset dateCreated
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// The date and time of the last modification to the flow
         /// </summary>
         [DataMember]
-        public DateTime dateModified
+        public DateTimeOffset dateModified
         {
             get;
             set;

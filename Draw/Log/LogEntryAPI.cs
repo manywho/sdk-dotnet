@@ -23,7 +23,7 @@ namespace ManyWho.Flow.SDK.Draw.Log
     public class LogEntryAPI : ElementAPI
     {
         [DataMember]
-        public DateTime timestamp
+        public DateTimeOffset timestamp
         {
             get;
             set;
