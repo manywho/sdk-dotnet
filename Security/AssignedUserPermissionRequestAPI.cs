@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Notification;
 using ManyWho.Flow.SDK.Utils;
 using ManyWho.Flow.SDK.Social;
 

@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using ManyWho.Flow.SDK.Draw.Elements;
 using ManyWho.Flow.SDK.Draw.Elements.Type;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 using ManyWho.Flow.SDK.Run.Elements.Type;
-using ManyWho.Flow.SDK.Draw.Elements;
 using Xenolope.Extensions;
 
-namespace ManyWho.Flow.SDK
+namespace ManyWho.Flow.SDK.Utils
 {
     public class MapperUtils
     {
@@ -638,7 +638,7 @@ namespace ManyWho.Flow.SDK
             {
                 typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_NUMBER;
             }
-            else if (propertyInfo.PropertyType.Name.Equals(typeof(DateTime).Name, StringComparison.OrdinalIgnoreCase) == true)
+            else if (propertyInfo.PropertyType.Name.Equals(typeof(DateTimeOffset).Name, StringComparison.OrdinalIgnoreCase) == true)
             {
                 typeElementPropertyAPI.contentType = ManyWhoConstants.CONTENT_TYPE_DATETIME;
             }

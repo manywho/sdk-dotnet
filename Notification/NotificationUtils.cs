@@ -1,7 +1,7 @@
 ﻿using System;
 using ManyWho.Flow.SDK.Security;
 
-namespace ManyWho.Flow.SDK.Utils
+namespace ManyWho.Flow.SDK.Notification
 {
     public class NotificationUtils
     {

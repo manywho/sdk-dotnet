@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace ManyWho.Flow.SDK.Utils
+namespace ManyWho.Flow.SDK.Notification
 {
     [DataContract(Namespace = "http://www.manywho.com")]
     public class NotificationMessage : INotificationMessage

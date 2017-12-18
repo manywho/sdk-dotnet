@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ManyWho.Flow.SDK.Security;
 
-namespace ManyWho.Flow.SDK.Utils
+namespace ManyWho.Flow.SDK.Notification
 {
     public interface INotifier
     {
