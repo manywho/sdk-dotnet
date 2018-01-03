@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
     public class FlowGraphRequestAPI : FlowRequestAPI
     {
         /// <summary>
-        /// The array of MapElements that are part of the Flow graph.
+        /// An array of map elements that are part of the flow graph.
         /// </summary>
         [DataMember]
         public List<MapElementAPI> mapElements
@@ -91,7 +91,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// The array of GroupElements that are part of the Flow graph.
+        /// An array of group elements that are part of the flow graph.
         /// </summary>
         [DataMember]
         public List<GroupElementAPI> groupElements

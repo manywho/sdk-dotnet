@@ -19,6 +19,9 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Draw.Flow
 {
+    /// <summary>
+    /// A composite unique identifier assigned by the platform, which should not be included for new flows.
+    /// </summary>
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowIdAPI
     {
@@ -47,7 +50,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// The unique identifier for the Flow. This identifier does not change for the lifetime of the Flow and is generated when the Flow is first created.
+        /// The unique identifier for the flow. This identifier does not change for the lifetime of the flow and is generated when the flow is first created.
         /// </summary>
         [DataMember]
         public String id
@@ -57,7 +60,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// The unique identifier for the specific version of a Flow. This identifier changes any time a change is made to the Flow - in structure or content.
+        /// The unique identifier for a specific version of a flow. This identifier changes any time a change is made to the flow - in structure or content.
         /// </summary>
         [DataMember]
         public String versionId

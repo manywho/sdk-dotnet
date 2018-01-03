@@ -38,8 +38,11 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// The complete unique identifier for the currently edited version of the Flow.
+        /// The complete unique identifier for the currently edited version of the flow.
         /// </summary>
+        /// <remarks>
+        /// This value should not be included when creating new flows.
+        /// </remarks>
         [DataMember]
         public FlowIdAPI id
         {
@@ -48,8 +51,11 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// The developer name for the Flow. When referencing flows by name, this is the name you should use in your referencing.
+        /// The developer name for the flow. When referencing flows by name, this is the name you should use in your referencing.
         /// </summary>
+        /// <remarks>
+        /// This is typically a helpful name to remind builders of the purpose of the flow.
+        /// </remarks>
         [DataMember]
         public string developerName
         {
@@ -68,7 +74,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// The unique identifier for the first element in the Flow.
+        /// The unique identifier for the first element in the flow. This element is always of the `START` map element type.
         /// </summary>
         [DataMember]
         public string startMapElementId
@@ -78,7 +84,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
         
         /// <summary>
-        /// Indicates that the builder of the Flow will allow users to jump to any position in the Flow regardless of Outcomes and/or Navigation.
+        /// Indicates that the builder of the flow will allow users to jump to any position in the Flow regardless of outcomes and/or navigation.
         /// </summary>
         [DataMember]
         public bool allowJumping
@@ -95,7 +101,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// The Authorization object for this Flow.
+        /// The configuration of the authorization context for this flow.
         /// </summary>
         [DataMember]
         public GroupAuthorizationAPI authorization

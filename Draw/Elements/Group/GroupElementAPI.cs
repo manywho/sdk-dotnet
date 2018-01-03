@@ -22,6 +22,12 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class GroupElementAPI : ElementAPI
     {
+        /// <summary>
+        /// The unique identifier for the group element that holds this group element.
+        /// </summary>
+        /// <remarks>
+        /// The swimlane group element does not support nested groupings.
+        /// </remarks>
         [DataMember]
         public String groupElementId
         {

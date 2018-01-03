@@ -84,8 +84,11 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// Indicates if this flow version is the active version. In the case of run operations, this will always be true
+        /// Indicates if this flow version is the active version.
         /// </summary>
+        /// <remarks>
+        /// In the case of run operations this will always be true, and for draw operations this will be false.
+        /// </remarks>
         [DataMember]
         public bool isActive
         {
@@ -94,8 +97,11 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         /// <summary>
-        /// Indicates if this flow version is the default version. In the case of run operations, this will always be true
+        /// Indicates if this flow version is the default version.
         /// </summary>
+        /// <remarks>
+        /// In the case of run operations this will always be true, and for draw operations this will be false.
+        /// </remarks>
         [DataMember]
         public bool isDefault
         {
