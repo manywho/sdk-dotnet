@@ -64,7 +64,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The list of data actions that should be executed when this Map Element executes. The data action objects define the Values and bindings that should be used to perform CRUD operations against each Service and Value.
+        /// The list of data actions that should be executed when this map element executes. The data action objects
+        /// define the values and bindings that should be used to perform CRUD operations against each service and value.
         /// </summary>
         [DataMember]
         public List<DataActionAPI> dataActions

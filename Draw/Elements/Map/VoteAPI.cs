@@ -24,8 +24,20 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     public class VoteAPI
     {
         /// <summary>
-        /// The type of Vote this metadata represents. The VoteType is determined by the Service, though there are two standard VoteTypes built into the tooling.
+        /// The type of Vote this metadata represents. The <code>voteType</code> is determined by the service.
         /// </summary>
+        /// <remarks>
+        /// The values for this key are arbitrary, however, if a service supports voting, we request that developers
+        /// support two fundamental Voting approaches:
+        /// 
+        /// <ul>
+        /// <li><strong>COUNT:</strong> The vote should be based on a fixed number of running users that click on the
+        /// outcome.</li>
+        /// <li><strong>PERCENT:</strong> The vote should be based on the percentage of running users that click on the
+        /// outcome. The percentage is calculated based on the authorization context of the map element at the time of
+        /// execution.</li>
+        /// </ul>
+        /// </remarks>
         [DataMember]
         public String voteType
         {
@@ -34,7 +46,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The minimum number of users that need to click on an Outcome before the Flow will proceed to the next step.
+        /// The minimum number of users that need to click on an outcome before the flow will proceed to the next step.
         /// </summary>
         [DataMember]
         public Int32 minimumCount
@@ -44,7 +56,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The minimum percentage of users that need to click on an Outcome before the Flow will proceed to the next step. The percentage is determined based on the authorization context of either the Flow or the Group Swimlane (if the Map Element is contained in a Swimlane).
+        /// The minimum percentage of users that need to click on an outcome before the flow will proceed to the next
+        /// step. The percentage is determined based on the authorization context of either the flow or the group
+        /// swimlane (if the map element is contained in a swimlane).
         /// </summary>
         [DataMember]
         public Int32 minimumPercent
@@ -54,7 +68,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// Arbitrary key value pairs that may help the Service execute the Vote. Use attributes to extend our Vote metadata with implementation specific settings.
+        /// Arbitrary key value pairs that may help the service execute the vote. Use attributes to extend the vote
+        /// metadata with implementation specific settings.
         /// </summary>
         [DataMember]
         public Dictionary<String, String> attributes

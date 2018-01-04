@@ -34,7 +34,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The unique identifier for the Service that this message action will be executed against. The Service also defines the list inputs/outputs that need to be configured for this message action.
+        /// The ID of the service that this message action will be executed against. The service also defines the list
+        /// inputs/outputs that need to be configured for this message action.
         /// </summary>
         [DataMember]
         public String serviceElementId
@@ -44,7 +45,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The unique Uri part that should be used when invoking the Service. The Uri part will inform the Service implementation which message action you are executing against.
+        /// The unique URI part that should be used when invoking the service. The URI part will inform the service
+        /// implementation which message action you are executing against.
         /// </summary>
         [DataMember]
         public String uriPart
@@ -54,7 +56,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The list of message inputs that should be sent to the Service when this action is invoked. The list of inputs is defined by the Service.
+        /// The list of message inputs that should be sent to the service when this action is invoked. The list of
+        /// inputs is defined by the service.
         /// </summary>
         [DataMember]
         public List<MessageInputAPI> inputs
@@ -64,7 +67,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The list of message outputs that should be sent back from the Service and applied to Values in the executing Flow (State). The list of outputs is defined by the Service.
+        /// The list of message outputs that should be sent back from the service and applied to values in the executing
+        /// flow state. The list of outputs is defined by the service.
         /// </summary>
         [DataMember]
         public List<MessageOutputAPI> outputs
@@ -74,8 +78,11 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// Arbitrary key value pairs that may help the Service execute the MessageAction. Use attributes to extend our MessageAction metadata with implementation specific settings.
+        /// Arbitrary key value pairs that may help the service execute the message action.
         /// </summary>
+        /// <remarks>
+        /// Use attributes to extend the message action metadata with implementation specific settings.
+        /// </remarks>
         [DataMember]
         public Dictionary<String, String> attributes
         {
@@ -83,6 +90,10 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The order in which the message action should be performed in relation to other message actions. If message
+        /// actions have the same order, they will be performed in parallel to improve flow performance.
+        /// </summary>
         [DataMember]
         public int order
         {

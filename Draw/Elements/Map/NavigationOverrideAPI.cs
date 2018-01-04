@@ -23,7 +23,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     public class NavigationOverrideAPI
     {
         /// <summary>
-        /// The unique identifier for the Navigation this override is referencing.
+        /// The unique identifier for the navigation this override is referencing.
         /// </summary>
         [DataMember]
         public String navigationElementId
@@ -33,7 +33,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The unique identifier for a particular navigation item in the Navigation being referenced.
+        /// The unique identifier for the specific navigation item in the navigation being referenced.
         /// </summary>
         [DataMember]
         public String navigationItemId
@@ -43,7 +43,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// Indicates if the navigation item being referenced should be enabled. If the navigation item has isEnabled set to false, the user will see the navigation item, but it will not function.
+        /// Indicates if the navigation item being referenced should be enabled. If the navigation item has
+        /// <code>isEnabled</code> set to <code>false</code>, the user will see the navigation item, but it will not
+        /// function.
         /// </summary>
         [DataMember]
         public Boolean isEnabled
@@ -53,7 +55,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// Indicates if the navigation item being referenced should be visible. If the navigation item has isVisible set to false, it will no longer appear to the user in the navigation. This will include child navigation items.
+        /// Indicates if the navigation item being referenced should be visible. If the navigation item has
+        /// <code>isVisible</code> set to <code>false</code>, it will no longer appear to the user in the navigation.
+        /// This will include child navigation items.
         /// </summary>
         [DataMember]
         public Boolean isVisible
@@ -63,7 +67,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The Map Element that the navigation item should point to based on this override.
+        /// The map element that the navigation item should point to based on this override.
         /// </summary>
         [DataMember]
         public String locationMapElementId

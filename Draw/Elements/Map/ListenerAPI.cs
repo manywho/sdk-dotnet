@@ -25,7 +25,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     public class ListenerAPI
     {
         /// <summary>
-        /// The developer name for the Listener. This is useful for keeping track of the Listener in the modeling tool and API.
+        /// A name for the Listener. This is useful for keeping track of the Listener in the tooling and API.
         /// </summary>
         [DataMember]
         public String developerName
@@ -35,7 +35,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The unique identifier for the Service that this Listener configuration is associated. The Service must support listening to the object you've selected to listen to.
+        /// The ID of the service that this listener is associated with. The service must support listening to the
+        /// object you've selected to listen to.
         /// </summary>
         [DataMember]
         public String serviceElementId
@@ -45,7 +46,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The type of Listener this metadata represents. The ListenerType is determined by the Service, though there are some basic ListenerTypes built into the tooling.
+        /// The type of events being listened for. The value depends on the service implementation. Builders should
+        /// refer to the documentation of the service being used.
         /// </summary>
         [DataMember]
         public String listenerType
@@ -62,8 +64,11 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// Arbitrary key value pairs that may help the Service execute the Listener. Use attributes to extend our Listener metadata with implementation specific settings.
+        /// Arbitrary key value pairs that may help the service execute the listener.
         /// </summary>
+        /// <remarks>
+        /// Use attributes to extend the listener metadata with implementation specific settings.
+        /// </remarks>
         [DataMember]
         public Dictionary<String, String> attributes
         {

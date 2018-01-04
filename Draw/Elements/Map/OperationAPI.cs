@@ -24,7 +24,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     public class OperationAPI
     {
         /// <summary>
-        /// The Value that should be assigned as part of this operation.
+        /// The value that should be assigned as part of this operation.
         /// </summary>
         [DataMember]
         public ValueElementIdAPI valueElementToApplyId
@@ -34,7 +34,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The Value that should be used to source the value that will be applied to this Value.
+        /// The value that should be referenced as the source for the change.
         /// </summary>
         [DataMember]
         public ValueElementIdAPI valueElementToReferenceId
@@ -44,7 +44,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The Macro that should be executed for this operation.
+        /// The macro that should be executed for this operation.
         /// </summary>
         [DataMember]
         public String macroElementToExecuteId

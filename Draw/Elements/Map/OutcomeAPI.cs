@@ -26,6 +26,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// <summary>
         /// The unique identifier for the outcome. This property is created by the service.
         /// </summary>
+        /// <remarks>
+        /// This value should not be included when creating new outcomes.
+        /// </remarks>
         [DataMember]
         public String id
         {
@@ -44,7 +47,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The developer summary the author provided to give more information about the Map Element.
+        /// The developer summary the author provided to give more information about the outcome.
         /// </summary>
         [DataMember]
         public String developerSummary
@@ -54,7 +57,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The label that should appear with the outcome. For UI situations, this is typically the text that will appear on the button.
+        /// The label that should appear with the outcome. For UI situations, this is typically the text that will
+        /// appear on the button.
         /// </summary>
         [DataMember]
         public String label
@@ -64,8 +68,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The unique identifier for the next Map Element in the Flow that should be executed if this outcome is selected.
+        /// The unique identifier for the next map element in the flow that should be executed if this outcome is
+        /// selected.
         /// </summary>
+        /// <remarks>
+        /// If a <code>flowOut</code> key is configured, this property is not required as the running user(s) will leave
+        /// the current flow and be sent into the flow configured in the <code>flowOut</code>.
+        /// </remarks>
         [DataMember]
         public String nextMapElementId
         {
@@ -74,7 +83,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The page action type can be used to provide additional metadata to help player developers provide standard styling and positions for outcomes. The enumeration provided is partly implemented by the existing players, though the values can be extended as needed.
+        /// Determines if the data collected in this map element should be saved, and the type of validation that should
+        /// be applied when saving.
         /// </summary>
         [DataMember]
         public String pageActionType
@@ -84,8 +94,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// Indicates if this is bulk action. This is commonly used when presenting lists of object data to tell the player if the outcome should be displayed inline with each object entry or if it should be displayed at the top of the component as a "bulk" action.
+        /// Indicates that this outcome should be treated as a “bulk” operation.
         /// </summary>
+        /// <remarks>
+        /// This is commonly used when presenting lists of object data to tell the player if the outcome should be
+        /// displayed inline with each object entry or if it should be displayed at the top of the component as a "bulk"
+        /// action.
+        /// </remarks>
         [DataMember]
         public Boolean isBulkAction
         {
@@ -94,8 +109,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The page action binding type is bound to functionality in the flow and instructs the engine what to do with any data provided in the page components.
+        /// An arbitrary string value that indicates the type of button the outcome represents. This indicates to UX
+        /// designers how they should render the button to running users.
         /// </summary>
+        /// <remarks>
+        /// For example, if this key is set to <code>DELETE</code>, the UX designer might decide to give the outcome
+        /// button a red background and an "x" icon.
+        /// </remarks>
         [DataMember]
         public String pageActionBindingType
         {
@@ -104,7 +124,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The unique identifier for the page container or component this outcome should be bound to. If you bind an outcome to a container or component, it can also indicate additional functionality: e.g. isBulkAction, etc. It also helps player designers lay out the page.
+        /// The unique identifier for the page container or component this outcome should be bound to. If you bind an
+        /// outcome to a container or component, it can also indicate additional functionality: e.g.
+        /// <code>isBulkAction</code>, etc. It also helps player designers layout the page.
         /// </summary>
         [DataMember]
         public String pageObjectBindingId
@@ -124,7 +146,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The comparison object defines the rules that should be evaluated for this outcome to be selected by the system. As a result, the comparison object should only be used for system level outcomes.
+        /// The comparison object defines the rules that should be evaluated for this outcome to be selected by the
+        /// system. As a result, the comparison object should only be used for system level outcomes.
         /// </summary>
         [DataMember]
         public ComparisonAPI comparison
@@ -134,7 +157,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The comparison object defines the rules that should be evaluated for this outcome to be selected by the system. As a result, the comparison object should only be used for system level outcomes.
+        /// The details of the flow that this outcome should link to if the user clicks on the outcome. The flow out
+        /// configuration can only be used with step and page elements.
         /// </summary>
         [DataMember]
         public FlowOutAPI flowOut
@@ -143,6 +167,11 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The array of control points (or “kinks”) in the outcome arrow as it appears in the flow diagram. If there
+        /// are no control points, it is assumed the arrow for the outcome points directly from this map element to the
+        /// next map element.
+        /// </summary>
         [DataMember]
         public List<ControlPointAPI> controlPoints
         {
