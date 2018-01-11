@@ -36,7 +36,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
         
         /// <summary>
-        /// Indicates if the user is able to edit the information associated with this component. The editable status can be altered by page conditions.
+        /// Indicates if the user is able to edit the information associated with this component. The editable status
+        /// can be altered by page conditions.
         /// </summary>
         [DataMember]
         public Boolean isEditable
@@ -46,7 +47,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The reference Value Element that should be used to store the data associated with this page component. For form components, the content type of the bound Value Element determines the type of field.
+        /// The referenced value that should be used to store the data associated with this page component. For form
+        /// components, the content type of the bound value determines the type of field.
         /// </summary>
         [DataMember]
         public ValueElementIdAPI valueElementValueBindingReferenceId
@@ -56,7 +58,11 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The reference Value Element that should be used to provide data for the component. This is only appropriate for components that support data: e.g. TABLE, COMBOBOX. If a record or set of records are selected from the result set, they are stored in the Value Element referenced by the valueElementValueBindingReferenceId object. In this scenario, the data is available in the State. For async data requests against an external database, use the object data request object.
+        /// The reference value that should be used to provide data for the component. This is only appropriate for
+        /// components that support data: e.g. <code>TABLE</code>, <code>COMBOBOX</code>. If a record or set of records
+        /// are selected from the result set, they are stored in the value referenced by the
+        /// <code>valueElementValueBindingReferenceId</code> property. In this scenario, the data is available in the
+        /// state. For async data requests against an external database, use the <code>objectDataRequest</code> property.
         /// </summary>
         [DataMember]
         public ValueElementIdAPI valueElementDataBindingReferenceId
@@ -66,8 +72,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// Used to get the data in real-time from the external data source - using this object data request as the configuration of that
-        /// request.
+        /// Used to get the data in real-time from the external data source, using this object data request as the
+        /// configuration of that request.
         /// </summary>
         [DataMember]
         public ObjectDataRequestConfigAPI objectDataRequest
@@ -77,8 +83,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// Used to get the file data in real-time from the external data source - using the file data request as the configuration of that
-        /// request.
+        /// Used to get the file data in real-time from the external data source, using the file data request as the
+        /// configuration of that request.
         /// </summary>
         [DataMember]
         public FileDataRequestConfigAPI fileDataRequest
@@ -88,7 +94,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The resource location of the image used in image type components.
+        /// The URI of the image that should be presented to the running user(s) as part of this page component. This
+        /// property will be parsed if value references are used in the URI.
         /// </summary>
         [DataMember]
         public String imageUri
@@ -98,7 +105,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
         
         /// <summary>
-        /// The unique identifier for the page container this component should be rendered in. During the development of your page layouts, use the pageContainerDeveloperName property rather than the identifier - the modeling engine will match the developer names to identifiers for you.
+        /// The unique identifier for the page container this component should be rendered in.
         /// </summary>
         [DataMember]
         public String pageContainerId
@@ -118,8 +125,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// We have a developer name field solely for external services - so they can match fields appropriately with respect
-        /// to form layouts for types.
+        /// We have a developer name field solely for external services, so they can match fields appropriately with
+        /// respect to form layouts for types.
         /// </summary>
         [DataMember]
         public String developerName
@@ -129,7 +136,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The type of component to render. The current player implementations support the component types listed in the enumeration. However, developers can define their own component types (but will need to make sure these are then supported in the player).
+        /// The type of component to render. Developers can define their own component types, but will need to make sure
+        /// these are then supported in the player.
         /// </summary>
         [DataMember]
         public String componentType
@@ -139,7 +147,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The content that should be used for this component. This is typically snippets of html5, but can be any mark-up.
+        /// The content that should be presented to the running user(s) as part of this page component. This property
+        /// will be parsed if value references are used in the content.
         /// </summary>
         [DataMember]
         public String content
@@ -149,7 +158,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The label for this particular component.
+        /// The label for this particular component. This will appear as a title heading to the running user(s).
         /// </summary>
         [DataMember]
         public String label
@@ -159,7 +168,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
         
         /// <summary>
-        /// The list of columns to show when rendering the data from an objectDataRequest or valueElementDataBindingReferenceId lookup.
+        /// The list of columns to show when rendering the data from an <code>objectDataRequest</code> or
+        /// <code>valueElementDataBindingReferenceId</code> lookup.
         /// </summary>
         [DataMember]
         public List<PageComponentColumnAPI> columns
@@ -169,7 +179,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The size of content that is typically associated with this component. For form controls, this is the typical number of characters to expect the user to enter into the component.
+        /// The number of characters that should be displayed for the page component.
         /// </summary>
         [DataMember]
         public Int32 size
@@ -179,7 +189,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The maximum size of content that can be associated with this component. For form controls, this is the maximum number of characters to allow the user to enter into the component.
+        /// The maximum number of characters that can be entered by the running user(s) for this page component.
         /// </summary>
         [DataMember]
         public Int32 maxSize
@@ -189,7 +199,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The height of this component. For form controls, this is the number of rows of characters to show. For image components, this is the height in pixels of the image.
+        /// The height of this component. For form controls, this is the number of rows of characters to show. For image
+        /// components, this is the height in pixels of the image.
         /// </summary>
         [DataMember]
         public Int32 height
@@ -199,7 +210,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The width of this component. For form controls, this is the number of columns of characters to show. For image components, this is the width in pixels of the image.
+        /// The width of this component. For form controls, this is the number of columns of characters to show. For
+        /// image components, this is the width in pixels of the image.
         /// </summary>
         [DataMember]
         public Int32 width
@@ -209,7 +221,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// Indicates if the user is required to complete the information associated with this component. The required status can be altered by page conditions.
+        /// Indicates if the user is required to complete the information associated with this component. The required
+        /// status can be altered by page conditions.
         /// </summary>
         [DataMember]
         public Boolean isRequired
@@ -219,7 +232,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// Indicates if the user can select more than one data object associated with this component. If the component supports multiselection, then the bound Value Element must have a content type of ContentList.
+        /// Indicates if the user can select more than one data object associated with this component. If the component
+        /// supports multiselection, then the bound value element must have a content type of <code>ContentList</code>.
         /// </summary>
         [DataMember]
         public Boolean isMultiSelect
@@ -239,7 +253,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// Specifies information that can be given to the user to help them complete the information associated with this component. For form controls, this is typically text that's displayed inside the input that disappears when the user focuses on the component.
+        /// Specifies information that can be given to the user to help them complete the information associated with
+        /// this component. For form controls, this is typically text that's displayed inside the input that disappears
+        /// when the user focuses on the component.
         /// </summary>
         [DataMember]
         public String hintValue
@@ -249,7 +265,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// Specifies information that can be given to the user to help them complete the information associated with this component. For form controls, this is typically shown to the user when they hover over the component or click a help link beside the component.
+        /// Specifies information that can be given to the user to help them complete the information associated with
+        /// this component. For form controls, this is typically shown to the user when they hover over the component
+        /// or click a help link beside the component.
         /// </summary>
         [DataMember]
         public String helpInfo
@@ -259,7 +277,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The order in which the page component should be rendered relative to its peers. The lowest number is rendered first.
+        /// The order in which the page component should be rendered relative to its peers. The lowest number is
+        /// rendered first.
         /// </summary>
         [DataMember]
         public Int32 order
@@ -269,7 +288,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
         
         /// <summary>
-        /// Arbitrary key value pairs that may help the component render/execute. Use attributes to extend our PageComponent metadata with implementation specific settings.
+        /// Arbitrary key value pairs that may help the component render/execute. Use attributes to extend the page
+        /// component metadata with implementation specific settings.
         /// </summary>
         [DataMember]
         public Dictionary<String, String> attributes
@@ -279,7 +299,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The list of page tags that allow additional metadata to be applied to the page component. Conceptually tags can be used to mimic html css but can also be used to provided data to enrich functionality of the page component.
+        /// The list of page tags that allow additional metadata to be applied to the page component. Conceptually,
+        /// tags can be used to mimic HTML and CSS but can also be used to provide data to enrich functionality of the
+        /// page component.
         /// </summary>
         [DataMember]
         public List<PageTagAPI> tags

@@ -24,8 +24,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
     public class PageConditionAPI
     {
         /// <summary>
-        /// The list of page rules that should be evaluated for this condition. If the page rules evaluate to 'true', the condition will execute the associated page operations.
+        /// The list of page rules that should be evaluated for this condition. If the page rules evaluate to
+        /// <code>true</code>, the condition will execute the associated page operations.
         /// </summary>
+        /// <remarks>
+        /// Each page rule represents an “if” statement (e.g. <code>if x > y…</code>). If the page rule is true, then
+        /// the associated page operations will be performed. 
+        /// </remarks>
         [DataMember]
         public List<PageRuleAPI> pageRules
         {
@@ -36,6 +41,16 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// <summary>
         /// The comparison to use when evaluating the page rules associated with this page condition.
         /// </summary>
+        /// <remarks>
+        /// Value values are:
+        /// 
+        /// <ul>
+        /// <li><strong>AND</strong>: Compare each rule entry using an <code>AND</code>. This means that all rules in
+        /// the comparison must be true for this outcome to be selected.</li>
+        /// <li><strong>OR</strong>: Compare each rule entry using an <code>OR</code>. This means that any of the rules
+        /// in the comparison must be true for this outcome to be selected.</li>
+        /// </ul>
+        /// </remarks>
         [DataMember]
         public String comparisonType
         {
@@ -44,10 +59,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// These are the actions to be performed based on the above rules evaluating to true.  We do not need to bind a specific field
-        /// to events as we consider all fields as event generating in the UI by default.  If we want to do smart optimization, we need
-        /// to look at each of the rules and derive which fields to bind events from that - we don't explicitly give a list.
+        /// These are the actions to be performed based on the above rules evaluating to true.
         /// </summary>
+        /// <remarks>
+        /// We do not need to bind a specific field to events as we consider all fields as event generating in the UI
+        /// by default. If we want to do smart optimization, we need to look at each of the rules and derive which
+        /// fields to bind events from that - we don't explicitly give a list.
+        /// </remarks>
         [DataMember]
         public List<PageOperationAPI> pageOperations
         {
