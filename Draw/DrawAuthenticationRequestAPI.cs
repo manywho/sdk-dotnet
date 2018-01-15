@@ -19,14 +19,12 @@ permissions and limitations under the License.
 
 namespace ManyWho.Flow.SDK.Draw
 {
-    [DataContract(Namespace = "http://www.manywho.com/api")]
     public class DrawAuthenticationRequestAPI
     {
         /// <summary>
         /// The username for your account in the directory
         /// </summary>
-        [DataMember]
-        public String username
+        public String Username
         {
             get;
             set;
@@ -35,8 +33,7 @@ namespace ManyWho.Flow.SDK.Draw
         /// <summary>
         /// The password for your account in the directory
         /// </summary>
-        [DataMember]
-        public String password
+        public String Password
         {
             get;
             set;
