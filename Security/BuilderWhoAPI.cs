@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Security
         /// The unique identifier for the builder on ManyWho. This identifier is the same across all tenants for which the builder has permissions.
         /// </summary>
         [DataMember]
-        public String id
+        public Guid id
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Security
         /// The first name of the builder
         /// </summary>
         [DataMember]
-        public String firstName
+        public string firstName
         {
             get;
             set;
@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK.Security
         /// The last name of the builder
         /// </summary>
         [DataMember]
-        public String lastName
+        public string lastName
         {
             get;
             set;
@@ -56,24 +56,7 @@ namespace ManyWho.Flow.SDK.Security
         /// The email of the builder
         /// </summary>
         [DataMember]
-        public String email
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// The username of the builder for this tenant on ManyWho
-        /// </summary>
-        [DataMember]
-        public String username
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public bool verified
+        public string email
         {
             get;
             set;
