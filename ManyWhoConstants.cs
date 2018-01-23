@@ -82,6 +82,11 @@ namespace ManyWho.Flow.SDK
         /// </summary>
         public const String INVOKE_TYPE_NOT_ALLOWED = "NOT_ALLOWED";
 
+        /// <summary>
+        /// todo: write doc
+        /// </summary>
+        public const String INVOKE_TYPE_INLINE_SUBFLOW = "INLINE_SUBFLOW";
+
         #endregion
 
         #region Flow Modes
