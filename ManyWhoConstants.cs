@@ -83,9 +83,14 @@ namespace ManyWho.Flow.SDK
         public const String INVOKE_TYPE_NOT_ALLOWED = "NOT_ALLOWED";
 
         /// <summary>
-        /// todo: write doc
+        /// Tells the engine that it should invoke an inline subflow
         /// </summary>
         public const String INVOKE_TYPE_INLINE_SUBFLOW = "INLINE_SUBFLOW";
+        
+        /// <summary>
+        /// Tells the engine that it should return from an inline subflow to the parent flow
+        /// </summary>
+        public const String INVOKE_TYPE_RETURN = "RETURN";
 
         #endregion
 
@@ -824,6 +829,11 @@ namespace ManyWho.Flow.SDK
         /// The Map Element can be used to execute a subflow
         /// </summary>
         public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_SUB_FLOW = "SUB_FLOW";
+        
+        /// <summary>
+        /// The Map Element can be used to return from a subflow
+        /// </summary>
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_RETURN = "RETURN";
 
         /// <summary>
         /// The Map Element is a Database Load implementation that can be used to load data into Values in your Flow from a Service
