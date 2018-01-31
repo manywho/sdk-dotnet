@@ -178,5 +178,12 @@ namespace ManyWho.Flow.SDK.Run.State
             get;
             set;
         }
+
+        [DataMember]
+        public string joinUri
+        {
+            get;
+            set;
+        }
     }
 }
