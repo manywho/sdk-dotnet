@@ -5,14 +5,9 @@ namespace ManyWho.Flow.SDK.Errors
 {
     public class EngineException : Exception
     {
-        public HttpStatusCode StatusCode { get; private set; }
+        public HttpStatusCode StatusCode { get; }
 
-        public EngineException(string message) : this(message, HttpStatusCode.BadRequest)
-        {
-
-        }
-
-        public EngineException(string message, HttpStatusCode statusCode) : this(message, null, statusCode)
+        public EngineException(string message, HttpStatusCode statusCode = HttpStatusCode.BadRequest) : this(message, null, statusCode)
         {
             
         }

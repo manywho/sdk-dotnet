@@ -54,6 +54,13 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
+        public DateTimeOffset? expiresAt
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public FlowIdAPI currentFlowId
         {
             get;
@@ -157,9 +164,23 @@ namespace ManyWho.Flow.SDK.Run.State
             get;
             set;
         }
+        
+        [DataMember]
+        public bool isExpired
+        {
+            get;
+            set;
+        }
 
         [DataMember]
         public LogAPI log
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string joinUri
         {
             get;
             set;
