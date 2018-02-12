@@ -140,5 +140,15 @@ namespace ManyWho.Flow.SDK.Security
             get;
             set;
         }
+
+        /// <summary>
+        /// The OAuth1.0 verifier
+        /// </summary>
+        [DataMember]
+        public string verifier
+        {
+            get;
+            set;
+        }
     }
 }
