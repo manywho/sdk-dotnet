@@ -201,7 +201,6 @@ namespace ManyWho.Flow.SDK.Utils
         public static void ValidateAuthenticatedWho(IAuthenticatedWho authenticatedWho)
         {
             Validation.Instance.AuthenticatedWho(authenticatedWho)
-                                .IsNotEmpty(authenticatedWho.ManyWhoTenantId, "ManyWhoTenantId")
                                 .IsNotEmpty(authenticatedWho.ManyWhoUserId, "ManyWhoUserId")
                                 .IsNotNullOrWhiteSpace(authenticatedWho.ManyWhoToken, "ManyWhoToken")
                                 .IsNotNullOrWhiteSpace(authenticatedWho.Email, "Email")
