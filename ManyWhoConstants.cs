@@ -889,6 +889,11 @@ namespace ManyWho.Flow.SDK
         /// The user should login using username/password authentication credentials
         /// </summary>
         public const String AUTHENTICATION_TYPE_USERNAME_PASSWORD = "USERNAME_PASSWORD";
+        
+        /// <summary>
+        /// The user should login using the supported OAuth1.0 sequence
+        /// </summary>
+        public const String AUTHENTICATION_TYPE_OAUTH = "OAUTH";
 
         /// <summary>
         /// The user should login using the supported OAuth2 sequence
