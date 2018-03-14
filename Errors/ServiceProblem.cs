@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Linq;
 using System.Collections.Generic;
+using System.Net;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 
@@ -12,6 +13,12 @@ namespace ManyWho.Flow.SDK.Errors
             : base()
         {
             this.Kind = ProblemKind.service;
+        }
+
+        public ServiceProblem(string uri, HttpStatusCode statusCode, string message)
+            : this(uri, (int) statusCode, message)
+        {
+            
         }
 
         public ServiceProblem(string uri, int statusCode, string message)
