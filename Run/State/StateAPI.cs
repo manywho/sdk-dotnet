@@ -185,5 +185,15 @@ namespace ManyWho.Flow.SDK.Run.State
             get;
             set;
         }
+
+        [DataMember]
+        public Dictionary<string, string> rootFaults
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool hasRootFaults => rootFaults != null && rootFaults.Count > 0;
     }
 }
