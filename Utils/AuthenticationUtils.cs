@@ -193,6 +193,7 @@ namespace ManyWho.Flow.SDK.Utils
             authenticatedWho.Token = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_TOKEN;
             authenticatedWho.UserId = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_USER_ID;
             authenticatedWho.ManyWhoTenantId = tenantGuid;
+            authenticatedWho.ManyWhoToken = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_TOKEN;
             authenticatedWho.ManyWhoUserId = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_MANYWHO_USER_ID;
 
             return authenticatedWho;
