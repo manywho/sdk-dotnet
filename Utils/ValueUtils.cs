@@ -197,7 +197,7 @@ namespace ManyWho.Flow.SDK.Utils
             }
             else
             {
-                internalId = Guid.NewGuid().ToString();
+                internalId = Fuid.NewGuid().ToString();
             }
 
             if (objectAPI.externalId != null &&
@@ -207,7 +207,7 @@ namespace ManyWho.Flow.SDK.Utils
             }
             else
             {
-                externalId = Guid.NewGuid().ToString();
+                externalId = Fuid.NewGuid().ToString();
             }
 
             xml = "";
