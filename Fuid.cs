@@ -3,16 +3,14 @@
 namespace ManyWho.Flow.SDK
 {
     public static class Fuid
-    {
-        private static bool _reflowMode;
-        
-        public static bool ReflowMode { set =>  _reflowMode = value; }
+    {        
+        public static bool ReflowEnabled { private get; set; }
 
         public static Guid NewGuid()
         {
             Guid newGuid = Guid.NewGuid();
 
-            if (_reflowMode)
+            if (ReflowEnabled)
             {
                 newGuid = Guid.Parse( newGuid.ToString("N").Substring(0, 26) + "ffffff" );
             }
