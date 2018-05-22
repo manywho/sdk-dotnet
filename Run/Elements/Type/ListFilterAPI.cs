@@ -68,7 +68,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         {
             get;
             set;
-        }
+        } = new List<ListFilterOrderByAPI>();
 
         /// <summary>
         /// The number of objects to retrieve in the list.
@@ -108,6 +108,6 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         {
             get;
             set;
-        }
+        } = new List<ListFilterSearchCriteriaAPI>();
     }
 }
