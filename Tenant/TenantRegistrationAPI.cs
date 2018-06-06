@@ -1,5 +1,4 @@
 ﻿using ManyWho.Flow.SDK.Notification;
-using ManyWho.Flow.SDK.Utils;
 
 namespace ManyWho.Flow.SDK.Tenant
 {

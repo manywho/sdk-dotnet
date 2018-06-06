@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         /// The unique identifier to match the correct group. This is an external unique identifier based on the directory implementation of the Service.
         /// </summary>
         [DataMember]
-        public String authenticationId
+        public string authenticationId
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         /// The unique attribute to match the correct group attribute. This enumeration is based on the directory implementation of the Service.
         /// </summary>
         [DataMember]
-        public String attribute
+        public string attribute
         {
             get;
             set;

@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// if you specify "myaction", the full Uri for the service would be "https://myservice.com/myservice/myaction".
         /// </summary>
         [DataMember]
-        public String uriPart
+        public string uriPart
         {
             get;
             set;
@@ -38,7 +38,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// The label for this action.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -48,7 +48,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// The developer summary for the service operation.
         /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
@@ -87,7 +87,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// <summary>
         /// Indicates if this message action is for views rather than logic.
         /// </summary>
-        public Boolean isViewMessageAction
+        public bool isViewMessageAction
         {
             get;
             set;

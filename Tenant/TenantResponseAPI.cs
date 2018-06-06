@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Tenant
         /// The unique identifier for the tenant. The unique identifier is assigned by the platform.
         /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Tenant
         /// The unique developer name for the tenant. The developer name is related to the domain information provided in the builder username.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;

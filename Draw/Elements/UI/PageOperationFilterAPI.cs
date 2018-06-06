@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// This is the reference field to apply the filter information contained in this action.
         /// </summary>
         [DataMember]
-        public String pageComponentId
+        public string pageComponentId
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// A temporary reference to the field on which to apply this filter configuration.
         /// </summary>
         [DataMember]
-        public String pageComponentDeveloperName
+        public string pageComponentDeveloperName
         {
             get;
             set;
@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The unique identifier for the column in the bound component data to filter by. This property should only be used when filtering components that are bound to lists stored in the engine state. For filtering asynchronous data, use the objectDataRequest property.
         /// </summary>
         [DataMember]
-        public String columnTypeElementPropertyId
+        public string columnTypeElementPropertyId
         {
             get;
             set;
@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The criteria to filter the list data by.
         /// </summary>
         [DataMember]
-        public String criteriaType
+        public string criteriaType
         {
             get;
             set;

@@ -24,14 +24,14 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
     public class GroupAuthorizationLocationAPI
     {
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
@@ -45,7 +45,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         }
 
         [DataMember]
-        public String attribute
+        public string attribute
         {
             get;
             set;

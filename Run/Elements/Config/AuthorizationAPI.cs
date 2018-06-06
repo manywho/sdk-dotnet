@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The unique identifier of the assigned "running user". This is not necessarily the user currently accessing the Flow, but rather the reference user identifier that should be used for relationships such as "Manager" or "Colleague" when moving from one authentication context to another.
         /// </summary>
         [DataMember]
-        public String runningAuthenticationId
+        public string runningAuthenticationId
         {
             get;
             set;
@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The overall authentication type that should be used when authorizing users.
         /// </summary>
         [DataMember]
-        public String globalAuthenticationType
+        public string globalAuthenticationType
         {
             get;
             set;

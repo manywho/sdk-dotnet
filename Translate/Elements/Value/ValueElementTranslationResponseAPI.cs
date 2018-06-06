@@ -23,21 +23,21 @@ namespace ManyWho.Flow.SDK.Translate.Elements.Value
     public class ValueElementTranslationResponseAPI : ElementTranslationResponseAPI
     {
         [DataMember]
-        public String contentType
+        public string contentType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentFormatContentValueId
+        public string contentFormatContentValueId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String defaultContentValueContentValueId
+        public string defaultContentValueContentValueId
         {
             get;
             set;

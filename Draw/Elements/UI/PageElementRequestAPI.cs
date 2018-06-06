@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The label for the page element. This is usually used as the title of the page.
         /// </summary>
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
@@ -75,7 +75,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// events on the page.
         /// </summary>
         [DataMember]
-        public Boolean stopConditionsOnFirstTrue
+        public bool stopConditionsOnFirstTrue
         {
             get;
             set;
@@ -86,7 +86,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// refer to the documentation of the UI code being used.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> attributes
+        public Dictionary<string, string> attributes
         {
             get;
             set;
@@ -111,7 +111,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// know the IDs of all created elements.
         /// </summary>
         [DataMember]
-        public Boolean updateByName
+        public bool updateByName
         {
             get;
             set;

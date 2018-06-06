@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The identifier for the field post save - this is used in place of the field reference.
         /// </summary>
         [DataMember]
-        public String pageObjectReferenceId
+        public string pageObjectReferenceId
         {
             get;
             set;
@@ -39,7 +39,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// element binding - but rather the object or list type generically.
         /// </summary>
         [DataMember]
-        public String typeElementPropertyId
+        public string typeElementPropertyId
         {
             get;
             set;
@@ -50,7 +50,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// path from the root form: e.g. [Section Name].[Column Name].[Cell Name].[Field Name]
         /// </summary>
         [DataMember]
-        public String pageObjectReferenceDeveloperName
+        public string pageObjectReferenceDeveloperName
         {
             get;
             set;
@@ -76,7 +76,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// MetaData.Validation - dynamically bind a validation rule to the input
         /// </summary>
         [DataMember]
-        public String metadataType
+        public string metadataType
         {
             get;
             set;

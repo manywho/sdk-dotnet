@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Map;
 using ManyWho.Flow.SDK.Draw.Elements.Group;
+using ManyWho.Flow.SDK.Draw.Elements.Map;
 
 /*!
 
@@ -35,13 +35,13 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
-        public void RemoveMapElement(String id)
+        public void RemoveMapElement(string id)
         {
             bool found = false;
             int index = 0;
 
             // Search the list to see if this map element exists already
-            foreach (MapElementAPI mapElementEntry in this.mapElements)
+            foreach (MapElementAPI mapElementEntry in mapElements)
             {
                 if (mapElementEntry.id == id)
                 {
@@ -53,9 +53,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             }
 
             // If the entry is found, remove it
-            if (found == true)
+            if (found)
             {
-                this.mapElements.RemoveAt(index);
+                mapElements.RemoveAt(index);
             }
         }
 
@@ -68,9 +68,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         {
             MapElementAPI reducedMapElement = new MapElementAPI();
 
-            if (this.mapElements == null)
+            if (mapElements == null)
             {
-                this.mapElements = new List<MapElementAPI>();
+                mapElements = new List<MapElementAPI>();
             }
 
             // We convert the map element back to a map element api object to stop WCF from breaking
@@ -87,7 +87,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             RemoveMapElement(reducedMapElement);
 
             // Finally, add the map element to the list
-            this.mapElements.Add(reducedMapElement);
+            mapElements.Add(reducedMapElement);
         }
 
         /// <summary>
@@ -100,13 +100,13 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
-        public void RemoveGroupElement(String id)
+        public void RemoveGroupElement(string id)
         {
             bool found = false;
             int index = 0;
 
             // Search the list to see if this group element exists already
-            foreach (GroupElementAPI groupElementEntry in this.groupElements)
+            foreach (GroupElementAPI groupElementEntry in groupElements)
             {
                 if (groupElementEntry.id == id)
                 {
@@ -118,9 +118,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             }
 
             // If the entry is found, remove it
-            if (found == true)
+            if (found)
             {
-                this.groupElements.RemoveAt(index);
+                groupElements.RemoveAt(index);
             }
         }
 
@@ -133,9 +133,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         {
             GroupElementAPI reducedGroupElement = new GroupElementAPI();
 
-            if (this.groupElements == null)
+            if (groupElements == null)
             {
-                this.groupElements = new List<GroupElementAPI>();
+                groupElements = new List<GroupElementAPI>();
             }
 
             // We convert the group element back to a group element api object to stop WCF from breaking
@@ -153,7 +153,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             RemoveGroupElement(reducedGroupElement);
 
             // Finally, add the group element to the list
-            this.groupElements.Add(reducedGroupElement);
+            groupElements.Add(reducedGroupElement);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// A unique identifier provided by the Service for the AuthorizationGroup. The AuthorizationGroup can represent any object in the underlying Service identity management system.
         /// </summary>
         [DataMember]
-        public String authenticationId
+        public string authenticationId
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The attribute associated with the authentication identifier. The attributes are defined by the Service, but typically they're things like: MEMBER, OWNER, etc.
         /// </summary>
         [DataMember]
-        public String attribute
+        public string attribute
         {
             get;
             set;

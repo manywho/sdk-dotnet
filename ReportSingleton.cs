@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Newtonsoft.Json;
-using ManyWho.Flow.SDK.Utils;
-using ManyWho.Flow.SDK.Run.State;
 using ManyWho.Flow.SDK.Errors;
+using ManyWho.Flow.SDK.Run.State;
+using ManyWho.Flow.SDK.Utils;
+using Newtonsoft.Json;
 using Polly;
 
 namespace ManyWho.Flow.SDK
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK
             HttpContent httpContent = null;
             HttpClient httpClient = null;
 
-            if (string.IsNullOrWhiteSpace(reportBaseUrl) == true)
+            if (string.IsNullOrWhiteSpace(reportBaseUrl))
             {
                 // Assign to the standard URL
                 reportBaseUrl = MANYWHO_REPORT_BASE_URL;

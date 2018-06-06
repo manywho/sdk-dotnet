@@ -24,28 +24,28 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
     public class NavigationItemResponseAPI
     {
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
         }
 
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
@@ -59,7 +59,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         }
 
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;

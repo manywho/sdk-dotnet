@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 /*!
 
@@ -24,7 +23,7 @@ namespace ManyWho.Flow.SDK.Draw
         /// <summary>
         /// The username for your account in the directory
         /// </summary>
-        public String Username
+        public string Username
         {
             get;
             set;
@@ -33,7 +32,7 @@ namespace ManyWho.Flow.SDK.Draw
         /// <summary>
         /// The password for your account in the directory
         /// </summary>
-        public String Password
+        public string Password
         {
             get;
             set;

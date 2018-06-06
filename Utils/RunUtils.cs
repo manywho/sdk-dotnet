@@ -4,7 +4,7 @@ namespace ManyWho.Flow.SDK.Utils
 {
     public class RunUtils
     {
-        public static String CompleteJoinUrl(String url, Guid stateId)
+        public static string CompleteJoinUrl(string url, Guid stateId)
         {
             if (url.IndexOf('?') > 0)
             {
@@ -18,7 +18,7 @@ namespace ManyWho.Flow.SDK.Utils
             return url;
         }
 
-        public static String CompleteRunUrl(String url, Guid flowId)
+        public static string CompleteRunUrl(string url, Guid flowId)
         {
             if (url.IndexOf('?') > 0)
             {

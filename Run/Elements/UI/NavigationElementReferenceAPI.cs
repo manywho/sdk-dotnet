@@ -23,14 +23,14 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
     public class NavigationElementReferenceAPI
     {
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;

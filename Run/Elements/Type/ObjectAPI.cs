@@ -24,35 +24,35 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
     public class ObjectAPI
     {
         [DataMember]
-        public String internalId
+        public string internalId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String externalId
+        public string externalId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String typeElementId
+        public string typeElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;
@@ -66,7 +66,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         [DataMember]
-        public Boolean isSelected
+        public bool isSelected
         {
             get;
             set;

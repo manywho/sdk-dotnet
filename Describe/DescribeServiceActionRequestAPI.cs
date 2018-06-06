@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// The Uri part to identify the action this data pertains to.
         /// </summary>
         [DataMember]
-        public String uriPart
+        public string uriPart
         {
             get;
             set;

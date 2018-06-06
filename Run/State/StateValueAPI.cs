@@ -25,14 +25,14 @@ namespace ManyWho.Flow.SDK.Run.State
     public class StateValueAPI
     {
         [DataMember]
-        public String valueElementId
+        public string valueElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String valueElementDeveloperName
+        public string valueElementDeveloperName
         {
             get;
             set;
@@ -46,14 +46,14 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
-        public String contentValue
+        public string contentValue
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentType
+        public string contentType
         {
             get;
             set;

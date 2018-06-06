@@ -42,7 +42,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The authentication token used by ManyWho.
         /// </summary>
-        String ManyWhoToken
+        string ManyWhoToken
         {
             get;
             set;
@@ -60,7 +60,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The user identifier as provided post authentication and authorization with the service.
         /// </summary>
-        String UserId
+        string UserId
         {
             get;
             set;
@@ -69,7 +69,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The username provided at login with the service.
         /// </summary>
-        String Username
+        string Username
         {
             get;
             set;
@@ -78,7 +78,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The identifier provider as provided post authentication and authorization with the service.
         /// </summary>
-        String IdentityProvider
+        string IdentityProvider
         {
             get;
             set;
@@ -87,7 +87,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The token as provided post authentication and authorization with the service.
         /// </summary>
-        String Token
+        string Token
         {
             get;
             set;
@@ -96,7 +96,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The name of the tenant being logged into.
         /// </summary>
-        String TenantName
+        string TenantName
         {
             get;
             set;
@@ -105,7 +105,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The name of the remote directory that was used to perform the login.
         /// </summary>
-        String DirectoryName
+        string DirectoryName
         {
             get;
             set;
@@ -114,7 +114,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The unique identifier for the directory.
         /// </summary>
-        String DirectoryId
+        string DirectoryId
         {
             get;
             set;
@@ -123,7 +123,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The name of the user role.
         /// </summary>
-        String RoleName
+        string RoleName
         {
             get;
             set;
@@ -132,7 +132,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The unique identifier for the user role.
         /// </summary>
-        String RoleId
+        string RoleId
         {
             get;
             set;
@@ -141,7 +141,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The name of the primary group for which this user is a member.
         /// </summary>
-        String PrimaryGroupName
+        string PrimaryGroupName
         {
             get;
             set;
@@ -150,7 +150,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The unique identifier for the primary group for which this user is a member.
         /// </summary>
-        String PrimaryGroupId
+        string PrimaryGroupId
         {
             get;
             set;
@@ -159,7 +159,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The validated email address for this user.
         /// </summary>
-        String Email
+        string Email
         {
             get;
             set;
@@ -168,7 +168,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The first name for this user.
         /// </summary>
-        String FirstName
+        string FirstName
         {
             get;
             set;
@@ -177,7 +177,7 @@ namespace ManyWho.Flow.SDK.Security
         /// <summary>
         /// The last name for this user.
         /// </summary>
-        String LastName
+        string LastName
         {
             get;
             set;

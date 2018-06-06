@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Run.State
         /// The latitude coordinate of the user's location.
         /// </summary>
         [DataMember]
-        public Decimal latitude
+        public decimal latitude
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Run.State
         /// The longitude coordinate of the user's location.
         /// </summary>
         [DataMember]
-        public Decimal longitude
+        public decimal longitude
         {
             get;
             set;
@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK.Run.State
         /// The accuracy of the location data that has been collected.
         /// </summary>
         [DataMember]
-        public Decimal accuracy
+        public decimal accuracy
         {
             get;
             set;
@@ -56,7 +56,7 @@ namespace ManyWho.Flow.SDK.Run.State
         /// The altitude of the user above mean sea level.
         /// </summary>
         [DataMember]
-        public Decimal altitude
+        public decimal altitude
         {
             get;
             set;
@@ -66,7 +66,7 @@ namespace ManyWho.Flow.SDK.Run.State
         /// The accuracy of the altitude data that has been collected.
         /// </summary>
         [DataMember]
-        public Decimal altitudeAccuracy
+        public decimal altitudeAccuracy
         {
             get;
             set;
@@ -76,7 +76,7 @@ namespace ManyWho.Flow.SDK.Run.State
         /// The heading of the user as degrees clockwise from North.
         /// </summary>
         [DataMember]
-        public Decimal heading
+        public decimal heading
         {
             get;
             set;
@@ -86,7 +86,7 @@ namespace ManyWho.Flow.SDK.Run.State
         /// The speed of the user in meters per second.
         /// </summary>
         [DataMember]
-        public Decimal speed
+        public decimal speed
         {
             get;
             set;

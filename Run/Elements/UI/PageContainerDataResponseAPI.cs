@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The unique identifier for the page container that this data pertains to.
         /// </summary>
         [DataMember]
-        public String pageContainerId
+        public string pageContainerId
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// Indicates if the page container should be enabled. If the page container is disabled, the default behavior is that all child components and containers are also disabled.
         /// </summary>
         [DataMember]
-        public Boolean isEnabled
+        public bool isEnabled
         {
             get;
             set;
@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// Indicates if the page container should be editable. If the page container is not editable, the default behavior is that all child components and containers are also not editable.
         /// </summary>
         [DataMember]
-        public Boolean isEditable
+        public bool isEditable
         {
             get;
             set;
@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// Indicates if the page container should be visible. If the page container is not visible, the default behavior is that all child components and containers are also not visible.
         /// </summary>
         [DataMember]
-        public Boolean isVisible
+        public bool isVisible
         {
             get;
             set;

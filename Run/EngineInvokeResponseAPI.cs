@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Run.State;
-using ManyWho.Flow.SDK.Run.Elements.UI;
 using ManyWho.Flow.SDK.Run.Elements.Map;
+using ManyWho.Flow.SDK.Run.Elements.UI;
+using ManyWho.Flow.SDK.Run.State;
 using ManyWho.Flow.SDK.Translate;
 
 
@@ -39,14 +39,14 @@ namespace ManyWho.Flow.SDK.Run
         /// The unique identifier for the initialized flow state. The state identifier is needed throughout the execution of the flow as it is the pointer that points the engine to the correct running instance of a flow.
         /// </summary>
         [DataMember]
-        public String stateId
+        public string stateId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String parentStateId
+        public string parentStateId
         {
             get;
             set;
@@ -56,7 +56,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The unique identifier for the token response from the state. The state token identifier changes with every cycle of request/response. The token is needed as it tells the engine how in-sync your request is with the current service side state.
         /// </summary>
         [DataMember]
-        public String stateToken
+        public string stateToken
         {
             get;
             set;
@@ -66,7 +66,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The email address that should be used to notify of any Flow or player related faults. This email address is typically the email of the author of the Flow.
         /// </summary>
         [DataMember]
-        public String alertEmail
+        public string alertEmail
         {
             get;
             set;
@@ -76,7 +76,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The message that should be shown to the user if the engine returns an Invoke Type of 'WAIT'.
         /// </summary>
         [DataMember]
-        public String waitMessage
+        public string waitMessage
         {
             get;
             set;
@@ -86,7 +86,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The message that should be shown to the user if the engine returns an Invoke Type of 'STATUS'. The engine will automatically handle UI permissions - so this user will not recieve Page metadata.
         /// </summary>
         [DataMember]
-        public String notAuthorizedMessage
+        public string notAuthorizedMessage
         {
             get;
             set;
@@ -96,7 +96,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The unique identifier for the map element the user is currently executing against.
         /// </summary>
         [DataMember]
-        public String currentMapElementId
+        public string currentMapElementId
         {
             get;
             set;
@@ -106,7 +106,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The unique identifier for the collaboration stream the user is currently using to collaborate with colleagues. If the Flow is not leveraging collaboration streams, this property will be null or blank.
         /// </summary>
         [DataMember]
-        public String currentStreamId
+        public string currentStreamId
         {
             get;
             set;
@@ -116,7 +116,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The way the engine responded to your initial invoke request.
         /// </summary>
         [DataMember]
-        public String invokeType
+        public string invokeType
         {
             get;
             set;
@@ -126,7 +126,7 @@ namespace ManyWho.Flow.SDK.Run
         /// Key value pairs you wish to annotate to the flow. Annotations take the form of {"mykey":"myvalue"}. Any annotations added to the state will be persisted for the duration of the flow. Annotations are passed to the executing player and also through to plugin services. Annotations can be changed at any time through the execution of the flow.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> annotations
+        public Dictionary<string, string> annotations
         {
             get;
             set;
@@ -193,7 +193,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The values mimic standard REST codes, but as a String. A "200" indicates the user is authenticated to execute the flow. A "401" indicates the user needs to login based on the authorization context information provided in the response.
         /// </summary>
         [DataMember]
-        public String statusCode
+        public string statusCode
         {
             get;
             set;
@@ -203,7 +203,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The Url that should be used to run a new instance of this flow with this player. For cross-platform situations, the run Url should redirect to the appropriate player for the calling device.
         /// </summary>
         [DataMember]
-        public String runFlowUri
+        public string runFlowUri
         {
             get;
             set;
@@ -213,7 +213,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The Url that should be used to join this instance of this this flow with this player. For cross-platform situations, the join Url should redirect to the appropriate player for the calling device.
         /// </summary>
         [DataMember]
-        public String joinFlowUri
+        public string joinFlowUri
         {
             get;
             set;

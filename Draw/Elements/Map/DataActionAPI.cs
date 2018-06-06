@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The developer name to help identify this data action in tooling and APIs.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -39,7 +39,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// objects provided in this data action.
         /// </summary>
         [DataMember]
-        public String crudOperationType
+        public string crudOperationType
         {
             get;
             set;
@@ -51,7 +51,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// object or list.
         /// </summary>
         [DataMember]
-        public Boolean isSmartSave
+        public bool isSmartSave
         {
             get;
             set;
@@ -63,7 +63,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// improve flow performance.
         /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;

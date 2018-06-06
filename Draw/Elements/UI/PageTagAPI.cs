@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The unique identifier for the Tag that this tag is associated. This Tag will be used to provide the Tag name at runtime and also ensure Tag content and object type references are maintained.
         /// </summary>
         [DataMember]
-        public String tagElementId
+        public string tagElementId
         {
             get;
             set;

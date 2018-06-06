@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The developer name to help identify this message action in tooling and APIs.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -38,7 +38,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// inputs/outputs that need to be configured for this message action.
         /// </summary>
         [DataMember]
-        public String serviceElementId
+        public string serviceElementId
         {
             get;
             set;
@@ -49,7 +49,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// implementation which message action you are executing against.
         /// </summary>
         [DataMember]
-        public String uriPart
+        public string uriPart
         {
             get;
             set;
@@ -84,7 +84,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// Use attributes to extend the message action metadata with implementation specific settings.
         /// </remarks>
         [DataMember]
-        public Dictionary<String, String> attributes
+        public Dictionary<string, string> attributes
         {
             get;
             set;

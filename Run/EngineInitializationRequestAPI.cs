@@ -38,7 +38,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The unique identifier for an existing State. This parameter should be used if the first initialization request was rejected due to access being denied due to authentication. If you do not re-use this stateId property, your inputs will not be correctly assigned.
         /// </summary>
         [DataMember]
-        public String stateId
+        public string stateId
         {
             get;
             set;
@@ -48,7 +48,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The unique identifier for the parent State that "spawned" this State. This property is assigned when a Flow calls a Sub-Flow. The Sub-Flow will have this property assigned referencing the parent Flow.
         /// </summary>
         [DataMember]
-        public String parentStateId
+        public string parentStateId
         {
             get;
             set;
@@ -58,7 +58,7 @@ namespace ManyWho.Flow.SDK.Run
         /// An arbitrary external identifier that can be used to query for a State.
         /// </summary>
         [DataMember]
-        public String externalIdentifier
+        public string externalIdentifier
         {
             get;
             set;
@@ -68,7 +68,7 @@ namespace ManyWho.Flow.SDK.Run
         /// Annotations take the form of {"mykey":"myvalue"}. Any annotations added to the State will be persisted for the duration of the Flow. Annotations are passed to the executing player and also through to Services. Annotations can be changed at any time through the execution of the Flow.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> annotations
+        public Dictionary<string, string> annotations
         {
             get;
             set;
@@ -88,7 +88,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The location of the player that should be used for sharing and notifications when first running the flow. The service will automatically append the "flow-id" parameter to this url so the player knows which flow it is playing.
         /// </summary>
         [DataMember]
-        public String playerUrl
+        public string playerUrl
         {
             get;
             set;
@@ -98,7 +98,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The location of the player that should be used for sharing and notifications when joining a running flow. The service will automatically append the "join" parameter to this url so the player knows which flow and state it is playing (the "join" parameter is the state identifier).
         /// </summary>
         [DataMember]
-        public String joinPlayerUrl
+        public string joinPlayerUrl
         {
             get;
             set;
@@ -108,7 +108,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The mode you wish to run the flow in. The mode is mainly useful for debugging purposes as you can step through the flow and also view state information to check everything is working as expected.
         /// </summary>
         [DataMember]
-        public String mode
+        public string mode
         {
             get;
             set;
@@ -118,7 +118,7 @@ namespace ManyWho.Flow.SDK.Run
         /// The reporting mode under which you want to run this State of a Flow.
         /// </summary>
         [DataMember]
-        public String reportingMode
+        public string reportingMode
         {
             get;
             set;

@@ -26,14 +26,14 @@ namespace ManyWho.Flow.SDK.Run.State
     public class StateAPI
     {
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
         }
 
         [DataMember]
-        public String parentId
+        public string parentId
         {
             get;
             set;
@@ -68,35 +68,35 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
-        public String currentFlowDeveloperName
+        public string currentFlowDeveloperName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String currentMapElementId
+        public string currentMapElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String currentMapElementDeveloperName
+        public string currentMapElementDeveloperName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String currentStreamId
+        public string currentStreamId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String currentRunningUserId
+        public string currentRunningUserId
         {
             get;
             set;
@@ -110,21 +110,21 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
-        public String externalIdentifier
+        public string externalIdentifier
         {
             get;
             set;
         }
 
         [DataMember]
-        public String manywhoTenantId
+        public string manywhoTenantId
         {
             get;
             set;
         }
 
         [DataMember]
-        public Dictionary<String, String> annotations
+        public Dictionary<string, string> annotations
         {
             get;
             set;
@@ -152,7 +152,7 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
-        public String authorizationHeader
+        public string authorizationHeader
         {
             get;
             set;

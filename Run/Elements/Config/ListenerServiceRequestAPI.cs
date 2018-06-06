@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The type of listening the Service should do on the provide value. The listen types are determined by the Service as there can be many types of events the listener may be interested in "hearing".
         /// </summary>
         [DataMember]
-        public String listenType
+        public string listenType
         {
             get;
             set;

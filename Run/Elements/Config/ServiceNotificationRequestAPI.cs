@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Utils;
-using ManyWho.Flow.SDK.Translate;
 using ManyWho.Flow.SDK.Draw.Elements.Group;
 using ManyWho.Flow.SDK.Notification;
+using ManyWho.Flow.SDK.Translate;
 
 /*!
 
@@ -28,7 +27,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
     public class ServiceNotificationRequestAPI : NotificationRequestAPI
     {
         [DataMember]
-        public String[] userIds
+        public string[] userIds
         {
             get;
             set;

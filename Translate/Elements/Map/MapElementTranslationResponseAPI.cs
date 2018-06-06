@@ -24,28 +24,28 @@ namespace ManyWho.Flow.SDK.Translate.Elements.Map
     public class MapElementTranslationResponseAPI : ElementTranslationResponseAPI
     {
         [DataMember]
-        public String userContentContentValueId
+        public string userContentContentValueId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String statusMessageContentValueId
+        public string statusMessageContentValueId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String postUpdateMessageContentValueId
+        public string postUpdateMessageContentValueId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String notAuthorizedMessageContentValueId
+        public string notAuthorizedMessageContentValueId
         {
             get;
             set;

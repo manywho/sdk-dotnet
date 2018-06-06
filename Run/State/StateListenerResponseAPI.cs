@@ -23,7 +23,7 @@ namespace ManyWho.Flow.SDK.Run.State
     public class StateListenerResponseAPI : StateListenerRequestAPI
     {
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;

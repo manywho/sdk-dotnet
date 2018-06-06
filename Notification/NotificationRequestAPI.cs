@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Notification
         /// The reason for the notification. Typically, the reason will be provided as the 'subject' for email notifications.
         /// </summary>
         [DataMember]
-        public String reason
+        public string reason
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Notification
         /// The Url to redirect the user to once this notification has been processed by the platform.
         /// </summary>
         [DataMember]
-        public String redirectUrl
+        public string redirectUrl
         {
             get;
             set;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Translate;
 
 /*!
@@ -35,7 +34,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// <summary>
         /// The Uri for the service to describe.
         /// </summary>
-        public String uri
+        public string uri
         {
             get;
             set;

@@ -23,21 +23,21 @@ namespace ManyWho.Flow.SDK.Draw.Util
     public class ModelBuilderQueryWhereAPI
     {
         [DataMember]
-        public String columnName
+        public string columnName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String criteria
+        public string criteria
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentValue
+        public string contentValue
         {
             get;
             set;

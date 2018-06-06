@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// A name for the Listener. This is useful for keeping track of the Listener in the tooling and API.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -39,7 +39,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// object you've selected to listen to.
         /// </summary>
         [DataMember]
-        public String serviceElementId
+        public string serviceElementId
         {
             get;
             set;
@@ -50,7 +50,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// refer to the documentation of the service being used.
         /// </summary>
         [DataMember]
-        public String listenerType
+        public string listenerType
         {
             get;
             set;
@@ -70,7 +70,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// Use attributes to extend the listener metadata with implementation specific settings.
         /// </remarks>
         [DataMember]
-        public Dictionary<String, String> attributes
+        public Dictionary<string, string> attributes
         {
             get;
             set;

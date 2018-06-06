@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The label to display to the user.
         /// </summary>
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
@@ -61,7 +61,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// the IDs of all created elements.
         /// </summary>
         [DataMember]
-        public Boolean updateByName
+        public bool updateByName
         {
             get;
             set;

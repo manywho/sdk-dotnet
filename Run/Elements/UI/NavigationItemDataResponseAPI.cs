@@ -24,49 +24,49 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
     public class NavigationItemDataResponseAPI
     {
         [DataMember]
-        public String navigationItemId
+        public string navigationItemId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String navigationItemDeveloperName
+        public string navigationItemDeveloperName
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean isActive
+        public bool isActive
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean isCurrent
+        public bool isCurrent
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean isEnabled
+        public bool isEnabled
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean isVisible
+        public bool isVisible
         {
             get;
             set;
         }
 
         [DataMember]
-        public String locationMapElementId
+        public string locationMapElementId
         {
             get;
             set;

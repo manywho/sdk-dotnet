@@ -25,27 +25,27 @@ namespace ManyWho.Flow.SDK.Social
     {
         public MessageAPI()
         {
-            this.attachments = new List<AttachmentAPI>();
-            this.comments = new List<MessageAPI>();
-            this.likerIds = new List<String>();
+            attachments = new List<AttachmentAPI>();
+            comments = new List<MessageAPI>();
+            likerIds = new List<string>();
         }
 
         [DataMember]
-        public String id
+        public string id
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String repliedToId 
+        public string repliedToId 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String text 
+        public string text 
         { 
             get; 
             set; 
@@ -80,7 +80,7 @@ namespace ManyWho.Flow.SDK.Social
         }
 
         [DataMember]
-        public List<String> likerIds 
+        public List<string> likerIds 
         { 
             get; 
             set; 
@@ -89,13 +89,13 @@ namespace ManyWho.Flow.SDK.Social
         /// <summary>
         /// This property is not sent back to the caller
         /// </summary>
-        public String myLikeId
+        public string myLikeId
         {
             get;
             set;
         }
 
-        public Int32 commentsCount
+        public int commentsCount
         {
             get;
             set;

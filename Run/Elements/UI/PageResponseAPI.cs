@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The label for the page. This is often used as a title for the page.
         /// </summary>
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
@@ -81,7 +81,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         }
 
         [DataMember]
-        public Dictionary<String, String> attributes
+        public Dictionary<string, string> attributes
         {
             get;
             set;
@@ -91,7 +91,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The order in which this page element should appear. The order will always be zero for the page element as it is the root container.
         /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;

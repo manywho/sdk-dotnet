@@ -52,7 +52,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// </ul>
         /// </remarks>
         [DataMember]
-        public String comparisonType
+        public string comparisonType
         {
             get;
             set;

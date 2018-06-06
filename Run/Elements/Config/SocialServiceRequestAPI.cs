@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The current page of messages that should be sent.
         /// </summary>
         [DataMember]
-        public String page
+        public string page
         {
             get;
             set;
@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The number of messages to include on the page response.
         /// </summary>
         [DataMember]
-        public Int32 pageSize
+        public int pageSize
         {
             get;
             set;

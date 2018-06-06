@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using ManyWho.Flow.SDK.Errors;
-using ManyWho.Flow.SDK.Security;
 using Newtonsoft.Json;
-using System.Net.Http;
 
 /*!
 
@@ -26,17 +25,17 @@ namespace ManyWho.Flow.SDK.Utils
 {
     public class ErrorUtils
     {
-        public const String SETTING_SEND_ALERTS = "ManyWho.SendAlerts";
-        public const String SETTING_SEND_ALERT_FROM_EMAIL = "ManyWho.SendAlertFromEmail";
-        public const String SETTING_SENDGRID_SERVER_BASE_PATH = "ManyWho.SendGrid.ServerBasePath";
-        public const String SETTING_SENDGRID_USERNAME = "ManyWho.SendGrid.Username";
-        public const String SETTING_SENDGRID_PASSWORD = "ManyWho.SendGrid.Password";
-        public const String SETTING_SENDGRID_SMTP = "ManyWho.SendGrid.SMTP";
+        public const string SETTING_SEND_ALERTS = "ManyWho.SendAlerts";
+        public const string SETTING_SEND_ALERT_FROM_EMAIL = "ManyWho.SendAlertFromEmail";
+        public const string SETTING_SENDGRID_SERVER_BASE_PATH = "ManyWho.SendGrid.ServerBasePath";
+        public const string SETTING_SENDGRID_USERNAME = "ManyWho.SendGrid.Username";
+        public const string SETTING_SENDGRID_PASSWORD = "ManyWho.SendGrid.Password";
+        public const string SETTING_SENDGRID_SMTP = "ManyWho.SendGrid.SMTP";
 
-        public const String ALERT_TYPE_FAULT = "Fault";
-        public const String ALERT_TYPE_WARNING = "Warning";
+        public const string ALERT_TYPE_FAULT = "Fault";
+        public const string ALERT_TYPE_WARNING = "Warning";
 
-        private static String AggregateAndWriteErrorMessage(Exception exception, String message, Boolean includeTrace)
+        private static string AggregateAndWriteErrorMessage(Exception exception, string message, bool includeTrace)
         {
             if (exception != null)
             {
@@ -53,7 +52,7 @@ namespace ManyWho.Flow.SDK.Utils
             return message;
         }
 
-        private static String AggregateAndWriteAggregateErrorMessage(Exception exception, String message, Boolean includeTrace)
+        private static string AggregateAndWriteAggregateErrorMessage(Exception exception, string message, bool includeTrace)
         {
             if (exception is AggregateException)
             {
@@ -81,14 +80,14 @@ namespace ManyWho.Flow.SDK.Utils
             return message;
         }
 
-        private static String AggregateAndWriteExceptionErrorMessage(Exception exception, String message, Boolean includeTrace)
+        private static string AggregateAndWriteExceptionErrorMessage(Exception exception, string message, bool includeTrace)
         {
             if (exception != null)
             {
                 message += "Exception:" + Environment.NewLine;
                 message += exception.Message + Environment.NewLine + Environment.NewLine;
 
-                if (includeTrace == true)
+                if (includeTrace)
                 {
                     message += "Stack Trace:" + Environment.NewLine;
                     message += exception.StackTrace + Environment.NewLine + Environment.NewLine;

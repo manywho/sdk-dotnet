@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ManyWho.Flow.SDK.Package
+﻿namespace ManyWho.Flow.SDK.Package
 {
     public class SharedPackageRequestAPI
     {

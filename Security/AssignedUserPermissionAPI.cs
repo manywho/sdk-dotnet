@@ -23,35 +23,35 @@ namespace ManyWho.Flow.SDK.Security
     public class AssignedUserPermissionAPI
     {
         [DataMember]
-        public String userId
+        public string userId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String avatarUrl
+        public string avatarUrl
         {
             get;
             set;
         }
 
         [DataMember]
-        public String fullName
+        public string fullName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String userPermissionType
+        public string userPermissionType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String manywhoUserId
+        public string manywhoUserId
         {
             get;
             set;

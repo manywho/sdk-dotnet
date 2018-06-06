@@ -24,49 +24,49 @@ namespace ManyWho.Flow.SDK.Translate.Elements.UI
     public class PageComponentTranslationResponseAPI
     {
         [DataMember]
-        public String pageContainerDeveloperName
+        public string pageContainerDeveloperName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String componentType
+        public string componentType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentContentValueId
+        public string contentContentValueId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String labelContentValueId
+        public string labelContentValueId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String hintValueContentValueId
+        public string hintValueContentValueId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String helpInfoContentValueId
+        public string helpInfoContentValueId
         {
             get;
             set;

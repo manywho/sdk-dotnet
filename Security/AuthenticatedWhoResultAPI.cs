@@ -24,119 +24,119 @@ namespace ManyWho.Flow.SDK.Security
     public class AuthenticatedWhoResultAPI
     {
         [DataMember]
-        public String userId
+        public string userId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String email
+        public string email
         {
             get;
             set;
         }
 
         [DataMember]
-        public String username
+        public string username
         {
             get;
             set;
         }
 
         [DataMember]
-        public String firstName
+        public string firstName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String lastName
+        public string lastName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String directoryId
+        public string directoryId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String directoryName
+        public string directoryName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String roleId
+        public string roleId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String roleName
+        public string roleName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String primaryGroupId
+        public string primaryGroupId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String primaryGroupName
+        public string primaryGroupName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String tenantName
+        public string tenantName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String tenantId
+        public string tenantId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String identityProvider
+        public string identityProvider
         {
             get;
             set;
         }
 
         [DataMember]
-        public String token
+        public string token
         {
             get;
             set;
         }
 
         [DataMember]
-        public String status
+        public string status
         {
             get;
             set;
         }
 
         [DataMember]
-        public String statusMessage
+        public string statusMessage
         {
             get;
             set;
@@ -156,7 +156,7 @@ namespace ManyWho.Flow.SDK.Security
 
         public static AuthenticatedWhoResultAPI CreateDeniedResult(string message)
         {
-            return new AuthenticatedWhoResultAPI()
+            return new AuthenticatedWhoResultAPI
             {
                 status = ManyWhoConstants.AUTHENTICATED_USER_STATUS_ACCESS_DENIED,
                 statusMessage = message

@@ -7,7 +7,7 @@ namespace ManyWho.Flow.SDK.Errors
         public ApiProblemException(ApiProblem problem)
             : base(problem.Message)
         {
-            this.Problem = problem;
+            Problem = problem;
         }
 
         public ApiProblem Problem { get; private set; }
