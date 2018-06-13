@@ -38,7 +38,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The unique identifier for the property in the Type (associated with this filter) that should be used for ordering the results.
         /// </summary>
         [DataMember]
-        public String orderByTypeElementPropertyId
+        public string orderByTypeElementPropertyId
         {
             get;
             set;
@@ -48,7 +48,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The direction in which to order the results.
         /// </summary>
         [DataMember]
-        public String orderByDirectionType
+        public string orderByDirectionType
         {
             get;
             set;
@@ -68,7 +68,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The maximum number of results to return from the request.
         /// </summary>
         [DataMember]
-        public Int32 limit
+        public int limit
         {
             get;
             set;
@@ -78,7 +78,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// Use the list of provided objects as the filter for the lookup.  This allows us to refresh data that can be transient in the remote system.
         /// </summary>
         [DataMember]
-        public Boolean filterByProvidedObjects
+        public bool filterByProvidedObjects
         {
             get;
             set;

@@ -39,7 +39,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// </ul>
         /// </remarks>
         [DataMember]
-        public String voteType
+        public string voteType
         {
             get;
             set;
@@ -49,7 +49,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The minimum number of users that need to click on an outcome before the flow will proceed to the next step.
         /// </summary>
         [DataMember]
-        public Int32 minimumCount
+        public int minimumCount
         {
             get;
             set;
@@ -61,7 +61,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// swimlane (if the map element is contained in a swimlane).
         /// </summary>
         [DataMember]
-        public Int32 minimumPercent
+        public int minimumPercent
         {
             get;
             set;
@@ -72,7 +72,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// metadata with implementation specific settings.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> attributes
+        public Dictionary<string, string> attributes
         {
             get;
             set;

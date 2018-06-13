@@ -24,7 +24,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
     public class ObjectDataTypePropertyAPI
     {
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;

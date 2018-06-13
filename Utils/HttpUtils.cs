@@ -1,9 +1,9 @@
 ﻿using System;
-//using System.Text;
 using System.Net;
 using System.Net.Http;
-//using System.Threading.Tasks;
 using ManyWho.Flow.SDK.Security;
+//using System.Text;
+//using System.Threading.Tasks;
 
 ///*!
 //Copyright 2013 Manywho, Inc.

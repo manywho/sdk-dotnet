@@ -31,21 +31,21 @@ namespace ManyWho.Flow.SDK.Run
         }
 
         [DataMember]
-        public String stateId
+        public string stateId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String stateToken
+        public string stateToken
         {
             get;
             set;
         }
 
         [DataMember]
-        public String navigationElementId
+        public string navigationElementId
         {
             get;
             set;

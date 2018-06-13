@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The unique identifier for the page container. This property is created by the service.
         /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
@@ -48,7 +48,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// </ul>
         /// </remarks>
         [DataMember]
-        public String containerType
+        public string containerType
         {
             get;
             set;
@@ -60,7 +60,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// is unique for the page.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -70,7 +70,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The label for this particular container. This will appear as a title heading to the running user(s).
         /// </summary>
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
@@ -91,7 +91,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// rendered first.
         /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;
@@ -102,7 +102,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// container metadata with implementation specific settings.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> attributes
+        public Dictionary<string, string> attributes
         {
             get;
             set;

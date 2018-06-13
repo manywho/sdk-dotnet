@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The criteria that should be used when evaluating this rule: e.g. EQUAL
         /// </summary>
         [DataMember]
-        public String criteriaType
+        public string criteriaType
         {
             get;
             set;

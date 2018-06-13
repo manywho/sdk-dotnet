@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Tenant
         /// tenant
         /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;

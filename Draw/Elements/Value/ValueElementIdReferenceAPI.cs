@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         /// The developer name from the Value.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         /// The developer name of the Type associated with the Value. This will be a non-null value for Objects and Lists.
         /// </summary>
         [DataMember]
-        public String typeElementDeveloperName
+        public string typeElementDeveloperName
         {
             get;
             set;
@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         /// The developer name of one of the properties available for the Type.
         /// </summary>
         [DataMember]
-        public String typeElementPropertyDeveloperName
+        public string typeElementPropertyDeveloperName
         {
             get;
             set;
@@ -63,7 +63,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         /// The unique identifier for the Type property associated with the Value. This will be a non-null value for Objects and Lists for entries referring to a property.
         /// </summary>
         [DataMember]
-        public String typeElementPropertyTypeElementId
+        public string typeElementPropertyTypeElementId
         {
             get;
             set;
@@ -73,7 +73,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         /// The element type from the Value.
         /// </summary>
         [DataMember]
-        public String elementType
+        public string elementType
         {
             get;
             set;
@@ -83,21 +83,21 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         /// The unique identifier for the Type associated with the Value.
         /// </summary>
         [DataMember]
-        public String typeElementId
+        public string typeElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String serviceElementId
+        public string serviceElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String serviceElementDeveloperName
+        public string serviceElementDeveloperName
         {
             get;
             set;
@@ -107,14 +107,14 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         /// The ContentType from the Value.
         /// </summary>
         [DataMember]
-        public String contentType
+        public string contentType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String parentContentType
+        public string parentContentType
         {
             get;
             set;
@@ -124,7 +124,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         /// The isFixed property from the Value.
         /// </summary>
         [DataMember]
-        public Boolean isFixed
+        public bool isFixed
         {
             get;
             set;

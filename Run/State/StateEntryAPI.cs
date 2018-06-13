@@ -9,7 +9,7 @@ namespace ManyWho.Flow.SDK.Run.State
     public class StateEntryAPI
     {
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
@@ -23,21 +23,21 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
-        public String flowDeveloperName
+        public string flowDeveloperName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String mapElementId
+        public string mapElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String mapElementDeveloperName
+        public string mapElementDeveloperName
         {
             get;
             set;

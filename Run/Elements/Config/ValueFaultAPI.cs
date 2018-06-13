@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The unique identifier of the Value that caused the fault in the Service. This allows ManyWho to match this fault with any Pages that display it to a user.
         /// </summary>
         [DataMember]
-        public String valueElementToReferenceId
+        public string valueElementToReferenceId
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The unique identifier of the Type Property that cause the fault in the Service. This is only applicable for ContentObject and ContentList Values.
         /// </summary>
         [DataMember]
-        public String valueElementTypeElementPropertyToReferenceId
+        public string valueElementTypeElementPropertyToReferenceId
         {
             get;
             set;
@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// An informative code from the Service to indicate the type of fault that occurred.
         /// </summary>
         [DataMember]
-        public String faultCode
+        public string faultCode
         {
             get;
             set;
@@ -56,7 +56,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// A fault message that will help users understand how to fix the fault in their provided value.
         /// </summary>
         [DataMember]
-        public String faultMessage
+        public string faultMessage
         {
             get;
             set;

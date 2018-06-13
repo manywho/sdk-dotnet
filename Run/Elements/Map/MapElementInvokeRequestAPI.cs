@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// The unique identifier for the outcome the user is taking action on. The outcomes are provided in the MapElementInvokeResponse as part of the outcomeResponses property.
         /// </summary>
         [DataMember]
-        public String selectedOutcomeId
+        public string selectedOutcomeId
         {
             get;
             set;

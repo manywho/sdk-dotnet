@@ -14,15 +14,15 @@ namespace ManyWho.Flow.SDK.Errors
     {
         public ApiProblem()
         {
-            this.Kind = ProblemKind.api;
+            Kind = ProblemKind.api;
         }
 
         public ApiProblem(string uri, int statusCode, string message)
             : this()
         {
-            this.Uri = uri;
-            this.StatusCode = statusCode;
-            this.Message = message;
+            Uri = uri;
+            StatusCode = statusCode;
+            Message = message;
         }
 
         /// <summary>

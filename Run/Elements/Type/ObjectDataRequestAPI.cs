@@ -29,7 +29,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The state id that allows us to make the correct version references.
         /// </summary>
         [DataMember]
-        public String stateId
+        public string stateId
         {
             get;
             set;
@@ -40,7 +40,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// with a previous data request - if we choose to cache it.
         /// </summary>
         [DataMember]
-        public String token
+        public string token
         {
             get;
             set;
@@ -51,7 +51,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// and allow us to validate various info around the type.
         /// </summary>
         [DataMember]
-        public String typeElementBindingId
+        public string typeElementBindingId
         {
             get;
             set;

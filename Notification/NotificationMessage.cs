@@ -9,7 +9,7 @@ namespace ManyWho.Flow.SDK.Notification
     {
         [JsonProperty("mediaType")]
         [DataMember(Name = "mediaType")]
-        public String MediaType
+        public string MediaType
         {
             get;
             set;
@@ -17,7 +17,7 @@ namespace ManyWho.Flow.SDK.Notification
 
         [JsonProperty("message")]
         [DataMember(Name = "message")]
-        public String Message
+        public string Message
         {
             get;
             set;

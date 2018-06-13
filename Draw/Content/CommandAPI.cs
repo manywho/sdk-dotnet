@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Content
         /// The type of command to be executed.
         /// </summary>
         [DataMember]
-        public String commandType
+        public string commandType
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Content
         /// Additional key value pairs that may help the Command execute.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> properties
+        public Dictionary<string, string> properties
         {
             get;
             set;

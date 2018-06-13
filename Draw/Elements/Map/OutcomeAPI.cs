@@ -30,7 +30,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// This value should not be included when creating new outcomes.
         /// </remarks>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
@@ -40,7 +40,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The developer name to help identify this outcome in tooling and APIs.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -50,7 +50,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The developer summary the author provided to give more information about the outcome.
         /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
@@ -61,7 +61,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// appear on the button.
         /// </summary>
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
@@ -76,7 +76,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// the current flow and be sent into the flow configured in the <code>flowOut</code>.
         /// </remarks>
         [DataMember]
-        public String nextMapElementId
+        public string nextMapElementId
         {
             get;
             set;
@@ -87,7 +87,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// be applied when saving.
         /// </summary>
         [DataMember]
-        public String pageActionType
+        public string pageActionType
         {
             get;
             set;
@@ -102,7 +102,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// action.
         /// </remarks>
         [DataMember]
-        public Boolean isBulkAction
+        public bool isBulkAction
         {
             get;
             set;
@@ -117,7 +117,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// button a red background and an "x" icon.
         /// </remarks>
         [DataMember]
-        public String pageActionBindingType
+        public string pageActionBindingType
         {
             get;
             set;
@@ -129,7 +129,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// <code>isBulkAction</code>, etc. It also helps player designers layout the page.
         /// </summary>
         [DataMember]
-        public String pageObjectBindingId
+        public string pageObjectBindingId
         {
             get;
             set;
@@ -139,7 +139,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The order in which the outcomes should be rendered relative to its peers. The lowest number is rendered first.
         /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;

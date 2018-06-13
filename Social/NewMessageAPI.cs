@@ -25,26 +25,26 @@ namespace ManyWho.Flow.SDK.Social
     {
         public NewMessageAPI()
         {
-            this.uploadedFiles = new List<FileAPI>();
-            this.mentionedWhos = new List<MentionedWhoAPI>();
+            uploadedFiles = new List<FileAPI>();
+            mentionedWhos = new List<MentionedWhoAPI>();
         }
 
         [DataMember]
-        public String senderId 
+        public string senderId 
         { 
             get;
             set;
         }
 
         [DataMember]
-        public String messageText 
+        public string messageText 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String repliedTo 
+        public string repliedTo 
         { 
             get; 
             set; 

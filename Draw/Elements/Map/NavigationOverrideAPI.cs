@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The unique identifier for the navigation this override is referencing.
         /// </summary>
         [DataMember]
-        public String navigationElementId
+        public string navigationElementId
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The unique identifier for the specific navigation item in the navigation being referenced.
         /// </summary>
         [DataMember]
-        public String navigationItemId
+        public string navigationItemId
         {
             get;
             set;
@@ -48,7 +48,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// function.
         /// </summary>
         [DataMember]
-        public Boolean isEnabled
+        public bool isEnabled
         {
             get;
             set;
@@ -60,7 +60,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// This will include child navigation items.
         /// </summary>
         [DataMember]
-        public Boolean isVisible
+        public bool isVisible
         {
             get;
             set;
@@ -70,7 +70,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The map element that the navigation item should point to based on this override.
         /// </summary>
         [DataMember]
-        public String locationMapElementId
+        public string locationMapElementId
         {
             get;
             set;

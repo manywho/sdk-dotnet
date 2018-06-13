@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         /// The unique identifier for the Service that this authorization configuration is associated. The Service must support identity.
         /// </summary>
         [DataMember]
-        public String serviceElementId
+        public string serviceElementId
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         /// The global authentication type for this Flow.
         /// </summary>
         [DataMember]
-        public String globalAuthenticationType
+        public string globalAuthenticationType
         {
             get;
             set;
@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         /// The stream behaviour type for this Flow.
         /// </summary>
         [DataMember]
-        public String streamBehaviourType
+        public string streamBehaviourType
         {
             get;
             set;
@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         /// Whether to display page fields as read only
         /// </summary>
         [DataMember]
-        public Boolean showPagesAsReadOnly
+        public bool showPagesAsReadOnly
         {
             get;
             set;

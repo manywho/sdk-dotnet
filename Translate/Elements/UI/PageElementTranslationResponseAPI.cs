@@ -24,7 +24,7 @@ namespace ManyWho.Flow.SDK.Translate.Elements.UI
     public class PageElementTranslationResponseAPI : ElementTranslationResponseAPI
     {
         [DataMember]
-        public String labelContentValueId
+        public string labelContentValueId
         {
             get;
             set;

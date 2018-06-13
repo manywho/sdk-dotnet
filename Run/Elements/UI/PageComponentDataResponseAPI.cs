@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The unique identifier for the page component that this data pertains to.
         /// </summary>
         [DataMember]
-        public String pageComponentId
+        public string pageComponentId
         {
             get;
             set;
@@ -38,7 +38,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// Indicates if the page component should be enabled.
         /// </summary>
         [DataMember]
-        public Boolean isEnabled
+        public bool isEnabled
         {
             get;
             set;
@@ -48,7 +48,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// Indicates if the page component should be editable.
         /// </summary>
         [DataMember]
-        public Boolean isEditable
+        public bool isEditable
         {
             get;
             set;
@@ -58,7 +58,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// Indicates if the page component should be required.
         /// </summary>
         [DataMember]
-        public Boolean isRequired
+        public bool isRequired
         {
             get;
             set;
@@ -68,7 +68,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// Indicates if the page component should be visible.
         /// </summary>
         [DataMember]
-        public Boolean isVisible
+        public bool isVisible
         {
             get;
             set;
@@ -105,7 +105,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The value of the page component. For "INPUT" and "TEXTAREA" components, this is typically the value the user entered.
         /// </summary>
         [DataMember]
-        public String contentValue
+        public string contentValue
         {
             get;
             set;
@@ -115,14 +115,14 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// Any formatted content that may be associated with this component. For "PRESENTATION" components, this is the content that should be displayed on the page.
         /// </summary>
         [DataMember]
-        public String content
+        public string content
         {
             get;
             set;
         }
 
         [DataMember]
-        public String imageUri
+        public string imageUri
         {
             get;
             set;
@@ -132,7 +132,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// Indicates if the value provided in the field is valid. The validation is only performed when the user selects an outcome. Validation is not done on values as the result of an invokeType of "SYNC".
         /// </summary>
         [DataMember]
-        public Boolean isValid
+        public bool isValid
         {
             get;
             set;
@@ -142,7 +142,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// Any message from the system that explains why the value is not valid. This message can result from a straight page component validation or as the result of the value not being accepted by a subsequent element in the flow (in which case the author of the flow indicated the user should be taken back to this screen to correct the issue).
         /// </summary>
         [DataMember]
-        public String validationMessage
+        public string validationMessage
         {
             get;
             set;

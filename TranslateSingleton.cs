@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using Newtonsoft.Json;
+using ManyWho.Flow.SDK.Errors;
+using ManyWho.Flow.SDK.Security;
 using ManyWho.Flow.SDK.Translate;
 using ManyWho.Flow.SDK.Utils;
-using ManyWho.Flow.SDK.Security;
-using ManyWho.Flow.SDK.Errors;
+using Newtonsoft.Json;
 using Polly;
 
 /*!
@@ -28,23 +28,23 @@ namespace ManyWho.Flow.SDK
 {
     public class TranslateSingleton
     {
-        public const String MANYWHO_BASE_URL = "https://flow.manywho.com";
-        public const String MANYWHO_PACKAGE_GET_CONTENT_VALUE_CULTURES_URI_PART = "/api/translate/1/culture";
+        public const string MANYWHO_BASE_URL = "https://flow.manywho.com";
+        public const string MANYWHO_PACKAGE_GET_CONTENT_VALUE_CULTURES_URI_PART = "/api/translate/1/culture";
 
-        private static TranslateSingleton translate = null;
+        private static TranslateSingleton translate;
 
         private TranslateSingleton()
         {
 
         }
 
-        private String ServiceUrl
+        private string ServiceUrl
         {
             get;
             set;
         }
 
-        public static TranslateSingleton GetInstance(String serviceUrl)
+        public static TranslateSingleton GetInstance(string serviceUrl)
         {
             if (translate == null)
             {
@@ -70,9 +70,9 @@ namespace ManyWho.Flow.SDK
             return translate;
         }
 
-        public List<CultureAPI> GetCultures(IAuthenticatedWho authenticatedWho, String tenantId)
+        public List<CultureAPI> GetCultures(IAuthenticatedWho authenticatedWho, string tenantId)
         {
-            String endpointUrl = null;
+            string endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
             List<CultureAPI> cultures = null;
@@ -82,7 +82,7 @@ namespace ManyWho.Flow.SDK
                 using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null))
                 {
                     // Construct the URL for the content value culture request
-                    endpointUrl = this.ServiceUrl + MANYWHO_PACKAGE_GET_CONTENT_VALUE_CULTURES_URI_PART;
+                    endpointUrl = ServiceUrl + MANYWHO_PACKAGE_GET_CONTENT_VALUE_CULTURES_URI_PART;
 
                     // Get the content value cultures from ManyWho
                     httpResponseMessage = httpClient.GetAsync(endpointUrl).Result;

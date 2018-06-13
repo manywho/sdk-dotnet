@@ -2,42 +2,42 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Newtonsoft.Json;
-using ManyWho.Flow.SDK.Utils;
+using System.Text;
+using System.Threading.Tasks;
 using ManyWho.Flow.SDK.Describe;
-using ManyWho.Flow.SDK.Security;
-using ManyWho.Flow.SDK.Draw.Flow;
-using ManyWho.Flow.SDK.Draw.Elements.UI;
+using ManyWho.Flow.SDK.Draw.Elements.Config;
+using ManyWho.Flow.SDK.Draw.Elements.Group;
 using ManyWho.Flow.SDK.Draw.Elements.Map;
 using ManyWho.Flow.SDK.Draw.Elements.Type;
-using ManyWho.Flow.SDK.Draw.Elements.Group;
-using ManyWho.Flow.SDK.Draw.Elements.Config;
+using ManyWho.Flow.SDK.Draw.Elements.UI;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
+using ManyWho.Flow.SDK.Draw.Flow;
 using ManyWho.Flow.SDK.Errors;
+using ManyWho.Flow.SDK.Security;
+using ManyWho.Flow.SDK.Utils;
+using Newtonsoft.Json;
 using Polly;
-using System.Threading.Tasks;
-using System.Text;
 
 namespace ManyWho.Flow.SDK
 {
     public class DrawSingleton
     {
-        public const String MANYWHO_BASE_URL = "https://flow.manywho.com";
+        public const string MANYWHO_BASE_URL = "https://flow.manywho.com";
 
-        public const String MANYWHO_DRAW_URI_PART_TYPE_ELEMENT = "/api/draw/1/element/type";
-        public const String MANYWHO_DRAW_URI_PART_VALUE_ELEMENT = "/api/draw/1/element/value";
-        public const String MANYWHO_DRAW_URI_PART_SERVICE_ELEMENT = "/api/draw/1/element/service";
-        public const String MANYWHO_DRAW_URI_PART_PAGE_ELEMENT = "/api/draw/1/element/page";
-        public const String MANYWHO_DRAW_URI_PART_MAP_ELEMENT = "/api/draw/1/flow/{0}/{1}/element/map";
-        public const String MANYWHO_DRAW_URI_PART_GROUP_ELEMENT = "/api/draw/1/flow/{0}/{1}/element/group";
-        public const String MANYWHO_DRAW_URI_PART_FLOW = "/api/draw/1/flow";
-        public const String MANYWHO_DRAW_URI_PART_LOGIN = "/api/draw/1/authentication";
-        public const String MANYWHO_DRAW_URI_PART_ADD_ELEMENT_TO_FLOW = "/api/draw/1/element/flow/{0}/{1}/{2}";
-        public const String MANYWHO_DRAW_URI_PART_LOAD_FLOWS = "/api/draw/1/flow?filter=";
-        public const String MANYWHO_DRAW_URI_PART_SNAPSHOT_FLOW = "/api/draw/1/flow/snap/{0}";
-        public const String MANYWHO_DRAW_URI_PART_ACTIVATION = "/api/draw/1/flow/activation/{0}/{1}/{2}/{3}";
+        public const string MANYWHO_DRAW_URI_PART_TYPE_ELEMENT = "/api/draw/1/element/type";
+        public const string MANYWHO_DRAW_URI_PART_VALUE_ELEMENT = "/api/draw/1/element/value";
+        public const string MANYWHO_DRAW_URI_PART_SERVICE_ELEMENT = "/api/draw/1/element/service";
+        public const string MANYWHO_DRAW_URI_PART_PAGE_ELEMENT = "/api/draw/1/element/page";
+        public const string MANYWHO_DRAW_URI_PART_MAP_ELEMENT = "/api/draw/1/flow/{0}/{1}/element/map";
+        public const string MANYWHO_DRAW_URI_PART_GROUP_ELEMENT = "/api/draw/1/flow/{0}/{1}/element/group";
+        public const string MANYWHO_DRAW_URI_PART_FLOW = "/api/draw/1/flow";
+        public const string MANYWHO_DRAW_URI_PART_LOGIN = "/api/draw/1/authentication";
+        public const string MANYWHO_DRAW_URI_PART_ADD_ELEMENT_TO_FLOW = "/api/draw/1/element/flow/{0}/{1}/{2}";
+        public const string MANYWHO_DRAW_URI_PART_LOAD_FLOWS = "/api/draw/1/flow?filter=";
+        public const string MANYWHO_DRAW_URI_PART_SNAPSHOT_FLOW = "/api/draw/1/flow/snap/{0}";
+        public const string MANYWHO_DRAW_URI_PART_ACTIVATION = "/api/draw/1/flow/activation/{0}/{1}/{2}/{3}";
 
-        public const String MANYWHO_DRAW_URI_PART_ADMIN_PLUGIN_AUTHENTICATION = "/plugins/manywho/api/admin/1/authentication";
+        public const string MANYWHO_DRAW_URI_PART_ADMIN_PLUGIN_AUTHENTICATION = "/plugins/manywho/api/admin/1/authentication";
 
         private static DrawSingleton drawSingleton;
 
@@ -59,14 +59,14 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to login as an author of flows.
         /// </summary>
-        public IAuthenticatedWho Login(String tenantId, String manywhoBaseUrl, AuthenticationCredentialsAPI authenticationCredentials)
+        public IAuthenticatedWho Login(string tenantId, string manywhoBaseUrl, AuthenticationCredentialsAPI authenticationCredentials)
         {
-            String authorizationToken = null;
+            string authorizationToken = null;
             IAuthenticatedWho authenticatedWho = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
@@ -77,7 +77,7 @@ namespace ManyWho.Flow.SDK
                     httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                     // Construct the URL for the describe request
-                    endpointUrl = manywhoBaseUrl + DrawSingleton.MANYWHO_DRAW_URI_PART_LOGIN;
+                    endpointUrl = manywhoBaseUrl + MANYWHO_DRAW_URI_PART_LOGIN;
 
                     // Send the describe request over to the remote service
                     httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;
@@ -175,13 +175,13 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save flows back to the service.
         /// </summary>
-        public FlowResponseAPI SaveFlow(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, FlowRequestAPI flowRequest)
+        public FlowResponseAPI SaveFlow(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, FlowRequestAPI flowRequest)
         {
             FlowResponseAPI flowResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
@@ -216,9 +216,9 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method loads all of the flows in the draw service.
         /// </summary>
-        public List<FlowResponseAPI> LoadFlows(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String tenantId, String filter)
+        public List<FlowResponseAPI> LoadFlows(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, string tenantId, string filter)
         {
-            String endpointUrl = null;
+            string endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
             List<FlowResponseAPI> flowResponses = null;
@@ -252,19 +252,19 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method snap shots the latest flow in the modelling environment.
         /// </summary>
-        public FlowResponseAPI SnapShotFlow(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String flowId)
+        public FlowResponseAPI SnapShotFlow(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, string flowId)
         {
             FlowResponseAPI flowResponse = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
                 using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null))
                 {
                     // Construct the URL for the snapshot
-                    endpointUrl = manywhoBaseUrl + String.Format(MANYWHO_DRAW_URI_PART_SNAPSHOT_FLOW, flowId);
+                    endpointUrl = manywhoBaseUrl + string.Format(MANYWHO_DRAW_URI_PART_SNAPSHOT_FLOW, flowId);
 
                     // Send the flow to save over to the service
                     httpResponseMessage = httpClient.PostAsync(endpointUrl, null).Result;
@@ -288,19 +288,19 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method takes a flow snap shot and activates it based on the provided settings.
         /// </summary>
-        public FlowResponseAPI SetFlowActivation(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, FlowIdAPI flowId, Boolean isDefault, Boolean isActivated)
+        public FlowResponseAPI SetFlowActivation(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, FlowIdAPI flowId, bool isDefault, bool isActivated)
         {
             FlowResponseAPI flowResponse = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
                 using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null))
                 {
                     // Construct the URL for the activation
-                    endpointUrl = manywhoBaseUrl + String.Format(MANYWHO_DRAW_URI_PART_ACTIVATION, flowId.id, flowId.versionId, isDefault.ToString().ToLower(), isActivated.ToString().ToLower());
+                    endpointUrl = manywhoBaseUrl + string.Format(MANYWHO_DRAW_URI_PART_ACTIVATION, flowId.id, flowId.versionId, isDefault.ToString().ToLower(), isActivated.ToString().ToLower());
 
                     // Send the flow to save over to the service
                     httpResponseMessage = httpClient.PostAsync(endpointUrl, null).Result;
@@ -324,19 +324,19 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save shared elements back to the service.
         /// </summary>
-        public void AddElementToFlow(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String flowId, String elementType, String elementId)
+        public void AddElementToFlow(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, string flowId, string elementType, string elementId)
         {
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
                 using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null))
                 {
                     // Construct the URL for the save
-                    endpointUrl = manywhoBaseUrl + String.Format(MANYWHO_DRAW_URI_PART_ADD_ELEMENT_TO_FLOW, flowId, elementType, elementId);
+                    endpointUrl = manywhoBaseUrl + string.Format(MANYWHO_DRAW_URI_PART_ADD_ELEMENT_TO_FLOW, flowId, elementType, elementId);
 
                     // We construct an empty content request as we don't actually have any post values
                     httpContent = new StringContent("");
@@ -356,13 +356,13 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save value elements back to the service.
         /// </summary>
-        public ValueElementResponseAPI SaveValueElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, ValueElementRequestAPI valueElementRequest)
+        public ValueElementResponseAPI SaveValueElement(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, ValueElementRequestAPI valueElementRequest)
         {
             ValueElementResponseAPI valueElementResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
@@ -394,13 +394,13 @@ namespace ManyWho.Flow.SDK
             return valueElementResponse;
         }
 
-        public TypeElementResponseAPI SaveTypeElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, TypeElementRequestAPI typeElementRequest)
+        public TypeElementResponseAPI SaveTypeElement(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, TypeElementRequestAPI typeElementRequest)
         {
             TypeElementResponseAPI typeElementResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
@@ -435,13 +435,13 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save service elements back to the service.
         /// </summary>
-        public ServiceElementResponseAPI SaveServiceElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, ServiceElementRequestAPI serviceElementRequest)
+        public ServiceElementResponseAPI SaveServiceElement(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, ServiceElementRequestAPI serviceElementRequest)
         {
             ServiceElementResponseAPI serviceElementResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
@@ -476,13 +476,13 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// This method allows you to save page elements back to the service.
         /// </summary>
-        public PageElementResponseAPI SavePageElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, PageElementRequestAPI pageElementRequest)
+        public PageElementResponseAPI SavePageElement(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, PageElementRequestAPI pageElementRequest)
         {
             PageElementResponseAPI pageElementResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
@@ -514,19 +514,19 @@ namespace ManyWho.Flow.SDK
             return pageElementResponse;
         }
 
-        public MapElementResponseAPI LoadMapElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, String mapElementId)
+        public MapElementResponseAPI LoadMapElement(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, string editingToken, string flowId, string mapElementId)
         {
             MapElementResponseAPI mapElementResponse = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
                 using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null))
                 {
                     // Construct the URL for the save
-                    endpointUrl = manywhoBaseUrl + String.Format(MANYWHO_DRAW_URI_PART_MAP_ELEMENT, flowId, editingToken) + "/" + mapElementId;
+                    endpointUrl = manywhoBaseUrl + string.Format(MANYWHO_DRAW_URI_PART_MAP_ELEMENT, flowId, editingToken) + "/" + mapElementId;
 
                     // Get the map element data to from the service
                     httpResponseMessage = httpClient.GetAsync(endpointUrl).Result;
@@ -547,13 +547,13 @@ namespace ManyWho.Flow.SDK
             return mapElementResponse;
         }
 
-        public MapElementResponseAPI SaveMapElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, MapElementRequestAPI mapElementRequest)
+        public MapElementResponseAPI SaveMapElement(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, string editingToken, string flowId, MapElementRequestAPI mapElementRequest)
         {
             MapElementResponseAPI mapElementResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
@@ -564,7 +564,7 @@ namespace ManyWho.Flow.SDK
                     httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                     // Construct the URL for the save
-                    endpointUrl = manywhoBaseUrl + String.Format(MANYWHO_DRAW_URI_PART_MAP_ELEMENT, flowId, editingToken);
+                    endpointUrl = manywhoBaseUrl + string.Format(MANYWHO_DRAW_URI_PART_MAP_ELEMENT, flowId, editingToken);
 
                     // Send the map element data to save over to the service
                     httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;
@@ -585,19 +585,19 @@ namespace ManyWho.Flow.SDK
             return mapElementResponse;
         }
 
-        public GroupElementResponseAPI LoadGroupElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, String groupElementId)
+        public GroupElementResponseAPI LoadGroupElement(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, string editingToken, string flowId, string groupElementId)
         {
             GroupElementResponseAPI groupElementResponse = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
                 using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null))
                 {
                     // Construct the URL for the save
-                    endpointUrl = manywhoBaseUrl + String.Format(MANYWHO_DRAW_URI_PART_GROUP_ELEMENT, flowId, editingToken) + "/" + groupElementId;
+                    endpointUrl = manywhoBaseUrl + string.Format(MANYWHO_DRAW_URI_PART_GROUP_ELEMENT, flowId, editingToken) + "/" + groupElementId;
 
                     // Get the group element data to from the service
                     httpResponseMessage = httpClient.GetAsync(endpointUrl).Result;
@@ -618,13 +618,13 @@ namespace ManyWho.Flow.SDK
             return groupElementResponse;
         }
 
-        public GroupElementResponseAPI SaveGroupElement(IAuthenticatedWho authenticatedWho, String manywhoBaseUrl, String editingToken, String flowId, GroupElementRequestAPI groupElementRequest)
+        public GroupElementResponseAPI SaveGroupElement(IAuthenticatedWho authenticatedWho, string manywhoBaseUrl, string editingToken, string flowId, GroupElementRequestAPI groupElementRequest)
         {
             GroupElementResponseAPI groupElementResponse = null;
             HttpClient httpClient = null;
             HttpContent httpContent = null;
             HttpResponseMessage httpResponseMessage = null;
-            String endpointUrl = null;
+            string endpointUrl = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
@@ -635,7 +635,7 @@ namespace ManyWho.Flow.SDK
                     httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
                     // Construct the URL for the save
-                    endpointUrl = manywhoBaseUrl + String.Format(MANYWHO_DRAW_URI_PART_GROUP_ELEMENT, flowId, editingToken);
+                    endpointUrl = manywhoBaseUrl + string.Format(MANYWHO_DRAW_URI_PART_GROUP_ELEMENT, flowId, editingToken);
 
                     // Send the group element data to save over to the service
                     httpResponseMessage = httpClient.PostAsync(endpointUrl, httpContent).Result;

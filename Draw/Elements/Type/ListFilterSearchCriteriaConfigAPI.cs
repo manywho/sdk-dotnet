@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The unique identifier for the column in the bound component data to filter by.
         /// </summary>
         [DataMember]
-        public String columnTypeElementPropertyId
+        public string columnTypeElementPropertyId
         {
             get;
             set;
