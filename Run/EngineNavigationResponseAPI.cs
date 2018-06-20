@@ -33,14 +33,14 @@ namespace ManyWho.Flow.SDK.Run
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;

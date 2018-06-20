@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// The unique identifier for the tenant holding the graph.
         /// </summary>
         [DataMember]
-        public String tenantId
+        public string tenantId
         {
             get;
             set;

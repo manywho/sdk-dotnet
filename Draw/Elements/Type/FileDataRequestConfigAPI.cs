@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// and allow us to validate various bits of info.
         /// </summary>
         [DataMember]
-        public String serviceElementId
+        public string serviceElementId
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The reference for the folder - this can be an identifier or a path - whatever the service implementation needs.
         /// </summary>
         [DataMember]
-        public String resourcePath
+        public string resourcePath
         {
             get;
             set;
@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The reference for the file - this can be an identifier or a file name - whatever the service implementation needs.
         /// </summary>
         [DataMember]
-        public String resourceFile
+        public string resourceFile
         {
             get;
             set;

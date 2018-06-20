@@ -23,28 +23,28 @@ namespace ManyWho.Flow.SDK.Translate.Elements
     public class ElementTranslationResponseAPI
     {
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
         }
 
         [DataMember]
-        public String elementType
+        public string elementType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;

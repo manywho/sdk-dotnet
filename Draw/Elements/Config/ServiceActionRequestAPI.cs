@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         /// The uri part that will be used in addition to the base uri provided for the Service. This needs to match up with the uriPart of the actions sent back from the Service description.
         /// </summary>
         [DataMember]
-        public String uriPart
+        public string uriPart
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         /// The developer name for the service action. This does not need to match with the service description as the matching to action is done based on uri part above.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         /// The developer summary the author provided to give more information about the service action.
         /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         /// This property is not yet supported. Indicates if this particular service action will return a View as opposed to being a system-to-system API reference. If this is a View message action, then it can be used in 'Remote Page' map elements.
         /// </summary>
         [DataMember]
-        public Boolean isViewMessageAction
+        public bool isViewMessageAction
         {
             get;
             set;

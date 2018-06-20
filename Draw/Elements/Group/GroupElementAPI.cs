@@ -29,7 +29,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         /// The swimlane group element does not support nested groupings.
         /// </remarks>
         [DataMember]
-        public String groupElementId
+        public string groupElementId
         {
             get;
             set;
@@ -39,7 +39,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         /// The x location of the Group on the Flow diagram.
         /// </summary>
         [DataMember]
-        public Int32 x
+        public int x
         {
             get;
             set;
@@ -49,7 +49,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         /// The y location of the Group on the Flow diagram.
         /// </summary>
         [DataMember]
-        public Int32 y
+        public int y
         {
             get;
             set;
@@ -59,7 +59,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         /// The height of the Group on the Flow diagram.
         /// </summary>
         [DataMember]
-        public Int32 height
+        public int height
         {
             get;
             set;
@@ -69,7 +69,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         /// The width of the Group on the Flow diagram.
         /// </summary>
         [DataMember]
-        public Int32 width
+        public int width
         {
             get;
             set;

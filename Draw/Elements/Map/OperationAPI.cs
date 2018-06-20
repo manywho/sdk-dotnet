@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The macro that should be executed for this operation.
         /// </summary>
         [DataMember]
-        public String macroElementToExecuteId
+        public string macroElementToExecuteId
         {
             get;
             set;
@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The order in which the operations should be executed. The lowest number is executed first.
         /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;

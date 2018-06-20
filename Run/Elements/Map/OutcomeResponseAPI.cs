@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 /*!
 
@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// The page action binding type as specified by the builder user.
         /// </summary>
         [DataMember]
-        public String pageActionBindingType
+        public string pageActionBindingType
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// The page action type as specified by the builder user. This helps inform the UI of the "type" of outcome - e.g. selecting it will perform a "DELETE" operation or a "SAVE" operation.
         /// </summary>
         [DataMember]
-        public String pageActionType
+        public string pageActionType
         {
             get;
             set;
@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// Indicates if the outcome is a "bulk" action. If an outcome is bound to a component such as a TABLE, this indicates that the outcome applies to all records, not individual records.
         /// </summary>
         [DataMember]
-        public Boolean isBulkAction
+        public bool isBulkAction
         {
             get;
             set;
@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// The unique identifier for the page object (PageComponent or PageContainer) that this outcome should be bound to.
         /// </summary>
         [DataMember]
-        public String pageObjectBindingId
+        public string pageObjectBindingId
         {
             get;
             set;
@@ -67,7 +67,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// Indicates if this outcome should invoke the "out" API to initialize and invoke a child Flow or join child Flow.
         /// </summary>
         [DataMember]
-        public Boolean isOut
+        public bool isOut
         {
             get;
             set;

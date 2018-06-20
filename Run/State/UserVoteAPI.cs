@@ -7,21 +7,21 @@ namespace ManyWho.Flow.SDK.Run.State
     public class UserVoteAPI : GeoLocationAPI
     {
         [DataMember]
-        public String selectedOutcomeId
+        public string selectedOutcomeId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String directoryUserId
+        public string directoryUserId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String manywhoUserId
+        public string manywhoUserId
         {
             get;
             set;

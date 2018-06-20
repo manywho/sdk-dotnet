@@ -53,7 +53,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// The unique identifier for the flow. This identifier does not change for the lifetime of the flow and is generated when the flow is first created.
         /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
@@ -63,7 +63,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// The unique identifier for a specific version of a flow. This identifier changes any time a change is made to the flow - in structure or content.
         /// </summary>
         [DataMember]
-        public String versionId
+        public string versionId
         {
             get;
             set;

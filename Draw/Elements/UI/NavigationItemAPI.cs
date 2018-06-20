@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The unique identifier for the NavigationItem. The id should be null for "insert" requests and a valid identifier for "update" requests. This property is created by the service.
         /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The unique identifier for the Map Element that this NavigationItem "points" to.
         /// </summary>
         [DataMember]
-        public String locationMapElementId
+        public string locationMapElementId
         {
             get;
             set;
@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The developer name for the Navigation. This is useful for keeping track of the Navigation in the modeling tool and API.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The developer summary the author provided to give more information about the Navigation.
         /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
@@ -67,7 +67,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The label to display the user.
         /// </summary>
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
@@ -87,7 +87,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The order in which this NavigationItem should appear in relation to other sibling NavigationItems.
         /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;

@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements
         /// The unique identifier for the element. The id should be null for "insert" requests and a valid identifier for "update" requests.
         /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements
         /// The type of element this metadata represents.
         /// </summary>
         [DataMember]
-        public String elementType
+        public string elementType
         {
             get;
             set;
@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements
         /// The developer name for the element. This is useful for keeping track of the element in the modelling tool and the API.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -56,7 +56,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements
         /// The developer summary the author provided to give more information about the element
         /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;

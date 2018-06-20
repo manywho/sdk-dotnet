@@ -4,13 +4,13 @@ namespace ManyWho.Flow.SDK.Notification
 {
     public interface INotificationMessage
     {
-        String MediaType
+        string MediaType
         {
             get;
             set;
         }
 
-        String Message
+        string Message
         {
             get;
             set;

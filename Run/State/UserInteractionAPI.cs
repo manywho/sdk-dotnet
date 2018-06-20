@@ -7,7 +7,7 @@ namespace ManyWho.Flow.SDK.Run.State
     public class UserInteractionAPI : GeoLocationAPI
     {
         [DataMember]
-        public String manywhoUserId
+        public string manywhoUserId
         {
             get;
             set;

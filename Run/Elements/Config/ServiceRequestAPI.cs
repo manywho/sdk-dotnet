@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// Provides the caller with the URI for the player this flow is currently using to run.
         /// </summary>
         [DataMember]
-        public String joinPlayerUri
+        public string joinPlayerUri
         {
             get;
             set;
@@ -38,7 +38,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// Provides the caller with the URI for the player and the associated app.
         /// </summary>
         [DataMember]
-        public String playerUri
+        public string playerUri
         {
             get;
             set;
@@ -48,7 +48,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The Uri that was used to make this ServiceRequest.
         /// </summary>
         [DataMember]
-        public String uri
+        public string uri
         {
             get;
             set;

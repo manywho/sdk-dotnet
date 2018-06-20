@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// The unique identifier for the outcome.
         /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// The developer name provided by the builder user to help identify the outcome.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// The label provided by the builder user to help Flow users select the correct outcome.
         /// </summary>
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
@@ -56,7 +56,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// The order in which this outcome should appear with respect to sibling outcomes.
         /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;

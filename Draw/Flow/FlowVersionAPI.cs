@@ -59,7 +59,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         }
 
         [DataMember]
-        public Boolean isActive
+        public bool isActive
         {
             get;
             set;

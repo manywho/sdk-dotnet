@@ -29,7 +29,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The state id that allows us to make the correct version references.
         /// </summary>
         [DataMember]
-        public String stateId
+        public string stateId
         {
             get;
             set;
@@ -39,7 +39,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The service to grab the files from.
         /// </summary>
         [DataMember]
-        public String serviceElementId
+        public string serviceElementId
         {
             get;
             set;
@@ -50,7 +50,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// with a previous data request - if we choose to cache it.
         /// </summary>
         [DataMember]
-        public String token
+        public string token
         {
             get;
             set;
@@ -91,7 +91,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The resouce path to use when sourcing the files.
         /// </summary>
         [DataMember]
-        public String resourcePath
+        public string resourcePath
         {
             get;
             set;
@@ -101,7 +101,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The resouce path to use when sourcing a specific file.
         /// </summary>
         [DataMember]
-        public String resourceFile
+        public string resourceFile
         {
             get;
             set;

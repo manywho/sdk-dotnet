@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Notification
         /// The media type for the message. Currently the platform only supports: text/html or text/plain
         /// </summary>
         [DataMember]
-        public String mediaType
+        public string mediaType
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Notification
         /// The message string in the correct format for the media type.
         /// </summary>
         [DataMember]
-        public String message
+        public string message
         {
             get;
             set;

@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The unique identifier for the Group that contains this Map Element. If a Map Element is inside a Group, it inherits certain behaviors of the parent Group. For example, a Swimlane Group wraps all child Map Elements in a security context.
         /// </summary>
         [DataMember]
-        public String groupElementId
+        public string groupElementId
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The x location of the Map Element on the Flow diagram.
         /// </summary>
         [DataMember]
-        public Int32 x
+        public int x
         {
             get;
             set;
@@ -47,14 +47,14 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The y location of the Map Element on the Flow diagram.
         /// </summary>
         [DataMember]
-        public Int32 y
+        public int y
         {
             get;
             set;
         }
 
         [DataMember]
-        public String pageElementId
+        public string pageElementId
         {
             get;
             set;

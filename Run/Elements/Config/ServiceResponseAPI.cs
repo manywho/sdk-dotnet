@@ -29,7 +29,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// tell the engine that it has completed its work.
         /// </summary>
         [DataMember]
-        public String invokeType
+        public string invokeType
         {
             get;
             set;
@@ -39,7 +39,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The "wait" message that should be provided to users waiting for the Service to complete its tasks.
         /// </summary>
         [DataMember]
-        public String waitMessage
+        public string waitMessage
         {
             get;
             set;
@@ -59,7 +59,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The Outcome the Service would like the Flow to follow. If the Outcome has Rules, the Service request for this outcome will be ignored unless the Rules are also satisfied.
         /// </summary>
         [DataMember]
-        public String selectedOutcomeId
+        public string selectedOutcomeId
         {
             get;
             set;
@@ -69,7 +69,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// Any faults that have happened in the Service that should be reported up to the Flow State.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> rootFaults
+        public Dictionary<string, string> rootFaults
         {
             get;
             set;
@@ -89,7 +89,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The mode which the Service would like the Flow State to execute under.
         /// </summary>
         [DataMember]
-        public String mode
+        public string mode
         {
             get;
             set;

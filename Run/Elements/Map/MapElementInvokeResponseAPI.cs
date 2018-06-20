@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// The unique identifier for the map element this response pertains to.
         /// </summary>
         [DataMember]
-        public String mapElementId
+        public string mapElementId
         {
             get;
             set;
@@ -38,7 +38,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// The developer name for the map element this response pertains to.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -68,7 +68,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// Key value pairs taking the form of {"errorCode":"errorMessage"}. The root faults are populated if a fault has occurred that is not attributed to a specific value on the page. A root fault is often due to an element in the flow experiencing a fault and the author of the flow has determined that the user should be navigated to this page to rectify the problem. If an error is attributed to a value in the state, it will be bound to the page component as a validation error message.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> rootFaults
+        public Dictionary<string, string> rootFaults
         {
             get;
             set;

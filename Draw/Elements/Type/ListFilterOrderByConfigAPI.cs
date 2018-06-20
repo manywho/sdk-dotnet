@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Elements.Value;
 
 
 /*!
@@ -29,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The unique identifier for the property in the Type (associated with this filter) that should be used for ordering the results.
         /// </summary>
         [DataMember]
-        public String orderByTypeElementPropertyId
+        public string orderByTypeElementPropertyId
         {
             get;
             set;
@@ -39,7 +37,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The direction in which to order the results.
         /// </summary>
         [DataMember]
-        public String orderByDirectionType
+        public string orderByDirectionType
         {
             get;
             set;

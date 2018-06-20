@@ -23,35 +23,35 @@ namespace ManyWho.Flow.SDK.Social
     public class MentionedWhoAPI
     {
         [DataMember]
-        public String id 
+        public string id 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String name 
+        public string name 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String fullName 
+        public string fullName 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String jobTitle 
+        public string jobTitle 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String avatarUrl 
+        public string avatarUrl 
         { 
             get; 
             set; 

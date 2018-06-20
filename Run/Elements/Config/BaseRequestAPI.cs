@@ -29,7 +29,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The execution token needed for any callback responses from the Service.
         /// </summary>
         [DataMember]
-        public String token
+        public string token
         {
             get;
             set;
@@ -39,7 +39,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The unique identifier for the tenant making the request to the Service.
         /// </summary>
         [DataMember]
-        public String tenantId
+        public string tenantId
         {
             get;
             set;
@@ -49,7 +49,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The unique identifier for the Flow State making the request to the Service.
         /// </summary>
         [DataMember]
-        public String stateId
+        public string stateId
         {
             get;
             set;
@@ -59,7 +59,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The Uri that should be used for any callbacks made from the Service to ManyWho.
         /// </summary>
         [DataMember]
-        public String callbackUri
+        public string callbackUri
         {
             get;
             set;
@@ -99,7 +99,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// Any runtime annotations that were provided to the State.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> annotations
+        public Dictionary<string, string> annotations
         {
             get;
             set;
@@ -109,7 +109,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// Arbitrary key value pairs that may help the Service execute this request. Use attributes to extend our metadata with implementation specific settings.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> attributes
+        public Dictionary<string, string> attributes
         {
             get;
             set;

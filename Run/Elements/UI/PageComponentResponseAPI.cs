@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The developer name for the page container this component should be placed into. When rendering a UI, it's best to reference the pageContainerId as this developer name is not guaranteed to be unique.
         /// </summary>
         [DataMember]
-        public String pageContainerDeveloperName
+        public string pageContainerDeveloperName
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The unique identifier for the page container this component should be placed into. When rendering a UI, this is the best reference to use as the developer names are not guaranteed to be unique.
         /// </summary>
         [DataMember]
-        public String pageContainerId
+        public string pageContainerId
         {
             get;
             set;
@@ -47,7 +47,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The unique identifer for this page component.
         /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The name the author has given for this component.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -67,7 +67,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The type of component that should be used. The platform currently supports the standard components such as "INPUT", "SELECT", etc as would be familiar with HTML UI. If you want to provide additional UI componentry, we recommend using "tags" to inform the player that you want to adapt the component based on the data in the tag. For example, you may want to change a particular number input to a "slider" or you might bind this page component to a widget - again, based on the data in the tag.
         /// </summary>
         [DataMember]
-        public String componentType
+        public string componentType
         {
             get;
             set;
@@ -77,7 +77,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The type of content the component holds.
         /// </summary>
         [DataMember]
-        public String contentType
+        public string contentType
         {
             get;
             set;
@@ -87,7 +87,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The label for the component. This is often the label for a form field.
         /// </summary>
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
@@ -107,7 +107,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The size of the component. For "INPUT" components, this is typically the number of characters wide to display the input box.
         /// </summary>
         [DataMember]
-        public Int32 size
+        public int size
         {
             get;
             set;
@@ -117,7 +117,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The maximum size of characters the component can hold. For "INPUT" and "TEXTAREA" components, this is the amount of content these inputs can hold.
         /// </summary>
         [DataMember]
-        public Int32 maxSize
+        public int maxSize
         {
             get;
             set;
@@ -127,7 +127,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The height of the component. For "TEXTAREA" components, this is typically the number of characters high to display the text box. For "IMAGE" components, this is the height in pixels of the image.
         /// </summary>
         [DataMember]
-        public Int32 height
+        public int height
         {
             get;
             set;
@@ -137,7 +137,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The width of the component. For "TEXTAREA" components, this is typically the number of characters wide to display the text box. For "IMAGE" components, this is the width in pixels of the image.
         /// </summary>
         [DataMember]
-        public Int32 width
+        public int width
         {
             get;
             set;
@@ -147,7 +147,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The information that should be shown to the user to help them understand what they need to enter. For "INPUT" components, this if often the text you see in the input box (e.g. Enter Name) that disappears once you enter something into the input.
         /// </summary>
         [DataMember]
-        public String hintValue
+        public string hintValue
         {
             get;
             set;
@@ -157,7 +157,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The help information to assist the user in completing this page component. The help information is often something the user sees if they click on a "help" button beside the component or hover over a "help" icon.
         /// </summary>
         [DataMember]
-        public String helpInfo
+        public string helpInfo
         {
             get;
             set;
@@ -167,7 +167,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// The order in which this component should be placed with respect to other components in the same page container.
         /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;
@@ -177,14 +177,14 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// This property indicates if the component supports selection of more than one value. This is only applicable for "TABLE"/"SELECT" components.
         /// </summary>
         [DataMember]
-        public Boolean isMultiSelect
+        public bool isMultiSelect
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean isSearchable
+        public bool isSearchable
         {
             get;
             set;
@@ -194,14 +194,14 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// Indicates if changes to this component should result in a "SYNC" invoke type with the service. If the component has events, it's likely that the page state needs to change based on business rules. If the component does not have events, there is no need to update the service of changes made to the value of the component.
         /// </summary>
         [DataMember]
-        public Boolean hasEvents
+        public bool hasEvents
         {
             get;
             set;
         }
 
         [DataMember]
-        public Dictionary<String, String> attributes
+        public Dictionary<string, string> attributes
         {
             get;
             set;

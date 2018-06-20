@@ -32,7 +32,7 @@ namespace ManyWho.Flow.SDK.Security
         /// restrictions
         /// </summary>
         [DataMember]
-        public Boolean isAdminRestrictedByIPRange
+        public bool isAdminRestrictedByIPRange
         {
             get;
             set;
@@ -44,7 +44,7 @@ namespace ManyWho.Flow.SDK.Security
         /// simply disable IP range restrictions
         /// </summary>
         [DataMember]
-        public Boolean isPackagingRestrictedByIPRange
+        public bool isPackagingRestrictedByIPRange
         {
             get;
             set;
@@ -56,7 +56,7 @@ namespace ManyWho.Flow.SDK.Security
         /// restrictions
         /// </summary>
         [DataMember]
-        public Boolean isDrawRestrictedByIPRange
+        public bool isDrawRestrictedByIPRange
         {
             get;
             set;
@@ -68,7 +68,7 @@ namespace ManyWho.Flow.SDK.Security
         /// restrictions
         /// </summary>
         [DataMember]
-        public Boolean isRunRestrictedByIPRange
+        public bool isRunRestrictedByIPRange
         {
             get;
             set;
@@ -80,7 +80,7 @@ namespace ManyWho.Flow.SDK.Security
         /// Site settings
         /// </summary>
         [DataMember]
-        public Boolean isServiceRestrictedByRemoteSites
+        public bool isServiceRestrictedByRemoteSites
         {
             get;
             set;

@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The comparison to use when evaluating the immediate child rules associated with this comparison object.
         /// </summary>
         [DataMember]
-        public String comparisonType
+        public string comparisonType
         {
             get;
             set;
@@ -57,7 +57,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The order in which the comparison should be evaluated with respect to its peers. The lowest number is evaluated first.
         /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;

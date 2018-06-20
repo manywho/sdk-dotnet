@@ -23,7 +23,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     public class TypeElementAPI : ElementAPI
     {
         [DataMember]
-        public String serviceElementId
+        public string serviceElementId
         {
             get;
             set;

@@ -29,7 +29,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The unique identifier for the page component. This property is created by the service.
         /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
@@ -40,7 +40,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// can be altered by page conditions.
         /// </summary>
         [DataMember]
-        public Boolean isEditable
+        public bool isEditable
         {
             get;
             set;
@@ -98,7 +98,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// property will be parsed if value references are used in the URI.
         /// </summary>
         [DataMember]
-        public String imageUri
+        public string imageUri
         {
             get;
             set;
@@ -108,7 +108,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The unique identifier for the page container this component should be rendered in.
         /// </summary>
         [DataMember]
-        public String pageContainerId
+        public string pageContainerId
         {
             get;
             set;
@@ -118,7 +118,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The unique developer name for the page container this component should be rendered in.
         /// </summary>
         [DataMember]
-        public String pageContainerDeveloperName
+        public string pageContainerDeveloperName
         {
             get;
             set;
@@ -129,7 +129,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// respect to form layouts for types.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -140,7 +140,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// these are then supported in the player.
         /// </summary>
         [DataMember]
-        public String componentType
+        public string componentType
         {
             get;
             set;
@@ -151,7 +151,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// will be parsed if value references are used in the content.
         /// </summary>
         [DataMember]
-        public String content
+        public string content
         {
             get;
             set;
@@ -161,7 +161,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The label for this particular component. This will appear as a title heading to the running user(s).
         /// </summary>
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
@@ -182,7 +182,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The number of characters that should be displayed for the page component.
         /// </summary>
         [DataMember]
-        public Int32 size
+        public int size
         {
             get;
             set;
@@ -192,7 +192,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The maximum number of characters that can be entered by the running user(s) for this page component.
         /// </summary>
         [DataMember]
-        public Int32 maxSize
+        public int maxSize
         {
             get;
             set;
@@ -203,7 +203,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// components, this is the height in pixels of the image.
         /// </summary>
         [DataMember]
-        public Int32 height
+        public int height
         {
             get;
             set;
@@ -214,7 +214,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// image components, this is the width in pixels of the image.
         /// </summary>
         [DataMember]
-        public Int32 width
+        public int width
         {
             get;
             set;
@@ -225,7 +225,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// status can be altered by page conditions.
         /// </summary>
         [DataMember]
-        public Boolean isRequired
+        public bool isRequired
         {
             get;
             set;
@@ -236,7 +236,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// supports multiselection, then the bound value element must have a content type of <code>ContentList</code>.
         /// </summary>
         [DataMember]
-        public Boolean isMultiSelect
+        public bool isMultiSelect
         {
             get;
             set;
@@ -246,7 +246,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// Indicates if the user is able to search using this component.
         /// </summary>
         [DataMember]
-        public Boolean isSearchable
+        public bool isSearchable
         {
             get;
             set;
@@ -258,7 +258,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// when the user focuses on the component.
         /// </summary>
         [DataMember]
-        public String hintValue
+        public string hintValue
         {
             get;
             set;
@@ -270,7 +270,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// or click a help link beside the component.
         /// </summary>
         [DataMember]
-        public String helpInfo
+        public string helpInfo
         {
             get;
             set;
@@ -281,7 +281,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// rendered first.
         /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;
@@ -292,7 +292,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// component metadata with implementation specific settings.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> attributes
+        public Dictionary<string, string> attributes
         {
             get;
             set;

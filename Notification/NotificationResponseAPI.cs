@@ -23,14 +23,14 @@ namespace ManyWho.Flow.SDK.Notification
     public class NotificationResponseAPI
     {
         [DataMember]
-        public String result
+        public string result
         {
             get;
             set;
         }
 
         [DataMember]
-        public String callbackUri
+        public string callbackUri
         {
             get;
             set;

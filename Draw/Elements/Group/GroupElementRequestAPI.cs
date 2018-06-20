@@ -31,7 +31,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
         /// as the reference as opposed to needing to know the IDs of all created elements.
         /// </remarks>
         [DataMember]
-        public Boolean updateByName
+        public bool updateByName
         {
             get;
             set;

@@ -31,7 +31,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The unique identifier for the binding that should be used on the provided Type.
         /// </summary>
         [DataMember]
-        public String typeElementBindingId
+        public string typeElementBindingId
         {
             get;
             set;
@@ -41,7 +41,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The unique identifier for the Type that will define the structure of the data returned by this request.
         /// </summary>
         [DataMember]
-        public String typeElementId
+        public string typeElementId
         {
             get;
             set;

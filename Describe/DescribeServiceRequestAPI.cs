@@ -39,7 +39,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// The Uri for the service to describe.
         /// </summary>
         [DataMember]
-        public String uri
+        public string uri
         {
             get;
             set;

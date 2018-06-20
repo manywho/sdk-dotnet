@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The execution token needed for any callback responses from the Service.
         /// </summary>
         [DataMember]
-        public String token
+        public string token
         {
             get;
             set;
@@ -38,7 +38,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// The unique identifier for the tenant that made the request to the Service.
         /// </summary>
         [DataMember]
-        public String tenantId
+        public string tenantId
         {
             get;
             set;
@@ -58,7 +58,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// Any runtime annotations that were provided to the State plus any additional annotations the Service may be providing.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> annotations
+        public Dictionary<string, string> annotations
         {
             get;
             set;

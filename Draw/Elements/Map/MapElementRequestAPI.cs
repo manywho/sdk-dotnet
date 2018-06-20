@@ -95,7 +95,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
-        public Boolean clearNavigationOverrides
+        public bool clearNavigationOverrides
         {
             get;
             set;
@@ -105,7 +105,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// Indicates if this Map Element should post an update to the collaboration stream.
         /// </summary>
         [DataMember]
-        public Boolean postUpdateToStream
+        public bool postUpdateToStream
         {
             get;
             set;
@@ -115,7 +115,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The content that should be shown to the user at this step in the Flow. This property should only be used for very simple Flows and informational UI. For anything more than simple messaging, use the Page and associate it with this Map Element using the pageElementId property.
         /// </summary>
         [DataMember]
-        public String userContent
+        public string userContent
         {
             get;
             set;
@@ -125,7 +125,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The content that should be shown to the user while waiting for a system step to complete.
         /// </summary>
         [DataMember]
-        public String statusMessage
+        public string statusMessage
         {
             get;
             set;
@@ -135,7 +135,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The content of the message that should be posted to the collaboration stream.
         /// </summary>
         [DataMember]
-        public String postUpdateMessage
+        public string postUpdateMessage
         {
             get;
             set;
@@ -145,7 +145,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The content that should be shown to the user if they are not authorized to take action on this Map Element.
         /// </summary>
         [DataMember]
-        public String notAuthorizedMessage
+        public string notAuthorizedMessage
         {
             get;
             set;
@@ -155,7 +155,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The point at which the post should be made to the collaboration stream.
         /// </summary>
         [DataMember]
-        public String postUpdateWhenType
+        public string postUpdateWhenType
         {
             get;
             set;
@@ -165,7 +165,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// Indicates if the platform should attempt to find a Type with the same developer name as the one provided and match them up by name as opposed to 'id'. This is useful when creating scripts to create Flows - as you can use the developerName property as the reference as opposed to needing to know the ids of all created Elements.
         /// </summary>
         [DataMember]
-        public Boolean updateByName
+        public bool updateByName
         {
             get;
             set;

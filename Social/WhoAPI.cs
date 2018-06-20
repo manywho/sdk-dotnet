@@ -23,28 +23,28 @@ namespace ManyWho.Flow.SDK.Social
     public class WhoAPI
     {
         [DataMember]
-        public String id
+        public string id
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String avatarUrl 
+        public string avatarUrl 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String fullName 
+        public string fullName 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public Boolean isFollower 
+        public bool isFollower 
         { 
             get; 
             set; 

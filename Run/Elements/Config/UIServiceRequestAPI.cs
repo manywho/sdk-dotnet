@@ -24,14 +24,14 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
     public class UIServiceRequestAPI : ServiceRequestAPI
     {
         [DataMember]
-        public String currentMapElementId
+        public string currentMapElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String selectedOutcomeId
+        public string selectedOutcomeId
         {
             get;
             set;

@@ -1,18 +1,16 @@
-﻿using System.Net.Http;
-using System.Linq;
-using System.Collections.Generic;
+﻿using System.Linq;
 using System.Net;
-using Newtonsoft.Json;
+using System.Net.Http;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace ManyWho.Flow.SDK.Errors
 {
     public class ServiceProblem : ApiProblem
     {
         public ServiceProblem()
-            : base()
         {
-            this.Kind = ProblemKind.service;
+            Kind = ProblemKind.service;
         }
 
         public ServiceProblem(string uri, HttpStatusCode statusCode, string message)
@@ -24,20 +22,20 @@ namespace ManyWho.Flow.SDK.Errors
         public ServiceProblem(string uri, int statusCode, string message)
             : base(uri, statusCode, message)
         {
-            this.Kind = ProblemKind.service;
+            Kind = ProblemKind.service;
         }
 
         public ServiceProblem(string uri, HttpResponseMessage response, string content)
             : this(uri, (int)response.StatusCode, response.ReasonPhrase)
         {
 
-            this.ResponseHeaders = response.Headers.ToDictionary(header => header.Key, header => header.Value);
+            ResponseHeaders = response.Headers.ToDictionary(header => header.Key, header => header.Value);
 
-            this.ResponseBody = content;
+            ResponseBody = content;
 
-            if (string.IsNullOrWhiteSpace(this.Message))
+            if (string.IsNullOrWhiteSpace(Message))
             {
-                this.Message = Regex.Replace(content, @"\t|\n|\r", "");
+                Message = Regex.Replace(content, @"\t|\n|\r", "");
             }
         }
 

@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The unique identifier for the type element property value. This property is created by the service.
         /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The developer name for the type element property. This will be used to identify the property in API calls that use values of this Type.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -46,14 +46,14 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The type of content the type element property holds.
         /// </summary>
         [DataMember]
-        public String contentType
+        public string contentType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentFormat
+        public string contentFormat
         {
             get;
             set;
@@ -63,7 +63,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The unique identifier for the Type held in this type element property. This property should only be assigned if this type element property is a ContentType of ContentObject or ContentList. The unique identifier should be for the object or list of objects that will be stored.
         /// </summary>
         [DataMember]
-        public String typeElementId
+        public string typeElementId
         {
             get;
             set;
@@ -73,7 +73,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// This property is used to specify the developer name rather than the identifier of the associated Type (see typeElementId). This property is only used as part of the Service install. Do not use this property if you are creating a Type through the API manually - you must use the typeElementId.
         /// </summary>
         [DataMember]
-        public String typeElementDeveloperName
+        public string typeElementDeveloperName
         {
             get;
             set;

@@ -23,21 +23,21 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
     public class ServiceActionOutcomeAPI
     {
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
