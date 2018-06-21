@@ -46,6 +46,12 @@ namespace ManyWho.Flow.SDK.Service
         
         [JsonIgnore]
         public string AuthorizationHeader { get; set; }
+
+        [JsonIgnore]
+        public Guid MapElementId { get; set; }
+
+        [JsonIgnore]
+        public int SequenceNumber { get; set; }
         
         /// <summary>
         /// The date and time that the request was created and sent at
