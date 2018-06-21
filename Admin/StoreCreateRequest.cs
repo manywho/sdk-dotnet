@@ -10,5 +10,14 @@
             get;
             set;
         }
+
+        /// <summary>
+        /// The endpoint the store is hosted at, which must support HTTPS.
+        /// </summary>
+        public string Endpoint
+        {
+            get;
+            set;
+        }
     }
 }

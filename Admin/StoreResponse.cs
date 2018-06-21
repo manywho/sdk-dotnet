@@ -16,6 +16,12 @@ namespace ManyWho.Flow.SDK.Admin
             set;
         }
 
+        public string Endpoint
+        {
+            get;
+            set;
+        }
+
         public string PlatformKey
         {
             get;
