@@ -74,5 +74,15 @@ namespace ManyWho.Flow.SDK.Tenant
             get;
             set;
         }
+
+        /// <summary>
+        /// Settings that are used when using the External Storage API
+        /// </summary>
+        [DataMember]
+        public ExternalStorageSettingsAPI externalStorageSettings
+        {
+            get;
+            set;
+        }
     }
 }
