@@ -195,5 +195,12 @@ namespace ManyWho.Flow.SDK.Run.State
 
         [DataMember]
         public bool hasRootFaults => rootFaults != null && rootFaults.Count > 0;
+        
+        [DataMember]
+        public FlowStackTraceAPI StackTrace
+        {
+            get;
+            set;
+        }
     }
 }
