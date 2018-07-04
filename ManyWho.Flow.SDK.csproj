@@ -28,4 +28,7 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Package" />
+  </ItemGroup>
 </Project>

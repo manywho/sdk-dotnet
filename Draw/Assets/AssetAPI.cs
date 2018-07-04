@@ -4,19 +4,7 @@ namespace ManyWho.Flow.SDK.Draw.Assets
 {
     public class AssetAPI
     {
-        public string ContentType
-        {
-            get;
-            set;
-        }
-
         public string Key
-        {
-            get;
-            set;
-        }
-
-        public string Name
         {
             get;
             set;

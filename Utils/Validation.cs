@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using ManyWho.Flow.SDK.Run.Elements.Type;
 using ManyWho.Flow.SDK.Security;
 
 namespace ManyWho.Flow.SDK.Utils
@@ -71,23 +70,6 @@ namespace ManyWho.Flow.SDK.Utils
             return this;
         }
 
-        public Validation IsNotEmpty(Array value, string name, string message = "")
-        {
-            IsNotNull(value, name, message);
-
-            if (value.Length == 0)
-            {
-                if (string.IsNullOrWhiteSpace(message))
-                {
-                    message = name + " cannot be empty";
-                }
-
-                throw new ArgumentException(name, message);
-            }
-
-            return this;
-        }
-
         public Validation IsTrue(bool value, string name, string message = "")
         {
             if (!value)
@@ -137,18 +119,5 @@ namespace ManyWho.Flow.SDK.Utils
         {
             return IsNotNull(authenticatedWho, "authenticatedWho");
         }
-
-        public Validation TenantId(Guid tenantId)
-        {
-            return IsNotEmpty(tenantId, "tenantId");
-        }
-
-        public Validation ObjectDataRequest(ObjectDataRequestAPI request)
-        {
-            return IsNotNull(request, "ObjectDataRequest")
-                                .IsNotNull(request.objectDataType, "ObjectDataRequest.ObjectDataType")
-                                .IsNotNullOrWhiteSpace(request.objectDataType.developerName, "ObjectDataRequest.ObjectDataType.DeveloperName");
-        }
-
     }
 }

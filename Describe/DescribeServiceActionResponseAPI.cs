@@ -83,14 +83,5 @@ namespace ManyWho.Flow.SDK.Describe
             get;
             set;
         }
-
-        /// <summary>
-        /// Indicates if this message action is for views rather than logic.
-        /// </summary>
-        public bool isViewMessageAction
-        {
-            get;
-            set;
-        }
     }
 }

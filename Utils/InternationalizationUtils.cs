@@ -54,39 +54,5 @@ namespace ManyWho.Flow.SDK.Utils
 
             return culture;
         }
-
-        public static string Serialize(CultureAPI culture)
-        {
-            string token = "";
-
-            if (culture.brand == null)
-            {
-                culture.brand = "";
-            }
-
-            if (culture.country == null)
-            {
-                culture.country = "";
-            }
-
-            if (culture.language == null)
-            {
-                culture.language = "";
-            }
-
-            if (culture.variant == null)
-            {
-                culture.variant = "";
-            }
-
-            // Construct the token string
-            token += ManyWhoConstants.CULTURE_TOKEN_BRAND + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + culture.brand + "&";
-            token += ManyWhoConstants.CULTURE_TOKEN_COUNTRY + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + culture.country + "&";
-            token += ManyWhoConstants.CULTURE_TOKEN_LANGUAGE + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + culture.language + "&";
-            token += ManyWhoConstants.CULTURE_TOKEN_VARIANT + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + culture.variant + "&";
-
-            // Encode the token ready for http
-            return token;
-        }
     }
 }

@@ -148,19 +148,5 @@ namespace ManyWho.Flow.SDK.Security
             get;
             set;
         }
-
-        public static AuthenticatedWhoResultAPI CreateDeniedResult()
-        {
-            return CreateDeniedResult("Unable to login with the provided credentials");
-        }
-
-        public static AuthenticatedWhoResultAPI CreateDeniedResult(string message)
-        {
-            return new AuthenticatedWhoResultAPI
-            {
-                status = ManyWhoConstants.AUTHENTICATED_USER_STATUS_ACCESS_DENIED,
-                statusMessage = message
-            };
-        }
     }
 }

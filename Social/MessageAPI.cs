@@ -85,20 +85,5 @@ namespace ManyWho.Flow.SDK.Social
             get; 
             set; 
         }
-
-        /// <summary>
-        /// This property is not sent back to the caller
-        /// </summary>
-        public string myLikeId
-        {
-            get;
-            set;
-        }
-
-        public int commentsCount
-        {
-            get;
-            set;
-        }
     }
 }

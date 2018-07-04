@@ -31,15 +31,6 @@ namespace ManyWho.Flow.SDK.Run.Flow
         }
 
         /// <summary>
-        /// The developer summary the author provided to give more information about the Flow.
-        /// </summary>
-        public string DeveloperSummary
-        {
-            get;
-            set;
-        }
-        
-        /// <summary>
         /// The date and time the flow was created at
         /// </summary>
         public DateTimeOffset DateCreated
@@ -79,15 +70,6 @@ namespace ManyWho.Flow.SDK.Run.Flow
         /// The builder who owns the flow
         /// </summary>
         public BuilderWhoAPI WhoOwner
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// The email of the builder who activated the flow
-        /// </summary>
-        public string AlertEmail
         {
             get;
             set;
