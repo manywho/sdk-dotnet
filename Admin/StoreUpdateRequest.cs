@@ -19,5 +19,23 @@
             get;
             set;
         }
+        
+        /// <summary>
+        /// The (optional) new endpoint's username for Basic HTTP Authentication
+        /// </summary>
+        public string EndpointBasicUsername
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// The (optional) new endpoint's password for Basic HTTP Authentication
+        /// </summary>
+        public string EndpointBasicPassword
+        {
+            get;
+            set;
+        }
     }
 }
