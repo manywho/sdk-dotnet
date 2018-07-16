@@ -621,7 +621,8 @@ namespace ManyWho.Flow.SDK.Utils
             typeElementPropertyAPI.developerName = GetCleanPropertyName(propertyInfo.Name);
 
             if (propertyInfo.PropertyType.Name.Equals(typeof(string).Name, StringComparison.OrdinalIgnoreCase) ||
-                propertyInfo.PropertyType.Name.Equals(typeof(Guid).Name, StringComparison.OrdinalIgnoreCase))
+                propertyInfo.PropertyType.Name.Equals(typeof(Guid).Name, StringComparison.OrdinalIgnoreCase) ||
+                propertyInfo.PropertyType.Name.Equals(typeof(Guid?).Name, StringComparison.OrdinalIgnoreCase))
             {
                 if (propertyInfo.Name.ContainsIgnoreCase("Password"))
                 {
