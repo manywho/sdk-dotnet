@@ -19,20 +19,8 @@
             get;
             set;
         }
-        
-        /// <summary>
-        /// (Optional) The endpoint's username for Basic HTTP Authentication
-        /// </summary>
-        public string EndpointBasicUsername
-        {
-            get;
-            set;
-        }
-        
-        /// <summary>
-        /// (Optional) The endpoint's password for Basic HTTP Authentication
-        /// </summary>
-        public string EndpointBasicPassword
+
+        public StoreAuthentication Authentication
         {
             get;
             set;
