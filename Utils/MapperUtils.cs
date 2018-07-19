@@ -127,6 +127,20 @@ namespace ManyWho.Flow.SDK.Utils
                                                 }
                                             }
                                         }
+                                        else if (propertyInfo.PropertyType.Name.Equals(typeof(Guid?).Name, StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            if (string.IsNullOrWhiteSpace(propertyAPI.contentValue) == false)
+                                            {
+                                                if (Guid.TryParse(propertyAPI.contentValue, out var guid))
+                                                {
+                                                    propertyInfo.SetValue(typedObject, (Guid?) guid, null);
+                                                }
+                                                else
+                                                {
+                                                    throw new ArgumentNullException("ObjectAPI.PropertyAPI", string.Format("The property value provided is not a valid Guid. The property being assigned is: '{0}'. The value provided is: '{1}'", propertyAPI.developerName, propertyAPI.contentValue));
+                                                }
+                                            }
+                                        }
                                         else if (propertyInfo.PropertyType.Name.Equals(typeof(int).Name, StringComparison.OrdinalIgnoreCase))
                                         {
                                             if (string.IsNullOrWhiteSpace(propertyAPI.contentValue) == false)
