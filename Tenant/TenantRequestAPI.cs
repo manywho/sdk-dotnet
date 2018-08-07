@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Draw.Flow;
 using ManyWho.Flow.SDK.Security;
 
 /*!
@@ -80,6 +81,16 @@ namespace ManyWho.Flow.SDK.Tenant
         /// </summary>
         [DataMember]
         public ExternalStorageSettingsAPI externalStorageSettings
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// Specifies geographical restrictions for this tenant
+        /// </summary>
+        [DataMember]
+        public RestrictionsAPI restrictions
         {
             get;
             set;
