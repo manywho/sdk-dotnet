@@ -16,7 +16,7 @@ permissions and limitations under the License.
 
 using System.Runtime.Serialization;
 
-namespace ManyWho.Flow.SDK.Draw.Flow
+namespace ManyWho.Flow.SDK.Restrictions
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class RestrictionAPI

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Flow;
+using ManyWho.Flow.SDK.Restrictions;
 using ManyWho.Flow.SDK.Security;
 
 /*!
