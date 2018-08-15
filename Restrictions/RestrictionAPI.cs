@@ -15,17 +15,17 @@ permissions and limitations under the License.
 */
 
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace ManyWho.Flow.SDK.Restrictions
 {
-    [DataContract(Namespace = "http://www.manywho.com/api")]
     public class RestrictionAPI
     {
         /// <summary>
         /// Indicates that the restriction is enabled
         /// </summary>
-        [DataMember]
-        public bool enabled
+        [JsonProperty("enabled")]
+        public bool Enabled
         {
             get;
             set;
@@ -35,8 +35,8 @@ namespace ManyWho.Flow.SDK.Restrictions
         /// The list of countries that are permitted by the restriction.
         /// A single country must be represented as its 2-letter country code (according to ISO 3166-1 alpha-2)
         /// </summary>
-        [DataMember]
-        public string[] countries
+        [JsonProperty("countries")]
+        public string[] Countries
         {
             get;
             set;
@@ -56,8 +56,8 @@ namespace ManyWho.Flow.SDK.Restrictions
         /// SA 	South America
         /// Based on https://secure.php.net/manual/en/function.geoip-continent-code-by-name.php
         /// </remarks>
-        [DataMember]
-        public string[] continents
+        [JsonProperty("continents")]
+        public string[] Continents
         {
             get;
             set;

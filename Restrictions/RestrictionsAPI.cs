@@ -15,17 +15,17 @@ permissions and limitations under the License.
 */
 
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace ManyWho.Flow.SDK.Restrictions
 {
-    [DataContract(Namespace = "http://www.manywho.com/api")]
     public class RestrictionsAPI
     {
         /// <summary>
         /// Specifies geographical regions where a flow can be run (i.e. the Engine instances that can execute it)
         /// </summary>
-        [DataMember]
-        public RestrictionAPI execution
+        [JsonProperty("execution")]
+        public RestrictionAPI Execution
         {
             get;
             set;
@@ -34,8 +34,8 @@ namespace ManyWho.Flow.SDK.Restrictions
         /// <summary>
         /// Specifies geographical regions where a flow can be accessed at runtime (i.e. the countries where a flow can be run from)
         /// </summary>
-        [DataMember]
-        public RestrictionAPI access
+        [JsonProperty("access")]
+        public RestrictionAPI Access
         {
             get;
             set;
