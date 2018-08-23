@@ -124,7 +124,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// Specifies geographical restrictions for this flow
         /// </summary>
         [DataMember]
-        public RestrictionsAPI restrictions
+        public FlowRestrictionsAPI restrictions
         {
             get;
             set;

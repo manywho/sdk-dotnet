@@ -19,7 +19,7 @@ using Newtonsoft.Json;
 
 namespace ManyWho.Flow.SDK.Restrictions
 {
-    public class RestrictionsAPI
+    public class FlowRestrictionsAPI
     {
         /// <summary>
         /// Specifies geographical regions where a flow can be run (i.e. the Engine instances that can execute it)

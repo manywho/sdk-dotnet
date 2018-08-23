@@ -91,7 +91,7 @@ namespace ManyWho.Flow.SDK.Tenant
         /// Specifies geographical restrictions for this tenant
         /// </summary>
         [DataMember]
-        public RestrictionsAPI restrictions
+        public FlowRestrictionsAPI restrictions
         {
             get;
             set;
