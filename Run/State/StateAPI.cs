@@ -197,7 +197,7 @@ namespace ManyWho.Flow.SDK.Run.State
         public bool hasRootFaults => rootFaults != null && rootFaults.Count > 0;
         
         [DataMember]
-        public string store
+        public string storeId
         {
             get;
             set;
