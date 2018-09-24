@@ -23,6 +23,25 @@ namespace ManyWho.Flow.SDK.Security
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class AuthenticatedWho : IAuthenticatedWho
     {
+        public AuthenticatedWho()
+        {
+        }
+
+        public AuthenticatedWho(IAuthenticatedWho user)
+        {
+            if (user == null)
+            {
+                return;
+            }
+            
+            Email = user.Email;
+            FirstName = user.FirstName;
+            LastName = user.LastName;
+            ManyWhoTenantId = user.ManyWhoTenantId;
+            ManyWhoToken = user.ManyWhoToken;
+            ManyWhoUserId = user.ManyWhoUserId;
+        }
+
         [DataMember]
         [JsonProperty("manywhoUserId")]
         public Guid ManyWhoUserId

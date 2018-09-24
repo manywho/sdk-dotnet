@@ -165,20 +165,9 @@ namespace ManyWho.Flow.SDK.Utils
             return token;
         }
 
-        public static IAuthenticatedWho CreatePublicUser(string tenantId)
+        public static IAuthenticatedWho CreatePublicUser(Guid tenant)
         {
             IAuthenticatedWho authenticatedWho = null;
-            Guid tenantGuid = Guid.Empty;
-
-            if (string.IsNullOrWhiteSpace(tenantId))
-            {
-                throw new ArgumentNullException("TenantId", "The TenantId cannot be null or blank.");
-            }
-
-            if (Guid.TryParse(tenantId, out tenantGuid) == false)
-            {
-                throw new ArgumentNullException("TenantId", "The TenantId is not a valid identifier.");
-            }
 
             authenticatedWho = new AuthenticatedWho();
             authenticatedWho.DirectoryId = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_DIRECTORY_ID;
@@ -192,7 +181,7 @@ namespace ManyWho.Flow.SDK.Utils
             authenticatedWho.TenantName = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_TENANT_NAME;
             authenticatedWho.Token = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_TOKEN;
             authenticatedWho.UserId = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_USER_ID;
-            authenticatedWho.ManyWhoTenantId = tenantGuid;
+            authenticatedWho.ManyWhoTenantId = tenant;
             authenticatedWho.ManyWhoToken = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_TOKEN;
             authenticatedWho.ManyWhoUserId = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_MANYWHO_USER_ID;
 
