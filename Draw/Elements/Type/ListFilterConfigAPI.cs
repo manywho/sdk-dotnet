@@ -90,5 +90,16 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
             get;
             set;
         }
+
+        /// <summary>
+        /// A list of properties to select. Useful when it's not desirable to load the entire object, for performance
+        /// and efficiency.
+        /// </summary>
+        [DataMember]
+        public List<ListFilterPropertyConfigAPI> properties
+        {
+            get;
+            set;
+        }
     }
 }
