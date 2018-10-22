@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Elements.Group;
 using ManyWho.Flow.SDK.Restrictions;
 
@@ -31,7 +32,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// An editing token is required so the modelling engine can track multiple user changes.
         /// </remarks>
         [DataMember]
-        public string editingToken
+        public Guid editingToken
         {
             get;
             set;
