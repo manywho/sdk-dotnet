@@ -32,7 +32,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// An editing token is required so the modelling engine can track multiple user changes.
         /// </remarks>
         [DataMember]
-        public Guid editingToken
+        public Guid? editingToken
         {
             get;
             set;
