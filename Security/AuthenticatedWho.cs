@@ -34,12 +34,24 @@ namespace ManyWho.Flow.SDK.Security
                 return;
             }
             
-            Email = user.Email;
-            FirstName = user.FirstName;
-            LastName = user.LastName;
+            ManyWhoUserId = user.ManyWhoUserId;
             ManyWhoTenantId = user.ManyWhoTenantId;
             ManyWhoToken = user.ManyWhoToken;
-            ManyWhoUserId = user.ManyWhoUserId;
+            GeoLocation = user.GeoLocation;
+            UserId = user.UserId;
+            Username = user.Username;
+            Email = user.Email;
+            IdentityProvider = user.IdentityProvider;
+            Token = user.Token;
+            TenantName = user.TenantName;
+            DirectoryName = user.DirectoryName;
+            DirectoryId = user.DirectoryId;
+            RoleName = user.RoleName;
+            RoleId = user.RoleId;
+            PrimaryGroupName = user.PrimaryGroupName;
+            PrimaryGroupId = user.PrimaryGroupId;
+            FirstName = user.FirstName;
+            LastName = user.LastName;
         }
 
         [DataMember]

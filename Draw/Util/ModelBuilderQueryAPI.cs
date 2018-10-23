@@ -73,7 +73,7 @@ namespace ManyWho.Flow.SDK.Draw.Util
         }
 
         [DataMember]
-        public string flowId
+        public Guid flowId
         {
             get;
             set;

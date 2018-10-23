@@ -12,7 +12,7 @@ namespace ManyWho.Flow.SDK.Translate.Flow
     public class FlowImageTranslationResponseAPI
     {
         [DataMember]
-        public string editingToken
+        public Guid editingToken
         {
             get;
             set;
