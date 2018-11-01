@@ -1,11 +1,13 @@
-﻿namespace ManyWho.Flow.SDK.Admin
+﻿using System;
+
+namespace ManyWho.Flow.SDK.Admin
 {
     public class StoreMigrateRequest
     {
         /// <summary>
         /// The id of the store where data will be migrated to
         /// </summary>
-        public string StoreId
+        public Guid StoreId
         {
             get;
             set;
