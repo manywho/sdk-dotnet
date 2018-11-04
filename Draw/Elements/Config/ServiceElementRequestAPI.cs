@@ -167,18 +167,21 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
             set;
         }
 
+        [DataMember]
         public string HttpAuthenticationUsername
         {
             get;
             set;
         }
 
+        [DataMember]
         public string HttpAuthenticationPassword
         {
             get;
             set;
         }
 
+        [DataMember]
         public string Version
         {
             get;
