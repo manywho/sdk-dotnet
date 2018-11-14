@@ -202,19 +202,5 @@ namespace ManyWho.Flow.SDK.Run.State
             get;
             set;
         }
-        
-        [DataMember]
-        public Guid? effectiveTenantId
-        {
-            get;
-            set;
-        }
-        
-        [DataMember]
-        public Guid? effectiveUserId
-        {
-            get;
-            set;
-        }
     }
 }
