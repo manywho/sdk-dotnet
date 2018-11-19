@@ -35,15 +35,21 @@ namespace ManyWho.Flow.SDK.Utils
             return contentValue;
         }
 
-        public static Guid GetContentValueGuid(string developerName, List<EngineValueAPI> engineValues, bool required)
+        public static Guid ParseGuid(string value)
         {
-            var value = GetContentValue(developerName, engineValues, required);
             if (string.IsNullOrWhiteSpace(value) || value == "blank")
             {
                 return Guid.Empty;
             }
             
             return Guid.Parse(value);
+        }
+
+        public static Guid GetContentValueGuid(string developerName, List<EngineValueAPI> engineValues, bool required)
+        {
+            var value = GetContentValue(developerName, engineValues, required);
+
+            return ParseGuid(value);
         }
 
         public static string GetContentValue(string developerName, List<EngineValueAPI> engineValues, bool required)
