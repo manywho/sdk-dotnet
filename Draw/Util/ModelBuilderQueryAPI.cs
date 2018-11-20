@@ -45,7 +45,7 @@ namespace ManyWho.Flow.SDK.Draw.Util
         } = new List<ModelBuilderQueryWhereAPI>();
 
         [DataMember]
-        public int limit
+        public int? limit
         {
             get;
             set;

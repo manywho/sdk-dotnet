@@ -53,7 +53,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         }
 
         [DataMember]
-        public string typeElementEntryTypeElementDeveloperName
+        public string typeElementPropertyTypeElementDeveloperName
         {
             get;
             set;
