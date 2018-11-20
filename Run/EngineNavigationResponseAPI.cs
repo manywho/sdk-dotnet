@@ -80,5 +80,12 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         }
+        
+        [DataMember]
+        public Guid stateId
+        {
+            get;
+            set;
+        }
     }
 }
