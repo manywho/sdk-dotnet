@@ -53,5 +53,15 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
             get;
             set;
         }
+        
+        /// <summary>
+        /// The unique ID of the state
+        /// </summary>
+        [DataMember]
+        public Guid stateId
+        {
+            get;
+            set;
+        }
     }
 }
