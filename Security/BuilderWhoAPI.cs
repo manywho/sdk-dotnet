@@ -22,43 +22,41 @@ namespace ManyWho.Flow.SDK.Security
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class BuilderWhoAPI
     {
+        /// <summary>
+        /// The unique identifier for the builder on ManyWho. This identifier is the same across all tenants for which the builder has permissions.
+        /// </summary>
         [DataMember]
-        public String id
+        public Guid id
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The first name of the builder
+        /// </summary>
         [DataMember]
-        public String firstName
+        public string firstName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The last name of the builder
+        /// </summary>
         [DataMember]
-        public String lastName
+        public string lastName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The email of the builder
+        /// </summary>
         [DataMember]
-        public String email
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String username
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public bool verified
+        public string email
         {
             get;
             set;

@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Translate
         /// culture.
         /// </summary>
         [DataMember]
-        public Dictionary<String, ContentValueDocumentTranslationAPI> translations
+        public Dictionary<string, ContentValueDocumentTranslationAPI> translations
         {
             get;
             set;

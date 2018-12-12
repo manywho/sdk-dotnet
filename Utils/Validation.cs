@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using ManyWho.Flow.SDK.Security;
 using ManyWho.Flow.SDK.Run.Elements.Type;
+using ManyWho.Flow.SDK.Security;
 
 namespace ManyWho.Flow.SDK.Utils
 {
@@ -14,12 +13,12 @@ namespace ManyWho.Flow.SDK.Utils
         {
             get
             {
-                if (Validation._instance == null)
+                if (_instance == null)
                 {
-                    Validation._instance = new Validation();
+                    _instance = new Validation();
                 }
 
-                return Validation._instance;
+                return _instance;
             }
         }
 
@@ -40,7 +39,7 @@ namespace ManyWho.Flow.SDK.Utils
 
         public Validation IsNotEmpty(Guid value, string name, string message = "")
         {
-            this.IsNotNull(value, name, message);
+            IsNotNull(value, name, message);
 
             if (value == Guid.Empty)
             {
@@ -57,7 +56,7 @@ namespace ManyWho.Flow.SDK.Utils
 
         public Validation IsNotEmpty(ICollection value, string name, string message = "")
         {
-            this.IsNotNull(value, name, message);
+            IsNotNull(value, name, message);
 
             if (value.Count == 0)
             {
@@ -74,7 +73,7 @@ namespace ManyWho.Flow.SDK.Utils
 
         public Validation IsNotEmpty(Array value, string name, string message = "")
         {
-            this.IsNotNull(value, name, message);
+            IsNotNull(value, name, message);
 
             if (value.Length == 0)
             {
@@ -136,17 +135,17 @@ namespace ManyWho.Flow.SDK.Utils
 
         public Validation AuthenticatedWho(IAuthenticatedWho authenticatedWho)
         {
-            return this.IsNotNull(authenticatedWho, "authenticatedWho");
+            return IsNotNull(authenticatedWho, "authenticatedWho");
         }
 
         public Validation TenantId(Guid tenantId)
         {
-            return this.IsNotEmpty(tenantId, "tenantId");
+            return IsNotEmpty(tenantId, "tenantId");
         }
 
         public Validation ObjectDataRequest(ObjectDataRequestAPI request)
         {
-            return this.IsNotNull(request, "ObjectDataRequest")
+            return IsNotNull(request, "ObjectDataRequest")
                                 .IsNotNull(request.objectDataType, "ObjectDataRequest.ObjectDataType")
                                 .IsNotNullOrWhiteSpace(request.objectDataType.developerName, "ObjectDataRequest.ObjectDataType.DeveloperName");
         }

@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class ServiceInstallRequestAPI
     {
+        /// <summary>
+        /// The list of Types can will be installed as part of this Service creation. Once the Service saves, the install object is no longer used as it will create all the Types as part of the single save operation.
+        /// </summary>
         [DataMember]
         public List<TypeElementRequestAPI> typeElements
         {

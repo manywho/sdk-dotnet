@@ -21,6 +21,9 @@ namespace ManyWho.Flow.SDK.Tenant
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class DeleteRequestAPI
     {
+        /// <summary>
+        /// Indicates if all flows should be deleted
+        /// </summary>
         [DataMember]
         public bool flows
         {
@@ -28,6 +31,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Indicates if all page elements should be deleted
+        /// </summary>
         [DataMember]
         public bool pages
         {
@@ -35,6 +41,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Indicates if all value elements should be deleted
+        /// </summary>
         [DataMember]
         public bool values
         {
@@ -42,6 +51,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Indicates if all type elements should be deleted
+        /// </summary>
         [DataMember]
         public bool types
         {
@@ -49,6 +61,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Indicates if all service elements should be deleted
+        /// </summary>
         [DataMember]
         public bool services
         {
@@ -56,6 +71,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Indicates if all tag elements should be deleted
+        /// </summary>
         [DataMember]
         public bool tags
         {
@@ -63,6 +81,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Indicates if all flow snapshots should be deleted
+        /// </summary>
         [DataMember]
         public bool snapshots
         {
@@ -70,6 +91,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Indicates if all flow states should be deleted
+        /// </summary>
         [DataMember]
         public bool states
         {
@@ -77,6 +101,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Indicates if all macro elements should be deleted
+        /// </summary>
         [DataMember]
         public bool macros
         {

@@ -40,7 +40,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         [DataMember]
-        public Boolean isComplete
+        public bool isComplete
         {
             get;
             set;

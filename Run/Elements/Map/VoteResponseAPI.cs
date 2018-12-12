@@ -23,7 +23,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
     public class VoteResponseAPI : VoteRequestAPI
     {
         [DataMember]
-        public Boolean isComplete
+        public bool isComplete
         {
             get;
             set;

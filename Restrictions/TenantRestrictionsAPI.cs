@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
-
-/*!
+﻿/*!
 
 Copyright 2013 Manywho, Inc.
 
@@ -17,20 +14,17 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Run.Elements.Config
-{
-    [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class GroupAPI
-    {
-        [DataMember]
-        public String authenticationId
-        {
-            get;
-            set;
-        }
+using Newtonsoft.Json;
 
-        [DataMember]
-        public String attribute
+namespace ManyWho.Flow.SDK.Restrictions
+{
+    public class TenantRestrictionsAPI
+    {
+        /// <summary>
+        /// Specifies flow restrictions for this tenant
+        /// </summary>
+        [JsonProperty("flowRestrictions")]
+        public FlowRestrictionsAPI FlowRestrictions
         {
             get;
             set;

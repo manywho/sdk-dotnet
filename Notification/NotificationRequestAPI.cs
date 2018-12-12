@@ -18,25 +18,34 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Utils
+namespace ManyWho.Flow.SDK.Notification
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class NotificationRequestAPI
     {
+        /// <summary>
+        /// The reason for the notification. Typically, the reason will be provided as the 'subject' for email notifications.
+        /// </summary>
         [DataMember]
-        public String reason
+        public string reason
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The Url to redirect the user to once this notification has been processed by the platform.
+        /// </summary>
         [DataMember]
-        public String redirectUrl
+        public string redirectUrl
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The list of notification messages to be sent.
+        /// </summary>
         [DataMember]
         public List<NotificationMessageAPI> notificationMessages
         {

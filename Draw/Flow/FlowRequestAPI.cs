@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Elements.Group;
+using ManyWho.Flow.SDK.Restrictions;
 
 
 /*!
@@ -24,13 +25,25 @@ namespace ManyWho.Flow.SDK.Draw.Flow
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowRequestAPI
     {
+        /// <summary>
+        /// A unique token for this particular editing session
+        /// </summary>
+        /// <remarks>
+        /// An editing token is required so the modelling engine can track multiple user changes.
+        /// </remarks>
         [DataMember]
-        public String editingToken
+        public Guid? editingToken
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The complete unique identifier for the currently edited version of the flow.
+        /// </summary>
+        /// <remarks>
+        /// This value should not be included when creating new flows.
+        /// </remarks>
         [DataMember]
         public FlowIdAPI id
         {
@@ -38,29 +51,44 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The developer name for the flow. When referencing flows by name, this is the name you should use in your referencing.
+        /// </summary>
+        /// <remarks>
+        /// This is typically a helpful name to remind builders of the purpose of the flow.
+        /// </remarks>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The developer summary the author provided to give more information about the Flow.
+        /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for the first element in the flow. This element is always of the `START` map element type.
+        /// </summary>
         [DataMember]
-        public String startMapElementId
+        public string startMapElementId
         {
             get;
             set;
         }
-
+        
+        /// <summary>
+        /// Indicates that the builder of the flow will allow users to jump to any position in the Flow regardless of outcomes and/or navigation.
+        /// </summary>
         [DataMember]
-        public Boolean allowJumping
+        public bool allowJumping
         {
             get;
             set;
@@ -73,8 +101,21 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The configuration of the authorization context for this flow.
+        /// </summary>
         [DataMember]
         public GroupAuthorizationAPI authorization
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// Specifies geographical restrictions for this flow
+        /// </summary>
+        [DataMember]
+        public FlowRestrictionsAPI restrictions
         {
             get;
             set;

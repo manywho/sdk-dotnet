@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 /*!
 
@@ -22,29 +21,41 @@ namespace ManyWho.Flow.SDK.Security
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class IPRangeAPI
     {
+        /// <summary>
+        /// The name for this IP range restriction, and typically a helpful one to remind builders of the purpose
+        /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Any additional summary information about this IP range restriction that will help explain the purpose
+        /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The lower end of the IP range in IPv4 format (dotted decimal)
+        /// </summary>
         [DataMember]
-        public String startIPAddress
+        public string startIPAddress
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The upper end of the IP range in IPv4 format (dotted decimal)
+        /// </summary>
         [DataMember]
-        public String endIPAddress
+        public string endIPAddress
         {
             get;
             set;

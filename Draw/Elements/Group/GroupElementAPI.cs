@@ -22,41 +22,62 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class GroupElementAPI : ElementAPI
     {
+        /// <summary>
+        /// The unique identifier for the group element that holds this group element.
+        /// </summary>
+        /// <remarks>
+        /// The swimlane group element does not support nested groupings.
+        /// </remarks>
         [DataMember]
-        public String groupElementId
+        public string groupElementId
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The x location of the Group on the Flow diagram.
+        /// </summary>
         [DataMember]
-        public Int32 x
+        public int x
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The y location of the Group on the Flow diagram.
+        /// </summary>
         [DataMember]
-        public Int32 y
+        public int y
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The height of the Group on the Flow diagram.
+        /// </summary>
         [DataMember]
-        public Int32 height
+        public int height
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The width of the Group on the Flow diagram.
+        /// </summary>
         [DataMember]
-        public Int32 width
+        public int width
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The Authorization object for this Group.
+        /// </summary>
         [DataMember]
         public GroupAuthorizationAPI authorization
         {

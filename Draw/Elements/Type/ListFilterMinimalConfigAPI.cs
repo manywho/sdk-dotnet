@@ -27,14 +27,14 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The comparison when evaluating the 'where' entries.  This is either "AND" or "OR" and we do not support nesting (just yet anyway).
         /// </summary>
         [DataMember]
-        public String comparisonType
+        public string comparisonType
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The where filter to apply to the list.
+        /// The filter criteria that should be applied during the lookup.
         /// </summary>
         [DataMember]
         public List<ListFilterWhereConfigAPI> where

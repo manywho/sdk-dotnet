@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// Provides the caller with the URI for the player this flow is currently using to run.
         /// </summary>
         [DataMember]
-        public String joinPlayerUri
+        public string joinPlayerUri
         {
             get;
             set;
@@ -38,24 +38,24 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         /// Provides the caller with the URI for the player and the associated app.
         /// </summary>
         [DataMember]
-        public String playerUri
+        public string playerUri
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The Uri for the service to invoke.
+        /// The Uri that was used to make this ServiceRequest.
         /// </summary>
         [DataMember]
-        public String uri
+        public string uri
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The inputs for the service.
+        /// The array of inputs required to execute the message action specified in the Service description. The inputs may not be complete depending on the configuration of the MessageAction and/or the version of the description (ServiceActionRequest) that was used by the builder user when modeling.
         /// </summary>
         [DataMember]
         public List<EngineValueAPI> inputs
@@ -65,10 +65,10 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
-        /// The outcomes that are available for this element. The system can return it's desired selected outcome in addition to sending back outputs.
+        /// Any outcomes that are connected from the messaging element in the Flow. These outcomes can be used by the Service in the response to select a desired path of execution.
         /// </summary>
         [DataMember]
-        public List<OutcomeAvailableAPI> outcomes
+        public List<OutcomeResponseAPI> outcomes
         {
             get;
             set;

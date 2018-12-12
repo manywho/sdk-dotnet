@@ -24,21 +24,21 @@ namespace ManyWho.Flow.SDK.Translate.Elements.UI
     public class PageContainerTranslationResponseAPI
     {
         [DataMember]
-        public String containerType
+        public string containerType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String labelContentValueId
+        public string labelContentValueId
         {
             get;
             set;

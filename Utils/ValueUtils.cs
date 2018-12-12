@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using ManyWho.Flow.SDK.Draw.Elements.Type;
 using ManyWho.Flow.SDK.Run;
 using ManyWho.Flow.SDK.Run.Elements.Type;
-using ManyWho.Flow.SDK.Draw.Elements.Type;
 
 namespace ManyWho.Flow.SDK.Utils
 {
     public class ValueUtils
     {
-        public static String GetContentValue(String developerName, ObjectAPI objectData, Boolean required)
+        public static string GetContentValue(string developerName, ObjectAPI objectData, bool required)
         {
-            String contentValue = null;
+            string contentValue = null;
 
             if (objectData != null &&
                 objectData.properties != null &&
@@ -18,7 +18,7 @@ namespace ManyWho.Flow.SDK.Utils
             {
                 foreach (PropertyAPI property in objectData.properties)
                 {
-                    if (property.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase) == true)
+                    if (property.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase))
                     {
                         contentValue = property.contentValue;
                         break;
@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Utils
                 }
             }
 
-            if (required == true &&
+            if (required &&
                 string.IsNullOrWhiteSpace(contentValue))
             {
                 throw new ArgumentNullException("contentValue", developerName + " cannot be null or blank.");
@@ -35,9 +35,26 @@ namespace ManyWho.Flow.SDK.Utils
             return contentValue;
         }
 
-        public static String GetContentValue(String developerName, List<EngineValueAPI> engineValues, Boolean required)
+        public static Guid ParseGuid(string value)
         {
-            String contentValue = null;
+            if (string.IsNullOrWhiteSpace(value) || value == "blank")
+            {
+                return Guid.Empty;
+            }
+            
+            return Guid.Parse(value);
+        }
+
+        public static Guid GetContentValueGuid(string developerName, List<EngineValueAPI> engineValues, bool required)
+        {
+            var value = GetContentValue(developerName, engineValues, required);
+
+            return ParseGuid(value);
+        }
+
+        public static string GetContentValue(string developerName, List<EngineValueAPI> engineValues, bool required)
+        {
+            string contentValue = null;
 
             // Get the message input
             if (engineValues != null &&
@@ -47,7 +64,7 @@ namespace ManyWho.Flow.SDK.Utils
                 foreach (EngineValueAPI engineValue in engineValues)
                 {
                     // Check to see if this is the post
-                    if (engineValue.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase) == true)
+                    if (engineValue.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase))
                     {
                         // Grab the message
                         contentValue = engineValue.contentValue;
@@ -58,7 +75,7 @@ namespace ManyWho.Flow.SDK.Utils
                 }
             }
 
-            if (required == true &&
+            if (required &&
                 string.IsNullOrWhiteSpace(contentValue))
             {
                 throw new ArgumentNullException("contentValue", developerName + " cannot be null or blank.");
@@ -67,7 +84,7 @@ namespace ManyWho.Flow.SDK.Utils
             return contentValue;
         }
 
-        public static List<ObjectAPI> GetObjectData(String developerName, ObjectAPI objectData, Boolean required)
+        public static List<ObjectAPI> GetObjectData(string developerName, ObjectAPI objectData, bool required)
         {
             List<ObjectAPI> listData = null;
 
@@ -77,7 +94,7 @@ namespace ManyWho.Flow.SDK.Utils
             {
                 foreach (PropertyAPI property in objectData.properties)
                 {
-                    if (property.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase) == true)
+                    if (property.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase))
                     {
                         listData = property.objectData;
                         break;
@@ -85,7 +102,7 @@ namespace ManyWho.Flow.SDK.Utils
                 }
             }
 
-            if (required == true && 
+            if (required && 
                 (listData == null || listData.Count == 0))
             {
                 throw new ArgumentException("listData", developerName + " cannot be null.");
@@ -94,7 +111,7 @@ namespace ManyWho.Flow.SDK.Utils
             return listData;
         }
 
-        public static ObjectAPI GetObjectData(String developerName, List<EngineValueAPI> engineValues, Boolean required)
+        public static ObjectAPI GetObjectData(string developerName, List<EngineValueAPI> engineValues, bool required)
         {
             ObjectAPI objectData = null;
 
@@ -106,7 +123,7 @@ namespace ManyWho.Flow.SDK.Utils
                 foreach (EngineValueAPI engineValue in engineValues)
                 {
                     // Check to see if this is the post
-                    if (engineValue.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase) == true)
+                    if (engineValue.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase))
                     {
                         // Grab the message
                         if (engineValue.objectData != null &&
@@ -121,7 +138,7 @@ namespace ManyWho.Flow.SDK.Utils
                 }
             }
 
-            if (required == true &&
+            if (required &&
                 objectData == null)
             {
                 throw new ArgumentNullException("objectData", developerName + " cannot be null.");
@@ -130,7 +147,7 @@ namespace ManyWho.Flow.SDK.Utils
             return objectData;
         }
 
-        public static List<ObjectAPI> GetListData(String developerName, List<EngineValueAPI> engineValues, Boolean required)
+        public static List<ObjectAPI> GetListData(string developerName, List<EngineValueAPI> engineValues, bool required)
         {
             List<ObjectAPI> objectData = null;
 
@@ -142,7 +159,7 @@ namespace ManyWho.Flow.SDK.Utils
                 foreach (EngineValueAPI engineValue in engineValues)
                 {
                     // Check to see if this is the post
-                    if (engineValue.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase) == true)
+                    if (engineValue.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase))
                     {
                         // Grab the message
                         objectData = engineValue.objectData;
@@ -153,7 +170,7 @@ namespace ManyWho.Flow.SDK.Utils
                 }
             }
 
-            if (required == true &&
+            if (required &&
                 (objectData == null ||
                  objectData.Count == 0))
             {
@@ -163,9 +180,9 @@ namespace ManyWho.Flow.SDK.Utils
             return objectData;
         }
 
-        public static String SerializeListData(List<ObjectAPI> objectAPIs, TypeElementResponseAPI typeElementResponse)
+        public static string SerializeListData(List<ObjectAPI> objectAPIs, TypeElementResponseAPI typeElementResponse)
         {
-            String xml = null;
+            string xml = null;
 
             if (objectAPIs != null &&
                 objectAPIs.Count > 0)
@@ -184,11 +201,11 @@ namespace ManyWho.Flow.SDK.Utils
             return xml;
         }
 
-        public static String SerializeObjectData(ObjectAPI objectAPI, TypeElementResponseAPI typeElementResponse)
+        public static string SerializeObjectData(ObjectAPI objectAPI, TypeElementResponseAPI typeElementResponse)
         {
-            String xml = null;
-            String internalId = null;
-            String externalId = null;
+            string xml = null;
+            string internalId = null;
+            string externalId = null;
 
             if (objectAPI.internalId != null &&
                 objectAPI.internalId.Trim().Length > 0)
@@ -197,7 +214,7 @@ namespace ManyWho.Flow.SDK.Utils
             }
             else
             {
-                internalId = Guid.NewGuid().ToString();
+                internalId = Fuid.NewGuid().ToString();
             }
 
             if (objectAPI.externalId != null &&
@@ -207,7 +224,7 @@ namespace ManyWho.Flow.SDK.Utils
             }
             else
             {
-                externalId = Guid.NewGuid().ToString();
+                externalId = Fuid.NewGuid().ToString();
             }
 
             xml = "";
@@ -218,16 +235,16 @@ namespace ManyWho.Flow.SDK.Utils
             {
                 foreach (PropertyAPI propertyAPI in objectAPI.properties)
                 {
-                    Boolean typeElementEntryFound = false;
-                    String typeElementEntryId = null;
-                    String contentType = null;
+                    bool typeElementEntryFound = false;
+                    string typeElementEntryId = null;
+                    string contentType = null;
 
                     if (typeElementResponse.properties != null &&
                         typeElementResponse.properties.Count > 0)
                     {
                         foreach (TypeElementPropertyAPI typeElementEntryAPI in typeElementResponse.properties)
                         {
-                            if (typeElementEntryAPI.developerName.Equals(propertyAPI.developerName, StringComparison.OrdinalIgnoreCase) == true)
+                            if (typeElementEntryAPI.developerName.Equals(propertyAPI.developerName, StringComparison.OrdinalIgnoreCase))
                             {
                                 typeElementEntryId = typeElementEntryAPI.id;
                                 contentType = typeElementEntryAPI.contentType;
@@ -242,19 +259,18 @@ namespace ManyWho.Flow.SDK.Utils
                     
                     xml += "<complextypeentry typeelemententryid=\"" + typeElementEntryId + "\" contenttype=\"" + contentType + "\">";
 
-                    if (contentType.Equals(ManyWhoConstants.CONTENT_TYPE_OBJECT, StringComparison.OrdinalIgnoreCase) == true)
+                    if (contentType.Equals(ManyWhoConstants.CONTENT_TYPE_OBJECT, StringComparison.OrdinalIgnoreCase))
                     {
                         throw new ArgumentException("contentType", "Object properties not supported yet.");
                     }
-                    else if (contentType.Equals(ManyWhoConstants.CONTENT_TYPE_LIST, StringComparison.OrdinalIgnoreCase) == true)
+
+                    if (contentType.Equals(ManyWhoConstants.CONTENT_TYPE_LIST, StringComparison.OrdinalIgnoreCase))
                     {
                         throw new ArgumentException("contentType", "List properties not supported yet.");
                     }
-                    else
-                    {
-                        // Wrap primitive values in cdata so we don't screw up the xml document with invalid markup
-                        xml += "<![CDATA[" + propertyAPI.contentValue + "]]>";
-                    }
+
+                    // Wrap primitive values in cdata so we don't screw up the xml document with invalid markup
+                    xml += "<![CDATA[" + propertyAPI.contentValue + "]]>";
 
                     xml += "</complextypeentry>";
                 }

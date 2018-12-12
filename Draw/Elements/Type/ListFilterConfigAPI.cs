@@ -25,7 +25,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     public class ListFilterConfigAPI : ListFilterMinimalConfigAPI
     {
         /// <summary>
-        /// The identifier of the actual object to filter by - this basically gives an individual result back.
+        /// The reference to the Value that holds a very specific identifier to filter the objects by. This property should be used when loading specific objects as opposed to lists of object results.
         /// </summary>
         [DataMember]
         public ValueElementIdAPI filterId
@@ -35,25 +35,28 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         }
 
         /// <summary>
-        /// The type element entry id of the column to order by.
+        /// The unique identifier for the property in the Type (associated with this filter) that should be used for ordering the results.
         /// </summary>
         [DataMember]
-        public String orderByTypeElementPropertyId
+        public string orderByTypeElementPropertyId
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The direction of the ordering.
+        /// The direction in which to order the results.
         /// </summary>
         [DataMember]
-        public String orderByDirectionType
+        public string orderByDirectionType
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The ordering clauses for the result set
+        /// </summary>
         [DataMember]
         public List<ListFilterOrderByConfigAPI> orderBy
         {
@@ -62,10 +65,10 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         }
 
         /// <summary>
-        /// The number of objects to retrieve in the list.
+        /// The maximum number of results to return from the request.
         /// </summary>
         [DataMember]
-        public Int32 limit
+        public int limit
         {
             get;
             set;
@@ -75,7 +78,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// Use the list of provided objects as the filter for the lookup.  This allows us to refresh data that can be transient in the remote system.
         /// </summary>
         [DataMember]
-        public Boolean filterByProvidedObjects
+        public bool filterByProvidedObjects
         {
             get;
             set;
@@ -83,6 +86,17 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
 
         [DataMember]
         public List<ListFilterSearchCriteriaConfigAPI> searchCriteria
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// A list of properties to select. Useful when it's not desirable to load the entire object, for performance
+        /// and efficiency.
+        /// </summary>
+        [DataMember]
+        public List<ListFilterPropertyConfigAPI> properties
         {
             get;
             set;

@@ -22,8 +22,16 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class GroupElementRequestAPI : GroupElementAPI
     {
+        /// <summary>
+        /// Indicates if the platform should attempt to find a group with the same developer name as the one provided
+        /// and match them up by name as opposed to by ID.
+        /// </summary>
+        /// <remarks>
+        /// This is useful when writing scripts to create flows, as you can use the <code>developerName</code> property
+        /// as the reference as opposed to needing to know the IDs of all created elements.
+        /// </remarks>
         [DataMember]
-        public Boolean updateByName
+        public bool updateByName
         {
             get;
             set;

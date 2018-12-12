@@ -23,13 +23,19 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class ComparisonAPI
     {
+        /// <summary>
+        /// The comparison to use when evaluating the immediate child rules associated with this comparison object.
+        /// </summary>
         [DataMember]
-        public String comparisonType
+        public string comparisonType
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The list of rules that need to be evaluated for this outcome to be selected.
+        /// </summary>
         [DataMember]
         public List<RuleAPI> rules
         {
@@ -37,6 +43,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The list of child comparisons that need to be evaluated for this outcome to be selected. The comparison object is recursive allowing rules to be nested: e.g. ({a} > {b} OR {c} <= {d}) AND {b} == {f}
+        /// </summary>
         [DataMember]
         public List<ComparisonAPI> comparisons
         {
@@ -44,8 +53,11 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The order in which the comparison should be evaluated with respect to its peers. The lowest number is evaluated first.
+        /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;

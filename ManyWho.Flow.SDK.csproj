@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard1.1;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard1.1</TargetFrameworks>
     <AssemblyName>ManyWho.Flow.SDK</AssemblyName>
     <PackageId>ManyWho.SDK</PackageId>
+    <ProjectGuid>0089E5A0-32ED-4C07-AB46-916A966810A4</ProjectGuid>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Version>1.16.0</Version>
     <Authors>ManyWho</Authors>
@@ -14,15 +14,18 @@
     <RepositoryUrl>https://github.com/manywho/ManyWho_Flow_SDK_CSharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
-
+  <PropertyGroup>
+    <DocumentationFile>bin\Debug\netcoreapp2.0\ManyWho.Flow.SDK.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    <PackageReference Include="Polly-Signed" Version="5.1.0" />
-    <PackageReference Include="Xenolope.Extensions" Version="1.0.0" />
+    <PackageReference Include="Polly-Signed" Version="5.8.0" />
+    <PackageReference Include="Xenolope.Extensions" Version="2.1.0" />
   </ItemGroup>
-
   <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
-
 </Project>

@@ -22,22 +22,28 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class GroupAuthorizationUserAPI
     {
+        /// <summary>
+        /// The unique identifier to match the correct user. This is an external unique identifier based on the directory implementation of the Service.
+        /// </summary>
         [DataMember]
-        public String authenticationId
+        public string authenticationId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The unique attribute to match the correct user attribute. This enumeration is based on the directory implementation of the Service.
+        /// </summary>
+        [DataMember]
+        public string attribute
         {
             get;
             set;
         }
 
         [DataMember]
-        public String attribute
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Boolean runningUser
+        public bool runningUser
         {
             get;
             set;

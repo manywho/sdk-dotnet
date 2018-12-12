@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Social
         }
 
         [DataMember]
-        public String nextPage
+        public string nextPage
         {
             get;
             set;

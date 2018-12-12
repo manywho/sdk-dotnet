@@ -22,16 +22,16 @@ namespace ManyWho.Flow.SDK
         {
             get
             {
-                return this.CleanExceptionMessage(base.Message);
+                return CleanExceptionMessage(base.Message);
             }
         }
 
-        private String CleanExceptionMessage(String message)
+        private string CleanExceptionMessage(string message)
         {
             if (message != null)
             {
                 // Clean up argument null exceptions
-                if (message.StartsWith("Exception: ") == true)
+                if (message.StartsWith("Exception: "))
                 {
                     message = message.Substring("Exception: ".Length);
                 }

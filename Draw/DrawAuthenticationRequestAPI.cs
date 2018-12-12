@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 /*!
 
@@ -17,13 +16,23 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Tenant
+namespace ManyWho.Flow.SDK.Draw
 {
-    [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ReportSettingsAPI
+    public class DrawAuthenticationRequestAPI
     {
-        [DataMember]
-        public String reportingServiceUri
+        /// <summary>
+        /// The username for your account in the directory
+        /// </summary>
+        public string Username
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The password for your account in the directory
+        /// </summary>
+        public string Password
         {
             get;
             set;

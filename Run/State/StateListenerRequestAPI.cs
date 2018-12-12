@@ -24,28 +24,28 @@ namespace ManyWho.Flow.SDK.Run.State
     public class StateListenerRequestAPI
     {
         [DataMember]
-        public String listenType
+        public string listenType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String stateId
+        public string stateId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String callbackUri
+        public string callbackUri
         {
             get;
             set;
         }
 
         [DataMember]
-        public Dictionary<String, String> annotations
+        public Dictionary<string, string> annotations
         {
             get;
             set;

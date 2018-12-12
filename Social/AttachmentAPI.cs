@@ -23,42 +23,42 @@ namespace ManyWho.Flow.SDK.Social
     public class AttachmentAPI
     {
         [DataMember]
-        public String name 
+        public string name 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String iconUrl 
+        public string iconUrl 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String downloadUrl 
+        public string downloadUrl 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String size 
+        public string size 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String description 
+        public string description 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String type 
+        public string type 
         { 
             get; 
             set; 

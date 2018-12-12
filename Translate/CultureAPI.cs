@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Translate
         /// The id for the culture.
         /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Translate
         /// The developer name for the culture.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK.Translate
         /// The developer summary for the culture.
         /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
@@ -56,7 +56,7 @@ namespace ManyWho.Flow.SDK.Translate
         /// The brand for the culture.
         /// </summary>
         [DataMember]
-        public String brand
+        public string brand
         {
             get;
             set;
@@ -66,7 +66,7 @@ namespace ManyWho.Flow.SDK.Translate
         /// The language for the culture.
         /// </summary>
         [DataMember]
-        public String language
+        public string language
         {
             get;
             set;
@@ -76,7 +76,7 @@ namespace ManyWho.Flow.SDK.Translate
         /// The country for the culture.
         /// </summary>
         [DataMember]
-        public String country
+        public string country
         {
             get;
             set;
@@ -86,7 +86,7 @@ namespace ManyWho.Flow.SDK.Translate
         /// The variant for the culture.
         /// </summary>
         [DataMember]
-        public String variant
+        public string variant
         {
             get;
             set;

@@ -17,20 +17,26 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Utils
+namespace ManyWho.Flow.SDK.Notification
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class NotificationMessageAPI
     {
+        /// <summary>
+        /// The media type for the message. Currently the platform only supports: text/html or text/plain
+        /// </summary>
         [DataMember]
-        public String mediaType
+        public string mediaType
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The message string in the correct format for the media type.
+        /// </summary>
         [DataMember]
-        public String message
+        public string message
         {
             get;
             set;

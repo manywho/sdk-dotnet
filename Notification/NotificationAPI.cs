@@ -1,5 +1,5 @@
-﻿using ManyWho.Flow.SDK.Tenant;
-using System;
+﻿using System;
+using ManyWho.Flow.SDK.Tenant;
 
 namespace ManyWho.Flow.SDK.Notification
 {

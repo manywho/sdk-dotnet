@@ -28,7 +28,7 @@ namespace ManyWho.Flow.SDK.Translate
         /// property in the element.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> contentValues
+        public Dictionary<string, string> contentValues
         {
             get;
             set;

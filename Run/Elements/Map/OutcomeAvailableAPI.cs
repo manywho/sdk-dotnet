@@ -20,56 +20,51 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Run.Elements.Map
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class OutcomeAvailableAPI : IComparable
+    public class OutcomeAvailableAPI : IComparable<OutcomeAvailableAPI>
     {
+        /// <summary>
+        /// The unique identifier for the outcome.
+        /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The developer name provided by the builder user to help identify the outcome.
+        /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The label provided by the builder user to help Flow users select the correct outcome.
+        /// </summary>
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The order in which this outcome should appear with respect to sibling outcomes.
+        /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;
         }
 
-        public int CompareTo(Object obj)
+        public int CompareTo(OutcomeAvailableAPI other)
         {
-            OutcomeAvailableAPI outcome;
-            int result = 0;
-
-            if (obj is OutcomeAvailableAPI)
-            {
-                outcome = (OutcomeAvailableAPI)obj;
-
-                if (outcome.order > this.order)
-                {
-                    result = -1;
-                }
-                else if (outcome.order < this.order)
-                {
-                    result = 1;
-                }
-            }
-
-            return result;
+            return order.CompareTo(other.order);
         }
     }
 }

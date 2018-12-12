@@ -21,6 +21,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class MessageInputAPI : InputValueAPI
     {
+        /// <summary>
+        /// The developer name for the input defined by the Service definition of this message action. This name will be used by the Service Implementation to match which value is being assigned.
+        /// </summary>
         [DataMember]
         public string developerName
         {
@@ -28,6 +31,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The content type for the message input as specified by the Service.
+        /// </summary>
         [DataMember]
         public string contentType
         {
@@ -42,6 +48,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The order in which this input should appear to an person building Flows.
+        /// </summary>
         [DataMember]
         public int order
         {

@@ -52,14 +52,14 @@ namespace ManyWho.Flow.SDK.Draw.Flow
 
         
         [DataMember]
-        public DateTime dateModified
+        public DateTimeOffset dateModified
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean isActive
+        public bool isActive
         {
             get;
             set;

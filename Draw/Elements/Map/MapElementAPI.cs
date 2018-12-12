@@ -23,34 +23,46 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class MapElementAPI : ElementAPI
     {
+        /// <summary>
+        /// The unique identifier for the Group that contains this Map Element. If a Map Element is inside a Group, it inherits certain behaviors of the parent Group. For example, a Swimlane Group wraps all child Map Elements in a security context.
+        /// </summary>
         [DataMember]
-        public String groupElementId
+        public string groupElementId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The x location of the Map Element on the Flow diagram.
+        /// </summary>
+        [DataMember]
+        public int x
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The y location of the Map Element on the Flow diagram.
+        /// </summary>
+        [DataMember]
+        public int y
         {
             get;
             set;
         }
 
         [DataMember]
-        public Int32 x
+        public string pageElementId
         {
             get;
             set;
         }
 
-        [DataMember]
-        public Int32 y
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String pageElementId
-        {
-            get;
-            set;
-        }
-
+        /// <summary>
+        /// The list of outcomes that are available for this Map Element. An Outcome is used to connect the flow of execution from one Map Element in the Flow to another. An Outcome can take the form of a Page button, but also define system steps such as rules.
+        /// </summary>
         [DataMember]
         public List<OutcomeAPI> outcomes
         {

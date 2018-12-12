@@ -22,15 +22,18 @@ namespace ManyWho.Flow.SDK.Draw.Flow
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowGraphResponseAPI : FlowGraphRequestAPI
     {
+        /// <summary>
+        /// The unique identifier for the tenant holding the graph.
+        /// </summary>
         [DataMember]
-        public String tenantId
+        public string tenantId
         {
             get;
             set;
         }
 
         [DataMember]
-        public DateTime dateModified
+        public DateTimeOffset dateModified
         {
             get;
             set;

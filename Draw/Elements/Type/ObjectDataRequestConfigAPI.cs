@@ -28,29 +28,27 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     public class ObjectDataRequestConfigAPI
     {
         /// <summary>
-        /// The Id for the service element associated with this object data.  The service element will give us the connection settings
-        /// and allow us to validate various info around the type.
+        /// The unique identifier for the binding that should be used on the provided Type.
         /// </summary>
         [DataMember]
-        public String typeElementBindingId
+        public string typeElementBindingId
         {
             get;
             set;
         }
 
         /// <summary>
-        /// This will give us all of the object and field data we need to successfully make a request against the specified type.  We will
-        /// pass the type properties etc so the called service can optimize around exactly what the user is asking for.
+        /// The unique identifier for the Type that will define the structure of the data returned by this request.
         /// </summary>
         [DataMember]
-        public String typeElementId
+        public string typeElementId
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The filter to apply to the data at runtime.
+        /// The filter that should be applied to the data at runtime. The list filter can be altered by events on the page. The list filter object can also be used by the player to support additional component filtering and logic such as paging. The properties of the filter can therefore be altered at runtime to optimize the user experience.
         /// </summary>
         [DataMember]
         public ListFilterConfigAPI listFilter
