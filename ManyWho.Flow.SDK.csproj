@@ -13,6 +13,8 @@
     <PackageIconUrl>https://s3.amazonaws.com/cdn.manywho.com/icon32.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/manywho/ManyWho_Flow_SDK_CSharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <Configurations>Debug;Release;Coverage</Configurations>
+    <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
   <PropertyGroup>
     <DocumentationFile>bin\Debug\netcoreapp2.0\ManyWho.Flow.SDK.xml</DocumentationFile>
