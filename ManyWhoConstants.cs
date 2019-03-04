@@ -818,7 +818,12 @@ namespace ManyWho.Flow.SDK
         /// <summary>
         /// The Map Element can be used to execute a subflow
         /// </summary>
-        public const string MAP_ELEMENT_TYPE_IMPLEMENTATION_SUB_FLOW = "SUB_FLOW";
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_SUB_FLOW = "SUBFLOW";
+        
+        /// <summary>
+        /// The Map Element can be used to return from a subflow
+        /// </summary>
+        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_RETURN = "RETURN";
 
         /// <summary>
         /// The Map Element is a Database Load implementation that can be used to load data into Values in your Flow from a Service
