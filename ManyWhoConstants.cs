@@ -81,6 +81,16 @@ namespace ManyWho.Flow.SDK
         /// Tells the user that they are not allowed to perform any operations - this is to avoid testing "null"
         /// </summary>
         public const string INVOKE_TYPE_NOT_ALLOWED = "NOT_ALLOWED";
+        
+        /// <summary>
+        /// Tells the engine that it should invoke an inline subflow
+        /// </summary>
+        public const String INVOKE_TYPE_INLINE_SUBFLOW = "INLINE_SUBFLOW";
+        
+        /// <summary>
+        /// Tells the engine that it should return from an inline subflow to the parent flow
+        /// </summary>
+        public const String INVOKE_TYPE_RETURN = "RETURN";
 
         #endregion
 

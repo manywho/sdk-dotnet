@@ -202,5 +202,12 @@ namespace ManyWho.Flow.SDK.Run.State
             get;
             set;
         }
+        
+        [DataMember]
+        public FlowStackTraceAPI StackTrace
+        {
+            get;
+            set;
+        }
     }
 }
