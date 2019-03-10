@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// The developer name for the value.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// The content for this value.
         /// </summary>
         [DataMember]
-        public String contentValue
+        public string contentValue
         {
             get;
             set;
@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// Indicates if the value is required.
         /// </summary>
         [DataMember]
-        public Boolean isRequired
+        public bool isRequired
         {
             get;
             set;
@@ -56,7 +56,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// The content type for the value.
         /// </summary>
         [DataMember]
-        public String contentType
+        public string contentType
         {
             get;
             set;
@@ -66,7 +66,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// This allows the describe value to reference supported types.
         /// </summary>
         [DataMember]
-        public String typeElementDeveloperName
+        public string typeElementDeveloperName
         {
             get;
             set;
@@ -76,7 +76,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// The position in the UI where the value will be displayed
         /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;

@@ -24,34 +24,54 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class DataActionAPI
     {
+        /// <summary>
+        /// The developer name to help identify this data action in tooling and APIs.
+        /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The operation (<code>SAVE</code>, <code>LOAD</code> or <code>DELETE</code>) that should be performed on the
+        /// objects provided in this data action.
+        /// </summary>
         [DataMember]
-        public String crudOperationType
+        public string crudOperationType
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Indicates if the data should saved using tracked changes in the data. Smart save must be supported in the
+        /// underlying service as the platform will only send changed data back to the service rather than the complete
+        /// object or list.
+        /// </summary>
         [DataMember]
-        public Boolean isSmartSave
+        public bool isSmartSave
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The order in which the data action should be performed in relation to other data actions. The order must be
+        /// greater than or equal to zero. If data actions have the same order, they will be performed in parallel to
+        /// improve flow performance.
+        /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Whether the data action is disabled or not
+        /// </summary>
         [DataMember]
         public bool disabled
         {
@@ -59,6 +79,14 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The reference to the value that should be used to send data to the service. The value must be a
+        /// <code>ContentObject</code> or <code>ContentList</code> and must have a valid binding in the selected service.
+        /// </summary>
+        /// <remarks>
+        /// This property is only needed for <code>SAVE</code> or <code>DELETE</code> operations or for <code>LOAD</code>
+        /// operations where <code>filterByProvidedObjects</code> is <code>true</code>.
+        /// </remarks>
         [DataMember]
         public ValueElementIdAPI valueElementToReferenceId
         {
@@ -66,6 +94,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The reference to the value that should be used to apply any data back from the service. The value must be a
+        /// <code>ContentObject</code> or <code>ContentList</code> and must have a valid binding in the selected service.
+        /// </summary>
+        /// <remarks>
+        /// This property is only needed for <code>SAVE</code> or <code>LOAD</code> operations
+        /// </remarks>
         [DataMember]
         public ValueElementIdAPI valueElementToApplyId
         {
@@ -73,6 +108,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The configuration of the data operation being performed
+        /// </summary>
         [DataMember]
         public ObjectDataRequestConfigAPI objectDataRequest
         {

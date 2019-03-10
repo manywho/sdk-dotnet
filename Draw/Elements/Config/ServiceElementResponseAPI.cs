@@ -23,20 +23,29 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class ServiceElementResponseAPI : ServiceElementRequestAPI
     {
+        /// <summary>
+        /// The date the Service was first created.
+        /// </summary>
         [DataMember]
-        public DateTime dateCreated
+        public DateTimeOffset dateCreated
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The date the last modification was made to the Service.
+        /// </summary>
         [DataMember]
-        public DateTime dateModified
+        public DateTimeOffset dateModified
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The builder user who created the Service.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoCreated
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
             set;
         }
 
+        /// <summary>
+        /// The builder user who last modified the Service.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoModified
         {
@@ -51,6 +63,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
             set;
         }
 
+        /// <summary>
+        /// The builder user who owns this Service.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoOwner
         {

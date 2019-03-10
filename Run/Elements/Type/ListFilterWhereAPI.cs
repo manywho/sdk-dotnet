@@ -24,28 +24,28 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
     public class ListFilterWhereAPI
     {
         [DataMember]
-        public String columnName
+        public string columnName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String criteriaType
+        public string criteriaType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String value
+        public string value
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentValue
+        public string contentValue
         {
             get;
             set;

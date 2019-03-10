@@ -1,9 +1,9 @@
 ﻿using System;
-//using System.Text;
 using System.Net;
 using System.Net.Http;
-//using System.Threading.Tasks;
 using ManyWho.Flow.SDK.Security;
+//using System.Text;
+//using System.Threading.Tasks;
 
 ///*!
 //Copyright 2013 Manywho, Inc.
@@ -59,14 +59,19 @@ namespace ManyWho.Flow.SDK.Utils
 
         public static HttpClient CreateHttpClient(IAuthenticatedWho authenticatedWho, string tenantId, string stateId, int timeOut)
         {
+            return CreateHttpClient(Uri.EscapeDataString(AuthenticationUtils.Serialize(authenticatedWho)), tenantId, stateId, timeOut);
+        }
+
+        public static HttpClient CreateHttpClient(string authorizationHeader, string tenantId, string stateId, int timeOut)
+        {
             HttpClient httpClient = null;
 
             httpClient = new HttpClient();
 
-            if (authenticatedWho != null)
+            if (authorizationHeader != null)
             {
                 // Serialize and add the user information to the header
-                httpClient.DefaultRequestHeaders.Add(HEADER_AUTHORIZATION, Uri.EscapeDataString(AuthenticationUtils.Serialize(authenticatedWho)));
+                httpClient.DefaultRequestHeaders.Add(HEADER_AUTHORIZATION, authorizationHeader);
             }
 
             if (!string.IsNullOrWhiteSpace(tenantId))
@@ -83,6 +88,30 @@ namespace ManyWho.Flow.SDK.Utils
 
             // Set the timeout for the request
             httpClient.Timeout = TimeSpan.FromSeconds(timeOut);
+
+            return httpClient;
+        }
+
+        public static HttpClient CreateHttpClientV2(string authorizationHeader, Guid tenant)
+        {
+            return CreateHttpClientV2(authorizationHeader, tenant, SYSTEM_TIMEOUT_SECONDS);
+        }
+
+        public static HttpClient CreateHttpClientV2(string authorizationHeader, Guid tenant, int timeout)
+        {
+            var httpClient = new HttpClient();
+
+            if (authorizationHeader != null)
+            {
+                // Serialize and add the user information to the header
+                httpClient.DefaultRequestHeaders.Add(HEADER_AUTHORIZATION, authorizationHeader);
+            }
+
+            // Add the tenant to the header
+            httpClient.DefaultRequestHeaders.Add("X-ManyWho-Tenant", tenant.ToString());
+
+            // Set the timeout for the request
+            httpClient.Timeout = TimeSpan.FromSeconds(timeout);
 
             return httpClient;
         }

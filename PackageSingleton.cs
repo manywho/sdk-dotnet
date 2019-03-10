@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Net.Http;
-using Newtonsoft.Json;
-using ManyWho.Flow.SDK.Utils;
-using ManyWho.Flow.SDK.Security;
 using ManyWho.Flow.SDK.Errors;
+using ManyWho.Flow.SDK.Security;
+using ManyWho.Flow.SDK.Utils;
+using Newtonsoft.Json;
 using Polly;
 
 /*!
@@ -26,24 +26,24 @@ namespace ManyWho.Flow.SDK
 {
     public class PackageSingleton
     {
-        public const String MANYWHO_BASE_URL = "https://flow.manywho.com";
-        public const String MANYWHO_PACKAGE_EXPORT_LATEST_FLOW_PACKAGE_URI_PART = "/api/package/1/flow/";
-        public const String MANYWHO_PACKAGE_EXPORT_FLOW_PACKAGE_URI_PART = "/api/package/1/flow/";
+        public const string MANYWHO_BASE_URL = "https://flow.manywho.com";
+        public const string MANYWHO_PACKAGE_EXPORT_LATEST_FLOW_PACKAGE_URI_PART = "/api/package/1/flow/";
+        public const string MANYWHO_PACKAGE_EXPORT_FLOW_PACKAGE_URI_PART = "/api/package/1/flow/";
 
-        private static PackageSingleton package = null;
+        private static PackageSingleton package;
 
         private PackageSingleton()
         {
 
         }
 
-        private String ServiceUrl
+        private string ServiceUrl
         {
             get;
             set;
         }
 
-        public static PackageSingleton GetInstance(String serviceUrl)
+        public static PackageSingleton GetInstance(string serviceUrl)
         {
             if (package == null)
             {
@@ -69,19 +69,19 @@ namespace ManyWho.Flow.SDK
             return package;
         }
 
-        public String ExportLatestFlowPackage(INotifier notifier, IAuthenticatedWho authenticatedWho, String tenantId, String flowId, String codeReferenceName, String alertEmail)
+        public string ExportLatestFlowPackage(IAuthenticatedWho authenticatedWho, string tenantId, string flowId, string codeReferenceName, string alertEmail)
         {
-            String endpointUrl = null;
+            string endpointUrl = null;
             HttpClient httpClient = null;
             HttpResponseMessage httpResponseMessage = null;
-            String flowPackage = null;
+            string flowPackage = null;
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
                 using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, tenantId, null))
                 {
                     // Construct the URL for the package request
-                    endpointUrl = this.ServiceUrl + MANYWHO_PACKAGE_EXPORT_LATEST_FLOW_PACKAGE_URI_PART + flowId;
+                    endpointUrl = ServiceUrl + MANYWHO_PACKAGE_EXPORT_LATEST_FLOW_PACKAGE_URI_PART + flowId;
 
                     // Get the flow package from ManyWho
                     httpResponseMessage = httpClient.GetAsync(endpointUrl).Result;
@@ -90,7 +90,7 @@ namespace ManyWho.Flow.SDK
                     if (httpResponseMessage.IsSuccessStatusCode)
                     {
                         // Get the flow package out of the response
-                        flowPackage = JsonConvert.DeserializeObject<String>(httpResponseMessage.Content.ReadAsStringAsync().Result);
+                        flowPackage = JsonConvert.DeserializeObject<string>(httpResponseMessage.Content.ReadAsStringAsync().Result);
                     }
                     else
                     {

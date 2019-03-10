@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 /*!
 
@@ -22,29 +21,41 @@ namespace ManyWho.Flow.SDK.Security
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class RemoteSiteAPI
     {
+        /// <summary>
+        /// The name for this remote site restriction, typically a helpful one to remind builders of the purpose
+        /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Any additional summary information about this remote site restriction that will help explain the purpose
+        /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The base URI of the remote site (e.g. https://flow.manywho.com)
+        /// </summary>
         [DataMember]
-        public String uri
+        public string uri
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Indicates if the remote site can be accessed without encryption (SSL)
+        /// </summary>
         [DataMember]
-        public Boolean disableProtocolSecurity
+        public bool disableProtocolSecurity
         {
             get;
             set;

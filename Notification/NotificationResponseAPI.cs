@@ -17,20 +17,20 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Utils
+namespace ManyWho.Flow.SDK.Notification
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class NotificationResponseAPI
     {
         [DataMember]
-        public String result
+        public string result
         {
             get;
             set;
         }
 
         [DataMember]
-        public String callbackUri
+        public string callbackUri
         {
             get;
             set;

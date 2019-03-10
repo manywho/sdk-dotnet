@@ -24,7 +24,7 @@ namespace ManyWho.Flow.SDK.Social
     {
         public FilesListAPI()
         {
-            this.files = new List<FileAPI>();
+            files = new List<FileAPI>();
         }
 
         [DataMember]

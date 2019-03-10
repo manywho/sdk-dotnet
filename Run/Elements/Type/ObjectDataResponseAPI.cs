@@ -48,7 +48,17 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// Indicates if there are more results available based on the offset and limit provided
         /// </summary>
         [DataMember]
-        public Boolean hasMoreResults
+        public bool hasMoreResults
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// The unique ID of the state
+        /// </summary>
+        [DataMember]
+        public Guid stateId
         {
             get;
             set;

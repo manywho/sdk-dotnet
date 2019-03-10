@@ -23,21 +23,21 @@ namespace ManyWho.Flow.SDK.Describe
     public class DescribeUIServiceActionOutcomeAPI
     {
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;

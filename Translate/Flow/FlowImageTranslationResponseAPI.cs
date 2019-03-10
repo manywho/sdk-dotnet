@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Translate.Elements.UI;
 using ManyWho.Flow.SDK.Translate.Elements.Map;
 using ManyWho.Flow.SDK.Translate.Elements.Type;
+using ManyWho.Flow.SDK.Translate.Elements.UI;
 using ManyWho.Flow.SDK.Translate.Elements.Value;
 
 namespace ManyWho.Flow.SDK.Translate.Flow
@@ -12,35 +12,35 @@ namespace ManyWho.Flow.SDK.Translate.Flow
     public class FlowImageTranslationResponseAPI
     {
         [DataMember]
-        public String editingToken
+        public Guid editingToken
         {
             get;
             set;
         }
 
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
         }
 
         [DataMember]
-        public String startMapElementId
+        public string startMapElementId
         {
             get;
             set;

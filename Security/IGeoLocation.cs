@@ -26,43 +26,43 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
-        Decimal Latitude
+        decimal Latitude
         {
             get;
             set;
         }
 
-        Decimal Longitude
+        decimal Longitude
         {
             get;
             set;
         }
 
-        Decimal Accuracy
+        decimal Accuracy
         {
             get;
             set;
         }
 
-        Decimal Altitude
+        decimal Altitude
         {
             get;
             set;
         }
 
-        Decimal AltitudeAccuracy
+        decimal AltitudeAccuracy
         {
             get;
             set;
         }
 
-        Decimal Heading
+        decimal Heading
         {
             get;
             set;
         }
 
-        Decimal Speed
+        decimal Speed
         {
             get;
             set;

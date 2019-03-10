@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
-
-/*!
+﻿/*!
 
 Copyright 2013 Manywho, Inc.
 
@@ -17,27 +14,28 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Run.Elements.Config
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
+namespace ManyWho.Flow.SDK.Restrictions
 {
-    [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class UserAPI
+    public class FlowRestrictionsAPI
     {
-        [DataMember]
-        public String authenticationId
+        /// <summary>
+        /// Specifies geographical regions where a flow can be run (i.e. the Engine instances that can execute it)
+        /// </summary>
+        [JsonProperty("execution")]
+        public RestrictionAPI Execution
         {
             get;
             set;
         }
-
-        [DataMember]
-        public String attribute
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public Boolean runningUser
+        
+        /// <summary>
+        /// Specifies geographical regions where a flow can be accessed at runtime (i.e. the countries where a flow can be run from)
+        /// </summary>
+        [JsonProperty("access")]
+        public RestrictionAPI Access
         {
             get;
             set;

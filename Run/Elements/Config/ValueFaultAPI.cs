@@ -23,40 +23,40 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
     public class ValueFaultAPI
     {
         /// <summary>
-        /// The reference id of the value with the fault.
+        /// The unique identifier of the Value that caused the fault in the Service. This allows ManyWho to match this fault with any Pages that display it to a user.
         /// </summary>
         [DataMember]
-        public String valueElementToReferenceId
+        public string valueElementToReferenceId
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The reference type element entry id of the value with the fault.
+        /// The unique identifier of the Type Property that cause the fault in the Service. This is only applicable for ContentObject and ContentList Values.
         /// </summary>
         [DataMember]
-        public String valueElementTypeElementPropertyToReferenceId
+        public string valueElementTypeElementPropertyToReferenceId
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The fault code to send back to the engine.
+        /// An informative code from the Service to indicate the type of fault that occurred.
         /// </summary>
         [DataMember]
-        public String faultCode
+        public string faultCode
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The fault message to send back to the engine.
+        /// A fault message that will help users understand how to fix the fault in their provided value.
         /// </summary>
         [DataMember]
-        public String faultMessage
+        public string faultMessage
         {
             get;
             set;

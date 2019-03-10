@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
-
-/*!
+﻿/*!
 
 Copyright 2013 Manywho, Inc.
 
@@ -17,20 +14,11 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Run.Elements.Config
+namespace ManyWho.Flow.SDK.Describe
 {
-    [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class GroupAPI
+    public class DescribeServiceResponseV2API : DescribeServiceResponseBaseAPI
     {
-        [DataMember]
-        public String authenticationId
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String attribute
+        public string Version
         {
             get;
             set;

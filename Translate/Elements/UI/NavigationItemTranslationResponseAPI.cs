@@ -24,28 +24,28 @@ namespace ManyWho.Flow.SDK.Translate.Elements.UI
     public class NavigationItemTranslationResponseAPI
     {
         [DataMember]
-        public String locationMapElementId
+        public string locationMapElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
         }
 
         [DataMember]
-        public String labelContentValueId
+        public string labelContentValueId
         {
             get;
             set;

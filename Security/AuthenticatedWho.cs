@@ -23,6 +23,37 @@ namespace ManyWho.Flow.SDK.Security
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class AuthenticatedWho : IAuthenticatedWho
     {
+        public AuthenticatedWho()
+        {
+        }
+
+        public AuthenticatedWho(IAuthenticatedWho user)
+        {
+            if (user == null)
+            {
+                return;
+            }
+            
+            ManyWhoUserId = user.ManyWhoUserId;
+            ManyWhoTenantId = user.ManyWhoTenantId;
+            ManyWhoToken = user.ManyWhoToken;
+            GeoLocation = user.GeoLocation;
+            UserId = user.UserId;
+            Username = user.Username;
+            Email = user.Email;
+            IdentityProvider = user.IdentityProvider;
+            Token = user.Token;
+            TenantName = user.TenantName;
+            DirectoryName = user.DirectoryName;
+            DirectoryId = user.DirectoryId;
+            RoleName = user.RoleName;
+            RoleId = user.RoleId;
+            PrimaryGroupName = user.PrimaryGroupName;
+            PrimaryGroupId = user.PrimaryGroupId;
+            FirstName = user.FirstName;
+            LastName = user.LastName;
+        }
+
         [DataMember]
         [JsonProperty("manywhoUserId")]
         public Guid ManyWhoUserId
@@ -41,7 +72,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("manywhoToken")]
-        public String ManyWhoToken
+        public string ManyWhoToken
         {
             get;
             set;
@@ -57,7 +88,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("userId")]
-        public String UserId
+        public string UserId
         {
             get;
             set;
@@ -65,7 +96,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("username")]
-        public String Username
+        public string Username
         {
             get;
             set;
@@ -73,7 +104,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("email")]
-        public String Email
+        public string Email
         {
             get;
             set;
@@ -81,7 +112,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("identityProvider")]
-        public String IdentityProvider
+        public string IdentityProvider
         {
             get;
             set;
@@ -89,7 +120,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("token")]
-        public String Token
+        public string Token
         {
             get;
             set;
@@ -97,7 +128,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("tenantName")]
-        public String TenantName
+        public string TenantName
         {
             get;
             set;
@@ -105,7 +136,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("directoryName")]
-        public String DirectoryName
+        public string DirectoryName
         {
             get;
             set;
@@ -113,7 +144,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("directoryId")]
-        public String DirectoryId
+        public string DirectoryId
         {
             get;
             set;
@@ -121,7 +152,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("roleName")]
-        public String RoleName
+        public string RoleName
         {
             get;
             set;
@@ -129,7 +160,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("roleId")]
-        public String RoleId
+        public string RoleId
         {
             get;
             set;
@@ -137,7 +168,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("primaryGroupName")]
-        public String PrimaryGroupName
+        public string PrimaryGroupName
         {
             get;
             set;
@@ -145,7 +176,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("primaryGroupId")]
-        public String PrimaryGroupId
+        public string PrimaryGroupId
         {
             get;
             set;
@@ -153,7 +184,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("firstName")]
-        public String FirstName
+        public string FirstName
         {
             get;
             set;
@@ -161,7 +192,7 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("lastName")]
-        public String LastName
+        public string LastName
         {
             get;
             set;

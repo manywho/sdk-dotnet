@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The developer name of the column to order by.
         /// </summary>
         [DataMember]
-        public String orderByPropertyDeveloperName
+        public string orderByPropertyDeveloperName
         {
             get;
             set;
@@ -36,7 +36,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The direction of the ordering.
         /// </summary>
         [DataMember]
-        public String orderByDirectionType
+        public string orderByDirectionType
         {
             get;
             set;
@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The number of objects to retrieve in the list.
         /// </summary>
         [DataMember]
-        public Int32 limit
+        public int limit
         {
             get;
             set;
@@ -56,7 +56,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The number of records to skip past to effectively support paging of the data.
         /// </summary>
         [DataMember]
-        public Int32 offset
+        public int offset
         {
             get;
             set;
@@ -66,7 +66,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The search string that should be used in addition to any filter criteria.
         /// </summary>
         [DataMember]
-        public String search
+        public string search
         {
             get;
             set;

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 /*!
 
@@ -22,8 +21,11 @@ namespace ManyWho.Flow.SDK.Security
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class PasswordResetAPI
     {
+        /// <summary>
+        /// The new password to be applied to the flow builder account
+        /// </summary>
         [DataMember]
-        public String password
+        public string password
         {
             get;
             set;

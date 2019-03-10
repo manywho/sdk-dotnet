@@ -45,14 +45,14 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
-        public String timeStamp
+        public string timeStamp
         {
             get;
             set;
         }
 
         [DataMember]
-        public String isActive
+        public string isActive
         {
             get;
             set;

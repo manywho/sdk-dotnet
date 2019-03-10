@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
-        public String order
+        public string order
         {
             get;
             set;

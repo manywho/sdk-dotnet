@@ -22,29 +22,41 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class TypeElementPropertyBindingAPI
     {
+        /// <summary>
+        /// The name of the database field in the table that this binding should be applied. If no underlying table is used, this should represent a unique name that will allow the Service implementation to identify how to store the object property.
+        /// </summary>
         [DataMember]
-        public String databaseFieldName
+        public string databaseFieldName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for the type element property that this binding relates to.
+        /// </summary>
         [DataMember]
-        public String typeElementPropertyId
+        public string typeElementPropertyId
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The developer name for the type element property that this binding relates to. This property is only used in the Service installation and is not supported as part of a manual Type creation.
+        /// </summary>
         [DataMember]
-        public String typeElementPropertyDeveloperName
+        public string typeElementPropertyDeveloperName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The content type of the database field in the table that this binding should be applied. For example, the content type in ManyWho may be ContentNumber, but in the underlying database, the actual field type is Decimal. This is an optional property that depends on the Service implementation.
+        /// </summary>
         [DataMember]
-        public String databaseContentType
+        public string databaseContentType
         {
             get;
             set;

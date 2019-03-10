@@ -22,36 +22,55 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class NavigationOverrideAPI
     {
+        /// <summary>
+        /// The unique identifier for the navigation this override is referencing.
+        /// </summary>
         [DataMember]
-        public String navigationElementId
+        public string navigationElementId
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for the specific navigation item in the navigation being referenced.
+        /// </summary>
         [DataMember]
-        public String navigationItemId
+        public string navigationItemId
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Indicates if the navigation item being referenced should be enabled. If the navigation item has
+        /// <code>isEnabled</code> set to <code>false</code>, the user will see the navigation item, but it will not
+        /// function.
+        /// </summary>
         [DataMember]
-        public Boolean isEnabled
+        public bool isEnabled
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Indicates if the navigation item being referenced should be visible. If the navigation item has
+        /// <code>isVisible</code> set to <code>false</code>, it will no longer appear to the user in the navigation.
+        /// This will include child navigation items.
+        /// </summary>
         [DataMember]
-        public Boolean isVisible
+        public bool isVisible
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The map element that the navigation item should point to based on this override.
+        /// </summary>
         [DataMember]
-        public String locationMapElementId
+        public string locationMapElementId
         {
             get;
             set;

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Draw.Flow;
+using ManyWho.Flow.SDK.Restrictions;
 using ManyWho.Flow.SDK.Security;
 
 /*!
@@ -23,13 +25,20 @@ namespace ManyWho.Flow.SDK.Tenant
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class TenantRequestAPI
     {
+        /// <summary>
+        /// A summary of the tenant. This is typically additional information that will help explain the purpose of the
+        /// tenant
+        /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Specific security settings that should be applied to this tenant, beyond the defaults (excluding subtenants)
+        /// </summary>
         [DataMember]
         public SecuritySettingsAPI securitySettings
         {
@@ -37,13 +46,10 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
-        [DataMember]
-        public ReportSettingsAPI reportSettings
-        {
-            get;
-            set;
-        }
-
+        /// <summary>
+        /// The requested subdomain to register for this tenant. If provided, the subdomain must be unique for the 
+        /// entire platform
+        /// </summary>
         [DataMember]
         public string subdomain
         {
@@ -51,6 +57,9 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Settings used for state persistence and reporting
+        /// </summary>
         [DataMember]
         public StateSettingsAPI stateSettings
         {
@@ -58,8 +67,31 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        /// <summary>
+        /// Settings that are specific to features used in the tenant
+        /// </summary>
         [DataMember]
         public TenantSettingsAPI tenantSettings
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Settings that are used when using the External Storage API
+        /// </summary>
+        [DataMember]
+        public ExternalStorageSettingsAPI externalStorageSettings
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// Specifies geographical restrictions for this tenant
+        /// </summary>
+        [DataMember]
+        public TenantRestrictionsAPI Restrictions
         {
             get;
             set;

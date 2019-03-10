@@ -23,6 +23,9 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class SocialServiceRequestAPI : ServiceRequestAPI
     {
+        /// <summary>
+        /// The message that should be posted to the Service.
+        /// </summary>
         [DataMember]
         public NewMessageAPI newMessage
         {
@@ -30,20 +33,29 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
             set;
         }
 
+        /// <summary>
+        /// The current page of messages that should be sent.
+        /// </summary>
         [DataMember]
-        public String page
+        public string page
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The number of messages to include on the page response.
+        /// </summary>
         [DataMember]
-        public Int32 pageSize
+        public int pageSize
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The details of the file attachment that should be uploaded with the message post.
+        /// </summary>
         [DataMember]
         public AttachmentAPI attachment
         {

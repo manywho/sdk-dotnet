@@ -23,56 +23,56 @@ namespace ManyWho.Flow.SDK.Social
     public class FileAPI
     {
         [DataMember]
-        public String id
+        public string id
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String name 
+        public string name 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public Int64 size 
+        public long size 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String type 
+        public string type 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String url 
+        public string url 
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String delete_url
+        public string delete_url
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String thumbnail_url
+        public string thumbnail_url
         { 
             get; 
             set; 
         }
 
         [DataMember]
-        public String delete_type
+        public string delete_type
         { 
             get; 
             set; 

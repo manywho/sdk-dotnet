@@ -40,7 +40,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         {
             get;
             set;
-        }
+        } = new List<ListFilterWhereAPI>();
 
         /// <summary>
         /// A list of nested minimal ListFilters that can be used for grouped ordering and comparisons
@@ -50,6 +50,6 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         {
             get;
             set;
-        }
+        } = new List<ListFilterMinimalAPI>();
     }
 }

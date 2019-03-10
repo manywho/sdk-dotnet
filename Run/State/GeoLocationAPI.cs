@@ -22,55 +22,79 @@ namespace ManyWho.Flow.SDK.Run.State
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class GeoLocationAPI
     {
+        /// <summary>
+        /// The latitude coordinate of the user's location.
+        /// </summary>
         [DataMember]
-        public Decimal latitude
+        public decimal latitude
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The longitude coordinate of the user's location.
+        /// </summary>
         [DataMember]
-        public Decimal longitude
+        public decimal longitude
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The accuracy of the location data that has been collected.
+        /// </summary>
         [DataMember]
-        public Decimal accuracy
+        public decimal accuracy
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The altitude of the user above mean sea level.
+        /// </summary>
         [DataMember]
-        public Decimal altitude
+        public decimal altitude
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The accuracy of the altitude data that has been collected.
+        /// </summary>
         [DataMember]
-        public Decimal altitudeAccuracy
+        public decimal altitudeAccuracy
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The heading of the user as degrees clockwise from North.
+        /// </summary>
         [DataMember]
-        public Decimal heading
+        public decimal heading
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The speed of the user in meters per second.
+        /// </summary>
         [DataMember]
-        public Decimal speed
+        public decimal speed
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The timestamp of the data that has been collected
+        /// </summary>
         [DataMember]
         public DateTimeOffset time
         {

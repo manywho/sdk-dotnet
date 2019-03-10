@@ -20,157 +20,358 @@ namespace ManyWho.Flow.SDK
 {
     public class ManyWhoConstants
     {
-        // Engine invoke constants
-        public const String INVOKE_TYPE_FORWARD = "FORWARD";
-        // Tells the caller that the flow has completed - no more steps
-        public const String INVOKE_TYPE_DONE = "DONE";
-        // Tells the engine we want to join the running flow - this is used internally only - "STATUS" is used externally as we infer a "JOIN" from the GET request
-        public const String INVOKE_TYPE_JOIN = "JOIN";
-        // Tells the user we're waiting for something on the system side to complete
-        public const String INVOKE_TYPE_WAIT = "WAIT";
-        // Tells the response caller that the engine is currently busy processing against the state
-        public const String INVOKE_TYPE_BUSY = "BUSY";
-        // Tells the engine that the system didn't let them in for some reason - most likely authentication, but it could be some
-        // other reason as we develop out various grouping use-cases.  This basically says: try again if you like!
-        public const String INVOKE_TYPE_STATUS = "STATUS";
-        // Tells any calling services that they no longer need to send the message for that token - their message was accepted
-        // by the message action
-        public const String INVOKE_TYPE_SUCCESS = "SUCCESS";
-        // Tells any calling services that the token has already completed - so they should stop sending messages
-        public const String INVOKE_TYPE_TOKEN_COMPLETED = "TOKEN_COMPLETED";
-        // Tells the engine to sync the data, but not to shut down the optimize memory or execute - this brings in the social
-        // element to the engine
-        public const String INVOKE_TYPE_SYNC = "SYNC";
-        // Tells the engine that the user has clicked on something in the navigation as opposed to an outcome
-        public const String INVOKE_TYPE_NAVIGATE = "NAVIGATE";
-        // Tells the engine that the state is waiting on votes to come in
-        public const String INVOKE_TYPE_WAITING_ON_VOTES = "WAITING_ON_VOTES";
-        // Tells the user that they are not allowed to perform any operations - this is to avoid testing "null"
-        public const String INVOKE_TYPE_NOT_ALLOWED = "NOT_ALLOWED";
+        #region Engine Invoke
 
-        // Engine mode constants
-        public const String MODE_DEFAULT = null;
-        public const String MODE_LOG = "LOG";
-        public const String MODE_DEBUG = "DEBUG";
-        public const String MODE_DEBUG_STEPTHROUGH = "DEBUG_STEPTHROUGH";
+        /// <summary>
+        /// Tells the engine that you wish to move forward. This doesn't necessarily mean the engine will move forward if the request fails on page validation OR the author of the flow has put rules against the element that have not evaluated to 'true'.
+        /// </summary>
+        public const string INVOKE_TYPE_FORWARD = "FORWARD";
+
+        /// <summary>
+        /// Tells the caller that the flow has reached the final element in a branch
+        /// </summary>
+        public const string INVOKE_TYPE_DONE = "DONE";
+
+        /// <summary>
+        ///  Tells the engine we want to join the running flow - this is used internally only. "STATUS" is used externally as we infer a "JOIN" from the GET request
+        /// </summary>
+        public const string INVOKE_TYPE_JOIN = "JOIN";
+
+        /// <summary>
+        /// Tells the engine and the caller that the engine is waiting or the external plugin is waiting. As part of the plugin framework a "WAIT" request allows you to send status messages to the user without progressing the flow. When calling the engine from a plugin, if the engine responds with a "WAIT", it means the engine is likely waiting on another event or business rule to fire.
+        /// </summary>
+        public const string INVOKE_TYPE_WAIT = "WAIT";
+
+        /// <summary>
+        /// Tells the caller that the state is currently busy being processed against
+        /// </summary>
+        public const string INVOKE_TYPE_BUSY = "BUSY";
+
+        /// <summary>
+        /// Tells the engine that you wish to get a status update on the flow. This will send back up-to-date page metadata and any new status messages.
+        /// </summary>
+        public const string INVOKE_TYPE_STATUS = "STATUS";
+
+        /// <summary>
+        /// When making asynchronous requests against the engine, a "SUCCESS" response tells the caller that the request was accepted and the caller therefore does not need to continue to make requests against the engine.
+        /// </summary>
+        public const string INVOKE_TYPE_SUCCESS = "SUCCESS";
+
+        /// <summary>
+        /// When making asynchronous requests against the engine, a "TOKEN_COMPLETED" response tells the caller that the request is no longer needed or valid and the caller therefore does not need to continue to make requests against the engine. This can happen if the user has send messages out to multiple systems and the rules to continue forward in the execution of the flow were satisfied by another system response.
+        /// </summary>
+        public const string INVOKE_TYPE_TOKEN_COMPLETED = "TOKEN_COMPLETED";
+
+        /// <summary>
+        /// Tells the engine that you wish to synchronize the data held in the player with that held on the service. This will send back up-to-date page metadata and any new status messages.
+        /// </summary>
+        public const string INVOKE_TYPE_SYNC = "SYNC";
+
+        /// <summary>
+        /// Tells the engine that the user has clicked on something in the navigation as opposed to an outcome
+        /// </summary>
+        public const string INVOKE_TYPE_NAVIGATE = "NAVIGATE";
+
+        /// <summary>
+        /// Tells the engine that the state is waiting on votes to come in
+        /// </summary>
+        public const string INVOKE_TYPE_WAITING_ON_VOTES = "WAITING_ON_VOTES";
+
+        /// <summary>
+        /// Tells the user that they are not allowed to perform any operations - this is to avoid testing "null"
+        /// </summary>
+        public const string INVOKE_TYPE_NOT_ALLOWED = "NOT_ALLOWED";
+
+        #endregion
+
+        #region Flow Modes
+
+        /// <summary>
+        /// Run the flow in full release mode.
+        /// </summary>
+        public const string MODE_DEFAULT = null;
+
+        /// <summary>
+        /// Run the flow with debug information switched on. This will populate the state values in the response so you can see what is ready to be committed and what values have already been committed to the state.
+        /// </summary>
+        public const string MODE_DEBUG = "DEBUG";
+
+        /// <summary>
+        /// Run the flow with debug information switched on, but also step through element by element. This allows you to see exactly what's happening as your flow executes as you are given the opportunity to see steps that are normally not shown to the user and track the path of execution and the state information as the engine executes.
+        /// </summary>
+        public const string MODE_DEBUG_STEPTHROUGH = "DEBUG_STEPTHROUGH";
         public const string MODE_RECORD = "RECORD";
 
-        // Reporting mode constants
-        public const String REPORT_NONE = null;
-        public const String REPORT_VALUES = "VALUES";
-        public const String REPORT_PATH = "PATH";
-        public const String REPORT_PATH_AND_VALUES = "PATH_AND_VALUES";
+        #endregion
 
-        // Content Value Implementation constants
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_DETACH = "DETACH"; // Removes the external identifier from the root object only
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_EMPTY = "EMPTY"; // blanks out the complex object or table with a null value
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_NEW = "NEW"; // creates a new whole complex object or table
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_UPDATE = "ADD"; // adds a complex object to the table or updates the existing one in the table or adds to a value
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_REMOVE = "REMOVE"; // removes a complex object from the table or from the value (subtract)
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_FIRST = "GET_FIRST"; // gets the first complex object in the table
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_NEXT = "GET_NEXT"; // gets the next complex object in the table
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_FILTER = "FILTER";
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_LENGTH = "GET_LENGTH"; // gets the length of a list, string, content or password
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_VALUE = "VALUE_OF"; // gets the content value / objectdata of a Value
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_SET_EQUAL = "SET_EQUAL"; // sets the content value / objectdata of a value
+        #region Reporting Modes
+
+        /// <summary>
+        /// Do not store any reporting data for this State.
+        /// </summary>
+        public const string REPORT_NONE = null;
+
+        /// <summary>
+        /// Store only the Values collected in the State as the user went through the Flow. The Values are stored in JSON format.
+        /// </summary>
+        public const string REPORT_VALUES = "VALUES";
+
+        /// <summary>
+        /// Store only the information in the State that pertains to the path the user took through the Flow. This includes location information if provided, as well as which users interacted at which step.
+        /// </summary>
+        public const string REPORT_PATH = "PATH";
+
+        /// <summary>
+        /// Store both PATH and VALUES information.
+        /// </summary>
+        public const string REPORT_PATH_AND_VALUES = "PATH_AND_VALUES";
+
+        #endregion
+
+        #region Content Value Implementation constants
+
+        /// <summary>
+        /// Removes the external identifier from the root Object so that it will not be "remembered" when updating Lists or saving back to a remote Service
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_DETACH = "DETACH";
+
+        /// <summary>
+        /// Blanks out the complex object or table with empty values
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_EMPTY = "EMPTY";
+
+        /// <summary>
+        /// Creates a new instance of the value
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_NEW = "NEW";
+
+        /// <summary>
+        /// Adds an Object to a List value. If the Object exists in the List, the Object is updated. If it is not already in the List, it's added.
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_UPDATE = "ADD";
+
+        /// <summary>
+        /// Removes an Object from a List value or subtracts from a value
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_REMOVE = "REMOVE";
+
+        /// <summary>
+        /// Gets the first Object from a List value
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_FIRST = "GET_FIRST";
+
+        /// <summary>
+        /// Gets the next Object from a List value. List values maintain a "pointer" so that each time the GET_NEXT command is executed in the Flow, the List value remembers which is the next value.
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_NEXT = "GET_NEXT";
+
+        /// <summary>
+        /// Executes a filter on a List. For the FILTER command to execute correctly, additional properties must be provided.
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_FILTER = "FILTER";
+
+        /// <summary>
+        /// Gets the length of a List, String, Content or Password value
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_LENGTH = "GET_LENGTH";
+
+        /// <summary>
+        /// Gets the content value or object data of a value
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_GET_VALUE = "VALUE_OF";
+
+        /// <summary>
+        /// Sets the content value or object data of a value
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_SET_EQUAL = "SET_EQUAL";
 
         // These are the command properties associated with the filter
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_COLUMN = "COLUMN";
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_CRITERIA = "CRITERIA";
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_VALUE = "VALUE";
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_CONTENT_TYPE = "CONTENT_TYPE";
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_ID = "SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_ID";
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_TYPE_ELEMENT_ENTRY_ID = "SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_TYPE_ELEMENT_ENTRY_ID";
-        public const String CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_COMMAND = "SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_COMMAND";
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_COLUMN = "COLUMN";
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_CRITERIA = "CRITERIA";
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_VALUE = "VALUE";
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_CONTENT_TYPE = "CONTENT_TYPE";
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_ID = "SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_ID";
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_TYPE_ELEMENT_ENTRY_ID = "SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_TYPE_ELEMENT_ENTRY_ID";
+        public const string CONTENT_VALUE_IMPLEMENTATION_BASE_COMMAND_PROPERTY_FILTER_SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_COMMAND = "SHARED_ELEMENT_CONTENT_VALUE_TO_REFERENCE_COMMAND";
 
-        // Criteria for content values
-        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_EQUAL = "EQUAL";
-        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ALL_EQUAL = "ALL_EQUAL";
-        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ANY_EQUAL = "ANY_EQUAL";
-        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_NOT_EQUAL = "NOT_EQUAL";
-        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_GREATER_THAN = "GREATER_THAN";
-        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_GREATER_THAN_OR_EQUAL = "GREATER_THAN_OR_EQUAL";
-        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_LESS_THAN = "LESS_THAN";
-        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_LESS_THAN_OR_EQUAL = "LESS_THAN_OR_EQUAL";
-        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_CONTAINS = "CONTAINS";
-        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_STARTS_WITH = "STARTS_WITH";
-        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ENDS_WITH = "ENDS_WITH";
-        public const String CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_IS_EMPTY = "IS_EMPTY";
+        #endregion
 
-        // Constants for the various content types
-        public const String CONTENT_TYPE_DATETIME = "ContentDateTime";
-        public const String CONTENT_TYPE_NUMBER = "ContentNumber";
-        public const String CONTENT_TYPE_OBJECT = "ContentObject";
-        public const String CONTENT_TYPE_PASSWORD = "ContentPassword";
-        public const String CONTENT_TYPE_STRING = "ContentString";
-        public const String CONTENT_TYPE_LIST = "ContentList";
-        public const String CONTENT_TYPE_BOOLEAN = "ContentBoolean";
-        public const String CONTENT_TYPE_CONTENT = "ContentContent";
-        public const String CONTENT_TYPE_ENCRYPTED = "ContentEncrypted";
+        #region Criteria for content values
+
+        /// <summary>
+        /// {left} is equal to {right}
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_EQUAL = "EQUAL";
+        
+        /// <summary>
+        /// All values in {left} are equal to {right}
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ALL_EQUAL = "ALL_EQUAL";
+        
+        /// <summary>
+        /// Any value in {left} is equal to {right}
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ANY_EQUAL = "ANY_EQUAL";
+
+        /// <summary>
+        /// {left} is not equal to {right}
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_NOT_EQUAL = "NOT_EQUAL";
+
+        /// <summary>
+        /// {left} is greater than {right}. For ContentString types, this is done alphabetically.
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_GREATER_THAN = "GREATER_THAN";
+
+        /// <summary>
+        /// {left} is greater than or equal to {right}. For ContentString types, this is done alphabetically.
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_GREATER_THAN_OR_EQUAL = "GREATER_THAN_OR_EQUAL";
+
+        /// <summary>
+        /// {left} is less than {right}. For ContentString types, this is done alphabetically.
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_LESS_THAN = "LESS_THAN";
+
+        /// <summary>
+        /// {left} is less than or equal to {right}. For ContentString types, this is done alphabetically.
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_LESS_THAN_OR_EQUAL = "LESS_THAN_OR_EQUAL";
+
+        /// <summary>
+        /// {left} contains the characters in {right}. This is only valid for ContentString types and is case insensitive.
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_CONTAINS = "CONTAINS";
+
+        /// <summary>
+        /// {left} starts with the characters in {right}. This is only valid for ContentString types and is case insensitive.
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_STARTS_WITH = "STARTS_WITH";
+
+        /// <summary>
+        /// {left} ends with the characters in {right}. This is only valid for ContentString types and is case insensitive.
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ENDS_WITH = "ENDS_WITH";
+
+        /// <summary>
+        /// {left} is empty or null. When this criteria type is used, it must be compared with a {right} that is a ContentBoolean.
+        /// </summary>
+        public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_IS_EMPTY = "IS_EMPTY";
+
+        #endregion
+
+        #region Content types
+
+        /// <summary>
+        /// A datetime value. Using the REST API, the value should be provided in ISO 8601 format.
+        /// </summary>
+        public const string CONTENT_TYPE_DATETIME = "ContentDateTime";
+
+        /// <summary>
+        /// A double number value
+        /// </summary>
+        public const string CONTENT_TYPE_NUMBER = "ContentNumber";
+
+        /// <summary>
+        /// The value is object data based on the ManyWho format. This allows you to pass complex data into ManyWho for processing, including child objects and lists. Any Object Data being passed into the system also needs to have a Type as defined by your Type Elements.
+        /// </summary>
+        public const string CONTENT_TYPE_OBJECT = "ContentObject";
+
+        /// <summary>
+        /// A password value, masked anywhere that is user-visible
+        /// </summary>
+        public const string CONTENT_TYPE_PASSWORD = "ContentPassword";
+
+        /// <summary>
+        /// A simple string value. The contents of this String will also be pasrsed for any value references.
+        /// </summary>
+        public const string CONTENT_TYPE_STRING = "ContentString";
+
+        /// <summary>
+        /// The value is a list of object data based on the ManyWho format. This allows you to pass lists of complex data into ManyWho for processing (of the same Type), including child objects and lists. Any Object Data being passed into the system also needs to have a Type as defined by your Type Elements.
+        /// </summary>
+        public const string CONTENT_TYPE_LIST = "ContentList";
+
+        /// <summary>
+        /// A boolean value
+        /// </summary>
+        public const string CONTENT_TYPE_BOOLEAN = "ContentBoolean";
+
+        /// <summary>
+        /// If you indicate a value is "Content", we typically expect that the content holds HTML formatted String content. The contents of this String will also be pasrsed for any value references.
+        /// </summary>
+        public const string CONTENT_TYPE_CONTENT = "ContentContent";
+
+        /// <summary>
+        /// A string value that is encrypted at rest and never shown to users. The value can be decrypted when sent to a service, if the builder chooses it to be.
+        /// </summary>
+        public const string CONTENT_TYPE_ENCRYPTED = "ContentEncrypted";
+
+        #endregion
 
         // Content parser strings
-        public const String EMBEDDED_KEY_START_INTERNAL = "flowkey___";
-        public const String EMBEDDED_KEY_FINISH_INTERNAL = "___flowkey";
-        public const String EMBEDDED_KEY_START_EXTERNAL = "{!";
-        public const String EMBEDDED_KEY_FINISH_EXTERNAL = "}";
-        public const String EMBEDDED_KEY_ELEMENT_PART_WITH_SPACE_START_EXTERNAL = "[";
-        public const String EMBEDDED_KEY_ELEMENT_PART_WITH_SPACE_FINISH_EXTERNAL = "]";
-        public const String EMBEDDED_KEY_ELEMENT_PART_SEPARATOR = "].[";
+        public const string EMBEDDED_KEY_START_INTERNAL = "flowkey___";
+        public const string EMBEDDED_KEY_FINISH_INTERNAL = "___flowkey";
+        public const string EMBEDDED_KEY_START_EXTERNAL = "{!";
+        public const string EMBEDDED_KEY_FINISH_EXTERNAL = "}";
+        public const string EMBEDDED_KEY_ELEMENT_PART_WITH_SPACE_START_EXTERNAL = "[";
+        public const string EMBEDDED_KEY_ELEMENT_PART_WITH_SPACE_FINISH_EXTERNAL = "]";
+        public const string EMBEDDED_KEY_ELEMENT_PART_SEPARATOR = "].[";
 
         // Authenticated User constants
-        public const String AUTHENTICATED_USER_STATUS_ACCESS_DENIED = "ACCESS_DENIED";
-        public const String AUTHENTICATED_USER_STATUS_AUTHENTICATED = "AUTHENTICATED";
-        public const String AUTHENTICATED_USER_KEY_TOKEN = "TOKEN";
-        public const String AUTHENTICATED_USER_KEY_DIRECTORY_ID = "DIRECTORY_ID";
-        public const String AUTHENTICATED_USER_PUBLIC_DIRECTORY_ID = "UNAUTHENTICATED";
-        public const String AUTHENTICATED_USER_PUBLIC_DIRECTORY_NAME = "UNKNOWN";
-        public const String AUTHENTICATED_USER_PUBLIC_ROLE_ID = "UNAUTHENTICATED";
-        public const String AUTHENTICATED_USER_PUBLIC_ROLE_NAME = "UNKNOWN";
-        public const String AUTHENTICATED_USER_PUBLIC_PRIMARY_GROUP_ID = "UNAUTHENTICATED";
-        public const String AUTHENTICATED_USER_PUBLIC_PRIMARY_GROUP_NAME = "UNKNOWN";
-        public const String AUTHENTICATED_USER_PUBLIC_EMAIL = "admin@manywho.com";
-        public const String AUTHENTICATED_USER_PUBLIC_TENANT_NAME = "UNKNOWN";
-        public const String AUTHENTICATED_USER_PUBLIC_USER_ID = "PUBLIC_USER";
-        public const String AUTHENTICATED_USER_PUBLIC_IDENTITY_PROVIDER = "NONE";
-        public const String AUTHENTICATED_USER_PUBLIC_STATUS = "UKNOWN";
-        public const String AUTHENTICATED_USER_PUBLIC_TOKEN = "NONE";
+        public const string AUTHENTICATED_USER_STATUS_ACCESS_DENIED = "ACCESS_DENIED";
+        public const string AUTHENTICATED_USER_STATUS_AUTHENTICATED = "AUTHENTICATED";
+        public const string AUTHENTICATED_USER_KEY_TOKEN = "TOKEN";
+        public const string AUTHENTICATED_USER_KEY_DIRECTORY_ID = "DIRECTORY_ID";
+        public const string AUTHENTICATED_USER_PUBLIC_DIRECTORY_ID = "UNAUTHENTICATED";
+        public const string AUTHENTICATED_USER_PUBLIC_DIRECTORY_NAME = "UNKNOWN";
+        public const string AUTHENTICATED_USER_PUBLIC_ROLE_ID = "UNAUTHENTICATED";
+        public const string AUTHENTICATED_USER_PUBLIC_ROLE_NAME = "UNKNOWN";
+        public const string AUTHENTICATED_USER_PUBLIC_PRIMARY_GROUP_ID = "UNAUTHENTICATED";
+        public const string AUTHENTICATED_USER_PUBLIC_PRIMARY_GROUP_NAME = "UNKNOWN";
+        public const string AUTHENTICATED_USER_PUBLIC_EMAIL = "admin@manywho.com";
+        public const string AUTHENTICATED_USER_PUBLIC_TENANT_NAME = "UNKNOWN";
+        public const string AUTHENTICATED_USER_PUBLIC_USER_ID = "PUBLIC_USER";
+        public const string AUTHENTICATED_USER_PUBLIC_IDENTITY_PROVIDER = "NONE";
+        public const string AUTHENTICATED_USER_PUBLIC_STATUS = "UKNOWN";
+        public const string AUTHENTICATED_USER_PUBLIC_TOKEN = "NONE";
         public static readonly Guid AUTHENTICATED_USER_PUBLIC_MANYWHO_USER_ID = Guid.Parse("52DF1A90-3826-4508-B7C2-CDE8AA5B72CF");
 
-        public const String AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID = "ManyWhoTenantId";
-        public const String AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID = "ManyWhoUserId";
-        public const String AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN = "ManyWhoToken";
-        public const String AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID = "DirectoryId";
-        public const String AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME = "DirectoryName";
-        public const String AUTHENTICATED_WHO_TOKEN_ROLE_ID = "RoleId";
-        public const String AUTHENTICATED_WHO_TOKEN_ROLE_NAME = "RoleName";
-        public const String AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_ID = "PrimaryGroupId";
-        public const String AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_NAME = "PrimaryGroupName";
-        public const String AUTHENTICATED_WHO_TOKEN_EMAIL = "Email";
-        public const String AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER = "IdentityProvider";
-        public const String AUTHENTICATED_WHO_TOKEN_TENANT_NAME = "TenantName";
-        public const String AUTHENTICATED_WHO_TOKEN_TOKEN = "Token";
-        public const String AUTHENTICATED_WHO_TOKEN_USER_ID = "UserId";
-        public const String AUTHENTICATED_WHO_TOKEN_USERNAME = "Username";
-        public const String AUTHENTICATED_WHO_TOKEN_FIRST_NAME = "FirstName";
-        public const String AUTHENTICATED_WHO_TOKEN_LAST_NAME = "LastName";
+        public const string AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID = "ManyWhoTenantId";
+        public const string AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID = "ManyWhoUserId";
+        public const string AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN = "ManyWhoToken";
+        public const string AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID = "DirectoryId";
+        public const string AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME = "DirectoryName";
+        public const string AUTHENTICATED_WHO_TOKEN_ROLE_ID = "RoleId";
+        public const string AUTHENTICATED_WHO_TOKEN_ROLE_NAME = "RoleName";
+        public const string AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_ID = "PrimaryGroupId";
+        public const string AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_NAME = "PrimaryGroupName";
+        public const string AUTHENTICATED_WHO_TOKEN_EMAIL = "Email";
+        public const string AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER = "IdentityProvider";
+        public const string AUTHENTICATED_WHO_TOKEN_TENANT_NAME = "TenantName";
+        public const string AUTHENTICATED_WHO_TOKEN_TOKEN = "Token";
+        public const string AUTHENTICATED_WHO_TOKEN_USER_ID = "UserId";
+        public const string AUTHENTICATED_WHO_TOKEN_USERNAME = "Username";
+        public const string AUTHENTICATED_WHO_TOKEN_FIRST_NAME = "FirstName";
+        public const string AUTHENTICATED_WHO_TOKEN_LAST_NAME = "LastName";
 
         public const char SERIALIZATION_DELIMITER_DELIMITER = '=';
 
-        public const String CULTURE_TOKEN_BRAND = "Brand";
-        public const String CULTURE_TOKEN_COUNTRY = "Country";
-        public const String CULTURE_TOKEN_LANGUAGE = "Language";
-        public const String CULTURE_TOKEN_VARIANT = "Variant";
+        public const string CULTURE_TOKEN_BRAND = "Brand";
+        public const string CULTURE_TOKEN_COUNTRY = "Country";
+        public const string CULTURE_TOKEN_LANGUAGE = "Language";
+        public const string CULTURE_TOKEN_VARIANT = "Variant";
 
         public static readonly Guid MANYWHO_JOIN_URI_VALUE_ID = Guid.Parse("E2063196-3C75-4388-8B00-1005B8CD59AD");
-        public const String MANYWHO_JOIN_URI_DEVELOPER_NAME = "$JoinUri";
+        public const string MANYWHO_JOIN_URI_DEVELOPER_NAME = "$JoinUri";
 
         public static readonly Guid MANYWHO_USER_VALUE_ID = Guid.Parse("03DC41DD-1C6B-4B33-BF61-CBD1D0778FFF");
 
         public static readonly Guid MANYWHO_TRUE_VALUE_ID = Guid.Parse("BE1BC78E-FD57-40EC-9A86-A815DE2A9E28");
-        public const String MANYWHO_TRUE_DEVELOPER_NAME = "$True";
+        public const string MANYWHO_TRUE_DEVELOPER_NAME = "$True";
 
         public static readonly Guid MANYWHO_FALSE_VALUE_ID = Guid.Parse("496FD041-D91F-48FB-AA4F-91C6C9A11CA1");
-        public const String MANYWHO_FALSE_DEVELOPER_NAME = "$False";
+        public const string MANYWHO_FALSE_DEVELOPER_NAME = "$False";
 
         public static readonly Guid MANYWHO_USER_TYPE_ELEMENT_ID = Guid.Parse("2674CE95-DD99-42C6-96FC-AD12E1B48A69");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_USER_ID = Guid.Parse("90262141-02B2-4F2C-8107-B14CF859DE4D");
@@ -192,6 +393,7 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_STATUS = Guid.Parse("4FA61B46-A370-455E-85ED-D9A0A8723A43");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_AUTHENTICATION_TYPE = Guid.Parse("4FA61B47-A370-455E-85ED-D9A0A8723A43");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_LOGIN_URL = Guid.Parse("4FA61B48-A370-455E-85ED-D9A0A8723A43");
+        public static readonly Guid MANYWHO_USER_PROPERTY_ID_IP_ADDRESS = Guid.Parse("0dabbcd3-b5b1-47b3-b7e1-535c5b5e1878");
 
         public static readonly Guid MANYWHO_LOCATION_TYPE_ELEMENT_ID = Guid.Parse("7834CE95-DD99-42C6-96FC-AD12E1B48A69");
         public static readonly Guid MANYWHO_LOCATION_PROPERTY_ID_TIMESTAMP = Guid.Parse("FFC4CBD6-FA28-4141-95A4-DA9BACDB0203");
@@ -220,12 +422,12 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_GROUP_PROPERTY_ID_GROUP_NAME = Guid.Parse("D04652C0-B87C-400D-BEAC-FBC2420774BC");
         public static readonly Guid MANYWHO_GROUP_PROPERTY_ID_GROUP_OWNER_USER_ID = Guid.Parse("3B74EB51-74A8-43B3-96EF-FEEB938D35D2");
 
-        public const String MANYWHO_GROUP_DEVELOPER_NAME = "$Group";
-        public const String MANYWHO_GROUP_PROPERTY_GROUP_ID = "Group ID";
-        public const String MANYWHO_GROUP_PROPERTY_GROUP_NAME = "Group Name";
-        public const String MANYWHO_GROUP_PROPERTY_GROUP_OWNER_USER_ID = "Group Owner User ID";
+        public const string MANYWHO_GROUP_DEVELOPER_NAME = "$Group";
+        public const string MANYWHO_GROUP_PROPERTY_GROUP_ID = "Group ID";
+        public const string MANYWHO_GROUP_PROPERTY_GROUP_NAME = "Group Name";
+        public const string MANYWHO_GROUP_PROPERTY_GROUP_OWNER_USER_ID = "Group Owner User ID";
 
-        public static readonly string MANYWHO_STATE_DEVELOPER_NAME = "$State";
+        public const string MANYWHO_STATE_DEVELOPER_NAME = "$State";
         public static readonly Guid MANYWHO_STATE_VALUE_ID = Guid.Parse("1F2A56FD-E14B-460C-AABD-9FBF344B84F3");
 
         public static readonly string MANYWHO_STATE_PROPERTY_ID = "ID";
@@ -269,242 +471,473 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_CURRENT_MAP_ELEMENT_DEVELOPER_NAME = Guid.Parse("AE1EB1E1-1760-41EA-9A02-919781BFF313");
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_JOIN_URI = Guid.Parse("1A3B4FC9-912C-486E-A0FC-FF0D9F9796B7");
 
-        // Metadata constants for page rules and conditions
-        public const String META_DATA_VALUE = "VALUE";
-        public const String META_DATA_ENABLED = "METADATA.ENABLED";
-        public const String META_DATA_EDITABLE = "METADATA.EDITABLE";
-        public const String META_DATA_VISIBLE = "METADATA.VISIBLE";
-        public const String META_DATA_REQUIRED = "METADATA.REQUIRED";
+        #region Page Conditions
+
+        /// <summary>
+        /// The value of the component or value element ID object reference.
+        /// </summary>
+        public const string META_DATA_VALUE = "VALUE";
+
+        /// <summary>
+        /// The enabled status of the component.
+        /// </summary>
+        public const string META_DATA_ENABLED = "METADATA.ENABLED";
+
+        /// <summary>
+        /// The editable status of the component.
+        /// </summary>
+        public const string META_DATA_EDITABLE = "METADATA.EDITABLE";
+
+        /// <summary>
+        /// The visibility status of the component.
+        /// </summary>
+        public const string META_DATA_VISIBLE = "METADATA.VISIBLE";
+
+        /// <summary>
+        /// The required status of the component.
+        /// </summary>
+        public const string META_DATA_REQUIRED = "METADATA.REQUIRED";
+
+        #endregion
 
         // Service description constants
-        public const String SERVICE_DESCRIPTION_VALUE_TABLE_NAME = "TableName";
+        public const string SERVICE_DESCRIPTION_VALUE_TABLE_NAME = "TableName";
 
         // Plugin constants
-        public const String SERVICE_REQUEST_FORM_POST_KEY = "ServiceRequest";
-        public const String FILE_DATA_REQUEST_FORM_POST_KEY = "FileDataRequest";
+        public const string SERVICE_REQUEST_FORM_POST_KEY = "ServiceRequest";
+        public const string FILE_DATA_REQUEST_FORM_POST_KEY = "FileDataRequest";
         public const string FILE_DATA_REQUEST_FORM_FILE_NAME = "file";
 
         // Authentication constants
         //public const String OBJECT_TYPE_GROUP_AUTHORIZATION_GROUP = "GroupAuthorizationGroup";
-        public const String AUTHENTICATION_GROUP_AUTHORIZATION_GROUP_OBJECT_DEVELOPER_NAME = "GroupAuthorizationGroup";
-        public const String AUTHENTICATION_GROUP_AUTHORIZATION_USER_OBJECT_DEVELOPER_NAME = "GroupAuthorizationUser";
+        public const string AUTHENTICATION_GROUP_AUTHORIZATION_GROUP_OBJECT_DEVELOPER_NAME = "GroupAuthorizationGroup";
+        public const string AUTHENTICATION_GROUP_AUTHORIZATION_USER_OBJECT_DEVELOPER_NAME = "GroupAuthorizationUser";
         //public const String SERVICE_VALUE_AUTHENTICATION_ID = "AuthenticationId";
-        public const String AUTHENTICATION_OBJECT_AUTHENTICATION_ID = "AuthenticationId";
+        public const string AUTHENTICATION_OBJECT_AUTHENTICATION_ID = "AuthenticationId";
         //public const String SERVICE_VALUE_FRIENDLY_NAME = "FriendlyName";
-        public const String AUTHENTICATION_OBJECT_FRIENDLY_NAME = "FriendlyName";
-        public const String AUTHENTICATION_OBJECT_DEVELOPER_SUMMARY = "DeveloperSummary";
+        public const string AUTHENTICATION_OBJECT_FRIENDLY_NAME = "FriendlyName";
+        public const string AUTHENTICATION_OBJECT_DEVELOPER_SUMMARY = "DeveloperSummary";
 
-        public const String AUTHENTICATION_ATTRIBUTE_LABEL = "Label";
-        public const String AUTHENTICATION_ATTRIBUTE_VALUE = "Value";
-        public const String AUTHENTICATION_AUTHENTICATION_ATTRIBUTE_OBJECT_DEVELOPER_NAME = "AuthenticationAttribute";
+        public const string AUTHENTICATION_ATTRIBUTE_LABEL = "Label";
+        public const string AUTHENTICATION_ATTRIBUTE_VALUE = "Value";
+        public const string AUTHENTICATION_AUTHENTICATION_ATTRIBUTE_OBJECT_DEVELOPER_NAME = "AuthenticationAttribute";
 
-        // Group Authorization constants
-        public const String GROUP_AUTHORIZATION_GLOBAL_AUTHENTICATION_TYPE_PUBIC = "PUBLIC";
-        public const String GROUP_AUTHORIZATION_GLOBAL_AUTHENTICATION_TYPE_ALL_USERS = "ALL_USERS";
-        public const String GROUP_AUTHORIZATION_GLOBAL_AUTHENTICATION_TYPE_SPECIFIED = "SPECIFIED";
-        public const String GROUP_AUTHORIZATION_STREAM_BEHAVIOUR_USE_EXISTING = "USE_EXISTING";
-        public const String GROUP_AUTHORIZATION_STREAM_BEHAVIOUR_CREATE_NEW = "CREATE_NEW";
-        public const String GROUP_AUTHORIZATION_STREAM_BEHAVIOUR_NONE = "NONE";
-        public const String GROUP_AUTHORIZATION_USER = "USER";
+        #region Group Authorization
 
-        // List Filter Config constants
-        public const String LIST_FILTER_CONFIG_ORDER_BY_ASCENDING = "ASC";
-        public const String LIST_FILTER_CONFIG_ORDER_BY_DESCENDING = "DESC";
-        public const String LIST_FILTER_CONFIG_COMPARISON_TYPE_AND = "AND";
-        public const String LIST_FILTER_CONFIG_COMPARISON_TYPE_OR = "OR";
+        /// <summary>
+        /// Indicates that the Flow is public and therefore does not need to have a Service assigned to manage the authorization of users. However, if one is provided, it will be used and any identifying user information will be passed forward (e.g. location).
+        /// </summary>
+        public const string GROUP_AUTHORIZATION_GLOBAL_AUTHENTICATION_TYPE_PUBIC = "PUBLIC";
+
+        /// <summary>
+        /// Indicates that the Flow is accessible to all users of a particular directory provided through the Service.
+        /// </summary>
+        public const string GROUP_AUTHORIZATION_GLOBAL_AUTHENTICATION_TYPE_ALL_USERS = "ALL_USERS";
+
+        /// <summary>
+        /// Indicates that the Flow has specific authorization rights that are defined in the groups, users or locations.
+        /// </summary>
+        public const string GROUP_AUTHORIZATION_GLOBAL_AUTHENTICATION_TYPE_SPECIFIED = "SPECIFIED";
+
+        /// <summary>
+        /// Use an existing collaboration stream when the user enters this Flow, or create a new one if one does not yet exist.
+        /// </summary>
+        public const string GROUP_AUTHORIZATION_STREAM_BEHAVIOUR_USE_EXISTING = "USE_EXISTING";
+
+        /// <summary>
+        /// Create a new collaboration stream every time the user enters this Flow.
+        /// </summary>
+        public const string GROUP_AUTHORIZATION_STREAM_BEHAVIOUR_CREATE_NEW = "CREATE_NEW";
+
+        /// <summary>
+        /// Do not provide a collaboration stream for this Flow.
+        /// </summary>
+        public const string GROUP_AUTHORIZATION_STREAM_BEHAVIOUR_NONE = "NONE";
+        public const string GROUP_AUTHORIZATION_USER = "USER";
+
+        #endregion
+
+        #region List Filter Config
+
+        /// <summary>
+        /// Order the values with the lowest value appearing first.
+        /// </summary>
+        public const string LIST_FILTER_CONFIG_ORDER_BY_ASCENDING = "ASC";
+
+        /// <summary>
+        /// Order the values with the highest value appearing first
+        /// </summary>
+        public const string LIST_FILTER_CONFIG_ORDER_BY_DESCENDING = "DESC";
+
+        /// <summary>
+        /// Compare the values using 'and'. E.g. this AND that must be true.
+        /// </summary>
+        public const string LIST_FILTER_CONFIG_COMPARISON_TYPE_AND = "AND";
+
+        /// <summary>
+        /// Compare the values using 'or'. E.g. this or that must be true.
+        /// </summary>
+        public const string LIST_FILTER_CONFIG_COMPARISON_TYPE_OR = "OR";
+
+        #endregion
 
         // Page Container constants
-        public const String PAGE_CONTAINER_CONTAINER_TYPE_VERTICAL_FLOW = "VERTICAL_FLOW";
-        public const String PAGE_CONTAINER_CONTAINER_TYPE_HORIZONTAL_FLOW = "HORIZONTAL_FLOW";
-        public const String PAGE_CONTAINER_CONTAINER_TYPE_GROUP = "GROUP";
+        public const string PAGE_CONTAINER_CONTAINER_TYPE_VERTICAL_FLOW = "VERTICAL_FLOW";
+        public const string PAGE_CONTAINER_CONTAINER_TYPE_HORIZONTAL_FLOW = "HORIZONTAL_FLOW";
+        public const string PAGE_CONTAINER_CONTAINER_TYPE_GROUP = "GROUP";
 
         // Constants for property names for objects being returned for user context
-        public const String MANYWHO_USER_DEVELOPER_NAME = "$User";
+        public const string MANYWHO_USER_DEVELOPER_NAME = "$User";
 
-        public const String MANYWHO_USER_PROPERTY_USER_ID = "User ID";
-        public const String MANYWHO_USER_PROPERTY_USERNAME = "Username";
-        public const String MANYWHO_USER_PROPERTY_EMAIL = "Email";
-        public const String MANYWHO_USER_PROPERTY_FIRST_NAME = "First Name";
-        public const String MANYWHO_USER_PROPERTY_LAST_NAME = "Last Name";
-        public const String MANYWHO_USER_PROPERTY_LANGUAGE = "Language";
-        public const String MANYWHO_USER_PROPERTY_COUNTRY = "Country";
-        public const String MANYWHO_USER_PROPERTY_BRAND = "Brand";
-        public const String MANYWHO_USER_PROPERTY_VARIANT = "Variant";
-        public const String MANYWHO_USER_PROPERTY_LOCATION = "Location";
-        public const String MANYWHO_USER_PROPERTY_DIRECTORY_ID = "Directory Id";
-        public const String MANYWHO_USER_PROPERTY_DIRECTORY_NAME = "Directory Name";
-        public const String MANYWHO_USER_PROPERTY_ROLE_ID = "Role Id";
-        public const String MANYWHO_USER_PROPERTY_ROLE_NAME = "Role Name";
-        public const String MANYWHO_USER_PROPERTY_PRIMARY_GROUP_ID = "Primary Group Id";
-        public const String MANYWHO_USER_PROPERTY_PRIMARY_GROUP_NAME = "Primary Group Name";
-        public const String MANYWHO_USER_PROPERTY_STATUS = "Status";
-        public const String MANYWHO_USER_PROPERTY_AUTHENTICATION_TYPE = "AuthenticationType";
-        public const String MANYWHO_USER_PROPERTY_LOGIN_URL = "LoginUrl";
+        public const string MANYWHO_USER_PROPERTY_USER_ID = "User ID";
+        public const string MANYWHO_USER_PROPERTY_USERNAME = "Username";
+        public const string MANYWHO_USER_PROPERTY_EMAIL = "Email";
+        public const string MANYWHO_USER_PROPERTY_FIRST_NAME = "First Name";
+        public const string MANYWHO_USER_PROPERTY_LAST_NAME = "Last Name";
+        public const string MANYWHO_USER_PROPERTY_LANGUAGE = "Language";
+        public const string MANYWHO_USER_PROPERTY_COUNTRY = "Country";
+        public const string MANYWHO_USER_PROPERTY_BRAND = "Brand";
+        public const string MANYWHO_USER_PROPERTY_VARIANT = "Variant";
+        public const string MANYWHO_USER_PROPERTY_LOCATION = "Location";
+        public const string MANYWHO_USER_PROPERTY_DIRECTORY_ID = "Directory Id";
+        public const string MANYWHO_USER_PROPERTY_DIRECTORY_NAME = "Directory Name";
+        public const string MANYWHO_USER_PROPERTY_ROLE_ID = "Role Id";
+        public const string MANYWHO_USER_PROPERTY_ROLE_NAME = "Role Name";
+        public const string MANYWHO_USER_PROPERTY_PRIMARY_GROUP_ID = "Primary Group Id";
+        public const string MANYWHO_USER_PROPERTY_PRIMARY_GROUP_NAME = "Primary Group Name";
+        public const string MANYWHO_USER_PROPERTY_STATUS = "Status";
+        public const string MANYWHO_USER_PROPERTY_AUTHENTICATION_TYPE = "AuthenticationType";
+        public const string MANYWHO_USER_PROPERTY_LOGIN_URL = "LoginUrl";
+        public const string MANYWHO_USER_PROPERTY_IP_ADDRESS = "IP Address";
 
-        public const String MANYWHO_LOCATION_DEVELOPER_NAME = "$Location";
+        public const string MANYWHO_LOCATION_DEVELOPER_NAME = "$Location";
 
-        public const String MANYWHO_LOCATION_PROPERTY_TIMESTAMP = "Location Timestamp";
-        public const String MANYWHO_LOCATION_PROPERTY_LATITUDE = "Current Latitude";
-        public const String MANYWHO_LOCATION_PROPERTY_LONGITUDE = "Current Longitude";
-        public const String MANYWHO_LOCATION_PROPERTY_ACCURACY = "Location Accuracy";
-        public const String MANYWHO_LOCATION_PROPERTY_ALTITUDE = "Current Altitude";
-        public const String MANYWHO_LOCATION_PROPERTY_ALTITUDE_ACCURACY = "Altitude Accuracy";
-        public const String MANYWHO_LOCATION_PROPERTY_HEADING = "Current Heading";
-        public const String MANYWHO_LOCATION_PROPERTY_SPEED = "Current Speed";
+        public const string MANYWHO_LOCATION_PROPERTY_TIMESTAMP = "Location Timestamp";
+        public const string MANYWHO_LOCATION_PROPERTY_LATITUDE = "Current Latitude";
+        public const string MANYWHO_LOCATION_PROPERTY_LONGITUDE = "Current Longitude";
+        public const string MANYWHO_LOCATION_PROPERTY_ACCURACY = "Location Accuracy";
+        public const string MANYWHO_LOCATION_PROPERTY_ALTITUDE = "Current Altitude";
+        public const string MANYWHO_LOCATION_PROPERTY_ALTITUDE_ACCURACY = "Altitude Accuracy";
+        public const string MANYWHO_LOCATION_PROPERTY_HEADING = "Current Heading";
+        public const string MANYWHO_LOCATION_PROPERTY_SPEED = "Current Speed";
 
-        public const String MANYWHO_FILE_DEVELOPER_NAME = "$File";
+        public const string MANYWHO_FILE_DEVELOPER_NAME = "$File";
 
-        public const String MANYWHO_FILE_PROPERTY_KIND = "Kind";
-        public const String MANYWHO_FILE_PROPERTY_ID = "Id";
-        public const String MANYWHO_FILE_PROPERTY_MIME_TYPE = "Mime Type";
-        public const String MANYWHO_FILE_PROPERTY_NAME = "Name";
-        public const String MANYWHO_FILE_PROPERTY_DESCRIPTION = "Description";
-        public const String MANYWHO_FILE_PROPERTY_DATE_CREATED = "Date Created";
-        public const String MANYWHO_FILE_PROPERTY_DATE_MODIFIED = "Date Modified";
-        public const String MANYWHO_FILE_PROPERTY_DOWNLOAD_URI = "Download Uri";
-        public const String MANYWHO_FILE_PROPERTY_EMBED_URI = "Embed Uri";
-        public const String MANYWHO_FILE_PROPERTY_ICON_URI = "Icon Uri";
+        public const string MANYWHO_FILE_PROPERTY_KIND = "Kind";
+        public const string MANYWHO_FILE_PROPERTY_ID = "Id";
+        public const string MANYWHO_FILE_PROPERTY_MIME_TYPE = "Mime Type";
+        public const string MANYWHO_FILE_PROPERTY_NAME = "Name";
+        public const string MANYWHO_FILE_PROPERTY_DESCRIPTION = "Description";
+        public const string MANYWHO_FILE_PROPERTY_DATE_CREATED = "Date Created";
+        public const string MANYWHO_FILE_PROPERTY_DATE_MODIFIED = "Date Modified";
+        public const string MANYWHO_FILE_PROPERTY_DOWNLOAD_URI = "Download Uri";
+        public const string MANYWHO_FILE_PROPERTY_EMBED_URI = "Embed Uri";
+        public const string MANYWHO_FILE_PROPERTY_ICON_URI = "Icon Uri";
 
-        public const String AUTHORIZATION_STATUS_NOT_AUTHORIZED = "401";
-        public const String AUTHORIZATION_STATUS_AUTHORIZED = "200";
+        public const string AUTHORIZATION_STATUS_NOT_AUTHORIZED = "401";
+        public const string AUTHORIZATION_STATUS_AUTHORIZED = "200";
 
-        // The API name for service elements
-        public const String SERVICE_ELEMENT_TYPE_IMPLEMENTATION_SERVICE = "SERVICE";
+
+        /// <summary>
+        /// The element is specifically a Service Element
+        /// </summary>
+        public const string SERVICE_ELEMENT_TYPE_IMPLEMENTATION_SERVICE = "SERVICE";
 
         // The API name for shared elements
-        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_VALUE = "VALUE";
-        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_VARIABLE = "VARIABLE";
-        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_CONSTANT = "CONSTANT";
-        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_RESOURCE = "RESOURCE";
-        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_FUNCTION = "FUNCTION";
-        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_TABLE = "TABLE";
-        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_CONNECTION = "CONNECTION";
-        public const String SHARED_ELEMENT_TYPE_IMPLEMENTATION_MACRO = "MACRO";
+        public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_VALUE = "VALUE";
+
+        /// <summary>
+        /// The Element is specifically a Value Element
+        /// </summary>
+        public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_VARIABLE = "VARIABLE";
+        public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_CONSTANT = "CONSTANT";
+        public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_RESOURCE = "RESOURCE";
+        public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_FUNCTION = "FUNCTION";
+        public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_TABLE = "TABLE";
+        public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_CONNECTION = "CONNECTION";
+        public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_MACRO = "MACRO";
 
         // Access values for shared elements
-        public const String ACCESS_PRIVATE = "PRIVATE";
-        public const String ACCESS_INPUT = "INPUT";
-        public const String ACCESS_OUTPUT = "OUTPUT";
-        public const String ACCESS_INPUT_OUTPUT = "INPUT_OUTPUT";
+        public const string ACCESS_PRIVATE = "PRIVATE";
+        public const string ACCESS_INPUT = "INPUT";
+        public const string ACCESS_OUTPUT = "OUTPUT";
+        public const string ACCESS_INPUT_OUTPUT = "INPUT_OUTPUT";
 
-        // Component types for pages
-        public const String COMPONENT_TYPE_CONTENT = "CONTENT";
-        public const String COMPONENT_TYPE_INPUTBOX = "INPUT";
-        public const String COMPONENT_TYPE_TEXTBOX = "TEXTAREA";
-        public const String COMPONENT_TYPE_COMBOBOX = "SELECT";
-        public const String COMPONENT_TYPE_CHECKBOX = "CHECKBOX";
-        public const String COMPONENT_TYPE_TABLE = "TABLE";
-        public const String COMPONENT_TYPE_PRESENTATION = "PRESENTATION";
-        public const String COMPONENT_TYPE_TAG = "TAG";
-        public const String COMPONENT_TYPE_IMAGE = "IMAGE";
-        public const String COMPONENT_TYPE_FILES = "FILES";
+        #region Component types for pages
 
-        // Container types for pages
-        public const String CONTAINER_TYPE_VERTICAL_FLOW = "VERTICAL_FLOW";
-        public const String CONTAINER_TYPE_HORIZONTAL_FLOW = "HORIZONTAL_FLOW";
-        public const String CONTAINER_TYPE_INLINE_FLOW = "INLINE_FLOW";
-        public const String CONTAINER_TYPE_GROUP = "GROUP";
+        /// <summary>
+        /// The component accepts rich content. For the standard players, this is in the format of HTML5, however, it can be any rich content. Use this if you expect the user to be producing a formatted document.
+        /// </summary>
+        public const string COMPONENT_TYPE_CONTENT = "CONTENT";
 
-        // Action bindings for map elements
-        public const String ACTION_BINDING_SAVE = "SAVE";
-        public const String ACTION_BINDING_NO_SAVE = "NO_SAVE";
-        public const String ACTION_BINDING_PARTIAL_SAVE = "PARTIAL_SAVE";
+        /// <summary>
+        /// The component accepts basic inputs. This is analagous to standard input fields for things like: First Name, Last Name, etc.
+        /// </summary>
+        public const string COMPONENT_TYPE_INPUTBOX = "INPUT";
+
+        /// <summary>
+        /// The component accepts multi-line, unformatted content. This is analagous to fields for things like: Comments, Description, etc.
+        /// </summary>
+        public const string COMPONENT_TYPE_TEXTBOX = "TEXTAREA";
+
+        /// <summary>
+        /// The component allows the user to select from a set of object data entries. This is analagous to simple combo boxes or multiselection boxes.
+        /// </summary>
+        public const string COMPONENT_TYPE_COMBOBOX = "SELECT";
+
+        /// <summary>
+        /// The component allows the user to tick a box (usually indicating a Yes/No response).
+        /// </summary>
+        public const string COMPONENT_TYPE_CHECKBOX = "CHECKBOX";
+
+        /// <summary>
+        /// The component allows the user to view/select from a set of object data entries. This is normally presented as multicolumn tables, though for mobile use-cases may be shown as a multiproperty list of selections.
+        /// </summary>
+        public const string COMPONENT_TYPE_TABLE = "TABLE";
+
+        /// <summary>
+        /// The component is simply used to present information to the end consumer. This can be formatted content - commonly in HTML5.
+        /// </summary>
+        public const string COMPONENT_TYPE_PRESENTATION = "PRESENTATION";
+
+        /// <summary>
+        /// The component is non-standard and the player should look for a matching widget based on the provided developer name and/or tag metadata.
+        /// </summary>
+        public const string COMPONENT_TYPE_TAG = "TAG";
+
+        /// <summary>
+        /// The component is simply used to present an image to the end consumer. This is normally a URI to the image file.
+        /// </summary>
+        public const string COMPONENT_TYPE_IMAGE = "IMAGE";
+
+        /// <summary>
+        /// The component is used to upload files to a Service.
+        /// </summary>
+        public const string COMPONENT_TYPE_FILES = "FILES";
+
+        #endregion
+
+        #region Container types for pages
+
+        /// <summary>
+        /// The containers or components that are children of this container should be oriented vertically with respect to each other.
+        /// </summary>
+        public const string CONTAINER_TYPE_VERTICAL_FLOW = "VERTICAL_FLOW";
+
+        /// <summary>
+        /// The containers or components that are children of this container should be oriented horizontally and evenly with respect to each other.
+        /// </summary>
+        public const string CONTAINER_TYPE_HORIZONTAL_FLOW = "HORIZONTAL_FLOW";
+
+        /// <summary>
+        /// The containers or components that are children of this container should be oriented horizontally and as close as possible to each other inline.
+        /// </summary>
+        public const string CONTAINER_TYPE_INLINE_FLOW = "INLINE_FLOW";
+
+        /// <summary>
+        /// The containers (components not allowed in the default player) that are children of this container should be treated as sections of the group. This is analagous to UI tabs - where this GROUP container is the tab container and each of the child page containers becomes at tab for the user to switch views.
+        /// </summary>
+        public const string CONTAINER_TYPE_GROUP = "GROUP";
+
+        #endregion
+
+        #region Map Element Action Bindings
+
+        /// <summary>
+        /// The engine should apply all values collected to the state.
+        /// </summary>
+        public const string ACTION_BINDING_SAVE = "SAVE";
+
+        /// <summary>
+        /// The engine should ignore all values collected and not apply anything to the state except the outcome action.
+        /// </summary>
+        public const string ACTION_BINDING_NO_SAVE = "NO_SAVE";
+        public const string ACTION_BINDING_PARTIAL_SAVE = "PARTIAL_SAVE";
+
+        #endregion
 
         // Action types for map elements
-        public const String ACTION_TYPE_NEW = "NEW";
-        public const String ACTION_TYPE_QUERY = "QUERY";
-        public const String ACTION_TYPE_INSERT = "INSERT";
-        public const String ACTION_TYPE_UPDATE = "UPDATE";
-        public const String ACTION_TYPE_UPSERT = "UPSERT";
-        public const String ACTION_TYPE_DELETE = "DELETE";
-        public const String ACTION_TYPE_REMOVE = "REMOVE";
-        public const String ACTION_TYPE_ADD = "ADD";
-        public const String ACTION_TYPE_EDIT = "EDIT";
-        public const String ACTION_TYPE_NEXT = "NEXT";
-        public const String ACTION_TYPE_BACK = "BACK";
-        public const String ACTION_TYPE_DONE = "DONE";
-        public const String ACTION_TYPE_SAVE = "SAVE";
-        public const String ACTION_TYPE_CANCEL = "CANCEL";
-        public const String ACTION_TYPE_APPLY = "APPLY";
-        public const String ACTION_TYPE_IMPORT = "IMPORT";
-        public const String ACTION_TYPE_CLOSE = "CLOSE";
-        public const String ACTION_TYPE_OPEN = "OPEN";
-        public const String ACTION_TYPE_SUBMIT = "SUBMIT";
-        public const String ACTION_TYPE_ESCALATE = "ESCALATE";
-        public const String ACTION_TYPE_REJECT = "REJECT";
-        public const String ACTION_TYPE_DELEGATE = "DELEGATE";
+        public const string ACTION_TYPE_NEW = "NEW";
+        public const string ACTION_TYPE_QUERY = "QUERY";
+        public const string ACTION_TYPE_INSERT = "INSERT";
+        public const string ACTION_TYPE_UPDATE = "UPDATE";
+        public const string ACTION_TYPE_UPSERT = "UPSERT";
+        public const string ACTION_TYPE_DELETE = "DELETE";
+        public const string ACTION_TYPE_REMOVE = "REMOVE";
+        public const string ACTION_TYPE_ADD = "ADD";
+        public const string ACTION_TYPE_EDIT = "EDIT";
+        public const string ACTION_TYPE_NEXT = "NEXT";
+        public const string ACTION_TYPE_BACK = "BACK";
+        public const string ACTION_TYPE_DONE = "DONE";
+        public const string ACTION_TYPE_SAVE = "SAVE";
+        public const string ACTION_TYPE_CANCEL = "CANCEL";
+        public const string ACTION_TYPE_APPLY = "APPLY";
+        public const string ACTION_TYPE_IMPORT = "IMPORT";
+        public const string ACTION_TYPE_CLOSE = "CLOSE";
+        public const string ACTION_TYPE_OPEN = "OPEN";
+        public const string ACTION_TYPE_SUBMIT = "SUBMIT";
+        public const string ACTION_TYPE_ESCALATE = "ESCALATE";
+        public const string ACTION_TYPE_REJECT = "REJECT";
+        public const string ACTION_TYPE_DELEGATE = "DELEGATE";
 
-        // The API name for page layouts
-        public const String UI_ELEMENT_TYPE_IMPLEMENTATION_PAGE_LAYOUT = "PAGE_LAYOUT";
+        /// <summary>
+        /// The Element is specifically a Page Element
+        /// </summary>
+        public const string UI_ELEMENT_TYPE_IMPLEMENTATION_PAGE_LAYOUT = "PAGE_LAYOUT";
 
         // The API name for navigations
-        public const String UI_ELEMENT_TYPE_IMPLEMENTATION_NAVIGATION = "NAVIGATION";
+        public const string UI_ELEMENT_TYPE_IMPLEMENTATION_NAVIGATION = "NAVIGATION";
 
-        // The API name for map elements
-        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_START = "START";
-        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_STEP = "STEP";
-        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_INPUT = "INPUT";
-        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_DECISION = "DECISION";
-        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_OPERATOR = "OPERATOR";
-        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_SUB_FLOW = "SUB_FLOW";
-        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_DATABASE_LOAD = "DATABASE_LOAD";
-        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_DATABASE_SAVE = "DATABASE_SAVE";
-        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_DATABASE_DELETE = "DATABASE_DELETE";
-        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_MESSAGE = "MESSAGE";
-        public const String MAP_ELEMENT_TYPE_IMPLEMENTATION_PAGE = "PAGE";
+        #region Map Elements
 
-        // The API name for group elements
-        public const String GROUP_ELEMENT_TYPE_IMPLEMENTATION_SWIMLANE = "SWIMLANE";
+        /// <summary>
+        /// The Map Element is a Start implementation that can only be used at the beginning of a Flow
+        /// </summary>
+        public const string MAP_ELEMENT_TYPE_IMPLEMENTATION_START = "START";
 
-        // The API name for tags
-        public const String UI_ELEMENT_TYPE_IMPLEMENTATION_TAG = "TAG";
+        /// <summary>
+        /// The Map Element is a Step implementation that can be used for simple steps in your Flow
+        /// </summary>
+        public const string MAP_ELEMENT_TYPE_IMPLEMENTATION_STEP = "STEP";
 
-        // The API name for types
-        public const String TYPE_ELEMENT_TYPE_IMPLEMENTATION_TYPE = "TYPE";
+        /// <summary>
+        /// The Map Element is a Input implementation that can be used to show the user your Page Elements and also execute messages
+        /// </summary>
+        public const string MAP_ELEMENT_TYPE_IMPLEMENTATION_INPUT = "INPUT";
 
-        // Post update types
-        public const String POST_UPDATE_WHEN_ON_LOAD = "ON_LOAD";
-        public const String POST_UPDATE_WHEN_ON_EXIT = "ON_EXIT";
+        /// <summary>
+        /// The Map Element is a Decision implementation that can be used to execute logic within your Flow
+        /// </summary>
+        public const string MAP_ELEMENT_TYPE_IMPLEMENTATION_DECISION = "DECISION";
+
+        /// <summary>
+        /// The Map Element is a Operator implementation that can be used to make changes to Values in your Flow
+        /// </summary>
+        public const string MAP_ELEMENT_TYPE_IMPLEMENTATION_OPERATOR = "OPERATOR";
+
+        /// <summary>
+        /// The Map Element can be used to execute a subflow
+        /// </summary>
+        public const string MAP_ELEMENT_TYPE_IMPLEMENTATION_SUB_FLOW = "SUB_FLOW";
+
+        /// <summary>
+        /// The Map Element is a Database Load implementation that can be used to load data into Values in your Flow from a Service
+        /// </summary>
+        public const string MAP_ELEMENT_TYPE_IMPLEMENTATION_DATABASE_LOAD = "DATABASE_LOAD";
+
+        /// <summary>
+        /// The Map Element is a Database Save implementation that can be used to save data from Values in your Flow to a Service
+        /// </summary>
+        public const string MAP_ELEMENT_TYPE_IMPLEMENTATION_DATABASE_SAVE = "DATABASE_SAVE";
+
+        /// <summary>
+        /// The Map Element is a Database Delete implementation that can be used to delete data using Values in your Flow in a Service
+        /// </summary>
+        public const string MAP_ELEMENT_TYPE_IMPLEMENTATION_DATABASE_DELETE = "DATABASE_DELETE";
+
+        /// <summary>
+        /// The Map Element is a Message implementation that can be used to call APIs on a Service to perform synchronous and asynchronous jobs
+        /// </summary>
+        public const string MAP_ELEMENT_TYPE_IMPLEMENTATION_MESSAGE = "MESSAGE";
+
+        /// <summary>
+        /// The Map Element is a Page implementation that can be used to show the user your Page Elements generated by a service, and can also execute messages
+        /// </summary>
+        public const string MAP_ELEMENT_TYPE_IMPLEMENTATION_PAGE = "PAGE";
+
+        /// <summary>
+        /// The Group Element is a Swimlane implementation that can be used to configure specific authorization rights in parts of your Flow
+        /// </summary>
+        public const string GROUP_ELEMENT_TYPE_IMPLEMENTATION_SWIMLANE = "SWIMLANE";
+
+        /// <summary>
+        /// The Element is specifically a Tag Element
+        /// </summary>
+        public const string UI_ELEMENT_TYPE_IMPLEMENTATION_TAG = "TAG";
+
+        /// <summary>
+        /// The element is specifically a Type Element
+        /// </summary>
+        public const string TYPE_ELEMENT_TYPE_IMPLEMENTATION_TYPE = "TYPE";
+
+        #endregion
+
+        #region Post Update Types
+
+        /// <summary>
+        /// Post an update to the feed associated with this Flow when the Map Element loads.
+        /// </summary>
+        public const string POST_UPDATE_WHEN_ON_LOAD = "ON_LOAD";
+
+        /// <summary>
+        /// Post an update to the feed associated with this Flow when the Map Element is finished and moving to the next Map Element in the Flow.
+        /// </summary>
+        public const string POST_UPDATE_WHEN_ON_EXIT = "ON_EXIT";
+
+        #endregion
 
         // Guids for the reserved outcomes for faults and debug
         public static readonly Guid DEBUG_GUID = Guid.Parse("EE6C8827-11E2-486D-B5FA-4D1A0CBB77A3");
         public static readonly Guid FAULT_GUID = Guid.Parse("318B0F3A-A570-4C5D-835C-21C1EEB17787");
 
         // Outcomes with a fault
-        public const String FAULT_DEVELOPER_NAME = "FAULT";
+        public const string FAULT_DEVELOPER_NAME = "FAULT";
 
-        // The authentication types that are currently supported
-        public const String AUTHENTICATION_TYPE_USERNAME_PASSWORD = "USERNAME_PASSWORD";
-        public const String AUTHENTICATION_TYPE_OAUTH2 = "OAUTH2";
-        public const String AUTHENTICATION_TYPE_SAML = "SAML";
+        #region Authentication Types
 
-        public const String PROPERTY_SEARCH = "PROPERTY:";
-        public const String EXACT_SEARCH = "EXACT:";
+        /// <summary>
+        /// The user should login using username/password authentication credentials
+        /// </summary>
+        public const string AUTHENTICATION_TYPE_USERNAME_PASSWORD = "USERNAME_PASSWORD";
+        
+        /// <summary>
+        /// The user should login using the supported OAuth1.0 sequence
+        /// </summary>
+        public const string AUTHENTICATION_TYPE_OAUTH = "OAUTH";
 
-        // The settings for the types of user registration
-        public const String USER_REGISTRATION_TYPE_SELF = "SELF";
-        public const String USER_REGISTRATION_TYPE_REQUEST = "REQUEST";
-        public const String USER_REGISTRATION_TYPE_MANUAL = "MANUAL";
+        /// <summary>
+        /// The user should login using the supported OAuth2 sequence
+        /// </summary>
+        public const string AUTHENTICATION_TYPE_OAUTH2 = "OAUTH2";
 
-        public const String USER_REGISTRATION_NOTIFY_ALL = "ALL";
-        public const String USER_REGISTRATION_NOTIFY_SPECIFIC = "SPECIFIC";
-        public const String USER_REGISTRATION_NOTIFY_NONE = "NONE";
+        /// <summary>
+        /// The user should login using SAML authentication
+        /// </summary>
+        public const string AUTHENTICATION_TYPE_SAML = "SAML";
 
-        public const String VOTE_TYPE_COUNT = "COUNT";
-        public const String VOTE_TYPE_PERCENT = "PERCENT";
+        public const string PROPERTY_SEARCH = "PROPERTY:";
+        public const string EXACT_SEARCH = "EXACT:";
 
-        public const String LISTENER_TYPE_EDIT = "EDIT";
-        public const String LISTENER_TYPE_DELETE = "DELETE";
+        #endregion
 
-        public const String STATE_LISTEN_TYPE_DONE = "DONE";
-        public const String STATE_LISTEN_TYPE_UPDATE = "UPDATE";
+        /// <summary>
+        /// The Vote should be based on a fixed number of users that click on a particularly Outcome.
+        /// </summary>
+        public const string VOTE_TYPE_COUNT = "COUNT";
 
-        public const String USER_PERMISSION_TYPE_CAN_EDIT_AND_ACTION = "CAN_EDIT_AND_ACTION";
-        public const String USER_PERMISSION_TYPE_CAN_ACTION = "CAN_ACTION";
-        public const String USER_PERMISSION_TYPE_CAN_EDIT = "CAN_EDIT";
-        public const String USER_PERMISSION_TYPE_CAN_VIEW = "CAN_VIEW";
-        public const String USER_PERMISSION_TYPE_CAN_COMMENT = "CAN_COMMENT";
+        /// <summary>
+        /// The Vote should be based on the percentage of users that click on a particular Outcome. The percentage is calculated based on the authorization context of the Map Element at the time of execution.
+        /// </summary>
+        public const string VOTE_TYPE_PERCENT = "PERCENT";
+
+        public const string LISTENER_TYPE_EDIT = "EDIT";
+        public const string LISTENER_TYPE_DELETE = "DELETE";
+
+        public const string STATE_LISTEN_TYPE_DONE = "DONE";
+        public const string STATE_LISTEN_TYPE_UPDATE = "UPDATE";
+
+        public const string USER_PERMISSION_TYPE_CAN_EDIT_AND_ACTION = "CAN_EDIT_AND_ACTION";
+        public const string USER_PERMISSION_TYPE_CAN_ACTION = "CAN_ACTION";
+        public const string USER_PERMISSION_TYPE_CAN_EDIT = "CAN_EDIT";
+        public const string USER_PERMISSION_TYPE_CAN_VIEW = "CAN_VIEW";
+        public const string USER_PERMISSION_TYPE_CAN_COMMENT = "CAN_COMMENT";
 
         public const string CONTENT_ENCRYPTED_PLACEHOLDER = "__ENCRYPTED__";
+
+        public const string ROLE_BUILDER = "builder";
+        public const string ROLE_USER = "user";
+        
+        public const string GEOLOCATION_CONTINENT_HTTP_HEADER = "X-ManyWho-GeoLocation-Continent";
+        public const string GEOLOCATION_COUNTRY_HTTP_HEADER = "X-ManyWho-GeoLocation-Country";
     }
 }

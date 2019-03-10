@@ -22,27 +22,27 @@ namespace ManyWho.Flow.SDK.Utils
 {
     public class AuthenticationUtils
     {
-        public static IAuthenticatedWho Deserialize(String token)
+        public static IAuthenticatedWho Deserialize(string token)
         {
             IAuthenticatedWho authenticatedWho = null;
-            String[] parameters = null;
-            String directoryIdParameter = null;
-            String directoryNameParameter = null;
-            String roleIdParameter = null;
-            String roleNameParameter = null;
-            String primaryGroupIdParameter = null;
-            String primaryGroupNameParameter = null;
-            String identityProviderParameter = null;
-            String manywhoTenantIdParameter = null;
-            String manywhoUserIdParameter = null;
-            String manywhoTokenParameter = null;
-            String tenantNameParameter = null;
-            String tokenParameter = null;
-            String userIdParameter = null;
-            String usernameParameter = null;
-            String emailParameter = null;
-            String firstNameParameter = null;
-            String lastNameParameter = null;
+            string[] parameters = null;
+            string directoryIdParameter = null;
+            string directoryNameParameter = null;
+            string roleIdParameter = null;
+            string roleNameParameter = null;
+            string primaryGroupIdParameter = null;
+            string primaryGroupNameParameter = null;
+            string identityProviderParameter = null;
+            string manywhoTenantIdParameter = null;
+            string manywhoUserIdParameter = null;
+            string manywhoTokenParameter = null;
+            string tenantNameParameter = null;
+            string tokenParameter = null;
+            string userIdParameter = null;
+            string usernameParameter = null;
+            string emailParameter = null;
+            string firstNameParameter = null;
+            string lastNameParameter = null;
 
             // Start by splitting the string so we have a complete key/value pairing
             parameters = token.Split('&');
@@ -135,16 +135,16 @@ namespace ManyWho.Flow.SDK.Utils
             return authenticatedWho;
         }
 
-        public static String Serialize(IAuthenticatedWho authenticatedWho)
+        public static string Serialize(IAuthenticatedWho authenticatedWho)
         {
-            String token = "";
+            string token = "";
 
             // Validate the object to make sure we have everything that's needed
             ValidateAuthenticatedWho(authenticatedWho);
 
             // Construct the token string
-            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.ManyWhoTenantId.ToString() + "&";
-            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.ManyWhoUserId.ToString() + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.ManyWhoTenantId + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.ManyWhoUserId + "&";
             token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.ManyWhoToken + "&";
             token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.DirectoryId + "&";
             token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.DirectoryName + "&";
@@ -165,20 +165,9 @@ namespace ManyWho.Flow.SDK.Utils
             return token;
         }
 
-        public static IAuthenticatedWho CreatePublicUser(String tenantId)
+        public static IAuthenticatedWho CreatePublicUser(Guid tenant)
         {
             IAuthenticatedWho authenticatedWho = null;
-            Guid tenantGuid = Guid.Empty;
-
-            if (String.IsNullOrWhiteSpace(tenantId) == true)
-            {
-                throw new ArgumentNullException("TenantId", "The TenantId cannot be null or blank.");
-            }
-
-            if (Guid.TryParse(tenantId, out tenantGuid) == false)
-            {
-                throw new ArgumentNullException("TenantId", "The TenantId is not a valid identifier.");
-            }
 
             authenticatedWho = new AuthenticatedWho();
             authenticatedWho.DirectoryId = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_DIRECTORY_ID;
@@ -192,7 +181,8 @@ namespace ManyWho.Flow.SDK.Utils
             authenticatedWho.TenantName = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_TENANT_NAME;
             authenticatedWho.Token = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_TOKEN;
             authenticatedWho.UserId = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_USER_ID;
-            authenticatedWho.ManyWhoTenantId = tenantGuid;
+            authenticatedWho.ManyWhoTenantId = tenant;
+            authenticatedWho.ManyWhoToken = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_TOKEN;
             authenticatedWho.ManyWhoUserId = ManyWhoConstants.AUTHENTICATED_USER_PUBLIC_MANYWHO_USER_ID;
 
             return authenticatedWho;
@@ -201,15 +191,10 @@ namespace ManyWho.Flow.SDK.Utils
         public static void ValidateAuthenticatedWho(IAuthenticatedWho authenticatedWho)
         {
             Validation.Instance.AuthenticatedWho(authenticatedWho)
-                                .IsNotEmpty(authenticatedWho.ManyWhoTenantId, "ManyWhoTenantId")
                                 .IsNotEmpty(authenticatedWho.ManyWhoUserId, "ManyWhoUserId")
                                 .IsNotNullOrWhiteSpace(authenticatedWho.ManyWhoToken, "ManyWhoToken")
-                                .IsNotNullOrWhiteSpace(authenticatedWho.DirectoryId, "DirectoryId")
-                                .IsNotNullOrWhiteSpace(authenticatedWho.DirectoryName, "DirectoryName")
                                 .IsNotNullOrWhiteSpace(authenticatedWho.Email, "Email")
-                                .IsNotNullOrWhiteSpace(authenticatedWho.IdentityProvider, "IdentityProvider")
                                 .IsNotNullOrWhiteSpace(authenticatedWho.ManyWhoToken, "ManyWhoToken")
-                                .IsNotNullOrWhiteSpace(authenticatedWho.TenantName, "TenantName")
                                 .IsNotNullOrWhiteSpace(authenticatedWho.Token, "Token")
                                 .IsNotNullOrWhiteSpace(authenticatedWho.UserId, "UserId");
         }

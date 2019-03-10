@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Run.State;
 using ManyWho.Flow.SDK.Run.Elements.Config;
+using ManyWho.Flow.SDK.Run.State;
 
 /*!
 
@@ -58,28 +58,28 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         }
 
         [DataMember]
-        public String voteType
+        public string voteType
         {
             get;
             set;
         }
 
         [DataMember]
-        public Int32 minimumCount
+        public int minimumCount
         {
             get;
             set;
         }
 
         [DataMember]
-        public Int32 minimumPercent
+        public int minimumPercent
         {
             get;
             set;
         }
 
         [DataMember]
-        public Dictionary<String, String> attributes
+        public Dictionary<string, string> attributes
         {
             get;
             set;
@@ -89,7 +89,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// The outcome the user has selected when then submitted the vote.
         /// </summary>
         [DataMember]
-        public String selectedOutcomeId
+        public string selectedOutcomeId
         {
             get;
             set;

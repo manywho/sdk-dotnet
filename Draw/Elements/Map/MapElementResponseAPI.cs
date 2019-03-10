@@ -23,20 +23,29 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class MapElementResponseAPI : MapElementRequestAPI
     {
+        /// <summary>
+        /// The date the Map Element was first created.
+        /// </summary>
         [DataMember]
-        public DateTime dateCreated
+        public DateTimeOffset dateCreated
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The date the last modification was made to the Map Element.
+        /// </summary>
         [DataMember]
-        public DateTime dateModified
+        public DateTimeOffset dateModified
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The builder user who created the Map Element.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoCreated
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The builder user who last modified the Map Element.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoModified
         {
@@ -51,6 +63,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The builder user who owns this Map Element.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoOwner
         {

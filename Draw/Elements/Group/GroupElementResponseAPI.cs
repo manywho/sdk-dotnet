@@ -23,20 +23,29 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class GroupElementResponseAPI : GroupElementRequestAPI
     {
+        /// <summary>
+        /// The date the Group was first created.
+        /// </summary>
         [DataMember]
-        public DateTime dateCreated
+        public DateTimeOffset dateCreated
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The date the last modification was made to the Group.
+        /// </summary>
         [DataMember]
-        public DateTime dateModified
+        public DateTimeOffset dateModified
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The builder who created the Group.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoCreated
         {
@@ -44,6 +53,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// The builder who last modified the Group.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoModified
         {
@@ -51,6 +63,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Group
             set;
         }
 
+        /// <summary>
+        /// The builder who owns this Group.
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoOwner
         {

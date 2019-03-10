@@ -24,14 +24,14 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
     public class ObjectDataTypeAPI
     {
         [DataMember]
-        public String typeElementId
+        public string typeElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;

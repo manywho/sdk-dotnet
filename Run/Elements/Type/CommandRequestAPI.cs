@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The type of command being executed on the remote service. The command type is up to the author and service.
         /// </summary>
         [DataMember]
-        public String commandType
+        public string commandType
         {
             get;
             set;
@@ -37,7 +37,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The properties to be used to support the command type being executed on the remote service.
         /// </summary>
         [DataMember]
-        public Dictionary<String, String> properties
+        public Dictionary<string, string> properties
         {
             get;
             set;

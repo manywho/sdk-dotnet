@@ -22,29 +22,41 @@ namespace ManyWho.Flow.SDK.Run
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class EngineAuthorizationContextAPI
     {
+        /// <summary>
+        /// The name of the directory the user needs to login to. This can be helpful in dialogs so the user knows what system they need to provide credentials for.
+        /// </summary>
         [DataMember]
-        public String directoryName
+        public string directoryName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for the directory. Again, this can be helpful in dialogs. In this case, for developers as the directory identifier may allow you to gather additional information about what needs to be collected from the user.
+        /// </summary>
         [DataMember]
-        public String directoryId
+        public string directoryId
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The Url that should be used as part of any authentication request to the runtime.
+        /// </summary>
         [DataMember]
-        public String loginUrl
+        public string loginUrl
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The type of authentication that needs to be performed against the directory.
+        /// </summary>
         [DataMember]
-        public String authenticationType
+        public string authenticationType
         {
             get;
             set;

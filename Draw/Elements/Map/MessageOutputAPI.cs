@@ -21,6 +21,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class MessageOutputAPI : OutputValueAPI
     {
+        /// <summary>
+        /// The developer name for the output defined by the Service definition of this message action. This name will be used by the Service Implementation to match which value is being sent back.
+        /// </summary>
         [DataMember]
         public string developerName
         {
@@ -28,6 +31,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The content type for this output as provided by the Service.
+        /// </summary>
         [DataMember]
         public string contentType
         {
@@ -42,6 +48,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The order in which this output should appear to Flow builders.
+        /// </summary>
         [DataMember]
         public int order
         {

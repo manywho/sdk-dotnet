@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 /*!
 
-Copyright 2013 Manywho, Inc.
+Copyright 2016 Manywho, Inc.
 
 Licensed under the Manywho License, Version 1.0 (the "License"); you may not use this
 file except in compliance with the License.
@@ -17,13 +17,36 @@ permissions and limitations under the License.
 
 */
 
-namespace ManyWho.Flow.SDK.Tenant
+namespace ManyWho.Flow.SDK.Draw.Util
 {
-    [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ReportSettingsAPI
+    public class DependencyAPI
     {
-        [DataMember]
-        public String reportingServiceUri
+        public Guid Id
+        {
+            get;
+            set;
+        }
+
+        public string DeveloperName
+        {
+            get;
+            set;
+        }
+
+        public string DeveloperSummary
+        {
+            get;
+            set;
+        }
+
+        public string Type
+        {
+            get;
+            set;
+        }
+
+        [JsonIgnore]
+        public string FriendlyType
         {
             get;
             set;

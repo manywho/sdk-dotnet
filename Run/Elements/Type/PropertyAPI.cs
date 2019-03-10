@@ -24,35 +24,35 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
     public class PropertyAPI
     {
         [DataMember]
-        public String typeElementPropertyId
+        public string typeElementPropertyId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentValue
+        public string contentValue
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentType
+        public string contentType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentFormat
+        public string contentFormat
         {
             get;
             set;
@@ -64,5 +64,12 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
             get;
             set;
         }
+
+        [DataMember]
+        public string typeElementId
+        {
+            get;
+            set;
+        }       
     }
 }

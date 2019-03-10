@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Security;
 
 /*!
 
@@ -23,36 +22,21 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class ValueElementResponseAPI : ValueElementRequestAPI
     {
+        /// <summary>
+        /// The date the Value was first created.
+        /// </summary>
         [DataMember]
-        public DateTime dateCreated
+        public DateTimeOffset dateCreated
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The date the last modification was made to the Value.
+        /// </summary>
         [DataMember]
-        public DateTime dateModified
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public BuilderWhoAPI whoCreated
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public BuilderWhoAPI whoModified
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public BuilderWhoAPI whoOwner
+        public DateTimeOffset dateModified
         {
             get;
             set;

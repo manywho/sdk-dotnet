@@ -25,14 +25,14 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
     public class PageComponentInputResponseRequestAPI
     {
         [DataMember]
-        public String pageComponentId
+        public string pageComponentId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentValue
+        public string contentValue
         {
             get;
             set;

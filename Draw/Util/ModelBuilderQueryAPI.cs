@@ -24,14 +24,14 @@ namespace ManyWho.Flow.SDK.Draw.Util
     public class ModelBuilderQueryAPI
     {
         [DataMember]
-        public String search
+        public string search
         {
             get;
             set;
         }
 
         [DataMember]
-        public String comparisionType
+        public string comparisionType
         {
             get;
             set;
@@ -42,48 +42,55 @@ namespace ManyWho.Flow.SDK.Draw.Util
         {
             get;
             set;
-        }
+        } = new List<ModelBuilderQueryWhereAPI>();
 
         [DataMember]
-        public Int32 limit
+        public int? limit
         {
             get;
             set;
         }
 
         [DataMember]
-        public Int32 size
+        public int size
         {
             get;
             set;
         }
 
         [DataMember]
-        public String orderBy
+        public string orderBy
         {
             get;
             set;
         }
 
         [DataMember]
-        public String orderDirection
+        public string orderDirection
         {
             get;
             set;
         }
 
         [DataMember]
-        public String flowId
+        public Guid flowId
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean isSnapShot
+        public bool isSnapShot
         {
             get;
             set;
         }
+
+        [DataMember]
+        public bool includeContent
+        {
+            get;
+            set;
+        } = true;
     }
 }

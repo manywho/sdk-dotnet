@@ -22,6 +22,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class ServiceValueRequestAPI
     {
+        /// <summary>
+        /// The developer name for the service value. This needs to match up with the developerName of the configuration value sent back from the Service description.
+        /// </summary>
         [DataMember]
         public string developerName
         {
@@ -29,6 +32,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
             set;
         }
 
+        /// <summary>
+        /// The compound identifier and command for the reference Value to be used to provide the actual value for the configuration value. The Value must be the same ContentType and Type definition (if an Object or List) as that provided by the Service description.
+        /// </summary>
         [DataMember]
         public ValueElementIdAPI valueElementToReferenceId
         {
@@ -60,6 +66,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
             set;
         }
 
+        /// <summary>
+        /// The type of content the component holds.
+        /// </summary>
         [DataMember]
         public string contentType
         {
@@ -67,6 +76,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
             set;
         }
 
+        /// <summary>
+        /// The order in which this Value should appear to builder users.
+        /// </summary>
         [DataMember]
         public int order
         {

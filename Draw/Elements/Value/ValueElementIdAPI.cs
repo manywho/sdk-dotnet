@@ -27,7 +27,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
 
         }
 
-        public ValueElementIdAPI(Guid id, Guid typeElementPropertyId, String command)
+        public ValueElementIdAPI(Guid id, Guid typeElementPropertyId, string command)
         {
             this.id = id.ToString();
 
@@ -40,29 +40,38 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
             this.command = command;
         }
 
-        public ValueElementIdAPI(String id, String typeElementPropertyId, String command)
+        public ValueElementIdAPI(string id, string typeElementPropertyId, string command)
         {
             this.id = id;
             this.typeElementPropertyId = typeElementPropertyId;
             this.command = command;
         }
 
+        /// <summary>
+        /// The unique identifier for the Value to be referenced with this identifier.
+        /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for a property in the Value to be referenced with this identifier. This only applies for Values of type ContentObject.
+        /// </summary>
         [DataMember]
-        public String typeElementPropertyId
+        public string typeElementPropertyId
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The command to execute as part of the Value reference. For certain objects, the command exposes additional properties that can be referenced.
+        /// </summary>
         [DataMember]
-        public String command
+        public string command
         {
             get;
             set;

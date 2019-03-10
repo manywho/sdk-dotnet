@@ -21,38 +21,38 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Run.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ObjectAPI
+    public class ObjectAPI : IComparable<ObjectAPI>
     {
         [DataMember]
-        public String internalId
+        public string internalId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String externalId
+        public string externalId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String typeElementId
+        public string typeElementId
         {
             get;
             set;
         }
 
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;
@@ -66,10 +66,17 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         [DataMember]
-        public Boolean isSelected
+        public bool isSelected
         {
             get;
             set;
+        }
+
+        public int CompareTo(ObjectAPI other)
+        {
+            return other == null
+                ? 0
+                : order.CompareTo(other.order);
         }
     }
 }

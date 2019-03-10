@@ -30,56 +30,56 @@ namespace ManyWho.Flow.SDK.Run.Elements.UI
         /// This is the developer name of the type element entry.
         /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
         [DataMember]
-        public String typeElementPropertyId
+        public string typeElementPropertyId
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentFormat
+        public string contentFormat
         {
             get;
             set;
         }
 
         [DataMember]
-        public String contentType
+        public string contentType
         {
             get;
             set;
         }
 
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean isDisplayValue
+        public bool isDisplayValue
         {
             get;
             set;
         }
 
         [DataMember]
-        public Boolean isEditable
+        public bool isEditable
         {
             get;
             set;
         }
 
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;

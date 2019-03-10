@@ -34,71 +34,118 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The type of authentication being performed
+        /// </summary>
         [DataMember]
-        public String authenticationType
+        public string authenticationType
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The username for your account in the directory
+        /// </summary>
+        [DataMember]
+        public string username
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The password for your account in the directory
+        /// </summary>
+        [DataMember]
+        public string password
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The account token for the directory. For OAuth2 integration, this the access token
+        /// </summary>
+        [DataMember]
+        public string token
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The OAuth2 code
+        /// </summary>
+        [DataMember]
+        public string code
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The session token for the directory. For services such as salesforce.com, this is the sessionId
+        /// </summary>
+        [DataMember]
+        public string sessionToken
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The session URL for the directory. For services such as salesforce.com, this is the pod instance you are currently logged into
+        /// </summary>
+        [DataMember]
+        public string sessionUrl
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The REST endpoint for the plugin providing the identity
+        /// </summary>
+        [DataMember]
+        public string loginUrl
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The OAuth2 redirect URI
+        /// </summary>
+        [DataMember]
+        public string redirectUri
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The particular instance of the directory. For services such as salesforce.com, this is either "https://login.salesforce.com" (default) or "https://test.salesforce.com".
+        /// </summary>
+        [DataMember]
+        public string instanceUrl
         {
             get;
             set;
         }
 
         [DataMember]
-        public String username
+        public string tenantId
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The OAuth1.0 verifier
+        /// </summary>
         [DataMember]
-        public String password
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String token
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String code
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String sessionToken
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String sessionUrl
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String loginUrl
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String redirectUri
-        {
-            get;
-            set;
-        }
-
-        [DataMember]
-        public String instanceUrl
+        public string verifier
         {
             get;
             set;

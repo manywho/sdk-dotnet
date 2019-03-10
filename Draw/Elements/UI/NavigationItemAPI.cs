@@ -23,41 +23,59 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class NavigationItemAPI
     {
+        /// <summary>
+        /// The unique identifier for the NavigationItem. The id should be null for "insert" requests and a valid identifier for "update" requests. This property is created by the service.
+        /// </summary>
         [DataMember]
-        public String id
+        public string id
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The unique identifier for the Map Element that this NavigationItem "points" to.
+        /// </summary>
         [DataMember]
-        public String locationMapElementId
+        public string locationMapElementId
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The developer name for the Navigation. This is useful for keeping track of the Navigation in the modeling tool and API.
+        /// </summary>
         [DataMember]
-        public String developerName
+        public string developerName
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The developer summary the author provided to give more information about the Navigation.
+        /// </summary>
         [DataMember]
-        public String developerSummary
+        public string developerSummary
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The label to display the user.
+        /// </summary>
         [DataMember]
-        public String label
+        public string label
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The navigation items that are available for this NavigationItem. The navigation items are the "links" the user can use to navigate around your Flow.
+        /// </summary>
         [DataMember]
         public List<NavigationItemAPI> navigationItems
         {
@@ -65,13 +83,19 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             set;
         }
 
+        /// <summary>
+        /// The order in which this NavigationItem should appear in relation to other sibling NavigationItems.
+        /// </summary>
         [DataMember]
-        public Int32 order
+        public int order
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The list of tags that are associated with this NavigationItem.
+        /// </summary>
         [DataMember]
         public List<PageTagAPI> tags
         {

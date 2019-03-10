@@ -24,20 +24,20 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
     public class ListFilterWhereConfigAPI
     {
         /// <summary>
-        /// The column to filter by.
+        /// The unique identifier for the column in the bound component data to filter by.
         /// </summary>
         [DataMember]
-        public String columnTypeElementPropertyId
+        public string columnTypeElementPropertyId
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The criteria of the filter.
+        /// The criteria to filter the list data by.
         /// </summary>
         [DataMember]
-        public String criteriaType
+        public string criteriaType
         {
             get;
             set;
@@ -51,7 +51,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         }
 
         /// <summary>
-        /// The value to filter by.
+        /// The reference to the Value that contains the value to filter the list data by.
         /// </summary>
         [DataMember]
         public ValueElementIdAPI valueElementToReferenceId

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Restrictions;
 using ManyWho.Flow.SDK.Security;
 
 /*!
@@ -23,20 +24,29 @@ namespace ManyWho.Flow.SDK.Draw.Flow
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class FlowResponseAPI : FlowRequestAPI
     {
+        /// <summary>
+        /// The date and time the flow was created at
+        /// </summary>
         [DataMember]
-        public DateTime dateCreated
+        public DateTimeOffset dateCreated
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The date and time of the last modification to the flow
+        /// </summary>
         [DataMember]
-        public DateTime dateModified
+        public DateTimeOffset dateModified
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The builder who created the flow
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoCreated
         {
@@ -44,6 +54,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The builder who last modified the flow
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoModified
         {
@@ -51,6 +64,9 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The builder who owns the flow
+        /// </summary>
         [DataMember]
         public BuilderWhoAPI whoOwner
         {
@@ -58,29 +74,57 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// The email of the builder who activated the flow
+        /// </summary>
         [DataMember]
-        public String alertEmail
+        public string alertEmail
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Indicates if this flow version is the active version.
+        /// </summary>
+        /// <remarks>
+        /// In the case of run operations this will always be true, and for draw operations this will be false.
+        /// </remarks>
         [DataMember]
-        public Boolean isActive
+        public bool isActive
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Indicates if this flow version is the default version.
+        /// </summary>
+        /// <remarks>
+        /// In the case of run operations this will always be true, and for draw operations this will be false.
+        /// </remarks>
         [DataMember]
-        public Boolean isDefault
+        public bool isDefault
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The activation comment provided by the builder, if given
+        /// </summary>
         [DataMember]
         public string comment
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// Specifies geographical restrictions for this flow
+        /// </summary>
+        [DataMember]
+        public FlowRestrictionsAPI restrictions
         {
             get;
             set;
