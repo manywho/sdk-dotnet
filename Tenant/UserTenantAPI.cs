@@ -22,6 +22,18 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        public DateTimeOffset? ExpiresAt
+        {
+            get;
+            set;
+        }
+
+        public bool IsExpired
+        {
+            get;
+            set;
+        }
+
         public DateTimeOffset? LastLoggedInAt
         {
             get;
