@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard1.1</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>ManyWho.Flow.SDK</AssemblyName>
     <PackageId>ManyWho.SDK</PackageId>
     <ProjectGuid>0089E5A0-32ED-4C07-AB46-916A966810A4</ProjectGuid>

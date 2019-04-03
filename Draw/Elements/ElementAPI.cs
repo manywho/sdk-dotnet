@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Security;
 
 /*!
 
@@ -57,6 +58,36 @@ namespace ManyWho.Flow.SDK.Draw.Elements
         /// </summary>
         [DataMember]
         public string developerSummary
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// The builder user who created the Value.
+        /// </summary>
+        [DataMember]
+        public BuilderWhoAPI whoCreated
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The builder user who last modified the Value.
+        /// </summary>
+        [DataMember]
+        public BuilderWhoAPI whoModified
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The builder user who owns this Value.
+        /// </summary>
+        [DataMember]
+        public BuilderWhoAPI whoOwner
         {
             get;
             set;

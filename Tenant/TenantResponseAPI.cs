@@ -44,6 +44,15 @@ namespace ManyWho.Flow.SDK.Tenant
         }
 
         /// <summary>
+        /// A timestamp of when the tenant should expire
+        /// </summary>
+        public DateTimeOffset? expiresAt
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The list of sub tenants associated with this parent tenant.
         /// </summary>
         [DataMember]
