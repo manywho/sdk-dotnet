@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 /*!
@@ -167,17 +166,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
         
-        /// <summary>
-        /// The details of the flow that will be invoked from the current flow. The invokeSubflow configuration
-        /// can only be used with Subflow element. 
-        /// </summary>
-        [DataMember]
-        public InvokeSubflowAPI invokeSubflow
-        {
-            get;
-            set;
-        }
-
         /// <summary>
         /// The array of control points (or “kinks”) in the outcome arrow as it appears in the flow diagram. If there
         /// are no control points, it is assumed the arrow for the outcome points directly from this map element to the
