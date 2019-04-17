@@ -18,7 +18,7 @@ namespace ManyWho.Flow.SDK.Run.Flow
 
 
         [DataMember]
-        public string MapElementId
+        public Guid? MapElementId
         {
             get;
             set;
@@ -26,7 +26,7 @@ namespace ManyWho.Flow.SDK.Run.Flow
 
 
         [DataMember]
-        public ISet<string> ValueIds
+        public ISet<Guid> ValueElementIds
         {
             get;
             set;
