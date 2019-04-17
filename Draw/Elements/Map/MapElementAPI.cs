@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Flow;
 
 /*!
 
@@ -74,7 +73,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The identifier of the flow that is called as subflow
         /// </summary>
         [DataMember]
-        public FlowIdAPI subflow
+        public SubflowAPI subflow
         {
             get;
             set;
