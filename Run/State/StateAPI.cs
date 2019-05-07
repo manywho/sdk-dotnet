@@ -204,7 +204,7 @@ namespace ManyWho.Flow.SDK.Run.State
         }
         
         [DataMember]
-        public FlowStackTraceAPI StackTrace
+        public FlowCallStackAPI FlowCallStack
         {
             get;
             set;
