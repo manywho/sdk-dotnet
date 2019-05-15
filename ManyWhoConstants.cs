@@ -373,6 +373,9 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_FALSE_VALUE_ID = Guid.Parse("496FD041-D91F-48FB-AA4F-91C6C9A11CA1");
         public const string MANYWHO_FALSE_DEVELOPER_NAME = "$False";
 
+        public static readonly Guid MANYWHO_TENANT_ID_VALUE_ID = Guid.Parse("247AEE82-B65F-43AF-B28D-29E2458EF1E4");
+        public const string MANYWHO_TENANT_ID_DEVELOPER_NAME = "$TenantId";
+
         public static readonly Guid MANYWHO_USER_TYPE_ELEMENT_ID = Guid.Parse("2674CE95-DD99-42C6-96FC-AD12E1B48A69");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_USER_ID = Guid.Parse("90262141-02B2-4F2C-8107-B14CF859DE4D");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_USERNAME = Guid.Parse("D8839B46-C43B-4435-9395-BD00491DA16E");
