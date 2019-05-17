@@ -373,9 +373,6 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_FALSE_VALUE_ID = Guid.Parse("496FD041-D91F-48FB-AA4F-91C6C9A11CA1");
         public const string MANYWHO_FALSE_DEVELOPER_NAME = "$False";
 
-        public static readonly Guid MANYWHO_TENANT_ID_VALUE_ID = Guid.Parse("247AEE82-B65F-43AF-B28D-29E2458EF1E4");
-        public const string MANYWHO_TENANT_ID_DEVELOPER_NAME = "$TenantId";
-
         public static readonly Guid MANYWHO_USER_TYPE_ELEMENT_ID = Guid.Parse("2674CE95-DD99-42C6-96FC-AD12E1B48A69");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_USER_ID = Guid.Parse("90262141-02B2-4F2C-8107-B14CF859DE4D");
         public static readonly Guid MANYWHO_USER_PROPERTY_ID_USERNAME = Guid.Parse("D8839B46-C43B-4435-9395-BD00491DA16E");
@@ -436,6 +433,7 @@ namespace ManyWho.Flow.SDK
         public static readonly string MANYWHO_STATE_PROPERTY_ID = "ID";
         public static readonly string MANYWHO_STATE_PROPERTY_PARENT_ID = "Parent ID";
         public static readonly string MANYWHO_STATE_PROPERTY_EXTERNAL_ID = "External ID";
+        public static readonly string MANYWHO_STATE_PROPERTY_TENANT_ID = "Tenant ID";
         public static readonly string MANYWHO_STATE_PROPERTY_FLOW_ID = "Flow ID";
         public static readonly string MANYWHO_STATE_PROPERTY_FLOW_VERSION_ID = "Flow Version ID";
         public static readonly string MANYWHO_STATE_PROPERTY_FLOW_DEVELOPER_NAME = "Flow Developer Name";
@@ -457,6 +455,7 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_ID = Guid.Parse("A4368EA1-F120-47A1-A67B-A8CE9452C127");
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_PARENT_ID = Guid.Parse("C0986C48-DBC5-43C6-9222-3F8F3D4E2247");
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_EXTERNAL_ID = Guid.Parse("6BA0852D-CED1-428E-BE7E-6F80D4B85F1F");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_TENANT_ID = Guid.Parse("247AEE82-B65F-43AF-B28D-29E2458EF1E4");
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_FLOW_ID = Guid.Parse("5BB41D1F-8F1D-4028-AE44-763617537338");
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_FLOW_VERSION_ID = Guid.Parse("B43B6AFA-2E56-461A-AD96-2B74BC92C90D");
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_FLOW_DEVELOPER_NAME = Guid.Parse("45BB98B0-9C3D-47F2-B708-1327E5CD1DCA");
