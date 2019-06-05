@@ -5,6 +5,10 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
 {
     public class SubflowAPI
     {
+        public SubflowAPI()
+        {
+        }
+
         public SubflowAPI(FlowIdAPI flowId)
         {
             this.flowId = flowId;
