@@ -70,6 +70,13 @@ namespace ManyWho.Flow.SDK.Describe
             set;
         }
 
+        [DataMember]
+        public string version
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Configuration values provided by the end user to help the describe.
         /// </summary>
