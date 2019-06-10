@@ -187,5 +187,12 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
             get;
             set;
         }
+
+        [DataMember]
+        public string stateId 
+        { 
+            get; 
+            set; 
+        }
     }
 }

@@ -45,6 +45,31 @@ namespace ManyWho.Flow.SDK.Describe
             set;
         }
 
+        public string UriTrimmed 
+        { 
+            get
+            {
+                return 
+                    string.IsNullOrEmpty(this.uri) ? 
+                        null : 
+                        this.uri.Trim();
+            }
+        }
+
+        [DataMember]
+        public string httpAuthenticationUsername
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string httpAuthenticationPassword
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Configuration values provided by the end user to help the describe.
         /// </summary>
