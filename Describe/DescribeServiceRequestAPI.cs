@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Run;
 using ManyWho.Flow.SDK.Translate;
+using Newtonsoft.Json;
 
 /*!
 
@@ -45,6 +46,7 @@ namespace ManyWho.Flow.SDK.Describe
             set;
         }
 
+        [JsonIgnore]
         public string UriTrimmed 
         { 
             get
