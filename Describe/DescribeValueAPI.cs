@@ -46,7 +46,7 @@ namespace ManyWho.Flow.SDK.Describe
         /// Indicates if the value is required.
         /// </summary>
         [DataMember]
-        public bool isRequired
+        public bool required
         {
             get;
             set;
