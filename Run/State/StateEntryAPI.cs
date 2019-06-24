@@ -42,6 +42,13 @@ namespace ManyWho.Flow.SDK.Run.State
             get;
             set;
         }
+        
+        [DataMember]
+        public Guid? authenticatingServiceElementId
+        {
+            get;
+            set;
+        }
 
         [DataMember]
         public DateTimeOffset dateCommitted
