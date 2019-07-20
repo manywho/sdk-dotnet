@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 /*!
@@ -132,6 +131,23 @@ namespace ManyWho.Flow.SDK.Security
         /// </summary>
         [DataMember]
         public List<RemoteSiteAPI> authorizedServiceRemoteSites
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public bool isSamlEnabled
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Settings related to SAML authentication
+        /// </summary>
+        [DataMember]
+        public SamlSettings samlSettings
         {
             get;
             set;
