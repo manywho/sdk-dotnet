@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Flow;
 using ManyWho.Flow.SDK.Draw.Log;
+using ManyWho.Flow.SDK.Run.Flow;
 
 /*!
 
@@ -204,9 +205,9 @@ namespace ManyWho.Flow.SDK.Run.State
         }
         
         [DataMember]
-        public FlowCallStackAPI FlowCallStack
+        public List<FlowStackFrameAPI> frames
         {
-            get;
+            get; 
             set;
         }
     }
