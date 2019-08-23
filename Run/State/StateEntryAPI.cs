@@ -44,6 +44,13 @@ namespace ManyWho.Flow.SDK.Run.State
         }
         
         [DataMember]
+        public Guid nextMapElementId
+        {
+            get;
+            set;
+        }
+        
+        [DataMember]
         public Guid? authenticatingServiceElementId
         {
             get;
@@ -66,6 +73,13 @@ namespace ManyWho.Flow.SDK.Run.State
 
         [DataMember]
         public List<UserInteractionAPI> userInteractions
+        {
+            get;
+            set;
+        }
+        
+        [DataMember]
+        public Dictionary<string, UserVoteAPI> userVotes
         {
             get;
             set;
