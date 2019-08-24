@@ -19,5 +19,6 @@ namespace ManyWho.Flow.SDK.Describe
             get;
             set;
         }
+        public string Version { get; set; }
     }
 }

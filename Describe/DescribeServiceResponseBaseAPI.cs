@@ -2,7 +2,7 @@
 
 namespace ManyWho.Flow.SDK.Describe
 {
-    public class DescribeServiceResponseBaseAPI
+    public abstract class DescribeServiceResponseBaseAPI
     {
         /// <summary>
         /// Configuration information that's required to set up the service.  These are values that are typically not associated with
