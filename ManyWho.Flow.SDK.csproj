@@ -24,8 +24,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    <PackageReference Include="Polly-Signed" Version="5.8.0" />
-    <PackageReference Include="Xenolope.Extensions" Version="2.2.0" />
+    <PackageReference Include="Polly-Signed" Version="5.9.0" />
+    <PackageReference Include="Xenolope.Extensions" Version="2.3.0" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
     <Reference Include="System.Net.Http" />

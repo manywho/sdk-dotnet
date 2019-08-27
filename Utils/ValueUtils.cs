@@ -56,6 +56,40 @@ namespace ManyWho.Flow.SDK.Utils
             return contentValue;
         }
 
+        public static string GetContentValueTrimmed(string developerName, List<EngineValueAPI> engineValues, bool required)
+        {
+            string value = GetContentValue(developerName, engineValues, required);
+            
+            return value != null ? value.Trim() : null;
+        }
+
+        public static List<ObjectAPI> GetObjectData(string developerName, ObjectAPI objectData, bool required)
+        {
+            List<ObjectAPI> listData = null;
+
+            if (objectData != null &&
+                objectData.properties != null &&
+                objectData.properties.Count > 0)
+            {
+                foreach (PropertyAPI property in objectData.properties)
+                {
+                    if (property.developerName.Equals(developerName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        listData = property.objectData;
+                        break;
+                    }
+                }
+            }
+
+            if (required && 
+                (listData == null || listData.Count == 0))
+            {
+                throw new ArgumentException("listData", developerName + " cannot be null.");
+            }
+
+            return listData;
+        }
+
         public static ObjectAPI GetObjectData(string developerName, List<EngineValueAPI> engineValues, bool required)
         {
             ObjectAPI objectData = null;

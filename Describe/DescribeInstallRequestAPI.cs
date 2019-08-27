@@ -3,7 +3,7 @@ using ManyWho.Flow.SDK.Run;
 
 namespace ManyWho.Flow.SDK.Describe
 {
-    public class DescribeInstallRequestAPI
+    public class DescribeInstallRequestAPI : DescribeServiceRequestAPI
     {
         /// <summary>
         /// Configuration values provided by the end user to help the describe.
@@ -13,5 +13,6 @@ namespace ManyWho.Flow.SDK.Describe
             get;
             set;
         }
+        public string Version { get; set; }
     }
 }
