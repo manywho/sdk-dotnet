@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Flow;
 
@@ -19,14 +18,6 @@ namespace ManyWho.Flow.SDK.Run.Flow
 
         [DataMember]
         public Guid? MapElementId
-        {
-            get;
-            set;
-        }
-
-
-        [DataMember]
-        public ISet<Guid> ValueElementIds
         {
             get;
             set;
