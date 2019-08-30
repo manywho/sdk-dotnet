@@ -64,6 +64,13 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
             get;
             set;
         }
+        
+        [DataMember]
+        public string typeElementBindingDeveloperName 
+        { 
+            set; 
+            get; 
+        }
 
         [DataMember]
         public bool isSelected
