@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 /*!
 
@@ -267,6 +268,22 @@ namespace ManyWho.Flow.SDK
         /// {left} is empty or null. When this criteria type is used, it must be compared with a {right} that is a ContentBoolean.
         /// </summary>
         public const string CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_IS_EMPTY = "IS_EMPTY";
+
+        public static readonly IDictionary<string, string> CONTENT_VALUE_IMPLEMENTATION_CRITERIA_FRIENDLY_NAMES = new Dictionary<string, string>
+        {
+            { CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ALL_EQUAL, "All Equals" },
+            { CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ANY_EQUAL, "Any Equals" },
+            { CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_CONTAINS, "Contains" },
+            { CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_ENDS_WITH, "Ends With" },
+            { CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_EQUAL, "Equal To" },
+            { CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_GREATER_THAN, "Greater Than" },
+            { CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_GREATER_THAN_OR_EQUAL, "Greater Than or Equal To" },
+            { CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_IS_EMPTY, "Is Empty" },
+            { CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_LESS_THAN, "Less Than" },
+            { CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_LESS_THAN_OR_EQUAL, "Less Than or Equal To" },
+            { CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_NOT_EQUAL, "Not Equal To" },
+            { CONTENT_VALUE_IMPLEMENTATION_CRITERIA_TYPE_STARTS_WITH, "Starts With" }
+        };
 
         #endregion
 
