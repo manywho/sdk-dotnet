@@ -22,6 +22,16 @@ namespace ManyWho.Flow.SDK.Tenant
     public class DeleteRequestAPI
     {
         /// <summary>
+        /// Indicates if all non-default cultures should be deleted
+        /// </summary>
+        [DataMember]
+        public bool cultures
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Indicates if all flows should be deleted
         /// </summary>
         [DataMember]
