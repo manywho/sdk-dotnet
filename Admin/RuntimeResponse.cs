@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using ManyWho.Flow.SDK.Security;
+using ManyWho.Flow.SDK.Tenant;
 
 namespace ManyWho.Flow.SDK.Admin
 {
@@ -9,6 +11,24 @@ namespace ManyWho.Flow.SDK.Admin
         /// A unique identifier for the runtime
         /// </summary>
         public Guid Id
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// When the runtime was created
+        /// </summary>
+        public DateTimeOffset CreatedAt
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The user who created the runtime
+        /// </summary>
+        public BuilderWhoAPI CreatedBy
         {
             get;
             set;
