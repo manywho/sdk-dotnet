@@ -1,4 +1,4 @@
-ManyWho_Flow_SDK_CSharp
-=======================
+Boomi Flow .NET SDK
+===================
 
-The SDK for developing against the ManyWho platform APIs using C#
+The SDK for developing against the Boomi Flow platform APIs using .NET.

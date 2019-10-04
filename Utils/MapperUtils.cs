@@ -478,22 +478,32 @@ namespace ManyWho.Flow.SDK.Utils
                 type = type.GetTypeInfo().GenericTypeArguments.ElementAt(0);
             }
 
+            var idProperty = type.GetRuntimeProperties().FirstOrDefault(property => property.Name.EqualsIgnoreCase("id"));
+
             if (values != null)
             {
                 objectAPIs = new List<ObjectAPI>();
 
                 foreach (object objectEntry in values)
                 {
+                    string id;
+
                     if (objectEntry is ElementAPI)
                     {
                         // Assign the identifier property from the object
-                        objectAPIs.Add(Convert(type, ((ElementAPI)objectEntry).id, objectEntry, valueElementIdReferences));
+                        id = ((ElementAPI)objectEntry).id;
+                    }
+                    else if (idProperty != null)
+                    {
+                        id = System.Convert.ToString(idProperty.GetValue(objectEntry));
                     }
                     else
                     {
                         // Assign a random external identifier
-                        objectAPIs.Add(Convert(type, Fuid.NewGuid().ToString(), objectEntry, valueElementIdReferences));
+                        id = Fuid.NewGuid().ToString();
                     }
+
+                    objectAPIs.Add(Convert(type, id, objectEntry, valueElementIdReferences));
                 }
             }
 

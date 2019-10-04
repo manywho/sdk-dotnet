@@ -84,6 +84,13 @@ namespace ManyWho.Flow.SDK.Utils
             return contentValue;
         }
 
+        public static string GetContentValueTrimmed(string developerName, List<EngineValueAPI> engineValues, bool required)
+        {
+            string value = GetContentValue(developerName, engineValues, required);
+            
+            return value != null ? value.Trim() : null;
+        }
+
         public static List<ObjectAPI> GetObjectData(string developerName, ObjectAPI objectData, bool required)
         {
             List<ObjectAPI> listData = null;

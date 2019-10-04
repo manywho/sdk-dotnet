@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Run;
 using ManyWho.Flow.SDK.Translate;
+using Newtonsoft.Json;
 
 /*!
 
@@ -40,6 +41,39 @@ namespace ManyWho.Flow.SDK.Describe
         /// </summary>
         [DataMember]
         public string uri
+        {
+            get;
+            set;
+        }
+
+        [JsonIgnore]
+        public string UriTrimmed 
+        { 
+            get
+            {
+                return 
+                    string.IsNullOrEmpty(this.uri) ? 
+                        null : 
+                        this.uri.Trim();
+            }
+        }
+
+        [DataMember]
+        public string httpAuthenticationUsername
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string httpAuthenticationPassword
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string version
         {
             get;
             set;

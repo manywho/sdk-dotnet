@@ -21,7 +21,7 @@ permissions and limitations under the License.
 namespace ManyWho.Flow.SDK.Run.Elements.Type
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class ObjectAPI
+    public class ObjectAPI : IComparable<ObjectAPI>
     {
         [DataMember]
         public string internalId
@@ -64,12 +64,26 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
             get;
             set;
         }
+        
+        [DataMember]
+        public string typeElementBindingDeveloperName 
+        { 
+            set; 
+            get; 
+        }
 
         [DataMember]
         public bool isSelected
         {
             get;
             set;
+        }
+
+        public int CompareTo(ObjectAPI other)
+        {
+            return other == null
+                ? 0
+                : order.CompareTo(other.order);
         }
     }
 }
