@@ -466,6 +466,7 @@ namespace ManyWho.Flow.SDK
         public static readonly string MANYWHO_STATE_PROPERTY_CURRENT_MAP_ELEMENT_ID = "Current Map Element ID";
         public static readonly string MANYWHO_STATE_PROPERTY_CURRENT_MAP_ELEMENT_DEVELOPER_NAME = "Current Map Element Developer Name";
         public static readonly string MANYWHO_STATE_PROPERTY_JOIN_URI = "Join URI";
+        public static readonly string MANYWHO_STATE_PROPERTY_TENANT_ID = "Tenant ID";
 
         public static readonly Guid MANYWHO_STATE_TYPE_ELEMENT_ID = Guid.Parse("6F5844B9-B79F-49CE-BA65-843DC754D1B6");
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_ID = Guid.Parse("A4368EA1-F120-47A1-A67B-A8CE9452C127");
@@ -487,6 +488,7 @@ namespace ManyWho.Flow.SDK
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_CURRENT_MAP_ELEMENT_ID = Guid.Parse("81707A21-EDD7-48D5-AD80-FFCFA3471B6C");
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_CURRENT_MAP_ELEMENT_DEVELOPER_NAME = Guid.Parse("AE1EB1E1-1760-41EA-9A02-919781BFF313");
         public static readonly Guid MANYWHO_STATE_PROPERTY_ID_JOIN_URI = Guid.Parse("1A3B4FC9-912C-486E-A0FC-FF0D9F9796B7");
+        public static readonly Guid MANYWHO_STATE_PROPERTY_ID_TENANT_ID = Guid.Parse("247AEE82-B65F-43AF-B28D-29E2458EF1E4");
 
         #region Page Conditions
 
