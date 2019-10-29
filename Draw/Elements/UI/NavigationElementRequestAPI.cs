@@ -55,16 +55,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
-        /// The list of values to reset that are associated with this navigation.
-        /// </summary>
-        [DataMember]
-        public List<ValueToResetAPI> valuesToReset
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// Indicates if the platform should attempt to find a navigation with the same developer name as the one
         /// provided and match them up by name as opposed to by ID. This is useful when creating scripts to create
         /// flows, as you can use the <code>developerName</code> property as the reference as opposed to needing to know
