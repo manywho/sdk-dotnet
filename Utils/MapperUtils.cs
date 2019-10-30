@@ -619,24 +619,6 @@ namespace ManyWho.Flow.SDK.Utils
             return propertyAPI;
         }
 
-        private static PropertyAPI GetPropertyAPIFromComplexType(string externalId, object source, PropertyInfo propertyInfo, List<ValueElementIdReferenceAPI> valueElementIdReferences)
-        {
-            object propertyValue = propertyInfo.GetValue(source, null);
-            List<ObjectAPI> objectData = new List<ObjectAPI>();
-
-            if (propertyValue != null)
-            {
-                objectData.Add(Convert(source.GetType(), externalId, propertyValue, valueElementIdReferences));
-            }
-
-            return new PropertyAPI
-            {
-                developerName = GetCleanPropertyName(propertyInfo.Name),
-                objectData = objectData,
-                typeElementPropertyId = null
-            };
-        }
-
         private static TypeElementPropertyAPI GetTypeElementPropertyAPIFromType(Dictionary<string, TypeElementRequestAPI> typeElementRequestAPIs, PropertyInfo propertyInfo)
         {
             TypeElementPropertyAPI typeElementPropertyAPI = null;
