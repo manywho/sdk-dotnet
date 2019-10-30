@@ -26,17 +26,17 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// The reference to the Value that should be reset.
         /// </summary>
         [DataMember]
-        public Guid valueId
+        public Guid id
         {
             get;
             set;
         }
 
         /// <summary>
-        /// The mode for resetting the value e.g CLEAR or DEFAULTVALUE
+        /// The mode for resetting the value e.g CLEAR or DEFAULT_VALUE
         /// </summary>
         [DataMember]
-        public string valuesResetMode
+        public string resetType
         {
             get;
             set;
