@@ -4,6 +4,12 @@ namespace ManyWho.Flow.SDK.Package
 {
     public class PackageElements
     {
+        public IEnumerable<PackageElement> Flows
+        {
+            get;
+            set;
+        } = new List<PackageElement>();
+
         public IEnumerable<PackageElement> GroupElements
         {
             get;

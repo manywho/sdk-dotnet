@@ -25,16 +25,6 @@ namespace ManyWho.Flow.SDK.Utils
 {
     public class ErrorUtils
     {
-        public const string SETTING_SEND_ALERTS = "ManyWho.SendAlerts";
-        public const string SETTING_SEND_ALERT_FROM_EMAIL = "ManyWho.SendAlertFromEmail";
-        public const string SETTING_SENDGRID_SERVER_BASE_PATH = "ManyWho.SendGrid.ServerBasePath";
-        public const string SETTING_SENDGRID_USERNAME = "ManyWho.SendGrid.Username";
-        public const string SETTING_SENDGRID_PASSWORD = "ManyWho.SendGrid.Password";
-        public const string SETTING_SENDGRID_SMTP = "ManyWho.SendGrid.SMTP";
-
-        public const string ALERT_TYPE_FAULT = "Fault";
-        public const string ALERT_TYPE_WARNING = "Warning";
-
         private static string AggregateAndWriteErrorMessage(Exception exception, string message, bool includeTrace)
         {
             if (exception != null)
