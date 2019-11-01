@@ -23,5 +23,12 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             get;
             set;
         }
+
+        [DataMember]
+        public SubflowArgumentAPI[] arguments
+        {
+            get;
+            set;
+        } = new SubflowArgumentAPI[0];
     }
 }
