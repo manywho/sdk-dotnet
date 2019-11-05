@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Flow;
 
@@ -25,10 +26,10 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         [DataMember]
-        public SubflowArgumentAPI[] arguments
+        public List<SubflowArgumentAPI> arguments
         {
             get;
             set;
-        } = new SubflowArgumentAPI[0];
+        } = new List<SubflowArgumentAPI>();
     }
 }
