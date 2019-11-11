@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Flow;
 using ManyWho.Flow.SDK.Draw.Log;
+using ManyWho.Flow.SDK.Run.Flow;
 
 /*!
 
@@ -108,6 +109,13 @@ namespace ManyWho.Flow.SDK.Run.State
             get;
             set;
         }
+        
+        [DataMember]
+        public string currentRunningUserExternalId
+        {
+            get;
+            set;
+        }
 
         [DataMember]
         public string externalIdentifier
@@ -200,6 +208,13 @@ namespace ManyWho.Flow.SDK.Run.State
         public string storeId
         {
             get;
+            set;
+        }
+        
+        [DataMember]
+        public List<FlowStackFrameAPI> frames
+        {
+            get; 
             set;
         }
     }

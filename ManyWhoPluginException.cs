@@ -4,17 +4,8 @@ namespace ManyWho.Flow.SDK
 {
     public class ManyWhoPluginException : Exception
     {
-        public ManyWhoPluginException()
-        {
-        }
-
         public ManyWhoPluginException(string message)
             : base(message)
-        {
-        }
-
-        public ManyWhoPluginException(string message, Exception inner)
-            : base(message, inner)
         {
         }
 
