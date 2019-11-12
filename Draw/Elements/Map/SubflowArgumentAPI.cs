@@ -4,13 +4,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
 {
     public class SubflowArgumentAPI
     {
-        public ValueElementIdAPI formal
+        public ValueElementIdAPI valueElementInSubflowId
         {
             get;
             set;
         }
 
-        public ValueElementIdAPI actual
+        public ValueElementIdAPI valueElementToApplyId
         {
             get;
             set;
