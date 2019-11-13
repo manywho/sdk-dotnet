@@ -25,6 +25,9 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The list of arguments passed in a subflow call
+        /// </summary>
         [DataMember]
         public List<SubflowArgumentAPI> arguments
         {
