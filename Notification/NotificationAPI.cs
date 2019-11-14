@@ -3,8 +3,14 @@ using ManyWho.Flow.SDK.Tenant;
 
 namespace ManyWho.Flow.SDK.Notification
 {
-    public class NotificationAPI : NotificationUpdateAPI
+    public class NotificationAPI
     {
+        public Guid Id
+        {
+            get;
+            set;
+        }
+
         public TenantMinimalAPI Tenant
         {
             get;
@@ -36,6 +42,12 @@ namespace ManyWho.Flow.SDK.Notification
         }
 
         public DateTimeOffset CreatedAt
+        {
+            get;
+            set;
+        }
+
+        public Boolean IsRead
         {
             get;
             set;
