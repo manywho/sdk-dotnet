@@ -679,6 +679,7 @@ namespace ManyWho.Flow.SDK
         /// The Element is specifically a Value Element
         /// </summary>
         public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_VARIABLE = "VARIABLE";
+        public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_LITERAL = "LITERAL";
         public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_CONSTANT = "CONSTANT";
         public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_RESOURCE = "RESOURCE";
         public const string SHARED_ELEMENT_TYPE_IMPLEMENTATION_FUNCTION = "FUNCTION";
