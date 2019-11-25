@@ -912,6 +912,7 @@ namespace ManyWho.Flow.SDK
 
         // Guids for the reserved outcomes for faults and debug
         public static readonly Guid DEBUG_GUID = Guid.Parse("EE6C8827-11E2-486D-B5FA-4D1A0CBB77A3");
+        public static readonly Guid DEBUG2_GUID = Guid.Parse("119377D8-EE1D-B792-4A05-B2E5F344885C"); //Subflow map element is executed twice (when going into a subflow and when returning) so we need another debug outcome to know which execution it is
         public static readonly Guid FAULT_GUID = Guid.Parse("318B0F3A-A570-4C5D-835C-21C1EEB17787");
 
         // Outcomes with a fault
