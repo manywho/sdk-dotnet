@@ -42,6 +42,20 @@ namespace ManyWho.Flow.SDK.Run.State
             get;
             set;
         }
+        
+        [DataMember]
+        public Guid nextMapElementId
+        {
+            get;
+            set;
+        }
+        
+        [DataMember]
+        public Guid? authenticatingServiceElementId
+        {
+            get;
+            set;
+        }
 
         [DataMember]
         public DateTimeOffset dateCommitted
@@ -59,6 +73,13 @@ namespace ManyWho.Flow.SDK.Run.State
 
         [DataMember]
         public List<UserInteractionAPI> userInteractions
+        {
+            get;
+            set;
+        }
+        
+        [DataMember]
+        public Dictionary<string, UserVoteAPI> userVotes
         {
             get;
             set;

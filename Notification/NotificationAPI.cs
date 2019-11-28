@@ -3,14 +3,8 @@ using ManyWho.Flow.SDK.Tenant;
 
 namespace ManyWho.Flow.SDK.Notification
 {
-    public class NotificationAPI
+    public class NotificationAPI : NotificationUpdateAPI
     {
-        public Guid Id
-        {
-            get;
-            set;
-        }
-
         public TenantMinimalAPI Tenant
         {
             get;
