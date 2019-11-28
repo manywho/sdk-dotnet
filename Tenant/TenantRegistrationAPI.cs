@@ -14,15 +14,6 @@ namespace ManyWho.Flow.SDK.Tenant
         }
 
         /// <summary>
-        /// An optional, globally unique subdomain to reserve for this tenant
-        /// </summary>
-        public string subdomain
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// The notification to be sent to the user as part of the registration process.
         /// </summary>
         public NotificationRequestAPI notification
