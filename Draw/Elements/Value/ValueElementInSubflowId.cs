@@ -13,14 +13,14 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
 
         public ValueElementInSubflowIdAPI(Guid id)
         {
-            this.id = id.ToString();
+            this.id = id;
         }
         
         /// <summary>
         /// The unique identifier for the Value to be referenced with this identifier.
         /// </summary>
         [DataMember]
-        public string id
+        public Guid id
         {
             get;
             set;
