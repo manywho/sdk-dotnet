@@ -58,7 +58,7 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
-        public DateTimeOffset dateCommitted
+        public DateTimeOffset? dateCommitted
         {
             get;
             set;
