@@ -51,5 +51,29 @@ namespace ManyWho.Flow.SDK.Draw.Util
             get;
             set;
         }
+
+        public Guid DependsOnElementId
+        {
+            get;
+            set;
+        }
+
+        public string DependsOnElementType
+        {
+            get;
+            set;
+        }
+
+        public string DependsOnElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        public string DependsOnElementDeveloperSummary
+        {
+            get;
+            set;
+        }
     }
 }
