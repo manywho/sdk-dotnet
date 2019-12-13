@@ -1,20 +1,16 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Draw.Flow;
-using ManyWho.Flow.SDK.Run.State;
 
-namespace ManyWho.Flow.SDK.Run.Flow
+namespace ManyWho.Flow.SDK.Run
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class FlowStackFrameAPI
+    public class EngineFrameAPI
     {
-
         /// <summary>
         /// The id of the flow associated with this stack frame
         /// </summary>
         [DataMember]
-        public FlowIdAPI FlowId
+        public Guid FlowId
         {
             get;
             set;
@@ -41,36 +37,5 @@ namespace ManyWho.Flow.SDK.Run.Flow
             get;
             set;
         }
-
-        /// <summary>
-        /// This is our reference running user.  By default, the running user is the person who initializes the flow.  From then on,
-        /// the running user can be re-assigned as needed - but it is always a single user identity that is tagged as the running user.
-        /// </summary>
-        [DataMember]
-        public string RunningUserId
-        {
-            get;
-            set;
-        }
-        
-        /// <summary>
-        /// The state entry representing changes to the state that have been made since the last commit
-        /// </summary>
-        [DataMember]
-        public StateEntryAPI PrecommitStateEntry
-        {
-            get;
-            set;
-        }
-        
-        /// <summary>
-        /// The list of value elements that are associated with this frame
-        /// </summary>
-        [DataMember]
-        public List<StateValueAPI> Values
-        {
-            get;
-            set;
-        }
     }
-} 
+}
