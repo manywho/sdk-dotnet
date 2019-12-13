@@ -102,5 +102,15 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
             get;
             set;
         }
+
+         /// <summary>
+        /// The list of values to reset that are associated with this navigation.
+        /// </summary>
+        [DataMember]
+        public List<ValueToResetAPI> valuesToReset
+        {
+            get;
+            set;
+        }
     }
 }
