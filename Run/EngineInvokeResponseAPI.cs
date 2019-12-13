@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Run.Elements.Map;
 using ManyWho.Flow.SDK.Run.Elements.UI;
@@ -188,6 +187,16 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         }
+
+        /// <summary>
+        /// This property is populated is only in debug mode. It contains the list of current stack frames.
+        /// </summary>
+        [DataMember]
+        public List<EngineFrameAPI> frames
+        {
+            get; 
+            set;
+        }    
 
         /// <summary>
         /// The values mimic standard REST codes, but as a String. A "200" indicates the user is authenticated to execute the flow. A "401" indicates the user needs to login based on the authorization context information provided in the response.
