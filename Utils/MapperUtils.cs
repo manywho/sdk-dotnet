@@ -127,7 +127,7 @@ namespace ManyWho.Flow.SDK.Utils
                                                 }
                                             }
                                         }
-                                        else if (propertyInfo.PropertyType.Name.Equals(typeof(Guid?).Name, StringComparison.OrdinalIgnoreCase))
+                                        else if (propertyInfo.PropertyType.FullName.Equals(typeof(Guid?).FullName, StringComparison.OrdinalIgnoreCase))
                                         {
                                             if (string.IsNullOrWhiteSpace(propertyAPI.contentValue) == false)
                                             {
@@ -141,7 +141,8 @@ namespace ManyWho.Flow.SDK.Utils
                                                 }
                                             }
                                         }
-                                        else if (propertyInfo.PropertyType.Name.Equals(typeof(int).Name, StringComparison.OrdinalIgnoreCase))
+                                        else if (propertyInfo.PropertyType.Name.Equals(typeof(int).Name, StringComparison.OrdinalIgnoreCase)
+                                                 || propertyInfo.PropertyType.FullName.Equals(typeof(int?).FullName, StringComparison.OrdinalIgnoreCase))
                                         {
                                             if (string.IsNullOrWhiteSpace(propertyAPI.contentValue) == false)
                                             {
