@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 /*!
@@ -74,7 +73,7 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         /// The number of objects to retrieve in the list.
         /// </summary>
         [DataMember]
-        public int limit
+        public int? limit
         {
             get;
             set;

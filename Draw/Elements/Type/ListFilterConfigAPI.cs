@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Draw.Elements.Value;
 
@@ -68,7 +67,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Type
         /// The maximum number of results to return from the request.
         /// </summary>
         [DataMember]
-        public int limit
+        public int? limit
         {
             get;
             set;
