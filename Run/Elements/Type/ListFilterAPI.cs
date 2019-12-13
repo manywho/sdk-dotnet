@@ -91,6 +91,16 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
         }
 
         /// <summary>
+        /// An optional offset token, used for pagination by the service if required
+        /// </summary>
+        [DataMember]
+        public string offsetToken
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The search string that should be used in addition to any filter criteria.
         /// </summary>
         [DataMember]
