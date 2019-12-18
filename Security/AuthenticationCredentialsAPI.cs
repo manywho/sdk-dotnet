@@ -150,5 +150,15 @@ namespace ManyWho.Flow.SDK.Security
             get;
             set;
         }
+
+        /// <summary>
+        /// A one-time token used to generate a valid runtime token in a multi-legged authentication process
+        /// </summary>
+        [DataMember]
+        public string OneTimeToken
+        {
+            get;
+            set;
+        }
     }
 }
