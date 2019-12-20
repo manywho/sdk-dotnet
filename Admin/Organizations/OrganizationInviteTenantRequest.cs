@@ -1,6 +1,6 @@
 using System;
 
-namespace ManyWho.Flow.SDK.Admin.Organization
+namespace ManyWho.Flow.SDK.Admin.Organizations
 {
     public class OrganizationInviteTenantRequest
     {
