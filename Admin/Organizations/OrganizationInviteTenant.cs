@@ -18,6 +18,18 @@ namespace ManyWho.Flow.SDK.Admin.Organizations
             set;
         }
 
+        public BuilderWhoAPI CompletedBy
+        {
+            get;
+            set;
+        }
+
+        public DateTimeOffset? CompletedAt
+        {
+            get;
+            set;
+        }
+
         public BuilderWhoAPI InvitedBy
         {
             get;
