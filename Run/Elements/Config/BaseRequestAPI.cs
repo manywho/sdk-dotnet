@@ -66,6 +66,16 @@ namespace ManyWho.Flow.SDK.Run.Elements.Config
         }
 
         /// <summary>
+        /// The URI of the Flow platform that sent the request
+        /// </summary>
+        [DataMember]
+        public string platformUri
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The Culture of the user whose action generated the request to the Service.
         /// </summary>
         [DataMember]

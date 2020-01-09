@@ -8,7 +8,7 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         /// The reference to the value used in a subflow to refer to one of the pieces of data provided as input or output to the subflow
         /// The referenced value must be imported into the subflow and must have one of the following access types: INPUT, OUTPUT or INPUT_OUTPUT 
         /// </summary>
-        public ValueElementIdAPI valueElementInSubflowId
+        public ValueElementInSubflowIdAPI valueElementInSubflowId
         {
             get;
             set;
