@@ -74,18 +74,6 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         /// <summary>
-        /// Indicates that services may only be allowed to be installed and used based on the settings outlined 
-        /// in the `authorizedServiceRemoteSites` property. Setting this to `false` will not remove the existing Remote 
-        /// Site settings
-        /// </summary>
-        [DataMember]
-        public bool isServiceRestrictedByRemoteSites
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// A list of IP ranges that requests to the Admin API must originate from to gain access
         /// </summary>
         [DataMember]
@@ -120,17 +108,6 @@ namespace ManyWho.Flow.SDK.Security
         /// </summary>
         [DataMember]
         public List<IPRangeAPI> authorizedRunIPRanges
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// A list of remote site addresses that any services must adhere to if included in a flow. If a flow attempts 
-        /// to connect to a service not listed as a remote site, the request to the service will be denied
-        /// </summary>
-        [DataMember]
-        public List<RemoteSiteAPI> authorizedServiceRemoteSites
         {
             get;
             set;
