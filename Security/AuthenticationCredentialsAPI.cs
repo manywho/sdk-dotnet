@@ -134,6 +134,16 @@ namespace ManyWho.Flow.SDK.Security
             set;
         }
 
+        /// <summary>
+        /// The URI of the Flow platform that sent the request
+        /// </summary>
+        [DataMember]
+        public string platformUri
+        {
+            get;
+            set;
+        }
+
         [DataMember]
         public string tenantId
         {

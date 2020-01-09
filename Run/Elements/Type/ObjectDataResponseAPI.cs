@@ -53,6 +53,16 @@ namespace ManyWho.Flow.SDK.Run.Elements.Type
             get;
             set;
         }
+
+        /// <summary>
+        /// An optional offset token, sent by the service if required for pagination
+        /// </summary>
+        [DataMember]
+        public string offsetToken
+        {
+            get;
+            set;
+        }
         
         /// <summary>
         /// The unique ID of the state
