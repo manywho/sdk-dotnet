@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 /*!
 
@@ -974,5 +975,7 @@ namespace ManyWho.Flow.SDK
         
         public const string GEOLOCATION_CONTINENT_HTTP_HEADER = "X-ManyWho-GeoLocation-Continent";
         public const string GEOLOCATION_COUNTRY_HTTP_HEADER = "X-ManyWho-GeoLocation-Country";
+
+        public static readonly Regex TENANT_NAME_REGEX = new Regex("^[a-zA-Z0-9-]*$", RegexOptions.Compiled);
     }
 }
