@@ -73,6 +73,20 @@ namespace ManyWho.Flow.SDK.Describe
         }
 
         [DataMember]
+        public string HttpAuthenticationClientCertificate
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string HttpAuthenticationClientCertificatePassword
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public string version
         {
             get;
