@@ -1,4 +1,5 @@
 ﻿using System;
+using ManyWho.Flow.SDK.Admin.Organizations;
 
 namespace ManyWho.Flow.SDK.Tenant
 {
@@ -41,6 +42,15 @@ namespace ManyWho.Flow.SDK.Tenant
         }
 
         public UserTenantSettingsAPI Settings
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The organization this tenant belongs to, if any
+        /// </summary>
+        public OrganizationMinimal Organization
         {
             get;
             set;
