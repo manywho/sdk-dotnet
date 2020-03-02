@@ -34,16 +34,6 @@ namespace ManyWho.Flow.SDK.Tenant
         }
 
         /// <summary>
-        /// The unique developer name for the tenant. The developer name is related to the domain information provided in the builder username.
-        /// </summary>
-        [DataMember]
-        public string developerName
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// A timestamp of when the tenant should expire
         /// </summary>
         public DateTimeOffset? expiresAt

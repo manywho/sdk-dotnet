@@ -26,6 +26,16 @@ namespace ManyWho.Flow.SDK.Tenant
     public class TenantRequestAPI
     {
         /// <summary>
+        /// The unique developer name for the tenant. The developer name is related to the domain information provided in the builder username.
+        /// </summary>
+        [DataMember]
+        public string developerName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// A summary of the tenant. This is typically additional information that will help explain the purpose of the
         /// tenant
         /// </summary>
