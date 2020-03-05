@@ -107,5 +107,15 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         }
+
+        /// <summary>
+        /// The access type of the value
+        /// </summary>
+        [DataMember]
+        public string access
+        {
+            get;
+            set;
+        }
     }
 }
