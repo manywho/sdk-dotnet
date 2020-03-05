@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 /*!
 
@@ -692,6 +693,7 @@ namespace ManyWho.Flow.SDK
         public const string ACCESS_INPUT = "INPUT";
         public const string ACCESS_OUTPUT = "OUTPUT";
         public const string ACCESS_INPUT_OUTPUT = "INPUT_OUTPUT";
+        public const string ACCESS_PUBLIC = "PUBLIC";
 
         #region Component types for pages
 
