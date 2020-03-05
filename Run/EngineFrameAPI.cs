@@ -15,10 +15,20 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         }
-        
+
+        /// <summary>
+        /// The developer name of the flow associated with this stack frame
+        /// </summary>
+        [DataMember]
+        public string FlowDeveloperName
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// If this frame is the current frame, this property contains the id of the current map element.
-        /// If this frame refers to one of the parent frames, this property contains the id of a Subflow map element that was the entry point to the next frame. 
+        /// If this frame refers to one of the parent frames, this property contains the id of a Subflow map element that was the entry point to the next frame.
         /// </summary>
         [DataMember]
         public Guid? MapElementId
@@ -29,7 +39,7 @@ namespace ManyWho.Flow.SDK.Run
 
         /// <summary>
         /// If this frame is the current frame, this property contains the developer name of the current map element.
-        /// If this frame refers to one of the parent frames, this property contains the id of a Subflow map element that was the entry point to the next frame. 
+        /// If this frame refers to one of the parent frames, this property contains the id of a Subflow map element that was the entry point to the next frame.
         /// </summary>
         [DataMember]
         public string MapElementDeveloperName
