@@ -4,21 +4,12 @@ using ManyWho.Flow.SDK.Tenant;
 
 namespace ManyWho.Flow.SDK.Admin.Organizations
 {
-    public class OrganizationInviteTenant
+    public class OrganizationInvite
     {
         /// <summary>
         /// The organization that sent the invitation
         /// </summary>
         public OrganizationMinimal Organization
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// The tenant that is invited to join the organization
-        /// </summary>
-        public TenantMinimalAPI Tenant
         {
             get;
             set;
@@ -64,6 +55,33 @@ namespace ManyWho.Flow.SDK.Admin.Organizations
         /// The current status of the invitation. Can be one of "invited", "accepted" or "rejected".
         /// </summary>
         public string Status
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The tenant that is invited to join the organization, if this is a tenant invitation.
+        /// </summary>
+        public TenantMinimalAPI Tenant
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The type of invitation. Can be one of "tenant" or "user".
+        /// </summary>
+        public string Type
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The user that is invited to join the organization, if this is a user invitation.
+        /// </summary>
+        public BuilderWhoAPI User
         {
             get;
             set;

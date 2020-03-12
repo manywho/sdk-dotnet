@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ManyWho.Flow.SDK.Admin.Organizations;
 
 namespace ManyWho.Flow.SDK.Tenant
 {
@@ -42,6 +43,12 @@ namespace ManyWho.Flow.SDK.Tenant
         }
 
         public DateTimeOffset? CreatedAt
+        {
+            get;
+            set;
+        }
+
+        public IEnumerable<OrganizationMinimal> Organizations
         {
             get;
             set;
