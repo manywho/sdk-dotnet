@@ -37,6 +37,7 @@ namespace ManyWho.Flow.SDK.Tenant
         /// <summary>
         /// A timestamp of when the tenant should expire
         /// </summary>
+        [DataMember]
         public DateTimeOffset? expiresAt
         {
             get;
