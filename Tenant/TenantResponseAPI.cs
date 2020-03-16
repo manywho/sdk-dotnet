@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Admin.Organizations;
 
 /*!
 
@@ -36,6 +37,7 @@ namespace ManyWho.Flow.SDK.Tenant
         /// <summary>
         /// A timestamp of when the tenant should expire
         /// </summary>
+        [DataMember]
         public DateTimeOffset? expiresAt
         {
             get;
@@ -47,6 +49,16 @@ namespace ManyWho.Flow.SDK.Tenant
         /// </summary>
         [DataMember]
         public List<TenantResponseAPI> subTenants
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The organization this tenant belongs to, if any
+        /// </summary>
+        [DataMember]
+        public OrganizationMinimal Organization
         {
             get;
             set;
