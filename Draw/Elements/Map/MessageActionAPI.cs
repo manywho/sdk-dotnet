@@ -45,6 +45,16 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
+        /// The name of the service that this message action will be executed against.
+        /// </summary>
+        [DataMember]
+        public string serviceElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The unique URI part that should be used when invoking the service. The URI part will inform the service
         /// implementation which message action you are executing against.
         /// </summary>
