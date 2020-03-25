@@ -23,6 +23,12 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        public string ParentId
+        {
+            get;
+            set;
+        }
+
         public DateTimeOffset? ExpiresAt
         {
             get;
