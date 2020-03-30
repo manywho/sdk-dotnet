@@ -36,6 +36,13 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         }
 
         [DataMember]
+        public bool isEncrypted
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public bool isVersionless
         {
             get;
