@@ -182,6 +182,20 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Config
         }
 
         [DataMember]
+        public string HttpAuthenticationClientCertificateReference 
+        { 
+            get; 
+            set; 
+        }
+
+        [DataMember]
+        public string HttpAuthenticationClientCertificatePasswordReference 
+        { 
+            get; 
+            set; 
+        }
+
+        [DataMember]
         public string Version
         {
             get;
