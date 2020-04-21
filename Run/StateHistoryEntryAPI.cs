@@ -1,14 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace ManyWho.Flow.SDK.Run
 {
     [DataContract(Namespace = "http://www.manywho.com/api")]
-    public class RuntimePathElementAPI
+    public class StateHistoryEntryAPI
     {
-        /// <summary>
-        /// The ID of the Flow
-        /// </summary>
         [DataMember]
         public Guid flowId
         {
@@ -21,6 +19,16 @@ namespace ManyWho.Flow.SDK.Run
         /// </summary>
         [DataMember]
         public Guid mapElementId
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// The runtime path of the Map Element
+        /// </summary>
+        [DataMember]
+        public List<RuntimePathElementAPI> path
         {
             get;
             set;
