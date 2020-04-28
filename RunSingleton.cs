@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Net.Http.Headers;
 using ManyWho.Flow.SDK.Errors;
 using ManyWho.Flow.SDK.Run;

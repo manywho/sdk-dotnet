@@ -14,7 +14,6 @@ permissions and limitations under the License.
 
 */
 
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace ManyWho.Flow.SDK.Restrictions

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ManyWho.Flow.SDK.Notification
+﻿namespace ManyWho.Flow.SDK.Notification
 {
     public interface INotificationMessage
     {
