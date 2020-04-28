@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 /*!
@@ -44,7 +43,8 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
         }
 
         /// <summary>
-        /// The list of child comparisons that need to be evaluated for this outcome to be selected. The comparison object is recursive allowing rules to be nested: e.g. ({a} > {b} OR {c} <= {d}) AND {b} == {f}
+        /// The list of child comparisons that need to be evaluated for this outcome to be selected. The comparison
+        /// object is recursive allowing rules to be nested: e.g. ({a} > {b} OR {c} <![CDATA[<=]]> {d}) AND {b} == {f}
         /// </summary>
         [DataMember]
         public List<ComparisonAPI> comparisons
