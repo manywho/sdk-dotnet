@@ -84,5 +84,16 @@ namespace ManyWho.Flow.SDK.Run.State
             get;
             set;
         }
+
+        /// <summary>
+        /// It contains info about the list of stack frames valid for this state entry
+        /// The last stack frame has MapElementId == null (to avoid redundancy) as this data can be taken from MapElementId
+        /// </summary>
+        [DataMember]
+        public List<StackFrameInfoAPI> frames
+        {
+            get;
+            set;
+        }
     }
 }
