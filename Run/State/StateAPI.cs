@@ -217,5 +217,13 @@ namespace ManyWho.Flow.SDK.Run.State
             get; 
             set;
         }
+
+        [DataMember]
+        public List<ArchivedStackFrameAPI> archivedFrames
+        {
+            get;
+            set;
+        }
+        
     }
 }
