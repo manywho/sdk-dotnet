@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Restrictions;
 using ManyWho.Flow.SDK.Security;
 
 /*!
@@ -114,6 +115,16 @@ namespace ManyWho.Flow.SDK.Draw.Flow
         /// </summary>
         [DataMember]
         public string comment
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// Specifies geographical restrictions for this flow
+        /// </summary>
+        [DataMember]
+        public FlowRestrictionsAPI restrictions
         {
             get;
             set;
