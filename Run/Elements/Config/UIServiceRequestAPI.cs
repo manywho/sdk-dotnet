@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Run.Elements.UI;
 
 /*!

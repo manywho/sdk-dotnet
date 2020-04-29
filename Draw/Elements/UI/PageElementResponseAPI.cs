@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using ManyWho.Flow.SDK.Security;
 
 /*!
 
@@ -38,36 +37,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         /// </summary>
         [DataMember]
         public DateTimeOffset dateModified
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// The builder who created the Page Element.
-        /// </summary>
-        [DataMember]
-        public BuilderWhoAPI whoCreated
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// The builder who last modified the Page Element.
-        /// </summary>
-        [DataMember]
-        public BuilderWhoAPI whoModified
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// The builder who owns this Page Element.
-        /// </summary>
-        [DataMember]
-        public BuilderWhoAPI whoOwner
         {
             get;
             set;
