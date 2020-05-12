@@ -244,5 +244,15 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         } = new List<NavigationElementReferenceAPI>();
+
+        /// <summary>
+        /// Test
+        /// </summary>
+        [DataMember]
+        public bool isHistoricalNavigationEnabled
+        {
+            get;
+            set;
+        }
     }
 }

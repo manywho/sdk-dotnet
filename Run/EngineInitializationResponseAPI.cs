@@ -103,5 +103,15 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         }
+
+        /// <summary>
+        /// Test
+        /// </summary>
+        [DataMember]
+        public bool isHistoricalNavigationEnabled
+        {
+            get;
+            set;
+        }
     }
 }
