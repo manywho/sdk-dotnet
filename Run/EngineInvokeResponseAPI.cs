@@ -246,7 +246,7 @@ namespace ManyWho.Flow.SDK.Run
         } = new List<NavigationElementReferenceAPI>();
 
         /// <summary>
-        /// Test
+        /// Indicates whether both the UI and api for historical navigation has been enabled/disabled.
         /// </summary>
         [DataMember]
         public bool isHistoricalNavigationEnabled
