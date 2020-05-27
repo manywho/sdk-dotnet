@@ -103,5 +103,15 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         }
+
+        /// <summary>
+        /// Indicates whether both the UI and api for historical navigation has been enabled/disabled.
+        /// </summary>
+        [DataMember]
+        public bool isHistoricalNavigationEnabled
+        {
+            get;
+            set;
+        }
     }
 }
