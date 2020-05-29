@@ -48,23 +48,23 @@ namespace ManyWho.Flow.SDK.Utils
             parameters = token.Split('&');
 
             // Grab the parameters for each of the properties from the array
-            manywhoTenantIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID, StringComparison.OrdinalIgnoreCase));
-            manywhoUserIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID, StringComparison.OrdinalIgnoreCase));
-            manywhoTokenParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN, StringComparison.OrdinalIgnoreCase));
-            directoryIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID, StringComparison.OrdinalIgnoreCase));
-            directoryNameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME, StringComparison.OrdinalIgnoreCase));
-            roleIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_ROLE_ID, StringComparison.OrdinalIgnoreCase));
-            roleNameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_ROLE_NAME, StringComparison.OrdinalIgnoreCase));
-            primaryGroupIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_ID, StringComparison.OrdinalIgnoreCase));
-            primaryGroupNameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_NAME, StringComparison.OrdinalIgnoreCase));
-            emailParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_EMAIL, StringComparison.OrdinalIgnoreCase));
-            identityProviderParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER, StringComparison.OrdinalIgnoreCase));
-            tenantNameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_TENANT_NAME, StringComparison.OrdinalIgnoreCase));
-            tokenParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_TOKEN, StringComparison.OrdinalIgnoreCase));
-            userIdParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_USER_ID, StringComparison.OrdinalIgnoreCase));
-            usernameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_USERNAME, StringComparison.OrdinalIgnoreCase));
-            firstNameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_FIRST_NAME, StringComparison.OrdinalIgnoreCase));
-            lastNameParameter = parameters.Single(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_LAST_NAME, StringComparison.OrdinalIgnoreCase));
+            manywhoTenantIdParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID, StringComparison.OrdinalIgnoreCase));
+            manywhoUserIdParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID, StringComparison.OrdinalIgnoreCase));
+            manywhoTokenParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN, StringComparison.OrdinalIgnoreCase));
+            directoryIdParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID, StringComparison.OrdinalIgnoreCase));
+            directoryNameParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_NAME, StringComparison.OrdinalIgnoreCase));
+            roleIdParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_ROLE_ID, StringComparison.OrdinalIgnoreCase));
+            roleNameParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_ROLE_NAME, StringComparison.OrdinalIgnoreCase));
+            primaryGroupIdParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_ID, StringComparison.OrdinalIgnoreCase));
+            primaryGroupNameParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_PRIMARY_GROUP_NAME, StringComparison.OrdinalIgnoreCase));
+            emailParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_EMAIL, StringComparison.OrdinalIgnoreCase));
+            identityProviderParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_IDENTITY_PROVIDER, StringComparison.OrdinalIgnoreCase));
+            tenantNameParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_TENANT_NAME, StringComparison.OrdinalIgnoreCase));
+            tokenParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_TOKEN, StringComparison.OrdinalIgnoreCase));
+            userIdParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_USER_ID, StringComparison.OrdinalIgnoreCase));
+            usernameParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_USERNAME, StringComparison.OrdinalIgnoreCase));
+            firstNameParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_FIRST_NAME, StringComparison.OrdinalIgnoreCase));
+            lastNameParameter = parameters.SingleOrDefault(value => value.StartsWith(ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_LAST_NAME, StringComparison.OrdinalIgnoreCase));
 
             // Check to make sure we have all of the parameters
             Validation.Instance.IsNotNullOrWhiteSpace(manywhoTenantIdParameter, "ManyWhoTenantId", "Missing parameter: " + ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID)
