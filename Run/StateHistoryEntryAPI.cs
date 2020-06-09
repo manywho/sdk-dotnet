@@ -23,6 +23,17 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         }
+
+
+        /// <summary>
+        /// The name of the Map Element
+        /// </summary>
+        [DataMember]
+        public String mapElementName
+        {
+            get;
+            set;
+        }
         
         /// <summary>
         /// The runtime path of the Map Element
