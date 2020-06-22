@@ -34,15 +34,5 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         }
-        
-        /// <summary>
-        /// The runtime path of the Map Element
-        /// </summary>
-        [DataMember]
-        public List<RuntimePathElementAPI> path
-        {
-            get;
-            set;
-        }
     }
 }
