@@ -24,12 +24,21 @@ namespace ManyWho.Flow.SDK.Run
             set;
         }
 
-
         /// <summary>
         /// The name of the Map Element
         /// </summary>
         [DataMember]
         public String mapElementName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The id of the corresponding State Entry
+        /// </summary>
+        [DataMember]
+        public Guid stateEntryId
         {
             get;
             set;
