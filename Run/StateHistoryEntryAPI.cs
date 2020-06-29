@@ -24,7 +24,6 @@ namespace ManyWho.Flow.SDK.Run
             set;
         }
 
-
         /// <summary>
         /// The name of the Map Element
         /// </summary>
@@ -34,12 +33,12 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         }
-        
+
         /// <summary>
-        /// The runtime path of the Map Element
+        /// The id of the corresponding State Entry
         /// </summary>
         [DataMember]
-        public List<RuntimePathElementAPI> path
+        public Guid stateEntryId
         {
             get;
             set;

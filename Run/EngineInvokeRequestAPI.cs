@@ -97,11 +97,12 @@ namespace ManyWho.Flow.SDK.Run
         
         /// <summary>
         /// When executing a Flow that has the allowJumping property set to 'true', the user can move to any Map Element regardless of navigation or outcomes.
-        /// This is the runtime path of the Map Element the user wishes to navigate to and must be used with an InvokeType of 'NAVIGATE'.
-        /// This is an alternative to using 'selectedMapElementId' with an added capability to navigate between different flows. 
+        /// This is the Id of the State Entry that the user wishes to navigate to and must be used with an InvokeType of 'NAVIGATE'.
+        /// The engine will calculate the Map Element from the previous State Entry and execute a jump to it.
+        /// This is an alternative to using 'selectedMapElementId' jumping, with this method offering an added capability to navigate between different flows. 
         /// </summary>
         [DataMember]
-        public List<RuntimePathElementAPI> selectedMapElementPath
+        public string selectedStateEntryId
         {
             get;
             set;
