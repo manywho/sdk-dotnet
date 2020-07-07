@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Security;
 
 /*!
 
@@ -37,6 +38,36 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Value
         /// </summary>
         [DataMember]
         public DateTimeOffset dateModified
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The builder user who created the Macro.
+        /// </summary>
+        [DataMember]
+        public BuilderWhoAPI whoCreated
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The builder user who last modified the Macro.
+        /// </summary>
+        [DataMember]
+        public BuilderWhoAPI whoModified
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The builder user who owns this Macro.
+        /// </summary>
+        [DataMember]
+        public BuilderWhoAPI whoOwner
         {
             get;
             set;
