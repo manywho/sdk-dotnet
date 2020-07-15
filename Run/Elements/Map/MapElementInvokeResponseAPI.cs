@@ -44,6 +44,16 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         }
 
         /// <summary>
+        /// The translatable label for the map element this response pertains to.
+        /// </summary>
+        [DataMember]
+        public string label
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// The meta data object for the page. This object should be used to generate the UI that will be presented to the user. If the map element invoke response contains a pageResponse object, then the engine is expecting the user to take action to progress the state of the flow.
         /// </summary>
         [DataMember]
