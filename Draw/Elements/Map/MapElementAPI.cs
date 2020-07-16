@@ -79,8 +79,11 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             set;
         }
 
+        /// <summary>
+        /// The translatable name for the map element
+        /// </summary>
         [DataMember]
-        public string breadcrumbLabel
+        public string label
         {
             get;
             set;

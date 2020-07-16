@@ -51,7 +51,7 @@ namespace ManyWho.Flow.SDK.Translate.Elements.Map
         }
 
         [DataMember]
-        public string breadcrumbLabelContentValueId
+        public string labelContentValueId
         {
             get;
             set;
