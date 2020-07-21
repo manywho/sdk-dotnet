@@ -25,15 +25,6 @@ namespace ManyWho.Flow.SDK.Security
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class SecuritySettingsAPI
     {
-        // Indicates that redirect_uris generated for redirect based authentication services should be based upon the incoming host information (i.e regional domains)
-        // and not static platform configuration
-        [DataMember]
-        public bool authRedirectToRegionalInstance
-        {
-            get;
-            set;
-        }
-
         /// <summary>
         /// Indicates that the Admin APIs should be protected by the provided IP ranges in `authorizedAdminIPRanges`.
         /// Setting this to `false` will not remove the list of IP Range entries and will simply disable IP range 
