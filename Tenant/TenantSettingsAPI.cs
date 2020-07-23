@@ -35,5 +35,11 @@ namespace ManyWho.Flow.SDK.Tenant
             get;
             set;
         }
+        
+        public bool UseRegionalRedirectUris 
+        { 
+            get; 
+            set; 
+        }
     }
 }
