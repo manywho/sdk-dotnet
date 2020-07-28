@@ -17,13 +17,13 @@ namespace ManyWho.Flow.SDK.Admin
         /// <summary>
         /// Any tenants to associate with the runtime
         /// </summary>
-        public List<Tenant> Tenants
+        public List<RuntimeUpdateRequestTenant> Tenants
         {
             get;
             set;
-        } = new List<Tenant>();
+        } = new List<RuntimeUpdateRequestTenant>();
 
-        public class Tenant
+        public class RuntimeUpdateRequestTenant
         {
             /// <summary>
             /// The unique identifier for the tenant
