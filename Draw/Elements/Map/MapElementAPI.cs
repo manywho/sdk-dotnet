@@ -78,5 +78,6 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             get;
             set;
         }
+
     }
 }

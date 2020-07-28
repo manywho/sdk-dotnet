@@ -51,6 +51,13 @@ namespace ManyWho.Flow.SDK.Translate.Elements.Map
         }
 
         [DataMember]
+        public string labelContentValueId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public List<OutcomeTranslationResponseAPI> outcomes
         {
             get;

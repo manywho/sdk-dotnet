@@ -45,5 +45,15 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             get; 
             set;
         }
+        
+        /// <summary>
+        /// Indicates if on jumping specified by the selectedMapElementPath property (so called "long jump"), the Engine should return value elements to the parent
+        /// </summary>
+        [DataMember]
+        public bool? returnValuesOnJump
+        {
+            get; 
+            set;
+        }
     }
 }

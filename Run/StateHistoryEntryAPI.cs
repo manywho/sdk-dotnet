@@ -23,12 +23,22 @@ namespace ManyWho.Flow.SDK.Run
             get;
             set;
         }
-        
+
         /// <summary>
-        /// The runtime path of the Map Element
+        /// The name of the Map Element
         /// </summary>
         [DataMember]
-        public List<RuntimePathElementAPI> path
+        public String mapElementName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The id of the corresponding State Entry
+        /// </summary>
+        [DataMember]
+        public Guid stateEntryId
         {
             get;
             set;

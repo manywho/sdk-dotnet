@@ -74,7 +74,7 @@ namespace ManyWho.Flow.SDK.Utils
         {
             if (!string.IsNullOrWhiteSpace(value))
             {
-                if (!string.IsNullOrWhiteSpace(message))
+                if (string.IsNullOrWhiteSpace(message))
                 {
                     message = name + " must be null or whitespace";
                 }
