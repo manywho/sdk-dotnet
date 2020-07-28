@@ -94,6 +94,17 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        /// <summary>
+        /// Indicates that the builder of the flow wants to enable/disable both the UI and api for historical navigation.
+        /// </summary>
+        [DataMember]
+        public bool enableHistoricalNavigation
+        {
+            get;
+            set;
+        }
+
+
         [DataMember]
         public int stateExpirationLength
         {
