@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Run.Elements.Type;
 
 /*!
 
@@ -28,6 +29,17 @@ namespace ManyWho.Flow.SDK.Translate
         /// </summary>
         [DataMember]
         public Dictionary<string, string> contentValues
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The set of object data translations for a particular element. The key of the content value is the identifier for the
+        /// property in the element.
+        /// </summary>
+        [DataMember]
+        public Dictionary<string, List<ObjectAPI>> objectData
         {
             get;
             set;
