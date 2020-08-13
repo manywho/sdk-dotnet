@@ -24,6 +24,24 @@ namespace ManyWho.Flow.SDK.Draw.Flow
                 get;
                 set;
             }
+
+            /**
+             * Whether the snapshot should be marked as active in this runtime
+             */
+            public bool IsActive
+            {
+                get;
+                set;
+            }
+
+            /**
+             * Whether the snapshot should be marked as the active one in this runtime
+             */
+            public bool IsDefault
+            {
+                get;
+                set;
+            }
         }
     }
 }
