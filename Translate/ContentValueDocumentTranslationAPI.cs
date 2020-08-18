@@ -35,7 +35,7 @@ namespace ManyWho.Flow.SDK.Translate
         }
 
         /// <summary>
-        /// The set of object data translations for a particular element. The key of the content value is the identifier for the
+        /// The set of object data translations for a particular element. The key of the object data is the identifier for the
         /// property in the element.
         /// </summary>
         [DataMember]
