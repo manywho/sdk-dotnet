@@ -9,18 +9,9 @@ namespace ManyWho.Flow.SDK.Admin
     public class RuntimeNode
     {
         /// <summary>
-        /// A unique identifier for the node
+        /// The hostname for the node
         /// </summary>
-        public Guid Id
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// An identifying name for the node
-        /// </summary>
-        public string DeveloperName
+        public string Hostname
         {
             get;
             set;
@@ -35,11 +26,29 @@ namespace ManyWho.Flow.SDK.Admin
             get;
             set;
         }
+        
+        /// <summary>
+        /// Timestamp of when the node was first created
+        /// </summary>
+        public DateTimeOffset CreatedAt
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Timestamp of the last report received from this node
         /// </summary>
         public DateTimeOffset ReportedAt
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// The node's current role
+        /// </summary>
+        public string Role
         {
             get;
             set;
