@@ -44,18 +44,10 @@ namespace ManyWho.Flow.SDK.Admin
             get;
             set;
         }
-        
-        /// <summary>
-        /// The node's current role
-        /// </summary>
-        public string Role
-        {
-            get;
-            set;
-        }
 
         /// <summary>
-        /// The current status of the node, determined by the last time a report was received from it
+        /// The current status of the node, determined by either the runtime, or the last time a report was received
+        /// from it
         /// </summary>
         public RuntimeStatus Status
         {
