@@ -975,5 +975,7 @@ namespace ManyWho.Flow.SDK
         
         public const string GEOLOCATION_CONTINENT_HTTP_HEADER = "X-ManyWho-GeoLocation-Continent";
         public const string GEOLOCATION_COUNTRY_HTTP_HEADER = "X-ManyWho-GeoLocation-Country";
+
+        public static readonly HashSet<string> GEOLOCATION_CONTINENTS = new HashSet<string> {"AF", "AN", "AS", "EU", "NA", "OC", "SA" };
     }
 }
