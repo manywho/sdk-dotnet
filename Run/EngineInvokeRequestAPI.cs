@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Run.Elements.Map;
 using ManyWho.Flow.SDK.Run.State;
@@ -91,6 +90,19 @@ namespace ManyWho.Flow.SDK.Run
         /// </summary>
         [DataMember]
         public string selectedMapElementId
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// When executing a Flow that has the allowJumping property set to 'true', the user can move to any Map Element regardless of navigation or outcomes.
+        /// This is the Id of the State Entry that the user wishes to navigate to and must be used with an InvokeType of 'NAVIGATE'.
+        /// The engine will calculate the Map Element from the previous State Entry and execute a jump to it.
+        /// This is an alternative to using 'selectedMapElementId' jumping, with this method offering an added capability to navigate between different flows. 
+        /// </summary>
+        [DataMember]
+        public string selectedStateEntryId
         {
             get;
             set;

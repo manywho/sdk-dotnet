@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Run.Elements.UI;
 using ManyWho.Flow.SDK.Translate;
@@ -100,6 +99,16 @@ namespace ManyWho.Flow.SDK.Run
         /// </summary>
         [DataMember]
         public List<NavigationElementReferenceAPI> navigationElementReferences
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Indicates whether both the UI and api for historical navigation has been enabled/disabled.
+        /// </summary>
+        [DataMember]
+        public bool isHistoricalNavigationEnabled
         {
             get;
             set;

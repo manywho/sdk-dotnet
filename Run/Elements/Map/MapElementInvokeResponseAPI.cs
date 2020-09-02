@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Run.Elements.UI;
 
@@ -39,6 +38,16 @@ namespace ManyWho.Flow.SDK.Run.Elements.Map
         /// </summary>
         [DataMember]
         public string developerName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The translatable label for the map element this response pertains to.
+        /// </summary>
+        [DataMember]
+        public string label
         {
             get;
             set;

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 /*!
@@ -46,6 +45,13 @@ namespace ManyWho.Flow.SDK.Translate.Elements.Map
 
         [DataMember]
         public string notAuthorizedMessageContentValueId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string labelContentValueId
         {
             get;
             set;

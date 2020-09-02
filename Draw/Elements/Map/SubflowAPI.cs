@@ -34,5 +34,26 @@ namespace ManyWho.Flow.SDK.Draw.Elements.Map
             get;
             set;
         } = new List<SubflowArgumentAPI>();
+
+        /// <summary>
+        /// Indicates if on jumping specified by the selectedMapElementPath property (so called "long jump"), the Engine should restore value elements from the archived frame
+        /// when invoking this Subflow map element for the second (or more) time
+        /// </summary>
+        [DataMember]
+        public bool? restoreValuesOnJump
+        {
+            get; 
+            set;
+        }
+        
+        /// <summary>
+        /// Indicates if on jumping specified by the selectedMapElementPath property (so called "long jump"), the Engine should return value elements to the parent
+        /// </summary>
+        [DataMember]
+        public bool? returnValuesOnJump
+        {
+            get; 
+            set;
+        }
     }
 }
