@@ -975,5 +975,8 @@ namespace ManyWho.Flow.SDK
         
         public const string GEOLOCATION_CONTINENT_HTTP_HEADER = "X-ManyWho-GeoLocation-Continent";
         public const string GEOLOCATION_COUNTRY_HTTP_HEADER = "X-ManyWho-GeoLocation-Country";
+
+        // These are the standard GeoIP continent codes denoting the 7 large landmasses used for geolocation
+        public static readonly HashSet<string> GEOLOCATION_CONTINENTS = new HashSet<string> { "AF", "AN", "AS", "EU", "NA", "OC", "SA" };
     }
 }
