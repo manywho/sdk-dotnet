@@ -19,5 +19,14 @@ namespace ManyWho.Flow.SDK.Security
             get;
             set;
         }
+        
+        /// <summary>
+        /// The URI to redirect users to, in order for them to logout of the IdP.
+        /// </summary>
+        public string LogoutUri
+        {
+            get;
+            set;
+        }
     }
 }
