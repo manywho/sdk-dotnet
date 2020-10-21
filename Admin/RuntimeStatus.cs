@@ -14,9 +14,21 @@ namespace ManyWho.Flow.SDK.Admin
         Unknown = 0,
 
         /// <summary>
-        /// The runtime or node is currently healthy
+        /// The runtime or node is currently the leader
         /// </summary>
-        [EnumMember(Value = "healthy")]
-        Healthy
+        [EnumMember(Value = "leader")]
+        Leader,
+
+        /// <summary>
+        /// The runtime or node is currently online
+        /// </summary>
+        [EnumMember(Value = "online")]
+        Online,
+
+        /// <summary>
+        /// The runtime or node is currently offline
+        /// </summary>
+        [EnumMember(Value = "offline")]
+        Offline
     }
 }

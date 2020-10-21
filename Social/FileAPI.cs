@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 /*!
 
@@ -22,7 +23,7 @@ namespace ManyWho.Flow.SDK.Social
     public class FileAPI
     {
         [DataMember]
-        public string id
+        public Guid id
         { 
             get; 
             set; 

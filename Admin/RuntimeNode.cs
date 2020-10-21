@@ -9,18 +9,9 @@ namespace ManyWho.Flow.SDK.Admin
     public class RuntimeNode
     {
         /// <summary>
-        /// A unique identifier for the node
+        /// The hostname for the node
         /// </summary>
-        public Guid Id
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// An identifying name for the node
-        /// </summary>
-        public string DeveloperName
+        public string Hostname
         {
             get;
             set;
@@ -31,6 +22,15 @@ namespace ManyWho.Flow.SDK.Admin
         /// </summary>
         [JsonProperty(ItemConverterType = typeof(IPAddressConverter))]
         public IEnumerable<IPAddress> IpAddresses
+        {
+            get;
+            set;
+        }
+        
+        /// <summary>
+        /// Timestamp of when the node was first created
+        /// </summary>
+        public DateTimeOffset CreatedAt
         {
             get;
             set;
@@ -46,9 +46,19 @@ namespace ManyWho.Flow.SDK.Admin
         }
 
         /// <summary>
-        /// The current status of the node, determined by the last time a report was received from it
+        /// The current status of the node, determined by either the runtime, or the last time a report was received
+        /// from it
         /// </summary>
         public RuntimeStatus Status
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The version of the runtime the node is currently running
+        /// </summary>
+        public string Version
         {
             get;
             set;
