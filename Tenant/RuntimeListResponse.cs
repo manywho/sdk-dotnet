@@ -2,7 +2,7 @@ using System;
 
 namespace ManyWho.Flow.SDK.Tenant
 {
-    public class RuntimeListResponse
+    public class TenantRuntimeListResponse
     {
         /// <summary>
         /// A unique identifier for the runtime
