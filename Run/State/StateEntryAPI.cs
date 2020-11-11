@@ -95,6 +95,5 @@ namespace ManyWho.Flow.SDK.Run.State
             get;
             set;
         }
-        public Guid? chosenOutcomeId { get; set; }
     }
 }

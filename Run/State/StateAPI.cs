@@ -27,10 +27,6 @@ namespace ManyWho.Flow.SDK.Run.State
     public class StateAPI
     {
         [DataMember]
-        public string chosenOutcomeId;
-        public string entryOutcomeId;
-
-        [DataMember]
         public string id
         {
             get;
@@ -88,6 +84,13 @@ namespace ManyWho.Flow.SDK.Run.State
 
         [DataMember]
         public string currentMapElementDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string entryOutcomeId
         {
             get;
             set;
