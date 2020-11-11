@@ -27,6 +27,10 @@ namespace ManyWho.Flow.SDK.Run.State
     public class StateAPI
     {
         [DataMember]
+        public string chosenOutcomeId;
+        public string entryOutcomeId;
+
+        [DataMember]
         public string id
         {
             get;
