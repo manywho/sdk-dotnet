@@ -69,9 +69,9 @@ namespace ManyWho.Flow.SDK.Admin
         }
         
         /// <summary>
-        /// The version of the runtime the node is currently running.
+        /// The latest version of the runtime the node is currently running.
         /// </summary>
-        public string Version
+        public string LatestVersion
         {
             get;
             set;
