@@ -97,6 +97,13 @@ namespace ManyWho.Flow.SDK.Run.State
         }
 
         [DataMember]
+        public string entryOutcomeDeveloperName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public string currentStreamId
         {
             get;
