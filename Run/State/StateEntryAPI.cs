@@ -64,14 +64,14 @@ namespace ManyWho.Flow.SDK.Run.State
             set;
         }
         [DataMember]
-        public string entryOutcomeId
+        public string chosenOutcomeId
         {
             get;
             set;
         }
 
         [DataMember]
-        public string entryOutcomeDeveloperName
+        public string chosenOutcomeDeveloperName
         {
             get;
             set;
