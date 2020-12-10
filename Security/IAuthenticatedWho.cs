@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 /*!
 
@@ -151,6 +152,15 @@ namespace ManyWho.Flow.SDK.Security
         /// The unique identifier for the primary group for which this user is a member.
         /// </summary>
         string PrimaryGroupId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// The groups for which this user is a member.
+        /// </summary>
+        IList<IGroup> Groups
         {
             get;
             set;
