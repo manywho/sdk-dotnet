@@ -81,6 +81,16 @@ namespace ManyWho.Flow.SDK.Draw.Elements.UI
         }
 
         /// <summary>
+        /// Indicates if page components that are not visible should still save their input to state
+        /// </summary>
+        [DataMember]
+        public bool saveHiddenInputs
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Key value pairs that provide additional information for the page layout to be rendered. Builders should
         /// refer to the documentation of the UI code being used.
         /// </summary>
