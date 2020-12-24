@@ -83,7 +83,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             get;
             set;
         }
-        
+
         /// <summary>
         /// Indicates that the builder of the flow will allow users to jump to any position in the Flow regardless of outcomes and/or navigation.
         /// </summary>
@@ -112,6 +112,13 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             set;
         }
 
+        [DataMember]
+        public int idleStateExpirationLength
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// The configuration of the authorization context for this flow.
         /// </summary>
@@ -121,7 +128,7 @@ namespace ManyWho.Flow.SDK.Draw.Flow
             get;
             set;
         }
-        
+
         /// <summary>
         /// Specifies geographical restrictions for this flow
         /// </summary>
