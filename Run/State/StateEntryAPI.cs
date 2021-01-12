@@ -63,6 +63,19 @@ namespace ManyWho.Flow.SDK.Run.State
             get;
             set;
         }
+        [DataMember]
+        public string chosenOutcomeId
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string chosenOutcomeDeveloperName
+        {
+            get;
+            set;
+        }
 
         [DataMember]
         public List<StateValueAPI> values
