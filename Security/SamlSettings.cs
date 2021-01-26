@@ -23,15 +23,15 @@ namespace ManyWho.Flow.SDK.Security
         }
     }
 
-    public class PermissionSettings
+    public class GroupSettings
     {
-        public string PermissionAttribute
+        public string groupAttribute
         {
             get;
             set;
         }
 
-        public List<string> permissions
+        public List<string> groups
         {
             get;
             set;
@@ -66,7 +66,7 @@ namespace ManyWho.Flow.SDK.Security
             get;
             set;
         }
-        public PermissionSettings permissionSettings
+        public GroupSettings groupSettings
         {
             get;
             set;
