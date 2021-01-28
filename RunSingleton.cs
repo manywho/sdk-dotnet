@@ -80,7 +80,7 @@ namespace ManyWho.Flow.SDK
 
             Policy.Handle<ServiceProblemException>().Retry(HttpUtils.MAXIMUM_RETRIES).Execute(() =>
             {
-                using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantId.ToString(), null))
+                using (httpClient = HttpUtils.CreateHttpClient(authenticatedWho, authenticatedWho.ManyWhoTenantIdMust.ToString(), null))
                 {
                     // Use the JSON formatter to create the content of the request body
                     httpContent = new StringContent(JsonConvert.SerializeObject(listenerServiceResponse));

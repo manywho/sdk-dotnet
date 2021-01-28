@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using ManyWho.Flow.SDK.Errors;
 using Newtonsoft.Json;
 
 /*!
@@ -19,7 +20,7 @@ permissions and limitations under the License.
 */
 
 namespace ManyWho.Flow.SDK.Security
-{
+{   
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class AuthenticatedWho : IAuthenticatedWho
     {
@@ -35,7 +36,7 @@ namespace ManyWho.Flow.SDK.Security
             }
             
             ManyWhoUserId = user.ManyWhoUserId;
-            ManyWhoTenantId = user.ManyWhoTenantId;
+            ManyWhoTenantId = user.ManyWhoTenantIdMust;
             ManyWhoToken = user.ManyWhoToken;
             GeoLocation = user.GeoLocation;
             UserId = user.UserId;
@@ -64,10 +65,23 @@ namespace ManyWho.Flow.SDK.Security
 
         [DataMember]
         [JsonProperty("manywhoTenantId")]
-        public Guid ManyWhoTenantId
+        public Guid? ManyWhoTenantId
         {
             get;
             set;
+        }
+
+        public Guid ManyWhoTenantIdMust
+        {
+            get
+            {
+                if(ManyWhoTenantId.HasValue == false)
+                {
+                    throw new EngineException("A tenant id was requested but was not set");
+                }
+
+                return ManyWhoTenantId.Value;
+            }
         }
 
         [DataMember]

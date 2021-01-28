@@ -80,7 +80,10 @@ namespace ManyWho.Flow.SDK.Utils
 
             // Create our new authenticated who object
             authenticatedWho = new AuthenticatedWho();
-            authenticatedWho.ManyWhoTenantId = Guid.Parse(manywhoTenantIdParameter.Split(ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER)[1]);
+            
+            string tenantId = manywhoTenantIdParameter.Split(ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER)[1]; 
+            authenticatedWho.ManyWhoTenantId = string.IsNullOrEmpty(tenantId) ? null : (Guid?)Guid.Parse(tenantId);
+            
             authenticatedWho.ManyWhoUserId = Guid.Parse(manywhoUserIdParameter.Split(ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER)[1]);
             authenticatedWho.ManyWhoToken = manywhoTokenParameter.Split(ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER)[1];
             authenticatedWho.DirectoryId = directoryIdParameter.Split(ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER)[1];
@@ -143,7 +146,7 @@ namespace ManyWho.Flow.SDK.Utils
             ValidateAuthenticatedWho(authenticatedWho);
 
             // Construct the token string
-            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.ManyWhoTenantId + "&";
+            token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TENANT_ID + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.ManyWhoTenantIdMust + "&";
             token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_USER_ID + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.ManyWhoUserId + "&";
             token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_MANYWHO_TOKEN + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.ManyWhoToken + "&";
             token += ManyWhoConstants.AUTHENTICATED_WHO_TOKEN_DIRECTORY_ID + ManyWhoConstants.SERIALIZATION_DELIMITER_DELIMITER + authenticatedWho.DirectoryId + "&";

@@ -30,13 +30,23 @@ namespace ManyWho.Flow.SDK.Security
         }
 
         /// <summary>
-        /// The unique identifier for the tenant in ManyWho.  If logging in as a runtime user, this will be blank.  This field is only required for users
+        /// Get or set the unique identifier for the tenant.  If logging in as a runtime user, this will be null.  This field is only required for users
         /// logging in to build flows as it will be used for all filtering of elements.
+        /// Use this in instances where a user authenticated into a tenant is not mandatory and tenant id can be null.
         /// </summary>
-        Guid ManyWhoTenantId
+        Guid? ManyWhoTenantId
         {
             get;
             set;
+        }
+        
+        /// <summary>
+        /// Get the unique identifier for the tenant and ensure it exists. 
+        /// Use this in instances where a user authenticated into a tenant is mandatory and tenant id must not be null.
+        /// </summary>
+        Guid ManyWhoTenantIdMust
+        {
+            get;
         }
 
         /// <summary>
