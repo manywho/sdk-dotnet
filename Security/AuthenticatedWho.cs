@@ -25,6 +25,8 @@ namespace ManyWho.Flow.SDK.Security
     [DataContract(Namespace = "http://www.manywho.com/api")]
     public class AuthenticatedWho : IAuthenticatedWho
     {
+        private Guid? manywhoTenantId = null;
+
         public AuthenticatedWho()
         {
         }
@@ -68,8 +70,19 @@ namespace ManyWho.Flow.SDK.Security
         [JsonProperty("manywhoTenantId")]
         public Guid? ManyWhoTenantId
         {
-            get;
-            set;
+            get
+            {
+                return manywhoTenantId;
+            }
+            set
+            {
+                if(value == Guid.Empty)
+                {
+                    throw new EngineException("A tenant id cannot be an empty guid");
+                }
+
+                this.manywhoTenantId = value;
+            }
         }
 
         public Guid ManyWhoTenantIdMust
