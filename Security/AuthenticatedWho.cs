@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using ManyWho.Flow.SDK.Errors;
 using Newtonsoft.Json;
@@ -194,6 +195,14 @@ namespace ManyWho.Flow.SDK.Security
         {
             get;
             set;
+        }
+
+        [DataMember]
+        [JsonProperty("groups")]
+        public IList<IGroup> Groups 
+        { 
+            get; 
+            set; 
         }
 
         [DataMember]
