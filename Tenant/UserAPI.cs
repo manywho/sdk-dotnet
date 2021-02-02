@@ -10,6 +10,12 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
+        public bool IsSSO
+        {
+            get;
+            set;
+        }
+
         public List<UserTokenAPI> Tokens
         {
             get;
