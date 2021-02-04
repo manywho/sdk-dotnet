@@ -10,7 +10,7 @@ namespace ManyWho.Flow.SDK.Tenant
             set;
         }
 
-        public bool IsSSO
+        public bool IsSso
         {
             get;
             set;
