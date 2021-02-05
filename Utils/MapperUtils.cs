@@ -500,7 +500,7 @@ namespace ManyWho.Flow.SDK.Utils
                     else
                     {
                         // Assign a random external identifier
-                        id = Fuid.NewGuid().ToString();
+                        id = Guid.NewGuid().ToString();
                     }
 
                     objectAPIs.Add(Convert(type, id, objectEntry, valueElementIdReferences));
@@ -605,7 +605,7 @@ namespace ManyWho.Flow.SDK.Utils
                         propertyAPI.objectData.Add(new ObjectAPI
                         {
                             developerName = "KeyPair",
-                            externalId = Fuid.NewGuid().ToString(),
+                            externalId = Guid.NewGuid().ToString(),
                             properties = new List<PropertyAPI>
                             {
                                 new PropertyAPI { developerName = "Key", contentValue = attribute.Key },
@@ -724,7 +724,7 @@ namespace ManyWho.Flow.SDK.Utils
                 else
                 {
                     objectData = new List<ObjectAPI>();
-                    objectData.Add(Convert(propertyInfo.PropertyType, Fuid.NewGuid().ToString(), propertyValue, valueElementIdReferences));
+                    objectData.Add(Convert(propertyInfo.PropertyType, Guid.NewGuid().ToString(), propertyValue, valueElementIdReferences));
                 }
             }
 
