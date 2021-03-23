@@ -23,7 +23,7 @@
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Polly-Signed" Version="5.9.0" />
     <PackageReference Include="Xenolope.Extensions" Version="2.3.0" />
   </ItemGroup>
